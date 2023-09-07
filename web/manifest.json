@@ -1,6 +1,6 @@
 {
-    "name": "reacthome_mobile",
-    "short_name": "reacthome_mobile",
+    "name": "reacthome",
+    "short_name": "reacthome",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
