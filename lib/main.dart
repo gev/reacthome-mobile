@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reacthome/discovery.dart';
 
 void main() {
+  startDiscovery('224.0.0.2', 2021);
   runApp(const MyApp());
 }
 
