@@ -1,4 +1,4 @@
-import 'package:reacthome/core/action.dart';
+import 'package:reacthome/domains/core/action.dart';
 
 const String discovery = 'discovery';
 
