@@ -1,25 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:reacthome/domains/discovery/discovery.dart';
+import 'package:reacthome/app/app.dart';
 
-class AppAndroid extends StatelessWidget with WidgetsBindingObserver {
-  final Discovery discovery;
+class AppAndroid extends App {
   final Widget home;
 
-  AppAndroid({super.key, required this.discovery, required this.home}) {
-    WidgetsBinding.instance.addObserver(this);
-    discovery.start();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        discovery.start();
-      case AppLifecycleState.paused:
-        discovery.stop();
-      default:
-    }
-  }
+  AppAndroid({super.key, required super.discovery, required this.home});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +17,5 @@ class AppAndroid extends StatelessWidget with WidgetsBindingObserver {
       ),
       home: home,
     );
-  }
-
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    discovery.stop();
   }
 }

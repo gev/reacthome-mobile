@@ -1,25 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/domains/discovery/discovery.dart';
+import 'package:reacthome/app/app.dart';
 
-class AppIOS extends StatelessWidget with WidgetsBindingObserver {
-  final Discovery discovery;
+class AppIOS extends App {
   final Widget home;
 
-  AppIOS({super.key, required this.discovery, required this.home}) {
-    WidgetsBinding.instance.addObserver(this);
-    discovery.start();
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        discovery.start();
-      case AppLifecycleState.paused:
-        discovery.stop();
-      default:
-    }
-  }
+  AppIOS({super.key, required super.discovery, required this.home});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +13,5 @@ class AppIOS extends StatelessWidget with WidgetsBindingObserver {
       theme: const CupertinoThemeData(),
       home: home,
     );
-  }
-
-  void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
-    discovery.stop();
   }
 }
