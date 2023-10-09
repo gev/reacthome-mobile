@@ -1,4 +1,4 @@
-import 'package:reacthome/features/discovery/discovery_config.dart';
+import 'package:reacthome/domains/discovery/discovery_config.dart';
 
 class Config {
   static const discovery = DiscoveryConfig(

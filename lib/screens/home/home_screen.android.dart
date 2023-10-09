@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/features/home/home_view_model.dart';
+import 'package:reacthome/screens/home/home_screen_view_model.dart';
 
-class HomePageAndroid extends StatelessWidget {
+class HomeScreenAndroid extends StatelessWidget {
   final String title;
-  const HomePageAndroid({super.key, required this.title});
+  const HomeScreenAndroid({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<HomeViewModel>();
+    final model = context.watch<HomeScreenViewModel>();
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

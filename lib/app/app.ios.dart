@@ -1,8 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/features/discovery/discovery.dart';
-
-import '../features/home/home_view_model.dart';
+import 'package:reacthome/domains/discovery/discovery.dart';
 
 class AppIOS extends StatelessWidget with WidgetsBindingObserver {
   final Discovery discovery;
@@ -29,10 +26,7 @@ class AppIOS extends StatelessWidget with WidgetsBindingObserver {
     return CupertinoApp(
       title: 'Reacthome',
       theme: const CupertinoThemeData(),
-      home: ChangeNotifierProvider(
-        create: (_) => HomeViewModel(discovery),
-        child: home,
-      ),
+      home: home,
     );
   }
 

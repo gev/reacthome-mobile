@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:reacthome/features/discovery/discovery_action.dart';
+import 'package:reacthome/domains/discovery/discovery_action.dart';
 
 class Discovery {
   final String group;

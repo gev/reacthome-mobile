@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/features/discovery/discovery.dart';
-
-import '../features/home/home_view_model.dart';
+import 'package:reacthome/domains/discovery/discovery.dart';
 
 class AppAndroid extends StatelessWidget with WidgetsBindingObserver {
   final Discovery discovery;
@@ -33,10 +30,7 @@ class AppAndroid extends StatelessWidget with WidgetsBindingObserver {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: ChangeNotifierProvider(
-        create: (_) => HomeViewModel(discovery),
-        child: home,
-      ),
+      home: home,
     );
   }
 

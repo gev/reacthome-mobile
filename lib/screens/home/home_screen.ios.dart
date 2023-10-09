@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/features/home/home_view_model.dart';
+import 'package:reacthome/screens/home/home_screen_view_model.dart';
 
-class HomePageIOS extends StatelessWidget {
+class HomeScreenIOS extends StatelessWidget {
   final String title;
-  const HomePageIOS({super.key, required this.title});
+  const HomeScreenIOS({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<HomeViewModel>();
+    final model = context.watch<HomeScreenViewModel>();
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(title),
