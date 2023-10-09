@@ -8,7 +8,7 @@ class Navigation {
   final initialRoute = NavigationRouteNames.home;
   final Widget home;
 
-  Navigation({
+  const Navigation({
     required this.home,
   });
 

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:reacthome/app/app.dart';
+import 'package:reacthome/app/navigation.dart';
 
 class AppAndroid extends App {
-  final Widget home;
+  final Navigation navigation;
 
-  AppAndroid({super.key, required super.discovery, required this.home});
+  AppAndroid({super.key, required super.discovery, required this.navigation});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,8 @@ class AppAndroid extends App {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: home,
+      routes: navigation.routes(),
+      initialRoute: navigation.initialRoute,
     );
   }
 }
