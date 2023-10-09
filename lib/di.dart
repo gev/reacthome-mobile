@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/app/app_factory.dart';
-import 'package:reacthome/app/navigation.dart';
+import 'package:reacthome/platform/main_navigation.dart';
+import 'package:reacthome/navigation/navigation.dart';
 import 'package:reacthome/config.dart';
 import 'package:reacthome/domains/discovery/discovery.dart';
 import 'package:reacthome/screens/home/home_screen_factory.dart';
@@ -21,7 +22,7 @@ class DI {
         ),
       );
 
-  Navigation _navigation() => Navigation(
+  Navigation _navigation() => MainNavigation(
         home: _homeScreen(),
       );
 

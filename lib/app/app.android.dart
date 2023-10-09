@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reacthome/app/app.dart';
-import 'package:reacthome/app/navigation.dart';
+import 'package:reacthome/navigation/navigation.dart';
 
 class AppAndroid extends App {
   final Navigation navigation;
@@ -13,11 +13,9 @@ class AppAndroid extends App {
       title: 'Reacthome',
       darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.system,
-      theme: ThemeData(
-        useMaterial3: true,
-      ),
+      theme: ThemeData(useMaterial3: true),
+      initialRoute: navigation.initialRoute(),
       routes: navigation.routes(),
-      initialRoute: navigation.initialRoute,
     );
   }
 }

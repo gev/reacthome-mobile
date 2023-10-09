@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/app.android.dart';
 import 'package:reacthome/app/app.ios.dart';
-import 'package:reacthome/app/navigation.dart';
+import 'package:reacthome/navigation/navigation.dart';
 import 'package:reacthome/domains/discovery/discovery.dart';
 import 'package:reacthome/platform/platform.dart';
 
