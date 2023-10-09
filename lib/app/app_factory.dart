@@ -11,7 +11,7 @@ class AppFactory {
 
   Widget make({required Discovery discovery, required Navigation navigation}) =>
       selectPlatform(
-        ios: AppIOS(discovery: discovery, navigation: navigation),
-        android: AppAndroid(discovery: discovery, navigation: navigation),
+        ios: AppIOS(discovery, navigation),
+        android: AppAndroid(discovery, navigation),
       );
 }

@@ -4,7 +4,7 @@ import 'package:reacthome/domains/discovery/discovery.dart';
 abstract class App extends StatelessWidget with WidgetsBindingObserver {
   final Discovery discovery;
 
-  App({super.key, required this.discovery}) {
+  App(this.discovery, {super.key}) {
     WidgetsBinding.instance.addObserver(this);
     discovery.start();
   }

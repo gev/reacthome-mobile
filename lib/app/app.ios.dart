@@ -5,7 +5,7 @@ import 'package:reacthome/navigation/navigation.dart';
 class AppIOS extends App {
   final Navigation navigation;
 
-  AppIOS({super.key, required super.discovery, required this.navigation});
+  AppIOS(discovery, this.navigation, {super.key}) : super(discovery);
 
   @override
   Widget build(BuildContext context) {
