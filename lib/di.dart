@@ -10,8 +10,10 @@ class DI {
     port: Config.discovery.port,
   );
 
-  Widget _homePage() => HomeFactory.instance.makeHomePage(discovery: discovery);
+  Widget _homePage() => HomeFactory.instance.make(discovery: discovery);
 
-  Widget app() =>
-      AppFactory.instance.makeApp(discovery: discovery, home: _homePage());
+  Widget app() => AppFactory.instance.make(
+        discovery: discovery,
+        home: _homePage(),
+      );
 }
