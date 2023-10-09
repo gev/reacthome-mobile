@@ -1,18 +1,16 @@
-import 'dart:io';
-
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/app.android.dart';
 import 'package:reacthome/app/app.ios.dart';
 import 'package:reacthome/features/discovery/discovery.dart';
+import 'package:reacthome/platform/platform.dart';
 
 class AppFactory {
   static const instance = AppFactory._();
   const AppFactory._();
 
-  Widget makeApp({required Discovery discovery, required Widget home}) {
-    final app = Platform.isIOS || Platform.isMacOS
-        ? AppIOS(discovery: discovery, home: home)
-        : AppAndroid(discovery: discovery, home: home);
-    return app;
-  }
+  Widget make({required Discovery discovery, required Widget home}) =>
+      selectPlatform(
+        ios: AppIOS(discovery: discovery, home: home),
+        android: AppAndroid(discovery: discovery, home: home),
+      );
 }
