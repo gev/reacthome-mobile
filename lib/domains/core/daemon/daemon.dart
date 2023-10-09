@@ -1,4 +1,4 @@
-import 'package:reacthome/models/entities/entity.dart';
+import 'package:reacthome/domains/core/entity.dart';
 
 const String daemon = 'daemon';
 
