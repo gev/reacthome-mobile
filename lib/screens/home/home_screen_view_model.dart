@@ -10,7 +10,7 @@ class HomeScreenViewModel extends ChangeNotifier {
   final Discovery discovery;
   late StreamSubscription<DiscoveryAction> _subscription;
 
-  HomeScreenViewModel({required this.discovery}) {
+  HomeScreenViewModel(this.discovery) {
     _subscription = discovery.stream.listen(_onDiscovery);
   }
 

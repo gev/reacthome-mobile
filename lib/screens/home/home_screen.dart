@@ -8,7 +8,7 @@ import 'package:reacthome/screens/home/home_screen_view_model.dart';
 
 Widget makeHomeScreen({required Discovery discovery, String title = 'Home'}) =>
     ChangeNotifierProvider(
-      create: (_) => HomeScreenViewModel(discovery: discovery),
+      create: (_) => HomeScreenViewModel(discovery),
       child: selectPlatform(
         ios: HomeScreenIOS(title: title),
         android: HomeScreenAndroid(title: title),
