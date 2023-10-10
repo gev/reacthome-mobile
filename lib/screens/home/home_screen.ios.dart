@@ -8,7 +8,6 @@ class HomeScreenIOS extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<HomeScreenViewModel>();
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(title),
@@ -17,22 +16,34 @@ class HomeScreenIOS extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoButton.filled(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-                onPressed: model.incrementCounter,
-                child: const Row(mainAxisSize: MainAxisSize.min, children: [
-                  Icon(CupertinoIcons.add, size: 28),
-                  SizedBox(width: 8),
-                  Text('Add'),
-                ])),
-            const Text(
-              'Reacthome Apple',
-            ),
-            Text(model.counter),
+            _IncrementCounterButton(),
+            _CounterTitle(),
           ],
         ),
       ),
     );
+  }
+}
+
+class _IncrementCounterButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final model = context.read<HomeScreenViewModel>();
+    return CupertinoButton.filled(
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+        onPressed: model.incrementCounter,
+        child: const Row(mainAxisSize: MainAxisSize.min, children: [
+          Icon(CupertinoIcons.add, size: 28),
+          SizedBox(width: 8),
+          Text('Add'),
+        ]));
+  }
+}
+
+class _CounterTitle extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<HomeScreenViewModel>();
+    return Text(model.counter);
   }
 }

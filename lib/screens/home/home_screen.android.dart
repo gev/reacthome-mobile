@@ -7,28 +7,38 @@ class HomeScreenAndroid extends StatelessWidget {
   const HomeScreenAndroid({super.key, required this.title});
 
   @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(
+          title: Text(title),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _IncrementCounterButton(),
+              _CounterTitle(),
+            ],
+          ),
+        ),
+      );
+}
+
+class _IncrementCounterButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final model = context.read<HomeScreenViewModel>();
+    return FilledButton.icon(
+      onPressed: model.incrementCounter,
+      icon: const Icon(Icons.add),
+      label: const Text('Add'),
+    );
+  }
+}
+
+class _CounterTitle extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     final model = context.watch<HomeScreenViewModel>();
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FilledButton.icon(
-              onPressed: model.incrementCounter,
-              icon: const Icon(Icons.add),
-              label: const Text('Add'),
-            ),
-            const Text(
-              'Reacthome Android',
-            ),
-            Text(model.counter),
-          ],
-        ),
-      ),
-    );
+    return Text(model.counter);
   }
 }

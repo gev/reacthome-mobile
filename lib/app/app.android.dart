@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reacthome/app/app.dart';
-import 'package:reacthome/navigation/navigation.dart';
+import 'package:reacthome/app/navigation.dart';
 
 class AppAndroid extends App {
   final Navigation navigation;

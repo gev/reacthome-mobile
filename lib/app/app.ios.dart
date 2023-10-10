@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reacthome/app/app.dart';
-import 'package:reacthome/navigation/navigation.dart';
+import 'package:reacthome/app/navigation.dart';
 
 class AppIOS extends App {
   final Navigation navigation;
