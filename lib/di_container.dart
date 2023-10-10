@@ -12,10 +12,7 @@ class DI {
         navigation: _navigation(),
       );
 
-  final Discovery _discovery = Discovery(
-    group: Config.discovery.group,
-    port: Config.discovery.port,
-  );
+  final Discovery _discovery = Discovery(Config.discovery);
 
   Navigation _navigation() => Navigation(
         home: _homeScreen(),

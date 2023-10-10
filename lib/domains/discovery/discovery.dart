@@ -3,10 +3,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:reacthome/domains/discovery/discovery_action.dart';
+import 'package:reacthome/domains/discovery/discovery_config.dart';
 
 class Discovery {
-  final String group;
-  final int port;
+  final DiscoveryConfig config;
   bool started = false;
   late RawDatagramSocket socket;
   late Timer timer;
@@ -16,18 +16,19 @@ class Discovery {
 
   Stream<DiscoveryAction> get stream => _controller.stream;
 
-  Discovery({required this.group, required this.port});
+  Discovery(this.config);
 
   void start() async {
     if (!started) {
       started = true;
-      socket = await RawDatagramSocket.bind(InternetAddress.anyIPv4, port,
+      socket = await RawDatagramSocket.bind(
+          InternetAddress.anyIPv4, config.port,
           reuseAddress: true, reusePort: true);
 
       timer = Timer.periodic(const Duration(seconds: 1), (_) async {
         for (final interface in await interfaces()) {
           try {
-            socket.joinMulticast(InternetAddress(group), interface);
+            socket.joinMulticast(InternetAddress(config.group), interface);
           } catch (_) {}
         }
       });
