@@ -7,7 +7,7 @@ class HomeScreenFactory {
   static const instance = HomeScreenFactory._();
   const HomeScreenFactory._();
 
-  Widget make({required String title}) => selectPlatform(
+  Widget make({String title = 'Home'}) => selectPlatform(
         ios: HomeScreenIOS(title: title),
         android: HomeScreenAndroid(title: title),
       );

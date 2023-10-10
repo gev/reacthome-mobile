@@ -24,6 +24,6 @@ class DI {
 
   Widget _homeScreen() => ChangeNotifierProvider(
         create: (_) => HomeScreenViewModel(discovery: _discovery),
-        child: HomeScreenFactory.instance.make(title: 'Home'),
+        child: HomeScreenFactory.instance.make(),
       );
 }
