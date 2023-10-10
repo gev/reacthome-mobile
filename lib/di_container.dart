@@ -7,7 +7,7 @@ import 'package:reacthome/domains/discovery/discovery.dart';
 import 'package:reacthome/screens/home/home_screen.dart';
 
 class DI {
-  Widget app() => AppFactory.instance.make(
+  Widget app() => App.instance.make(
         discovery: _discovery,
         navigation: _navigation(),
       );
