@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/app/app_factory.dart';
-import 'package:reacthome/platform/main_navigation.dart';
+import 'package:reacthome/navigation/main_navigation.dart';
 import 'package:reacthome/navigation/navigation.dart';
 import 'package:reacthome/config.dart';
 import 'package:reacthome/domains/discovery/discovery.dart';

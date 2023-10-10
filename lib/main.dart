@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/di.dart';
+import 'package:reacthome/di_container.dart';
 
 final DI di = DI();
 
