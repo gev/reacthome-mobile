@@ -4,8 +4,7 @@ import 'package:reacthome/app/app_factory.dart';
 import 'package:reacthome/app/navigation.dart';
 import 'package:reacthome/config.dart';
 import 'package:reacthome/domains/discovery/discovery.dart';
-import 'package:reacthome/screens/home/home_screen_factory.dart';
-import 'package:reacthome/screens/home/home_screen_view_model.dart';
+import 'package:reacthome/screens/home/home_screen.dart';
 
 class DI {
   Widget app() => AppFactory.instance.make(
@@ -23,7 +22,7 @@ class DI {
       );
 
   Widget _homeScreen() => ChangeNotifierProvider(
-        create: (_) => HomeScreenViewModel(discovery: _discovery),
-        child: HomeScreenFactory.instance.make(),
+        create: (_) => HomeScreen.instance.makeViewModel(discovery: _discovery),
+        child: HomeScreen.instance.makeView(),
       );
 }
