@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/domains/discovery/discovery.dart';
 import 'package:reacthome/domains/discovery/discovery_action.dart';
 
@@ -10,7 +10,7 @@ class HomeScreenViewModel extends ChangeNotifier {
   final Discovery discovery;
   late StreamSubscription<DiscoveryAction> _subscription;
 
-  HomeScreenViewModel(this.discovery) {
+  HomeScreenViewModel({required this.discovery}) {
     _subscription = discovery.stream.listen(_onDiscovery);
   }
 

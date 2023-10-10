@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/app/app_factory.dart';
 import 'package:reacthome/app/navigation.dart';
@@ -23,10 +23,7 @@ class DI {
       );
 
   Widget _homeScreen() => ChangeNotifierProvider(
-        create: (_) => HomeScreenViewModel(_discovery),
-        child: HomeScreenFactory.instance.make(
-          discovery: _discovery,
-          title: 'Home',
-        ),
+        create: (_) => HomeScreenViewModel(discovery: _discovery),
+        child: HomeScreenFactory.instance.make(title: 'Home'),
       );
 }
