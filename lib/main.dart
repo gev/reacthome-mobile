@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:reacthome/app/app.dart';
 import 'package:reacthome/app/navigation.dart';
 import 'package:reacthome/config.dart';
@@ -12,10 +11,7 @@ void main() {
   runApp(App.instance.make(
     discovery: discovery,
     navigation: Navigation(
-      home: ChangeNotifierProvider(
-        create: (_) => HomeScreen.instance.makeViewModel(discovery: discovery),
-        child: HomeScreen.instance.makeView(),
-      ),
+      home: makeHomeScreen(discovery: discovery),
     ),
   ));
 }
