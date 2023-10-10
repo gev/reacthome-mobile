@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:reacthome/app/app.dart';
+import 'package:reacthome/app/app_binding_observer.dart';
 import 'package:reacthome/app/navigation.dart';
 
-class AppAndroid extends App {
+class AppAndroid extends AppBindingObserver {
   final Navigation navigation;
 
   AppAndroid(discovery, this.navigation, {super.key}) : super(discovery);
