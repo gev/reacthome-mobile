@@ -8,7 +8,7 @@ import 'package:reacthome/screens/home/home_screen.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final discovery = Discovery(Config.discovery);
-  runApp(App.instance.make(
+  runApp(makeApp(
     discovery: discovery,
     navigation: Navigation(
       home: makeHomeScreen(discovery: discovery),
