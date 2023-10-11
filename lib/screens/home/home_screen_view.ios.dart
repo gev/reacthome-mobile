@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/screens/home/home_screen_view_model.dart';
 
-class HomeScreenIOS extends StatelessWidget {
+class HomeScreenViewIOS extends StatelessWidget {
   final String title;
-  const HomeScreenIOS({super.key, required this.title});
+  const HomeScreenViewIOS({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/screens/home/home_screen_view_model.dart';
 
-class HomeScreenAndroid extends StatelessWidget {
+class HomeScreenViewAndroid extends StatelessWidget {
   final String title;
-  const HomeScreenAndroid({super.key, required this.title});
+  const HomeScreenViewAndroid({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) => Scaffold(
