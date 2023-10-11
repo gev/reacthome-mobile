@@ -4,13 +4,15 @@ import 'package:reacthome/app/navigation.dart';
 
 class AppAndroid extends AppBindingObserver {
   final Navigation navigation;
+  final String title;
 
-  AppAndroid(discovery, this.navigation, {super.key}) : super(discovery);
+  AppAndroid(discovery, this.navigation, this.title, {super.key})
+      : super(discovery);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Reacthome',
+      title: title,
       darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.system,
       theme: ThemeData(useMaterial3: true),
