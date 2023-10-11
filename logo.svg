@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <rect x="384" y="388.557" width="128" height="121.443" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(211, 243, 249);"/>
+  <rect y="388.557" width="128" height="121.443" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(76, 127, 230);"/>
+  <path d="M 128 388.557 L 256 388.557 L 256 510 L 128 510 L 128 388.557 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(121, 179, 236);"/>
+  <path d="M 384 388.557 L 384 510 L 256 510 L 256 388.557 L 384 388.557 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 217, 243);"/>
+  <path d="M 384 267.114 L 508 267.114 C 511.999 274.704 511.999 282.294 511.999 297.475 C 511.999 309.943 511.999 348.015 511.999 388.557 L 384 388.557 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 243, 243);"/>
+  <path d="M 128 267.114 L 128 388.557 L 0 388.557 C 0 355.592 0 322.213 0 297.475 C 0 282.294 0 274.704 4.001 267.114 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(121, 179, 236);"/>
+  <path d="M 128 267.114 L 256 267.114 L 256 388.557 L 128 388.557 L 128 267.114 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 217, 243);"/>
+  <path d="M 256 267.114 L 384 267.114 L 384 388.557 L 256 388.557 L 256 267.114 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(211, 243, 249);"/>
+  <rect x="128" y="145.671" width="128" height="121.443" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(211, 243, 249);"/>
+  <rect x="256" y="145.671" width="128" height="121.443" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 243, 243);"/>
+  <path d="M 225.27 53.386 C 234.426 44.698 245.165 40.44 256 40.55 L 256 145.671 L 128 145.671 C 160.933 114.427 196.159 81.005 225.27 53.386 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 243, 243);"/>
+  <path d="M 287.962 54.552 C 316.372 81.509 351.262 114.61 384 145.671 L 256 145.671 L 256 40.55 C 267.083 40.666 278.266 45.354 287.962 54.552 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(117, 240, 220);"/>
+  <path d="M 32 236.754 C 49.728 219.933 87.095 184.48 128 145.671 L 128 267.114 L 4.001 267.114 C 8 259.524 16 251.934 32 236.754 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(166, 217, 243);"/>
+  <path d="M 479.999 236.754 C 495.999 251.934 504 259.524 508 267.114 L 384 267.114 L 384 145.671 C 425.053 184.622 462.727 220.365 479.999 236.754 Z" style="stroke-linejoin: round; stroke-linecap: round; stroke-width: 2; fill: rgb(117, 240, 220);"/>
+</svg>
