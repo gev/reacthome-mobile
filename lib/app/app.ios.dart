@@ -16,8 +16,8 @@ class AppIOS extends AppBindingObserver {
     return CupertinoApp(
       title: title,
       theme: CupertinoThemeData(primaryColor: theme.primaryColor),
-      initialRoute: navigation.initialRoute(),
-      routes: navigation.routes(),
+      initialRoute: navigation.initialRoute,
+      routes: navigation.routes,
     );
   }
 }

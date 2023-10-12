@@ -21,8 +21,8 @@ class AppAndroid extends AppBindingObserver {
         useMaterial3: true,
         primaryColor: theme.primaryColor,
       ),
-      initialRoute: navigation.initialRoute(),
-      routes: navigation.routes(),
+      initialRoute: navigation.initialRoute,
+      routes: navigation.routes,
     );
   }
 }

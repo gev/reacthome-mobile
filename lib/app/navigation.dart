@@ -9,9 +9,9 @@ class Navigation {
 
   const Navigation({required this.home});
 
-  String initialRoute() => NavigationRouteNames.home;
+  String get initialRoute => NavigationRouteNames.home;
 
-  Map<String, WidgetBuilder> routes() => ({
+  Map<String, WidgetBuilder> get routes => ({
         NavigationRouteNames.home: (_) => home,
       });
 }
