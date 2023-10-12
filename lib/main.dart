@@ -9,6 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   final discovery = Discovery(Config.discovery);
   runApp(makeApp(
+    theme: Config.theme,
     discovery: discovery,
     navigation: Navigation(
       home: makeHomeScreen(discovery: discovery),
