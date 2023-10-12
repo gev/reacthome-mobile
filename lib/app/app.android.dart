@@ -15,11 +15,14 @@ class AppAndroid extends AppBindingObserver {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: title,
-      darkTheme: ThemeData.dark(useMaterial3: true),
+      // darkTheme: ThemeData.dark(useMaterial3: true),
       themeMode: ThemeMode.system,
       theme: ThemeData(
-        useMaterial3: true,
-        primaryColor: theme.primaryColor,
+        // useMaterial3: true,
+        brightness: Brightness.light,
+        platform: TargetPlatform.iOS,
+        // primaryColor: theme.primaryColor,
+        colorScheme: ColorScheme.fromSeed(seedColor: theme.primaryColor),
       ),
       initialRoute: navigation.initialRoute,
       routes: navigation.routes,
