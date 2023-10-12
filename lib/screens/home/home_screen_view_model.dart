@@ -1,17 +1,17 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/domains/discovery/discovery.dart';
+import 'package:reacthome/domains/discovery/discovery_data_provider.dart';
 import 'package:reacthome/domains/discovery/discovery_action.dart';
 
 class HomeScreenViewModel extends ChangeNotifier {
   int _counter = 0;
 
-  final Discovery discovery;
+  final DiscoveryDataProvider discovery;
   late StreamSubscription<DiscoveryAction> _subscription;
 
   HomeScreenViewModel(this.discovery) {
-    _subscription = discovery.stream.listen(_onDiscovery);
+    _subscription = discovery.subscribe(_onDiscovery);
   }
 
   String get counter => _counter.toString();

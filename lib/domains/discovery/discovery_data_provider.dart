@@ -4,19 +4,15 @@ import 'dart:io';
 
 import 'package:reacthome/domains/discovery/discovery_action.dart';
 import 'package:reacthome/domains/discovery/discovery_config.dart';
+import 'package:reacthome/domains/providers/data_provider.dart';
 
-class Discovery {
+class DiscoveryDataProvider extends DataProvider<DiscoveryAction> {
   final DiscoveryConfig config;
   bool started = false;
   late RawDatagramSocket socket;
   late Timer timer;
 
-  final StreamController<DiscoveryAction> _controller =
-      StreamController.broadcast();
-
-  Stream<DiscoveryAction> get stream => _controller.stream;
-
-  Discovery(this.config);
+  DiscoveryDataProvider(this.config);
 
   void start() async {
     if (!started) {
@@ -55,7 +51,7 @@ class Discovery {
           final type = json['type'];
           if (type == discovery) {
             final action = DiscoveryAction.fromJSON(json);
-            _controller.add(action);
+            add(action);
           }
         } catch (_) {
           // ToDo: Handle errors

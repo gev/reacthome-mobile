@@ -20,14 +20,12 @@ class Payload {
   final String? title;
   final String? code;
   final String? project;
-  final List<String>? device;
 
-  const Payload({this.title, this.code, this.project, this.device});
+  const Payload({this.title, this.code, this.project});
 
   factory Payload.fromJSON(Map<String, dynamic> json) => Payload(
         title: json['title'],
         code: json['code'],
         project: json['project'],
-        device: json['device'],
       );
 }
