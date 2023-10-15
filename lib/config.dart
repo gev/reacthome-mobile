@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:reacthome/app/theme_config.dart';
-import 'package:reacthome/domains/discovery/discovery_config.dart';
+import 'package:reacthome/ui/app/theme_config.dart';
+import 'package:reacthome/services/discovery/discovery_config.dart';
 
 class Config {
   static const discovery = DiscoveryConfig(

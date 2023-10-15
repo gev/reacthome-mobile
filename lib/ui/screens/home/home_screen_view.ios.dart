@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/screens/home/home_screen_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_view_model.dart';
 
 class HomeScreenViewIOS extends StatelessWidget {
   final String title;

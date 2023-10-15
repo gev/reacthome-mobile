@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/app/app_binding_observer.dart';
-import 'package:reacthome/app/navigation.dart';
-import 'package:reacthome/app/theme_config.dart';
+import 'package:reacthome/ui/app/app_binding_observer.dart';
+import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/app/theme_config.dart';
 
 class AppIOS extends AppBindingObserver {
   final ThemeConfig theme;

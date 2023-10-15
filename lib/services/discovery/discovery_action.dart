@@ -1,13 +1,9 @@
-import 'package:reacthome/domains/core/action.dart';
-
-const String discovery = 'discovery';
-
-class DiscoveryAction extends Action {
+class DiscoveryAction {
+  static const type = 'discovery';
   final String id;
   final Payload payload;
 
-  const DiscoveryAction({required this.id, required this.payload})
-      : super(type: discovery);
+  const DiscoveryAction({required this.id, required this.payload});
 
   factory DiscoveryAction.fromJSON(Map<String, dynamic> json) =>
       DiscoveryAction(
@@ -20,12 +16,14 @@ class Payload {
   final String? title;
   final String? code;
   final String? project;
+  final int? timestamp;
 
-  const Payload({this.title, this.code, this.project});
+  const Payload({this.title, this.code, this.project, this.timestamp});
 
   factory Payload.fromJSON(Map<String, dynamic> json) => Payload(
         title: json['title'],
         code: json['code'],
         project: json['project'],
+        timestamp: json['timestamp'],
       );
 }
