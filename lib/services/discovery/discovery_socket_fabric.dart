@@ -18,7 +18,7 @@ class DiscoverySocketFabric {
       reusePort: true,
     );
 
-    socket.listen((RawSocketEvent event) {
+    final subscription = socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
         final datagram = socket.receive();
         if (datagram != null) controller.handle(datagram.data);
@@ -33,17 +33,19 @@ class DiscoverySocketFabric {
       }
     });
 
-    return DiscoverySocket._(socket, timer);
+    return DiscoverySocket._(socket, timer, subscription);
   }
 }
 
 class DiscoverySocket {
   final RawDatagramSocket _socket;
   final Timer _timer;
+  final StreamSubscription<RawSocketEvent> _subscription;
 
-  DiscoverySocket._(this._socket, this._timer);
+  DiscoverySocket._(this._socket, this._timer, this._subscription);
 
   void close() {
+    _subscription.cancel();
     _timer.cancel();
     _socket.close();
   }

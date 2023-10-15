@@ -12,7 +12,13 @@ DiscoveryService makeDiscoveryService({
   required DiscoveryModel model,
 }) {
   final service = DiscoveryService(eventBus, model);
-  eventBus.subscribe(DiscoveryController(service,
-      DiscoverySocketFabric(config, DiscoverySocketController(service))));
+  DiscoveryController(
+    eventBus,
+    service,
+    DiscoverySocketFabric(
+      config,
+      DiscoverySocketController(service),
+    ),
+  );
   return service;
 }
