@@ -12,8 +12,10 @@ Widget makeHomeScreen({
   required DiscoveryService discovery,
   String title = 'Home',
 }) {
+  final viewModel = HomeScreenViewModel(discovery);
+  viewModel.subscribe(eventBus);
   return ChangeNotifierProvider(
-    create: (_) => HomeScreenViewModel(eventBus, discovery),
+    create: (_) => viewModel,
     child: selectPlatform(
       ios: HomeScreenViewIOS(title: title),
       android: HomeScreenViewAndroid(title: title),
