@@ -1,14 +1,14 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/services/discovery/discovery_service.dart';
+import 'package:reacthome/features/discovery/discovery_model.dart';
 import 'package:reacthome/ui/app/app.android.dart';
 import 'package:reacthome/ui/app/app.ios.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/app/theme_config.dart';
-import 'package:reacthome/platform/platform.dart';
+import 'package:reacthome/ui/theme_config.dart';
+import 'package:reacthome/util/platform.dart';
 
 Widget makeApp({
   required ThemeConfig theme,
-  required DiscoveryService discovery,
+  required DiscoveryModel discovery,
   required Navigation navigation,
   String title = 'Reacthome',
 }) =>

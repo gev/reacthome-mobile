@@ -1,17 +1,18 @@
-import 'package:reacthome/domains/discovery/discovery_event.dart';
+import 'package:reacthome/features/discovery/discovery_event.dart';
+import 'package:reacthome/util/event_emitter.dart';
 
 import 'discovery_state.dart';
 
-class DiscoveryModel {
+class DiscoveryModel extends EventEmitter {
   int _counter = 0;
   DiscoveryState _state = DiscoveryState.stopped;
 
-  DiscoveryModel();
+  DiscoveryModel(super.eventBus);
 
   int get counter => _counter;
   DiscoveryState get state => _state;
 
-  void start(void Function(DiscoveryEvent) emit) {
+  void start() {
     if (_state == DiscoveryState.stopped) {
       _state = DiscoveryState.starting;
       emit(const DiscoveryEventStart());
@@ -24,14 +25,14 @@ class DiscoveryModel {
     }
   }
 
-  void stop(void Function(DiscoveryEvent) emit) {
+  void stop() {
     if (_state == DiscoveryState.running) {
       _state = DiscoveryState.stopped;
       emit(const DiscoveryEventStop());
     }
   }
 
-  void increment(void Function(DiscoveryEvent) emit) {
+  void increment() {
     _counter++;
     emit(DiscoveryEventCounterChanged(_counter));
   }

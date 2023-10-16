@@ -1,15 +1,17 @@
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
-import 'package:reacthome/services/discovery/discovery_action.dart';
-import 'package:reacthome/services/discovery/discovery_service.dart';
+import 'package:reacthome/features/discovery/discovery_action.dart';
+import 'package:reacthome/features/discovery/discovery_model.dart';
+import 'package:reacthome/util/handler.dart';
 
-class DiscoverySocketController {
-  final DiscoveryService discovery;
+class DiscoveryActionHandler implements Handler<Uint8List> {
+  final DiscoveryModel discovery;
 
-  DiscoverySocketController(this.discovery);
+  DiscoveryActionHandler(this.discovery);
 
-  void handle(Uint8List data) {
+  @override
+  void onData(Uint8List data) {
     final action = _parse(data);
     if (action != null) discovery.increment();
   }

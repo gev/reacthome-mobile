@@ -1,10 +1,11 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/services/discovery/discovery_service.dart';
-import 'package:reacthome/utils/event_bus.dart';
+import 'package:reacthome/features/discovery/discovery_event.dart';
+import 'package:reacthome/features/discovery/discovery_model.dart';
+import 'package:reacthome/util/event_listener.dart';
 
 class HomeScreenViewModel extends ChangeNotifier
-    with EventHandler<DiscoveryEvent> {
-  final DiscoveryService discovery;
+    with EventListener<DiscoveryEvent> {
+  final DiscoveryModel discovery;
 
   HomeScreenViewModel(this.discovery);
 
@@ -15,7 +16,7 @@ class HomeScreenViewModel extends ChangeNotifier
   }
 
   @override
-  void handleEvent(DiscoveryEvent event) {
+  void onData(DiscoveryEvent event) {
     if (event is DiscoveryEventCounterChanged) {
       notifyListeners();
     }

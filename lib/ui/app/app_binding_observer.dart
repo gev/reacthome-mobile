@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/services/discovery/discovery_service.dart';
+import 'package:reacthome/features/discovery/discovery_model.dart';
 
 abstract class AppBindingObserver extends StatelessWidget
     with WidgetsBindingObserver {
-  final DiscoveryService discovery;
+  final DiscoveryModel discovery;
 
   AppBindingObserver(this.discovery, {super.key}) {
     WidgetsBinding.instance.addObserver(this);
