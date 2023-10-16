@@ -29,4 +29,7 @@ class DiscoveryController with EventHandler<DiscoveryEvent> {
   }
 
   void _stop() => _socket?.close();
+
+  @override
+  void dispose() => _stop();
 }
