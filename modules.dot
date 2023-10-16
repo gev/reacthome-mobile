@@ -18,11 +18,11 @@ digraph "" {
   "/app/discovery.dart" [label="discovery"];
   "/app/make.dart" [label="make"];
   "/util/handler.dart" [label="handler"];
+  "/util/factory.dart" [label="factory"];
   "/util/event_bus.dart" [label="event_bus"];
   "/util/event_emitter.dart" [label="event_emitter"];
   "/util/platform.dart" [label="platform"];
   "/util/event_listener.dart" [label="event_listener"];
-  "/util/fabric.dart" [label="fabric"];
   "/util/closable.dart" [label="closable"];
   "/features/discovery/discovery_controller.dart" [label="discovery_controller"];
   "/features/discovery/discovery_model.dart" [label="discovery_model"];
@@ -31,9 +31,9 @@ digraph "" {
   "/features/discovery/discovery_action_handler.dart" [label="discovery_action_handler"];
   "/features/discovery/discovery_action.dart" [label="discovery_action"];
   "/main.dart" [label="main"];
+  "/infrastructure/multicast/multicast_source_factory.dart" [label="multicast_source_factory"];
   "/infrastructure/multicast/multicast_source.dart" [label="multicast_source"];
   "/infrastructure/multicast/multicast_config.dart" [label="multicast_config"];
-  "/infrastructure/multicast/multicast_source_fabric.dart" [label="multicast_source_fabric"];
   subgraph "cluster~" {
     label="lib";
     "/main.dart";
@@ -73,11 +73,11 @@ digraph "" {
     subgraph "cluster~/util" {
       label="util";
       "/util/handler.dart";
+      "/util/factory.dart";
       "/util/event_bus.dart";
       "/util/event_emitter.dart";
       "/util/platform.dart";
       "/util/event_listener.dart";
-      "/util/fabric.dart";
       "/util/closable.dart";
     }
     subgraph "cluster~/features" {
@@ -96,9 +96,9 @@ digraph "" {
       label="infrastructure";
       subgraph "cluster~/infrastructure/multicast" {
         label="multicast";
+        "/infrastructure/multicast/multicast_source_factory.dart";
         "/infrastructure/multicast/multicast_source.dart";
         "/infrastructure/multicast/multicast_config.dart";
-        "/infrastructure/multicast/multicast_source_fabric.dart";
       }
     }
   }
@@ -136,7 +136,7 @@ digraph "" {
   "/app/discovery.dart" -> "/features/discovery/discovery_controller.dart";
   "/app/discovery.dart" -> "/features/discovery/discovery_event.dart";
   "/app/discovery.dart" -> "/features/discovery/discovery_model.dart";
-  "/app/discovery.dart" -> "/infrastructure/multicast/multicast_source_fabric.dart";
+  "/app/discovery.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
   "/app/discovery.dart" -> "/util/event_bus.dart";
   "/app/make.dart" -> "/app/config.dart";
   "/app/make.dart" -> "/app/discovery.dart";
@@ -150,7 +150,7 @@ digraph "" {
   "/features/discovery/discovery_controller.dart" -> "/features/discovery/discovery_model.dart";
   "/features/discovery/discovery_controller.dart" -> "/util/closable.dart";
   "/features/discovery/discovery_controller.dart" -> "/util/event_listener.dart";
-  "/features/discovery/discovery_controller.dart" -> "/util/fabric.dart";
+  "/features/discovery/discovery_controller.dart" -> "/util/factory.dart";
   "/features/discovery/discovery_model.dart" -> "/features/discovery/discovery_event.dart";
   "/features/discovery/discovery_model.dart" -> "/util/event_emitter.dart";
   "/features/discovery/discovery_model.dart" -> "/features/discovery/discovery_state.dart";
@@ -158,10 +158,10 @@ digraph "" {
   "/features/discovery/discovery_action_handler.dart" -> "/features/discovery/discovery_model.dart";
   "/features/discovery/discovery_action_handler.dart" -> "/util/handler.dart";
   "/main.dart" -> "/app/make.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/factory.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/handler.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/closable.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/handler.dart";
-  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/infrastructure/multicast/multicast_config.dart";
-  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/infrastructure/multicast/multicast_source.dart";
-  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/util/fabric.dart";
-  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/util/handler.dart";
 }
