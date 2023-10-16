@@ -5,7 +5,7 @@ import 'package:reacthome/utils/fabric.dart';
 
 class DiscoveryController with EventHandler<DiscoveryEvent> {
   final DiscoveryService discovery;
-  final AsyncFabric fabric;
+  final AsyncFabric<Closable> fabric;
 
   Closable? _socket;
 
