@@ -2,15 +2,15 @@ import 'package:reacthome/features/discovery/discovery_event.dart';
 import 'package:reacthome/features/discovery/discovery_model.dart';
 import 'package:reacthome/util/closable.dart';
 import 'package:reacthome/util/event_listener.dart';
-import 'package:reacthome/util/fabric.dart';
+import 'package:reacthome/util/factory.dart';
 
 class DiscoveryController with EventListener<DiscoveryEvent> {
   final DiscoveryModel discoveryModel;
-  final AsyncFabric<Closable> discoverySourceFabric;
+  final AsyncFactory<Closable> discoverySourceFactory;
 
   Closable? _discoverySource;
 
-  DiscoveryController(this.discoveryModel, this.discoverySourceFabric);
+  DiscoveryController(this.discoveryModel, this.discoverySourceFactory);
 
   @override
   void onData(DiscoveryEvent event) {
@@ -25,7 +25,7 @@ class DiscoveryController with EventListener<DiscoveryEvent> {
   }
 
   void _start() async {
-    _discoverySource = await discoverySourceFabric.create();
+    _discoverySource = await discoverySourceFactory.create();
     discoveryModel.run();
   }
 

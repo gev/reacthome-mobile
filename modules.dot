@@ -1,0 +1,167 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/ui/app/app.android.dart" [label="app.android"];
+  "/ui/app/app_binding_observer.dart" [label="app_binding_observer"];
+  "/ui/app/app.ios.dart" [label="app.ios"];
+  "/ui/app/navigation.dart" [label="navigation"];
+  "/ui/app/app.dart" [label="app"];
+  "/ui/screens/home/home_screen_view.android.dart" [label="home_screen_view.android"];
+  "/ui/screens/home/home_screen_view.ios.dart" [label="home_screen_view.ios"];
+  "/ui/screens/home/home_screen_view_model.dart" [label="home_screen_view_model"];
+  "/ui/screens/home/home_screen.dart" [label="home_screen"];
+  "/ui/theme_config.dart" [label="theme_config"];
+  "/core/entity.dart" [label="entity"];
+  "/app/ui.dart" [label="ui"];
+  "/app/config.dart" [label="config"];
+  "/app/discovery.dart" [label="discovery"];
+  "/app/make.dart" [label="make"];
+  "/util/handler.dart" [label="handler"];
+  "/util/event_bus.dart" [label="event_bus"];
+  "/util/event_emitter.dart" [label="event_emitter"];
+  "/util/platform.dart" [label="platform"];
+  "/util/event_listener.dart" [label="event_listener"];
+  "/util/fabric.dart" [label="fabric"];
+  "/util/closable.dart" [label="closable"];
+  "/features/discovery/discovery_controller.dart" [label="discovery_controller"];
+  "/features/discovery/discovery_model.dart" [label="discovery_model"];
+  "/features/discovery/discovery_state.dart" [label="discovery_state"];
+  "/features/discovery/discovery_event.dart" [label="discovery_event"];
+  "/features/discovery/discovery_action_handler.dart" [label="discovery_action_handler"];
+  "/features/discovery/discovery_action.dart" [label="discovery_action"];
+  "/main.dart" [label="main"];
+  "/infrastructure/multicast/multicast_source.dart" [label="multicast_source"];
+  "/infrastructure/multicast/multicast_config.dart" [label="multicast_config"];
+  "/infrastructure/multicast/multicast_source_fabric.dart" [label="multicast_source_fabric"];
+  subgraph "cluster~" {
+    label="lib";
+    "/main.dart";
+    subgraph "cluster~/ui" {
+      label="ui";
+      "/ui/theme_config.dart";
+      subgraph "cluster~/ui/app" {
+        label="app";
+        "/ui/app/app.android.dart";
+        "/ui/app/app_binding_observer.dart";
+        "/ui/app/app.ios.dart";
+        "/ui/app/navigation.dart";
+        "/ui/app/app.dart";
+      }
+      subgraph "cluster~/ui/screens" {
+        label="screens";
+        subgraph "cluster~/ui/screens/home" {
+          label="home";
+          "/ui/screens/home/home_screen_view.android.dart";
+          "/ui/screens/home/home_screen_view.ios.dart";
+          "/ui/screens/home/home_screen_view_model.dart";
+          "/ui/screens/home/home_screen.dart";
+        }
+      }
+    }
+    subgraph "cluster~/core" {
+      label="core";
+      "/core/entity.dart";
+    }
+    subgraph "cluster~/app" {
+      label="app";
+      "/app/ui.dart";
+      "/app/config.dart";
+      "/app/discovery.dart";
+      "/app/make.dart";
+    }
+    subgraph "cluster~/util" {
+      label="util";
+      "/util/handler.dart";
+      "/util/event_bus.dart";
+      "/util/event_emitter.dart";
+      "/util/platform.dart";
+      "/util/event_listener.dart";
+      "/util/fabric.dart";
+      "/util/closable.dart";
+    }
+    subgraph "cluster~/features" {
+      label="features";
+      subgraph "cluster~/features/discovery" {
+        label="discovery";
+        "/features/discovery/discovery_controller.dart";
+        "/features/discovery/discovery_model.dart";
+        "/features/discovery/discovery_state.dart";
+        "/features/discovery/discovery_event.dart";
+        "/features/discovery/discovery_action_handler.dart";
+        "/features/discovery/discovery_action.dart";
+      }
+    }
+    subgraph "cluster~/infrastructure" {
+      label="infrastructure";
+      subgraph "cluster~/infrastructure/multicast" {
+        label="multicast";
+        "/infrastructure/multicast/multicast_source.dart";
+        "/infrastructure/multicast/multicast_config.dart";
+        "/infrastructure/multicast/multicast_source_fabric.dart";
+      }
+    }
+  }
+  "/ui/app/app.android.dart" -> "/ui/app/app_binding_observer.dart";
+  "/ui/app/app.android.dart" -> "/ui/app/navigation.dart";
+  "/ui/app/app.android.dart" -> "/ui/theme_config.dart";
+  "/ui/app/app_binding_observer.dart" -> "/features/discovery/discovery_model.dart";
+  "/ui/app/app.ios.dart" -> "/ui/app/app_binding_observer.dart";
+  "/ui/app/app.ios.dart" -> "/ui/app/navigation.dart";
+  "/ui/app/app.ios.dart" -> "/ui/theme_config.dart";
+  "/ui/app/app.dart" -> "/features/discovery/discovery_model.dart";
+  "/ui/app/app.dart" -> "/ui/app/app.android.dart";
+  "/ui/app/app.dart" -> "/ui/app/app.ios.dart";
+  "/ui/app/app.dart" -> "/ui/app/navigation.dart";
+  "/ui/app/app.dart" -> "/ui/theme_config.dart";
+  "/ui/app/app.dart" -> "/util/platform.dart";
+  "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/features/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/features/discovery/discovery_model.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/screens/home/home_screen.dart" -> "/features/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen.dart" -> "/features/discovery/discovery_model.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.android.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.ios.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen.dart" -> "/util/event_bus.dart";
+  "/ui/screens/home/home_screen.dart" -> "/util/platform.dart";
+  "/app/ui.dart" -> "/app/discovery.dart";
+  "/app/ui.dart" -> "/ui/screens/home/home_screen.dart";
+  "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/app/config.dart" -> "/ui/theme_config.dart";
+  "/app/discovery.dart" -> "/app/config.dart";
+  "/app/discovery.dart" -> "/features/discovery/discovery_action_handler.dart";
+  "/app/discovery.dart" -> "/features/discovery/discovery_controller.dart";
+  "/app/discovery.dart" -> "/features/discovery/discovery_event.dart";
+  "/app/discovery.dart" -> "/features/discovery/discovery_model.dart";
+  "/app/discovery.dart" -> "/infrastructure/multicast/multicast_source_fabric.dart";
+  "/app/discovery.dart" -> "/util/event_bus.dart";
+  "/app/make.dart" -> "/app/config.dart";
+  "/app/make.dart" -> "/app/discovery.dart";
+  "/app/make.dart" -> "/app/ui.dart";
+  "/app/make.dart" -> "/ui/app/app.dart";
+  "/app/make.dart" -> "/ui/app/navigation.dart";
+  "/util/event_emitter.dart" -> "/util/event_bus.dart";
+  "/util/event_listener.dart" -> "/util/event_bus.dart";
+  "/util/event_listener.dart" -> "/util/handler.dart";
+  "/features/discovery/discovery_controller.dart" -> "/features/discovery/discovery_event.dart";
+  "/features/discovery/discovery_controller.dart" -> "/features/discovery/discovery_model.dart";
+  "/features/discovery/discovery_controller.dart" -> "/util/closable.dart";
+  "/features/discovery/discovery_controller.dart" -> "/util/event_listener.dart";
+  "/features/discovery/discovery_controller.dart" -> "/util/fabric.dart";
+  "/features/discovery/discovery_model.dart" -> "/features/discovery/discovery_event.dart";
+  "/features/discovery/discovery_model.dart" -> "/util/event_emitter.dart";
+  "/features/discovery/discovery_model.dart" -> "/features/discovery/discovery_state.dart";
+  "/features/discovery/discovery_action_handler.dart" -> "/features/discovery/discovery_action.dart";
+  "/features/discovery/discovery_action_handler.dart" -> "/features/discovery/discovery_model.dart";
+  "/features/discovery/discovery_action_handler.dart" -> "/util/handler.dart";
+  "/main.dart" -> "/app/make.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/util/closable.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/util/handler.dart";
+  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/util/fabric.dart";
+  "/infrastructure/multicast/multicast_source_fabric.dart" -> "/util/handler.dart";
+}
