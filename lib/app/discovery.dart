@@ -1,5 +1,5 @@
 import 'package:reacthome/app/config.dart';
-import 'package:reacthome/features/discovery/discovery_handler.dart';
+import 'package:reacthome/features/discovery/discovery_actor.dart';
 import 'package:reacthome/features/discovery/discovery_controller.dart';
 import 'package:reacthome/features/discovery/discovery_event.dart';
 import 'package:reacthome/features/discovery/discovery_model.dart';
@@ -19,7 +19,7 @@ class Discovery {
       model,
       MulticastSourceFactory(
         Config.discovery,
-        DiscoveryHandler(model),
+        DiscoveryActor(model),
       ),
     );
     controller.subscribe(eventBus);
