@@ -5,10 +5,10 @@ import 'package:reacthome/features/discovery/discovery_action.dart';
 import 'package:reacthome/features/discovery/discovery_model.dart';
 import 'package:reacthome/util/handler.dart';
 
-class DiscoveryActionHandler implements Handler<Uint8List> {
+class DiscoveryHandler implements Handler<Uint8List> {
   final DiscoveryModel discovery;
 
-  DiscoveryActionHandler(this.discovery);
+  DiscoveryHandler(this.discovery);
 
   @override
   void onData(Uint8List data) {
