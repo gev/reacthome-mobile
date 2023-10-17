@@ -16,7 +16,7 @@ class HomeScreenViewModel extends ChangeNotifier
   }
 
   @override
-  void onData(DiscoveryEvent event) {
+  void run(DiscoveryEvent event) {
     if (event is DiscoveryEventCounterChanged) {
       notifyListeners();
     }

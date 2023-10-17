@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:reacthome/util/actor.dart';
 import 'package:reacthome/util/closable.dart';
-import 'package:reacthome/util/handler.dart';
 
 class MulticastSource implements Closable {
   final RawDatagramSocket _socket;
@@ -15,7 +15,7 @@ class MulticastSource implements Closable {
   static Future<MulticastSource> create({
     required int port,
     required String group,
-    required Handler<Uint8List> handler,
+    required Actor<Uint8List> handler,
   }) async {
     final socket = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
@@ -27,7 +27,7 @@ class MulticastSource implements Closable {
     final subscription = socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
         final datagram = socket.receive();
-        if (datagram != null) handler.onData(datagram.data);
+        if (datagram != null) handler.run(datagram.data);
       }
     });
 

@@ -13,7 +13,7 @@ class DiscoveryController with EventListener<DiscoveryEvent> {
   DiscoveryController(this.discoveryModel, this.discoverySourceFactory);
 
   @override
-  void onData(DiscoveryEvent event) {
+  void run(DiscoveryEvent event) {
     switch (event) {
       case DiscoveryEventStart _:
         _start();
