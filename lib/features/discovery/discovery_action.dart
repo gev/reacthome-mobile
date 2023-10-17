@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
 class DiscoveryAction {
   static const type = 'discovery';
   final String id;
@@ -10,6 +13,21 @@ class DiscoveryAction {
         id: json['id'],
         payload: Payload.fromJSON(json['payload']),
       );
+
+  static DiscoveryAction? fromData(Uint8List data) {
+    DiscoveryAction? action;
+    try {
+      final message = utf8.decode(data);
+      final json = jsonDecode(message);
+      final type = json['type'];
+      if (type == DiscoveryAction.type) {
+        action = DiscoveryAction.fromJSON(json);
+      }
+    } catch (_) {
+      action = null;
+    }
+    return action;
+  }
 }
 
 class Payload {
