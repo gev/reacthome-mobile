@@ -1,6 +1,6 @@
 import 'dart:async';
 
-class EventBus<T> {
+class Bus<T> {
   final _controller = StreamController<T>.broadcast();
 
   void emit(T value) => _controller.add(value);

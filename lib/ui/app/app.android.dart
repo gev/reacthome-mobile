@@ -8,8 +8,8 @@ class AppAndroid extends AppBindingObserver {
   final Navigation navigation;
   final String title;
 
-  AppAndroid(this.theme, this.navigation, this.title, discovery, {super.key})
-      : super(discovery);
+  AppAndroid(this.theme, this.navigation, this.title,
+      {required super.appLifeCycle, super.key});
 
   @override
   Widget build(BuildContext context) {

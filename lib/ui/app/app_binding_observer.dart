@@ -1,28 +1,28 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/discovery/discovery_model.dart';
+import 'package:reacthome/features/app_life_cycle/app_life_cycle_service.dart';
 
 abstract class AppBindingObserver extends StatelessWidget
     with WidgetsBindingObserver {
-  final DiscoveryModel discovery;
+  final AppLifecycleService appLifeCycle;
 
-  AppBindingObserver(this.discovery, {super.key}) {
+  AppBindingObserver({required this.appLifeCycle, super.key}) {
     WidgetsBinding.instance.addObserver(this);
-    discovery.start();
+    appLifeCycle.makeActive();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        discovery.start();
+        appLifeCycle.makeActive();
       case AppLifecycleState.paused:
-        discovery.stop();
+        appLifeCycle.makeInactive();
       default:
     }
   }
 
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    discovery.stop();
+    appLifeCycle.makeInactive();
   }
 }

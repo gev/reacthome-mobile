@@ -8,8 +8,8 @@ class AppIOS extends AppBindingObserver {
   final Navigation navigation;
   final String title;
 
-  AppIOS(this.theme, this.navigation, this.title, discovery, {super.key})
-      : super(discovery);
+  AppIOS(this.theme, this.navigation, this.title,
+      {required super.appLifeCycle, super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/discovery/discovery_model.dart';
+import 'package:reacthome/features/app_life_cycle/app_life_cycle_service.dart';
 import 'package:reacthome/ui/app/app.android.dart';
 import 'package:reacthome/ui/app/app.ios.dart';
 import 'package:reacthome/ui/app/navigation.dart';
@@ -8,11 +8,11 @@ import 'package:reacthome/util/platform.dart';
 
 Widget makeApp({
   required ThemeConfig theme,
-  required DiscoveryModel discovery,
+  required AppLifecycleService appLifeCycle,
   required Navigation navigation,
   String title = 'Reacthome',
 }) =>
     selectPlatform(
-      ios: AppIOS(theme, navigation, title, discovery),
-      android: AppAndroid(theme, navigation, title, discovery),
+      ios: AppIOS(theme, navigation, title, appLifeCycle: appLifeCycle),
+      android: AppAndroid(theme, navigation, title, appLifeCycle: appLifeCycle),
     );
