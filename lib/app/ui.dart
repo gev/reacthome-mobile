@@ -1,4 +1,4 @@
-import 'package:reacthome/app/discovery.dart';
+import 'package:reacthome/app/discovery_process.dart';
 import 'package:reacthome/ui/screens/home/home_screen.dart';
 
 class UI {
@@ -7,7 +7,7 @@ class UI {
   UI._();
 
   final homeScreen = makeHomeScreen(
-    eventBus: Discovery.instance.eventBus,
-    discovery: Discovery.instance.service,
+    eventBus: DiscoveryProcess.instance.eventBus,
+    discovery: DiscoveryProcess.instance.service,
   );
 }

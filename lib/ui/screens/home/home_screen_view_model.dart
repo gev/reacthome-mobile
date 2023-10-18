@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/discovery/discovery_event.dart';
-import 'package:reacthome/features/discovery/discovery_service.dart';
+import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
+import 'package:reacthome/features/discovery_process/domain/discovery_process_event.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/listener.dart';
 
-class HomeScreenViewModel extends BusListener<DiscoveryEvent>
+class HomeScreenViewModel extends BusListener<DiscoveryProcessEvent>
     with ChangeNotifier {
-  final DiscoveryService discovery;
+  final DiscoveryProcessService discovery;
 
   HomeScreenViewModel(this.discovery,
-      {required Bus<DiscoveryEvent> eventSource})
+      {required Bus<DiscoveryProcessEvent> eventSource})
       : super(eventSource);
 
   String get counter => '0'; //discovery.counter.toString();
@@ -19,7 +19,7 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
   }
 
   @override
-  void run(DiscoveryEvent event) {
+  void run(DiscoveryProcessEvent event) {
     // if (event == DiscoveryEvent.update) {
     //   notifyListeners();
     // }

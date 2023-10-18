@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/app_life_cycle/app_life_cycle_service.dart';
+import 'package:reacthome/features/app_lifecycle/application/app_lifecycle_service.dart';
 import 'package:reacthome/ui/app/app.android.dart';
 import 'package:reacthome/ui/app/app.ios.dart';
 import 'package:reacthome/ui/app/navigation.dart';

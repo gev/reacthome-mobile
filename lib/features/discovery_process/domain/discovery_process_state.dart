@@ -1,4 +1,4 @@
-enum DiscoveryState {
+enum DiscoveryProcessState {
   starting,
   running,
   stopped,

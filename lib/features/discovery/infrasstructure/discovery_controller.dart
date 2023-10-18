@@ -1,12 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:reacthome/features/discovery/discovery_service.dart';
 import 'package:reacthome/util/actor.dart';
 
-class DiscoveryActor implements Actor<Uint8List> {
-  final DiscoveryService discovery;
-
-  DiscoveryActor(this.discovery);
-
+class DiscoveryController implements Actor<Uint8List> {
   @override
   void run(Uint8List data) {
     // final action = DiscoveryAction.fromData(data);
