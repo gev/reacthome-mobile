@@ -7,12 +7,21 @@ class DiscoveryEntity {
 
   DiscoveryEntity(this.state);
 
-  DiscoveryEvent? start() =>
-      state == DiscoveryState.stopped ? DiscoveryEvent.start : null;
+  DiscoveryEvent? _do({required when, required pure}) =>
+      state == when ? pure : null;
 
-  DiscoveryEvent? run() =>
-      state == DiscoveryState.starting ? DiscoveryEvent.run : null;
+  DiscoveryEvent? start() => _do(
+        when: DiscoveryState.stopped,
+        pure: DiscoveryEvent.start,
+      );
 
-  DiscoveryEvent? stop() =>
-      state == DiscoveryState.running ? DiscoveryEvent.stop : null;
+  DiscoveryEvent? run() => _do(
+        when: DiscoveryState.starting,
+        pure: DiscoveryEvent.run,
+      );
+
+  DiscoveryEvent? stop() => _do(
+        when: DiscoveryState.running,
+        pure: DiscoveryEvent.stop,
+      );
 }
