@@ -39,7 +39,6 @@ class MulticastSource {
     return MulticastSource._(socket, timer, subscription);
   }
 
-  @override
   void close() {
     _subscription.cancel();
     _timer.cancel();
