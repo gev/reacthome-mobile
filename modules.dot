@@ -12,6 +12,8 @@ digraph "" {
   "/ui/screens/home/home_screen_view_model.dart" [label="home_screen_view_model"];
   "/ui/screens/home/home_screen.dart" [label="home_screen"];
   "/ui/theme_config.dart" [label="theme_config"];
+  "/core/discovery_process_event.dart" [label="discovery_process_event"];
+  "/core/app_lifecycle_event.dart" [label="app_lifecycle_event"];
   "/core/entity.dart" [label="entity"];
   "/app/discovery_process.dart" [label="discovery_process"];
   "/app/ui.dart" [label="ui"];
@@ -19,26 +21,21 @@ digraph "" {
   "/app/app_life_cycle.dart" [label="app_life_cycle"];
   "/app/discovery.dart" [label="discovery"];
   "/app/make.dart" [label="make"];
-  "/util/factory.dart" [label="factory"];
   "/util/extensions.dart" [label="extensions"];
   "/util/bus_transfer.dart" [label="bus_transfer"];
   "/util/actor.dart" [label="actor"];
   "/util/bus_emitter.dart" [label="bus_emitter"];
   "/util/platform.dart" [label="platform"];
-  "/util/closable.dart" [label="closable"];
   "/util/bus.dart" [label="bus"];
   "/util/bus_listener.dart" [label="bus_listener"];
+  "/features/discovery_process/application/discovery_process_lifecycle_service.dart" [label="discovery_process_lifecycle_service"];
   "/features/discovery_process/application/discovery_process_service.dart" [label="discovery_process_service"];
-  "/features/discovery_process/application/discovery_process_controller.dart" [label="discovery_process_controller"];
-  "/features/discovery_process/application/discovery_process_lifecycle.dart" [label="discovery_process_lifecycle"];
   "/features/discovery_process/infrastructure/discovery_process_repository.dart" [label="discovery_process_repository"];
-  "/features/discovery_process/domain/discovery_process_event.dart" [label="discovery_process_event"];
   "/features/discovery_process/domain/discovery_process_state.dart" [label="discovery_process_state"];
   "/features/discovery_process/domain/discovery_process_entity.dart" [label="discovery_process_entity"];
-  "/features/discovery/infrasstructure/discovery_controller.dart" [label="discovery_controller"];
-  "/features/discovery/infrasstructure/discovery_action.dart" [label="discovery_action"];
+  "/features/discovery/infrastructure/discovery_controller.dart" [label="discovery_controller"];
+  "/features/discovery/infrastructure/discovery_action.dart" [label="discovery_action"];
   "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
-  "/features/app_lifecycle/domain/app_lifecycle_event.dart" [label="app_lifecycle_event"];
   "/main.dart" [label="main"];
   "/infrastructure/multicast/multicast_source_factory.dart" [label="multicast_source_factory"];
   "/infrastructure/multicast/multicast_source.dart" [label="multicast_source"];
@@ -70,6 +67,8 @@ digraph "" {
     }
     subgraph "cluster~/core" {
       label="core";
+      "/core/discovery_process_event.dart";
+      "/core/app_lifecycle_event.dart";
       "/core/entity.dart";
     }
     subgraph "cluster~/app" {
@@ -83,13 +82,11 @@ digraph "" {
     }
     subgraph "cluster~/util" {
       label="util";
-      "/util/factory.dart";
       "/util/extensions.dart";
       "/util/bus_transfer.dart";
       "/util/actor.dart";
       "/util/bus_emitter.dart";
       "/util/platform.dart";
-      "/util/closable.dart";
       "/util/bus.dart";
       "/util/bus_listener.dart";
     }
@@ -99,9 +96,8 @@ digraph "" {
         label="discovery_process";
         subgraph "cluster~/features/discovery_process/application" {
           label="application";
+          "/features/discovery_process/application/discovery_process_lifecycle_service.dart";
           "/features/discovery_process/application/discovery_process_service.dart";
-          "/features/discovery_process/application/discovery_process_controller.dart";
-          "/features/discovery_process/application/discovery_process_lifecycle.dart";
         }
         subgraph "cluster~/features/discovery_process/infrastructure" {
           label="infrastructure";
@@ -109,17 +105,16 @@ digraph "" {
         }
         subgraph "cluster~/features/discovery_process/domain" {
           label="domain";
-          "/features/discovery_process/domain/discovery_process_event.dart";
           "/features/discovery_process/domain/discovery_process_state.dart";
           "/features/discovery_process/domain/discovery_process_entity.dart";
         }
       }
       subgraph "cluster~/features/discovery" {
         label="discovery";
-        subgraph "cluster~/features/discovery/infrasstructure" {
-          label="infrasstructure";
-          "/features/discovery/infrasstructure/discovery_controller.dart";
-          "/features/discovery/infrasstructure/discovery_action.dart";
+        subgraph "cluster~/features/discovery/infrastructure" {
+          label="infrastructure";
+          "/features/discovery/infrastructure/discovery_controller.dart";
+          "/features/discovery/infrastructure/discovery_action.dart";
         }
       }
       subgraph "cluster~/features/app_lifecycle" {
@@ -127,10 +122,6 @@ digraph "" {
         subgraph "cluster~/features/app_lifecycle/application" {
           label="application";
           "/features/app_lifecycle/application/app_lifecycle_service.dart";
-        }
-        subgraph "cluster~/features/app_lifecycle/domain" {
-          label="domain";
-          "/features/app_lifecycle/domain/app_lifecycle_event.dart";
         }
       }
     }
@@ -159,11 +150,12 @@ digraph "" {
   "/ui/app/app.dart" -> "/util/platform.dart";
   "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_view_model.dart";
   "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery_process_event.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
-  "/ui/screens/home/home_screen_view_model.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/util/bus.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/util/bus_listener.dart";
   "/ui/screens/home/home_screen.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
-  "/ui/screens/home/home_screen.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery_process_event.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.android.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.ios.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view_model.dart";
@@ -172,11 +164,9 @@ digraph "" {
   "/app/discovery_process.dart" -> "/app/app_life_cycle.dart";
   "/app/discovery_process.dart" -> "/app/config.dart";
   "/app/discovery_process.dart" -> "/app/discovery.dart";
-  "/app/discovery_process.dart" -> "/features/discovery_process/application/discovery_process_controller.dart";
-  "/app/discovery_process.dart" -> "/features/discovery_process/application/discovery_process_lifecycle.dart";
+  "/app/discovery_process.dart" -> "/core/discovery_process_event.dart";
+  "/app/discovery_process.dart" -> "/features/discovery_process/application/discovery_process_lifecycle_service.dart";
   "/app/discovery_process.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
-  "/app/discovery_process.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
-  "/app/discovery_process.dart" -> "/features/discovery_process/domain/discovery_process_state.dart";
   "/app/discovery_process.dart" -> "/features/discovery_process/infrastructure/discovery_process_repository.dart";
   "/app/discovery_process.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
   "/app/discovery_process.dart" -> "/util/bus.dart";
@@ -185,9 +175,9 @@ digraph "" {
   "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/app/config.dart" -> "/ui/theme_config.dart";
   "/app/app_life_cycle.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
-  "/app/app_life_cycle.dart" -> "/features/app_lifecycle/domain/app_lifecycle_event.dart";
+  "/app/app_life_cycle.dart" -> "/core/app_lifecycle_event.dart";
   "/app/app_life_cycle.dart" -> "/util/bus.dart";
-  "/app/discovery.dart" -> "/features/discovery/infrasstructure/discovery_controller.dart";
+  "/app/discovery.dart" -> "/features/discovery/infrastructure/discovery_controller.dart";
   "/app/make.dart" -> "/app/app_life_cycle.dart";
   "/app/make.dart" -> "/app/config.dart";
   "/app/make.dart" -> "/app/ui.dart";
@@ -199,39 +189,29 @@ digraph "" {
   "/util/bus_emitter.dart" -> "/util/bus.dart";
   "/util/bus_listener.dart" -> "/util/actor.dart";
   "/util/bus_listener.dart" -> "/util/bus.dart";
+  "/features/discovery_process/application/discovery_process_lifecycle_service.dart" -> "/core/app_lifecycle_event.dart";
+  "/features/discovery_process/application/discovery_process_lifecycle_service.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
+  "/features/discovery_process/application/discovery_process_lifecycle_service.dart" -> "/util/bus.dart";
+  "/features/discovery_process/application/discovery_process_lifecycle_service.dart" -> "/util/bus_listener.dart";
+  "/features/discovery_process/application/discovery_process_service.dart" -> "/core/discovery_process_event.dart";
   "/features/discovery_process/application/discovery_process_service.dart" -> "/features/discovery_process/domain/discovery_process_entity.dart";
-  "/features/discovery_process/application/discovery_process_service.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
   "/features/discovery_process/application/discovery_process_service.dart" -> "/features/discovery_process/domain/discovery_process_state.dart";
   "/features/discovery_process/application/discovery_process_service.dart" -> "/util/bus.dart";
   "/features/discovery_process/application/discovery_process_service.dart" -> "/util/bus_emitter.dart";
-  "/features/discovery_process/application/discovery_process_service.dart" -> "/util/extensions.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/features/discovery_process/domain/discovery_process_state.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/util/bus.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/util/bus_transfer.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/util/closable.dart";
-  "/features/discovery_process/application/discovery_process_controller.dart" -> "/util/factory.dart";
-  "/features/discovery_process/application/discovery_process_lifecycle.dart" -> "/features/app_lifecycle/domain/app_lifecycle_event.dart";
-  "/features/discovery_process/application/discovery_process_lifecycle.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
-  "/features/discovery_process/application/discovery_process_lifecycle.dart" -> "/util/bus.dart";
-  "/features/discovery_process/application/discovery_process_lifecycle.dart" -> "/util/bus_listener.dart";
   "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/features/discovery_process/application/discovery_process_service.dart";
   "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/features/discovery_process/domain/discovery_process_entity.dart";
   "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/features/discovery_process/domain/discovery_process_state.dart";
-  "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/util/bus.dart";
-  "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/util/bus_listener.dart";
-  "/features/discovery_process/domain/discovery_process_entity.dart" -> "/features/discovery_process/domain/discovery_process_event.dart";
+  "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/features/discovery_process/infrastructure/discovery_process_repository.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
   "/features/discovery_process/domain/discovery_process_entity.dart" -> "/features/discovery_process/domain/discovery_process_state.dart";
-  "/features/discovery/infrasstructure/discovery_controller.dart" -> "/util/actor.dart";
-  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/features/app_lifecycle/domain/app_lifecycle_event.dart";
+  "/features/discovery/infrastructure/discovery_controller.dart" -> "/util/actor.dart";
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle_event.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/bus.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/bus_emitter.dart";
   "/main.dart" -> "/app/make.dart";
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/actor.dart";
-  "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/factory.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/actor.dart";
-  "/infrastructure/multicast/multicast_source.dart" -> "/util/closable.dart";
 }
