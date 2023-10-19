@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
+import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
 import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
 class HomeScreenViewModel extends BusListener<DiscoveryProcessEvent>
     with ChangeNotifier {
