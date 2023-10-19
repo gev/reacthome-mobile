@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
+import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view.android.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view.ios.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view_model.dart';
