@@ -2,24 +2,21 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
 import 'package:reacthome/util/actor.dart';
-import 'package:reacthome/util/closable.dart';
 
-class MulticastSource implements Closable {
+class MulticastSource {
   final RawDatagramSocket _socket;
   final Timer _timer;
   final StreamSubscription<RawSocketEvent> _subscription;
 
   MulticastSource._(this._socket, this._timer, this._subscription);
 
-  static Future<MulticastSource> create({
-    required int port,
-    required String group,
-    required Actor<Uint8List> handler,
-  }) async {
+  static Future<MulticastSource> create(
+      MulticastConfig config, Actor<Uint8List> controller) async {
     final socket = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
-      port,
+      config.port,
       reuseAddress: true,
       reusePort: true,
     );
@@ -27,14 +24,14 @@ class MulticastSource implements Closable {
     final subscription = socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
         final datagram = socket.receive();
-        if (datagram != null) handler.run(datagram.data);
+        if (datagram != null) controller.run(datagram.data);
       }
     });
 
     final timer = Timer.periodic(const Duration(seconds: 1), (_) async {
       for (final interface in await _interfaces()) {
         try {
-          socket.joinMulticast(InternetAddress(group), interface);
+          socket.joinMulticast(InternetAddress(config.group), interface);
         } catch (_) {}
       }
     });

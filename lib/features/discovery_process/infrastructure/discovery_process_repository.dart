@@ -1,17 +1,40 @@
+import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
 import 'package:reacthome/features/discovery_process/domain/discovery_process_entity.dart';
 import 'package:reacthome/features/discovery_process/domain/discovery_process_state.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/bus_listener.dart';
+import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
+import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 
-class DiscoveryProcessRepository extends BusListener<DiscoveryProcessState> {
-  DiscoveryProcessState _state = DiscoveryProcessState.stopped;
+class DiscoveryProcessRepository implements DiscoveryProcess {
+  final MulticastSourceFactory factory;
+  late DiscoveryProcessState _state;
+  late MulticastSource _source;
 
-  DiscoveryProcessRepository(
-      {required Bus<DiscoveryProcessState> commandSource})
-      : super(commandSource);
+  DiscoveryProcessRepository({required this.factory}) {
+    _start();
+  }
 
+  @override
   DiscoveryProcessEntity get process => DiscoveryProcessEntity(_state);
 
   @override
-  void run(DiscoveryProcessState state) => _state = state;
+  void set(DiscoveryProcessState state) {
+    switch (state) {
+      case DiscoveryProcessState.running:
+        _start();
+      case DiscoveryProcessState.stopped:
+        _stop();
+    }
+  }
+
+  void _start() async {
+    _source = await factory.create();
+    _state = DiscoveryProcessState.running;
+  }
+
+  void _stop() {
+    _source.close();
+    _state = DiscoveryProcessState.stopped;
+  }
+
+  void dispose() => _stop();
 }

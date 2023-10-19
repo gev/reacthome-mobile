@@ -4,18 +4,16 @@ import 'dart:typed_data';
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/util/actor.dart';
-import 'package:reacthome/util/factory.dart';
 
-class MulticastSourceFactory implements AsyncFactory<MulticastSource> {
+class MulticastSourceFactory {
   final MulticastConfig config;
-  final Actor<Uint8List> handler;
+  final Actor<Uint8List> controller;
 
-  MulticastSourceFactory(this.config, this.handler);
+  MulticastSourceFactory({
+    required this.config,
+    required this.controller,
+  });
 
-  @override
-  Future<MulticastSource> create() => MulticastSource.create(
-        port: config.port,
-        group: config.group,
-        handler: handler,
-      );
+  Future<MulticastSource> create() =>
+      MulticastSource.create(config, controller);
 }

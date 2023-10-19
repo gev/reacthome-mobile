@@ -1,5 +1,3 @@
-import 'package:reacthome/features/discovery_process/domain/discovery_process_event.dart';
-
 import 'discovery_process_state.dart';
 
 class DiscoveryProcessEntity {
@@ -7,21 +5,15 @@ class DiscoveryProcessEntity {
 
   DiscoveryProcessEntity(this.state);
 
-  DiscoveryProcessEvent? _do({required when, required pure}) =>
-      state == when ? pure : null;
+  void start(void Function(DiscoveryProcessState nextState) pure) {
+    if (state == DiscoveryProcessState.stopped) {
+      pure(DiscoveryProcessState.running);
+    }
+  }
 
-  DiscoveryProcessEvent? start() => _do(
-        when: DiscoveryProcessState.stopped,
-        pure: DiscoveryProcessEvent.start,
-      );
-
-  DiscoveryProcessEvent? run() => _do(
-        when: DiscoveryProcessState.starting,
-        pure: DiscoveryProcessEvent.run,
-      );
-
-  DiscoveryProcessEvent? stop() => _do(
-        when: DiscoveryProcessState.running,
-        pure: DiscoveryProcessEvent.stop,
-      );
+  void stop(void Function(DiscoveryProcessState nextState) pure) {
+    if (state == DiscoveryProcessState.running) {
+      pure(DiscoveryProcessState.stopped);
+    }
+  }
 }
