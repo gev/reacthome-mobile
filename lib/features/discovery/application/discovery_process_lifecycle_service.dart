@@ -1,5 +1,5 @@
 import 'package:reacthome/core/app_lifecycle_event.dart';
-import 'package:reacthome/features/discovery_process/application/discovery_process_service.dart';
+import 'package:reacthome/features/discovery/application/discovery_process_service.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/bus_listener.dart';
 

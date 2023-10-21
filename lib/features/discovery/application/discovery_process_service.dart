@@ -1,12 +1,13 @@
 import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery_process/domain/discovery_process_entity.dart';
-import 'package:reacthome/features/discovery_process/domain/discovery_process_state.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_entity.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_state.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/bus_emitter.dart';
+import 'package:reacthome/util/extensions.dart';
 
 abstract interface class DiscoveryProcess {
   DiscoveryProcessEntity get process;
-  void set(DiscoveryProcessState state);
+  void set(DiscoveryProcessEntity process);
 }
 
 class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
@@ -20,12 +21,13 @@ class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
   DiscoveryProcessEntity get _process => repository.process;
   DiscoveryProcessState get state => _process.state;
 
-  void start() => _process.start((nextState) {
-        repository.set(nextState);
-        emit(DiscoveryProcessEvent.started);
-      });
-  void stop() => _process.stop((nextState) {
-        repository.set(nextState);
-        emit(DiscoveryProcessEvent.stopped);
-      });
+  void start() async {
+    final event = await _process.start(repository.set);
+    event?.let(emit);
+  }
+
+  void stop() async {
+    final event = await _process.stop(repository.set);
+    event?.let(emit);
+  }
 }
