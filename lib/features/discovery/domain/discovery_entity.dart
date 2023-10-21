@@ -3,7 +3,7 @@ import 'package:reacthome/core/discovery_event.dart';
 class DiscoveryEntity {
   final List<String> daemons;
 
-  const DiscoveryEntity(this.daemons);
+  DiscoveryEntity(this.daemons);
 
   DiscoveryEvent? addDaemon(String daemon) {
     if (!daemons.contains(daemon)) {
