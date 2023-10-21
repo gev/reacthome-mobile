@@ -20,7 +20,7 @@ class DiscoveryService extends SimpleBusEmitter<DiscoveryEvent> {
 
   void addDaemon(String daemon) {
     final event = _daemons.addDaemon(daemon);
-    event?.let(emit);
+    event.let(emit);
   }
 
   void removeDaemon(String daemon) {

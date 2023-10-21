@@ -7,6 +7,7 @@ import 'package:reacthome/features/discovery/application/discovery_process_servi
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_process_repository.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_repository.dart';
+import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/bus.dart';
@@ -32,7 +33,7 @@ class Discovery {
       eventSink: processEventBus,
       repository: DiscoveryProcessRepository(
         factory: MulticastSourceFactory(
-          config: Config.discovery,
+          config: Config.discovery.listen,
           controller: DiscoveryController(discovery: service),
         ),
       ),
@@ -41,6 +42,12 @@ class Discovery {
     DiscoveryProcessLifecycleService(
       eventSource: AppLifecycle.instance.eventBus,
       process: processService,
+    );
+
+    DiscoveryTimeoutService(
+      eventSource: eventBus,
+      discovery: service,
+      timeout: Config.discovery.timeout,
     );
   }
 }

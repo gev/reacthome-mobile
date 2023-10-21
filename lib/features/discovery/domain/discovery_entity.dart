@@ -5,12 +5,12 @@ class DiscoveryEntity {
 
   DiscoveryEntity(this.daemons);
 
-  DiscoveryEvent? addDaemon(String daemon) {
+  DiscoveryEvent addDaemon(String daemon) {
     if (!daemons.contains(daemon)) {
       daemons.add(daemon);
       return DiscoveryEventDaemonAdded(daemon);
     }
-    return null;
+    return DiscoveryEventDaemonConfirmed(daemon);
   }
 
   DiscoveryEvent? removeDaemon(String daemon) =>

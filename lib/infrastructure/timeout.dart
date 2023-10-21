@@ -12,7 +12,7 @@ class Timeout<K> {
     _timers[id] = Timer(duration, execute);
   }
 
-  void cancel(K id) {
+  void cancel({required K id}) {
     _timers[id]?.cancel();
     _timers.remove(id);
   }

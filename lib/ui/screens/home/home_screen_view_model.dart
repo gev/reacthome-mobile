@@ -3,6 +3,7 @@ import 'package:reacthome/core/discovery_event.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/bus_listener.dart';
+import 'package:uuid/uuid.dart';
 
 class HomeScreenViewModel extends BusListener<DiscoveryEvent>
     with ChangeNotifier {
@@ -14,12 +15,19 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
 
   String get counter => discovery.daemons.length.toString();
 
+  final _uuid = const Uuid();
+
   void incrementCounter() {
-    // discovery.increment();
+    discovery.addDaemon(_uuid.v4());
   }
 
   @override
-  void run(_) {
-    notifyListeners();
+  void run(DiscoveryEvent event) {
+    switch (event) {
+      case DiscoveryEventDaemonAdded _:
+      case DiscoveryEventDaemonRemoved _:
+        notifyListeners();
+      default:
+    }
   }
 }
