@@ -13,11 +13,12 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
       {required Bus<DiscoveryEvent> eventSource})
       : super(eventSource);
 
-  String get counter => discovery.daemons.length.toString();
+  List<String> get daemons => discovery.daemons;
+  String get number => daemons.length.toString();
 
   final _uuid = const Uuid();
 
-  void incrementCounter() {
+  void addDaemon() {
     discovery.addDaemon(_uuid.v4());
   }
 

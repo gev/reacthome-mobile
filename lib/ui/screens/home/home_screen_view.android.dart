@@ -9,36 +9,52 @@ class HomeScreenViewAndroid extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
+          leading: _NumberTitle(),
           title: Text(title),
+          actions: [_AddDaemonButton()],
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              _IncrementCounterButton(),
-              _CounterTitle(),
+              _DaemonsList(),
             ],
           ),
         ),
       );
 }
 
-class _IncrementCounterButton extends StatelessWidget {
+class _AddDaemonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<HomeScreenViewModel>();
     return FilledButton.icon(
-      onPressed: model.incrementCounter,
+      onPressed: model.addDaemon,
       icon: const Icon(Icons.add),
       label: const Text('Add'),
     );
   }
 }
 
-class _CounterTitle extends StatelessWidget {
+class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<HomeScreenViewModel>();
-    return Text(model.counter);
+    return Text(model.number);
+  }
+}
+
+class _DaemonsList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<HomeScreenViewModel>();
+    return Expanded(
+      child: ListView.builder(
+        itemCount: model.daemons.length,
+        itemBuilder: (context, index) => ListTile(
+          title: Text(model.daemons[index]),
+        ),
+      ),
+    );
   }
 }

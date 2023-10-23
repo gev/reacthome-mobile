@@ -10,28 +10,21 @@ class HomeScreenViewIOS extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text(title),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _IncrementCounterButton(),
-            _CounterTitle(),
-          ],
-        ),
-      ),
+          leading: _NumberTitle(),
+          middle: Text(title),
+          trailing: _AddDaemonButton()),
+      child: _DaemonsList(),
     );
   }
 }
 
-class _IncrementCounterButton extends StatelessWidget {
+class _AddDaemonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<HomeScreenViewModel>();
     return CupertinoButton.filled(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-        onPressed: model.incrementCounter,
+        onPressed: model.addDaemon,
         child: const Row(mainAxisSize: MainAxisSize.min, children: [
           Icon(CupertinoIcons.add, size: 28),
           SizedBox(width: 8),
@@ -40,10 +33,25 @@ class _IncrementCounterButton extends StatelessWidget {
   }
 }
 
-class _CounterTitle extends StatelessWidget {
+class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.watch<HomeScreenViewModel>();
-    return Text(model.counter);
+    return Text(model.number);
+  }
+}
+
+class _DaemonsList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final model = context.watch<HomeScreenViewModel>();
+    return Expanded(
+      child: ListView.builder(
+        itemCount: model.daemons.length,
+        itemBuilder: (context, index) => CupertinoListTile(
+          title: Text(model.daemons[index]),
+        ),
+      ),
+    );
   }
 }
