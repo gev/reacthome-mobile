@@ -1,5 +1,6 @@
 enum DiscoveryProcessState {
-  starting,
+  starPending,
   running,
+  stopPending,
   stopped,
 }

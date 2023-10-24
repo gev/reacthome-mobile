@@ -5,6 +5,7 @@ import 'package:reacthome/core/discovery_process_event.dart';
 import 'package:reacthome/features/discovery/application/discovery_process_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_process_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
+import 'package:reacthome/features/discovery/infrastructure/discovery_process_multicast_service.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_process_repository.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_repository.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
@@ -23,31 +24,37 @@ class Discovery {
 
   Discovery._() {
     eventBus = Bus<DiscoveryEvent>();
+
     service = DiscoveryService(
       eventSink: eventBus,
       repository: DiscoveryRepository(),
     );
 
     processEventBus = Bus<DiscoveryProcessEvent>();
+
     processService = DiscoveryProcessService(
       eventSink: processEventBus,
-      repository: DiscoveryProcessRepository(
-        factory: MulticastSourceFactory(
-          config: Config.discovery.listen,
-          controller: DiscoveryController(discovery: service),
-        ),
-      ),
+      repository: DiscoveryProcessRepository(),
     );
 
-    DiscoveryProcessLifecycleService(
-      eventSource: AppLifecycle.instance.eventBus,
+    DiscoveryProcessMulticastService(
+      eventSource: processEventBus,
       process: processService,
+      factory: MulticastSourceFactory(
+        config: Config.discovery.listen,
+        controller: DiscoveryController(discovery: service),
+      ),
     );
 
     DiscoveryTimeoutService(
       eventSource: eventBus,
       discovery: service,
       timeout: Config.discovery.timeout,
+    );
+
+    DiscoveryProcessLifecycleService(
+      eventSource: AppLifecycle.instance.eventBus,
+      process: processService,
     );
   }
 }

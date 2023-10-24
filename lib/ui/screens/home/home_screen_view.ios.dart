@@ -36,22 +36,38 @@ class _AddDaemonButton extends StatelessWidget {
 class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<HomeScreenViewModel>();
-    return Text(model.number);
+    final number =
+        context.select<HomeScreenViewModel, String>((model) => model.number);
+    return Text(number);
   }
 }
 
 class _DaemonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.watch<HomeScreenViewModel>();
+    Iterable<String> daemons =
+        context.select<HomeScreenViewModel, Iterable<String>>(
+            (model) => model.daemons);
     return Expanded(
-      child: ListView.builder(
-        itemCount: model.daemons.length,
-        itemBuilder: (context, index) => CupertinoListTile(
-          title: Text(model.daemons[index]),
-        ),
+      child: ListView(
+        children: daemons
+            .map((id) => _DaemonTile(key: ValueKey(id), id: id))
+            .toList(),
       ),
+    );
+  }
+}
+
+class _DaemonTile extends StatelessWidget {
+  final String id;
+  const _DaemonTile({super.key, required this.id});
+
+  @override
+  Widget build(BuildContext context) {
+    String title = context.select<HomeScreenViewModel, String>(
+        (model) => model.getDaemonTitleById(id));
+    return CupertinoListTile(
+      title: Text(title),
     );
   }
 }

@@ -7,7 +7,6 @@ import 'package:reacthome/util/extensions.dart';
 
 abstract interface class DiscoveryProcess {
   DiscoveryProcessEntity get process;
-  void set(DiscoveryProcessEntity process);
 }
 
 class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
@@ -19,15 +18,13 @@ class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
   }) : super(eventSink);
 
   DiscoveryProcessEntity get _process => repository.process;
-  DiscoveryProcessState get state => _process.state;
+  DiscoveryProcessState get process => repository.process.state;
 
-  void start() async {
-    final event = await _process.start(repository.set);
-    event?.let(emit);
-  }
+  void start() => _process.start()?.let(emit);
 
-  void stop() async {
-    final event = await _process.stop(repository.set);
-    event?.let(emit);
-  }
+  void completeStart() => _process.completeStart()?.let(emit);
+
+  void stop() => _process.stop()?.let(emit);
+
+  void completeStop() => _process.completeStop()?.let(emit);
 }

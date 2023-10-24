@@ -1,5 +1,6 @@
 enum DiscoveryProcessEvent {
+  startRequested,
   started,
-  run,
+  stopRequested,
   stopped,
 }

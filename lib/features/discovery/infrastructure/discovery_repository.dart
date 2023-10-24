@@ -1,9 +1,9 @@
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
-import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
+import 'package:reacthome/features/discovery/domain/discovery_aggregate.dart';
 
 class DiscoveryRepository implements Discovery {
-  final DiscoveryEntity _daemons = DiscoveryEntity([]);
+  final DiscoveryAggregate _daemons = DiscoveryAggregate({}, []);
 
   @override
-  DiscoveryEntity get daemons => _daemons;
+  DiscoveryAggregate get daemons => _daemons;
 }

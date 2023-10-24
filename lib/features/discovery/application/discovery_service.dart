@@ -1,11 +1,12 @@
 import 'package:reacthome/core/discovery_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
+import 'package:reacthome/features/discovery/domain/discovery_aggregate.dart';
+import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/bus_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
 abstract interface class Discovery {
-  DiscoveryEntity get daemons;
+  DiscoveryAggregate get daemons;
 }
 
 class DiscoveryService extends SimpleBusEmitter<DiscoveryEvent> {
@@ -15,16 +16,13 @@ class DiscoveryService extends SimpleBusEmitter<DiscoveryEvent> {
   DiscoveryService({required this.eventSink, required this.repository})
       : super(eventSink);
 
-  DiscoveryEntity get _daemons => repository.daemons;
-  List<String> get daemons => _daemons.daemons;
+  DiscoveryAggregate get _daemons => repository.daemons;
+  Iterable<String> get daemons => _daemons.daemons;
 
-  void addDaemon(String daemon) {
-    final event = _daemons.addDaemon(daemon);
-    event.let(emit);
-  }
+  DiscoveryDaemon? getDaemonById(String id) => _daemons.getDaemonById(id);
 
-  void removeDaemon(String daemon) {
-    final event = _daemons.removeDaemon(daemon);
-    event?.let(emit);
-  }
+  void addDaemon(String id, DiscoveryDaemon daemon) =>
+      _daemons.addDaemon(id, daemon).let(emit);
+
+  void removeDaemon(String daemon) => _daemons.removeDaemon(daemon)?.let(emit);
 }
