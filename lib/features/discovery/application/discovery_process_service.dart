@@ -18,7 +18,7 @@ class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
   }) : super(eventSink);
 
   DiscoveryProcessEntity get _process => repository.process;
-  DiscoveryProcessState get process => repository.process.state;
+  DiscoveryProcessState get process => _process.state;
 
   void start() => _process.start()?.let(emit);
 

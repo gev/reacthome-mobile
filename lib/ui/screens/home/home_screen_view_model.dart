@@ -19,7 +19,7 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
       : super(eventSource);
 
   Iterable<String> daemons = [];
-  String get number => daemons.length.toString();
+  String get numberTitle => daemons.length.toString();
 
   String getDaemonTitleById(String id) {
     final daemon = discovery.getDaemonById(id);
@@ -36,7 +36,7 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
 
   final _uuid = const Uuid();
 
-  void addDaemon() {
+  void addDaemonButtonPressed() {
     discovery.addDaemon(
       _uuid.v4(),
       DiscoveryDaemon(

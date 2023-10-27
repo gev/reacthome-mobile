@@ -29,7 +29,7 @@ class _AddDaemonButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final model = context.read<HomeScreenViewModel>();
     return FilledButton.icon(
-      onPressed: model.addDaemon,
+      onPressed: model.addDaemonButtonPressed,
       icon: const Icon(Icons.add),
       label: const Text('Add'),
     );
@@ -39,9 +39,9 @@ class _AddDaemonButton extends StatelessWidget {
 class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final number =
-        context.select<HomeScreenViewModel, String>((model) => model.number);
-    return Text(number);
+    final numberTitle = context
+        .select<HomeScreenViewModel, String>((model) => model.numberTitle);
+    return Text(numberTitle);
   }
 }
 

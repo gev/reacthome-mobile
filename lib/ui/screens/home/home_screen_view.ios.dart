@@ -24,7 +24,7 @@ class _AddDaemonButton extends StatelessWidget {
     final model = context.read<HomeScreenViewModel>();
     return CupertinoButton.filled(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-        onPressed: model.addDaemon,
+        onPressed: model.addDaemonButtonPressed,
         child: const Row(mainAxisSize: MainAxisSize.min, children: [
           Icon(CupertinoIcons.add, size: 28),
           SizedBox(width: 8),
@@ -36,9 +36,9 @@ class _AddDaemonButton extends StatelessWidget {
 class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final number =
-        context.select<HomeScreenViewModel, String>((model) => model.number);
-    return Text(number);
+    final numberTitle = context
+        .select<HomeScreenViewModel, String>((model) => model.numberTitle);
+    return Text(numberTitle);
   }
 }
 
