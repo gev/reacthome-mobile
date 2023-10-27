@@ -22,23 +22,23 @@ class DiscoveryProcessMulticastService
   void run(DiscoveryProcessEvent event) async {
     switch (event) {
       case DiscoveryProcessEvent.startRequested:
-        _start();
+        _startProcess();
       case DiscoveryProcessEvent.stopRequested:
-        _stop();
+        _stopProcess();
       default:
     }
   }
 
-  void _start() async {
+  void _startProcess() async {
     _source = await factory.create();
     process.completeStart();
   }
 
-  void _stop() {
+  void _stopProcess() {
     _source.close();
     process.completeStop();
   }
 
   @override
-  void dispose() => _stop();
+  void dispose() => _stopProcess();
 }

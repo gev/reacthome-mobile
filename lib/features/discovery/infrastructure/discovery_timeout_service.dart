@@ -20,21 +20,21 @@ class DiscoveryTimeoutService extends BusListener<DiscoveryEvent> {
   void run(DiscoveryEvent event) {
     switch (event) {
       case DiscoveryEventDaemonAdded e:
-        _start(e.daemon);
+        _startTimeout(e.daemon);
       case DiscoveryEventDaemonConfirmed e:
-        _start(e.daemon);
+        _startTimeout(e.daemon);
       case DiscoveryEventDaemonChanged e:
-        _start(e.daemon);
+        _startTimeout(e.daemon);
       case DiscoveryEventDaemonRemoved e:
-        _cancel(e.daemon);
+        _cancelTimeout(e.daemon);
     }
   }
 
-  _start(String daemon) => timeouts.start(
+  _startTimeout(String daemon) => timeouts.start(
         id: daemon,
         duration: timeout,
         execute: () => discovery.removeDaemon(daemon),
       );
 
-  _cancel(String daemon) => timeouts.cancel(id: daemon);
+  _cancelTimeout(String daemon) => timeouts.cancel(id: daemon);
 }
