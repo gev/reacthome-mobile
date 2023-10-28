@@ -18,7 +18,7 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
       {required Bus<DiscoveryEvent> eventSource})
       : super(eventSource);
 
-  Iterable<String> daemons = [];
+  Iterable<String> get daemons => discovery.getAllDaemons();
   String get numberTitle => daemons.length.toString();
 
   String getDaemonTitleById(String id) {
@@ -53,10 +53,6 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
     switch (event) {
       case DiscoveryEventDaemonAdded _:
       case DiscoveryEventDaemonRemoved _:
-        {
-          daemons = [...discovery.daemons];
-          notifyListeners();
-        }
       case DiscoveryEventDaemonChanged _:
         notifyListeners();
       default:

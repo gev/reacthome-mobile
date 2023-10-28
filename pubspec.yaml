@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^2.0.7
   provider: ^6.0.5
   uuid: ^4.1.0
+  fast_immutable_collections: ^9.1.6
 
 dev_dependencies:
   flutter_test:

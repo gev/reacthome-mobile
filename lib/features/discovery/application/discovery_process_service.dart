@@ -1,30 +1,49 @@
 import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_entity.dart';
 import 'package:reacthome/features/discovery/domain/discovery_process_state.dart';
 import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/bus_emitter.dart';
-import 'package:reacthome/util/extensions.dart';
-
-abstract interface class DiscoveryProcess {
-  DiscoveryProcessEntity get process;
-}
 
 class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
-  final DiscoveryProcess repository;
+  DiscoveryProcessState _state = DiscoveryProcessState.stopped;
 
   DiscoveryProcessService({
     required Bus<DiscoveryProcessEvent> eventSink,
-    required this.repository,
   }) : super(eventSink);
 
-  DiscoveryProcessEntity get _process => repository.process;
-  DiscoveryProcessState get process => _process.state;
+  DiscoveryProcessState get state => _state;
 
-  void start() => _process.start()?.let(emit);
+  void start() => _run(
+        when: DiscoveryProcessState.stopped,
+        next: DiscoveryProcessState.starPending,
+        event: DiscoveryProcessEvent.startRequested,
+      );
 
-  void completeStart() => _process.completeStart()?.let(emit);
+  void completeStart() => _run(
+        when: DiscoveryProcessState.starPending,
+        next: DiscoveryProcessState.running,
+        event: DiscoveryProcessEvent.started,
+      );
 
-  void stop() => _process.stop()?.let(emit);
+  void stop() => _run(
+        when: DiscoveryProcessState.running,
+        next: DiscoveryProcessState.stopPending,
+        event: DiscoveryProcessEvent.stopRequested,
+      );
 
-  void completeStop() => _process.completeStop()?.let(emit);
+  void completeStop() => _run(
+        when: DiscoveryProcessState.stopPending,
+        next: DiscoveryProcessState.stopped,
+        event: DiscoveryProcessEvent.stopped,
+      );
+
+  void _run({
+    required DiscoveryProcessState when,
+    required DiscoveryProcessState next,
+    required DiscoveryProcessEvent event,
+  }) {
+    if (_state == when) {
+      _state = next;
+      emit(event);
+    }
+  }
 }
