@@ -1,7 +1,8 @@
-import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_command.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_query.dart';
+import 'package:reacthome/core/discovery/discovery_process.dart';
+import 'package:reacthome/core/discovery/discovery_process_command.dart';
+import 'package:reacthome/core/discovery/discovery_process_event.dart';
+import 'package:reacthome/core/discovery/discovery_process_query.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_entity.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';

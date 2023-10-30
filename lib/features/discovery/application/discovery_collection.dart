@@ -1,4 +1,4 @@
-import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
+import 'package:reacthome/features/discovery/domain/discovery_daemon_entity.dart';
 
 abstract interface class DiscoveryCollection {
   Iterable<String> getAllDaemons();

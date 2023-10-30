@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/discovery_event.dart';
+import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/util/event_bus.dart';

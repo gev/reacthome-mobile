@@ -9,7 +9,7 @@ class AppAndroid extends AppBindingObserver {
   final String title;
 
   AppAndroid(this.theme, this.navigation, this.title,
-      {required super.appLifeCycle, super.key});
+      {required super.actor, super.key});
 
   @override
   Widget build(BuildContext context) {

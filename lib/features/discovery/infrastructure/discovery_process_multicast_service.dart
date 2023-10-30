@@ -1,5 +1,5 @@
-import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_command.dart';
+import 'package:reacthome/core/discovery/discovery_process_command.dart';
+import 'package:reacthome/core/discovery/discovery_process_event.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_bus.dart';

@@ -1,11 +1,12 @@
 import 'dart:io';
 
-import 'package:reacthome/core/discovery_event.dart';
+import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_daemon.dart';
+import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/discovery/application/discovery_collection.dart';
-import 'package:reacthome/features/discovery/domain/discovery_command.dart';
-import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
-import 'package:reacthome/features/discovery/domain/discovery_query.dart';
+import 'package:reacthome/features/discovery/domain/discovery_daemon_entity.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 
@@ -32,7 +33,7 @@ class DiscoveryService extends EventEmitter<DiscoveryEvent>
   }) {
     final daemon = repository.getDaemon(id);
     if (daemon == null) {
-      final daemon = DiscoveryDaemon.create(id, meta, address, project);
+      final daemon = DiscoveryDaemonEntity(id, meta, address, project);
       repository.addDaemon(daemon);
       emit(DiscoveryEventDaemonAdded(id));
     } else {

@@ -1,19 +1,9 @@
 import 'dart:io';
 
-import 'package:reacthome/core/discovery_event.dart';
+import 'package:reacthome/core/discovery/discovery_daemon.dart';
+import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/util/extensions.dart';
-
-sealed class DiscoveryDaemon {
-  String get id;
-  Meta get meta;
-  InternetAddress get address;
-  String? get project;
-
-  static DiscoveryDaemonEntity create(
-          String id, Meta meta, InternetAddress address, String? project) =>
-      DiscoveryDaemonEntity._(id, meta, address, project);
-}
 
 class DiscoveryDaemonEntity implements DiscoveryDaemon {
   final String _id;
@@ -21,7 +11,7 @@ class DiscoveryDaemonEntity implements DiscoveryDaemon {
   InternetAddress _address;
   String? _project;
 
-  DiscoveryDaemonEntity._(
+  DiscoveryDaemonEntity(
     this._id,
     this._meta,
     this._address,

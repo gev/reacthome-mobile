@@ -1,5 +1,5 @@
-import 'package:reacthome/core/discovery_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';

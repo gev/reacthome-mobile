@@ -1,28 +1,28 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/app_lifecycle/application/app_lifecycle_service.dart';
+import 'package:reacthome/core/app_lifecycle/app_lifecycle_command.dart';
 
 abstract class AppBindingObserver extends StatelessWidget
     with WidgetsBindingObserver {
-  final AppLifecycleService appLifeCycle;
+  final AppLifecycleCommand actor;
 
-  AppBindingObserver({required this.appLifeCycle, super.key}) {
+  AppBindingObserver({required this.actor, super.key}) {
     WidgetsBinding.instance.addObserver(this);
-    appLifeCycle.makeActive();
+    actor.makeActive();
   }
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        appLifeCycle.makeActive();
+        actor.makeActive();
       case AppLifecycleState.paused:
-        appLifeCycle.makeInactive();
+        actor.makeInactive();
       default:
     }
   }
 
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    appLifeCycle.makeInactive();
+    actor.makeInactive();
   }
 }

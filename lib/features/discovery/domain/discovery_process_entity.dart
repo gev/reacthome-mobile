@@ -1,14 +1,8 @@
-import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_state.dart';
-
-sealed class DiscoveryProcess {
-  DiscoveryProcessState get state;
-  static DiscoveryProcessEntity create() => DiscoveryProcessEntity._();
-}
+import 'package:reacthome/core/discovery/discovery_process.dart';
+import 'package:reacthome/core/discovery/discovery_process_event.dart';
+import 'package:reacthome/core/discovery/discovery_process_state.dart';
 
 class DiscoveryProcessEntity implements DiscoveryProcess {
-  DiscoveryProcessEntity._();
-
   DiscoveryProcessState _state = DiscoveryProcessState.stopped;
 
   @override
