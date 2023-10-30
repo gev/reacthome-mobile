@@ -1,0 +1,43 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/meta.dart" [label="meta"];
+  "/discovery/discovery_process_query.dart" [label="discovery_process_query"];
+  "/discovery/discovery_process_event.dart" [label="discovery_process_event"];
+  "/discovery/discovery_daemon.dart" [label="discovery_daemon"];
+  "/discovery/discovery_process.dart" [label="discovery_process"];
+  "/discovery/discovery_query.dart" [label="discovery_query"];
+  "/discovery/discovery_event.dart" [label="discovery_event"];
+  "/discovery/discovery_command.dart" [label="discovery_command"];
+  "/discovery/discovery_process_state.dart" [label="discovery_process_state"];
+  "/discovery/discovery_process_command.dart" [label="discovery_process_command"];
+  "/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
+  "/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  subgraph "cluster~" {
+    label="core";
+    "/meta.dart";
+    subgraph "cluster~/discovery" {
+      label="discovery";
+      "/discovery/discovery_process_query.dart";
+      "/discovery/discovery_process_event.dart";
+      "/discovery/discovery_daemon.dart";
+      "/discovery/discovery_process.dart";
+      "/discovery/discovery_query.dart";
+      "/discovery/discovery_event.dart";
+      "/discovery/discovery_command.dart";
+      "/discovery/discovery_process_state.dart";
+      "/discovery/discovery_process_command.dart";
+    }
+    subgraph "cluster~/app_lifecycle" {
+      label="app_lifecycle";
+      "/app_lifecycle/app_lifecycle_command.dart";
+      "/app_lifecycle/app_lifecycle_event.dart";
+    }
+  }
+  "/discovery/discovery_process_query.dart" -> "/discovery/discovery_process.dart";
+  "/discovery/discovery_daemon.dart" -> "/meta.dart";
+  "/discovery/discovery_process.dart" -> "/discovery/discovery_process_state.dart";
+  "/discovery/discovery_query.dart" -> "/discovery/discovery_daemon.dart";
+  "/discovery/discovery_command.dart" -> "/meta.dart";
+}

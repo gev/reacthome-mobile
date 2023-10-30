@@ -1,0 +1,62 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/app/app.android.dart" [label="app.android"];
+  "/app/app_binding_observer.dart" [label="app_binding_observer"];
+  "/app/app.ios.dart" [label="app.ios"];
+  "/app/navigation.dart" [label="navigation"];
+  "/app/app.dart" [label="app"];
+  "/screens/home/home_screen_add_button_view_model.dart" [label="home_screen_add_button_view_model"];
+  "/screens/home/home_screen_view.android.dart" [label="home_screen_view.android"];
+  "/screens/home/home_screen_view.ios.dart" [label="home_screen_view.ios"];
+  "/screens/home/home_screen_daemon_tile_view_model.dart" [label="home_screen_daemon_tile_view_model"];
+  "/screens/home/home_screen_view_model.dart" [label="home_screen_view_model"];
+  "/screens/home/home_screen.dart" [label="home_screen"];
+  "/theme_config.dart" [label="theme_config"];
+  subgraph "cluster~" {
+    label="ui";
+    "/theme_config.dart";
+    subgraph "cluster~/app" {
+      label="app";
+      "/app/app.android.dart";
+      "/app/app_binding_observer.dart";
+      "/app/app.ios.dart";
+      "/app/navigation.dart";
+      "/app/app.dart";
+    }
+    subgraph "cluster~/screens" {
+      label="screens";
+      subgraph "cluster~/screens/home" {
+        label="home";
+        "/screens/home/home_screen_add_button_view_model.dart";
+        "/screens/home/home_screen_view.android.dart";
+        "/screens/home/home_screen_view.ios.dart";
+        "/screens/home/home_screen_daemon_tile_view_model.dart";
+        "/screens/home/home_screen_view_model.dart";
+        "/screens/home/home_screen.dart";
+      }
+    }
+  }
+  "/app/app.android.dart" -> "/app/app_binding_observer.dart";
+  "/app/app.android.dart" -> "/app/navigation.dart";
+  "/app/app.android.dart" -> "/theme_config.dart";
+  "/app/app.ios.dart" -> "/app/app_binding_observer.dart";
+  "/app/app.ios.dart" -> "/app/navigation.dart";
+  "/app/app.ios.dart" -> "/theme_config.dart";
+  "/app/app.dart" -> "/app/app.android.dart";
+  "/app/app.dart" -> "/app/app.ios.dart";
+  "/app/app.dart" -> "/app/navigation.dart";
+  "/app/app.dart" -> "/theme_config.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_view_model.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_view_model.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.android.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.ios.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view_model.dart";
+}

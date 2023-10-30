@@ -7,8 +7,10 @@ digraph "" {
   "/ui/app/app.ios.dart" [label="app.ios"];
   "/ui/app/navigation.dart" [label="navigation"];
   "/ui/app/app.dart" [label="app"];
+  "/ui/screens/home/home_screen_add_button_view_model.dart" [label="home_screen_add_button_view_model"];
   "/ui/screens/home/home_screen_view.android.dart" [label="home_screen_view.android"];
   "/ui/screens/home/home_screen_view.ios.dart" [label="home_screen_view.ios"];
+  "/ui/screens/home/home_screen_daemon_tile_view_model.dart" [label="home_screen_daemon_tile_view_model"];
   "/ui/screens/home/home_screen_view_model.dart" [label="home_screen_view_model"];
   "/ui/screens/home/home_screen.dart" [label="home_screen"];
   "/ui/theme_config.dart" [label="theme_config"];
@@ -71,8 +73,10 @@ digraph "" {
         label="screens";
         subgraph "cluster~/ui/screens/home" {
           label="home";
+          "/ui/screens/home/home_screen_add_button_view_model.dart";
           "/ui/screens/home/home_screen_view.android.dart";
           "/ui/screens/home/home_screen_view.ios.dart";
+          "/ui/screens/home/home_screen_daemon_tile_view_model.dart";
           "/ui/screens/home/home_screen_view_model.dart";
           "/ui/screens/home/home_screen.dart";
         }
@@ -177,17 +181,27 @@ digraph "" {
   "/ui/app/app.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.dart" -> "/ui/theme_config.dart";
   "/ui/app/app.dart" -> "/util/platform.dart";
+  "/ui/screens/home/home_screen_add_button_view_model.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/screens/home/home_screen_add_button_view_model.dart" -> "/core/meta.dart";
+  "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_add_button_view_model.dart";
+  "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_daemon_tile_view_model.dart";
   "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_add_button_view_model.dart";
+  "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_daemon_tile_view_model.dart";
   "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_view_model.dart";
-  "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/screens/home/home_screen_daemon_tile_view_model.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen_daemon_tile_view_model.dart" -> "/core/discovery/discovery_query.dart";
+  "/ui/screens/home/home_screen_daemon_tile_view_model.dart" -> "/util/event_bus.dart";
+  "/ui/screens/home/home_screen_daemon_tile_view_model.dart" -> "/util/event_listener.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_event.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_query.dart";
-  "/ui/screens/home/home_screen_view_model.dart" -> "/core/meta.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/util/event_bus.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/util/event_listener.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_command.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_event.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_query.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_add_button_view_model.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_daemon_tile_view_model.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.android.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.ios.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view_model.dart";
@@ -228,8 +242,8 @@ digraph "" {
   "/util/event_emitter.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/handler.dart";
-  "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/core/discovery/discovery_command.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/features/discovery/interface/discovery_action.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/util/handler.dart";
   "/features/discovery/discovery_config.dart" -> "/infrastructure/multicast/multicast_config.dart";
