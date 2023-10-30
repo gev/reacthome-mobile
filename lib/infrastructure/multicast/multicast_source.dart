@@ -24,7 +24,7 @@ class MulticastSource {
     final subscription = socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
         final datagram = socket.receive();
-        datagram?.let(controller.run);
+        datagram?.let(controller.execute);
       }
     });
 

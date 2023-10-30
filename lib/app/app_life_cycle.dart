@@ -1,15 +1,15 @@
 import 'package:reacthome/core/app_lifecycle_event.dart';
 import 'package:reacthome/features/app_lifecycle/application/app_lifecycle_service.dart';
-import 'package:reacthome/util/bus.dart';
+import 'package:reacthome/util/event_bus.dart';
 
 class AppLifecycle {
   static final instance = AppLifecycle._();
 
   late AppLifecycleService service;
-  late Bus<AppLifecycleEvent> eventBus;
+  late EventBus<AppLifecycleEvent> eventBus;
 
   AppLifecycle._() {
-    eventBus = Bus<AppLifecycleEvent>();
+    eventBus = EventBus<AppLifecycleEvent>();
     service = AppLifecycleService(eventSink: eventBus);
   }
 }

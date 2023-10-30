@@ -1,44 +1,45 @@
+import 'package:reacthome/core/discovery_process_command.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/application/discovery_process_service.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/bus_listener.dart';
+import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryProcessMulticastService
-    extends BusListener<DiscoveryProcessEvent> {
-  final DiscoveryProcessService process;
+    extends EventListener<DiscoveryProcessEvent> {
+  final Actor<DiscoveryProcessCommand> actor;
   final MulticastSourceFactory factory;
 
   late MulticastSource _source;
 
   DiscoveryProcessMulticastService({
-    required Bus<DiscoveryProcessEvent> eventSource,
-    required this.process,
+    required EventBus<DiscoveryProcessEvent> eventSource,
+    required this.actor,
     required this.factory,
   }) : super(eventSource);
 
   @override
-  void run(DiscoveryProcessEvent event) async {
+  void handle(DiscoveryProcessEvent event) async {
     switch (event) {
       case DiscoveryProcessEvent.startRequested:
-        _startProcess();
+        _completeStartProcess();
       case DiscoveryProcessEvent.stopRequested:
-        _stopProcess();
+        _completeStopProcess();
       default:
     }
   }
 
-  void _startProcess() async {
+  void _completeStartProcess() async {
     _source = await factory.create();
-    process.completeStart();
+    actor.execute(DiscoveryProcessCommand.completeStart);
   }
 
-  void _stopProcess() {
+  void _completeStopProcess() {
     _source.close();
-    process.completeStop();
+    actor.execute(DiscoveryProcessCommand.completeStop);
   }
 
   @override
-  void dispose() => _stopProcess();
+  void dispose() => _completeStopProcess();
 }

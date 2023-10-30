@@ -1,49 +1,44 @@
+import 'package:reacthome/core/discovery_process_command.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_state.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/bus_emitter.dart';
+import 'package:reacthome/core/discovery_query.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process.dart';
+import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/event_emitter.dart';
+import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/util/query.dart';
 
-class DiscoveryProcessService extends SimpleBusEmitter<DiscoveryProcessEvent> {
-  DiscoveryProcessState _state = DiscoveryProcessState.stopped;
+class DiscoveryProcessService extends EventEmitter<DiscoveryProcessEvent>
+    implements Actor<DiscoveryProcessCommand> implements Query<DiscoveryQuery> {
+  final DiscoveryProcessEntity _process;
 
   DiscoveryProcessService({
-    required Bus<DiscoveryProcessEvent> eventSink,
-  }) : super(eventSink);
+    required EventBus<DiscoveryProcessEvent> eventSink,
+    required DiscoveryProcessEntity process,
+  })  : _process = process,
+        super(eventSink);
 
-  DiscoveryProcessState get state => _state;
+  DiscoveryProcess get process => _process;
 
-  void start() => _run(
-        when: DiscoveryProcessState.stopped,
-        next: DiscoveryProcessState.starPending,
-        event: DiscoveryProcessEvent.startRequested,
-      );
-
-  void completeStart() => _run(
-        when: DiscoveryProcessState.starPending,
-        next: DiscoveryProcessState.running,
-        event: DiscoveryProcessEvent.started,
-      );
-
-  void stop() => _run(
-        when: DiscoveryProcessState.running,
-        next: DiscoveryProcessState.stopPending,
-        event: DiscoveryProcessEvent.stopRequested,
-      );
-
-  void completeStop() => _run(
-        when: DiscoveryProcessState.stopPending,
-        next: DiscoveryProcessState.stopped,
-        event: DiscoveryProcessEvent.stopped,
-      );
-
-  void _run({
-    required DiscoveryProcessState when,
-    required DiscoveryProcessState next,
-    required DiscoveryProcessEvent event,
-  }) {
-    if (_state == when) {
-      _state = next;
-      emit(event);
+  @override
+  void execute(DiscoveryProcessCommand command) {
+    switch (command) {
+      case DiscoveryProcessCommand.start:
+        _startProcess();
+      case DiscoveryProcessCommand.completeStart:
+        _completeStartProcess();
+      case DiscoveryProcessCommand.stop:
+        _stopProcess();
+      case DiscoveryProcessCommand.completeStop:
+        _completeStopProcess();
     }
   }
+
+  void _startProcess() => _process.start()?.let(emit);
+
+  void _completeStartProcess() => _process.completeStart()?.let(emit);
+
+  void _stopProcess() => _process.stop()?.let(emit);
+
+  void _completeStopProcess() => _process.completeStop()?.let(emit);
 }

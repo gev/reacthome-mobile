@@ -1,3 +1,3 @@
-abstract interface class Actor<T> {
-  void run(T data);
+abstract interface class Actor<C> {
+  void execute(C command);
 }

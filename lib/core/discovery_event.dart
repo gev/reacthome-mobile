@@ -11,8 +11,16 @@ class DiscoveryEventDaemonConfirmed extends DiscoveryEvent {
   DiscoveryEventDaemonConfirmed(super.daemon);
 }
 
-class DiscoveryEventDaemonChanged extends DiscoveryEvent {
-  DiscoveryEventDaemonChanged(super.daemon);
+class DiscoveryEventDaemonMetaChanged extends DiscoveryEvent {
+  DiscoveryEventDaemonMetaChanged(super.daemon);
+}
+
+class DiscoveryEventDaemonAddressChanged extends DiscoveryEvent {
+  DiscoveryEventDaemonAddressChanged(super.daemon);
+}
+
+class DiscoveryEventDaemonProjectChanged extends DiscoveryEvent {
+  DiscoveryEventDaemonProjectChanged(super.daemon);
 }
 
 class DiscoveryEventDaemonRemoved extends DiscoveryEvent {

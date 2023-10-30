@@ -1,21 +1,21 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/core/discovery_command.dart';
 import 'package:reacthome/core/discovery_event.dart';
 import 'package:reacthome/core/meta.dart';
-import 'package:reacthome/features/discovery/application/discovery_service.dart';
-import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/bus_listener.dart';
-import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/handler.dart';
 import 'package:uuid/uuid.dart';
 
-class HomeScreenViewModel extends BusListener<DiscoveryEvent>
+class HomeScreenViewModel extends EventListener<DiscoveryEvent>
     with ChangeNotifier {
-  final DiscoveryService discovery;
+  final (Actor<DiscoveryCommand>, Handler<DiscoveryEvent>) discovery;
 
   HomeScreenViewModel(this.discovery,
-      {required Bus<DiscoveryEvent> eventSource})
+      {required EventBus<DiscoveryEvent> eventSource})
       : super(eventSource);
 
   Iterable<String> get daemons => discovery.getAllDaemons();
@@ -37,9 +37,9 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
   final _uuid = const Uuid();
 
   void addDaemonButtonPressed() {
-    discovery.addDaemon(
-      _uuid.v4(),
-      DiscoveryDaemon(
+    discovery.execute(
+      DiscoveryCommandAddDaemon(
+        id: _uuid.v4(),
         meta: Meta(
             title: 'Daemon ${daemons.length + 1}',
             code: 'D ${daemons.length + 1}'),
@@ -49,11 +49,11 @@ class HomeScreenViewModel extends BusListener<DiscoveryEvent>
   }
 
   @override
-  void run(DiscoveryEvent event) {
+  void handle(DiscoveryEvent event) {
     switch (event) {
       case DiscoveryEventDaemonAdded _:
       case DiscoveryEventDaemonRemoved _:
-      case DiscoveryEventDaemonChanged _:
+      case DiscoveryEventDaemonMetaChanged _:
         notifyListeners();
       default:
     }
