@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/discovery/interface/discovery_action.dart';
 import 'package:reacthome/util/handler.dart';
 
