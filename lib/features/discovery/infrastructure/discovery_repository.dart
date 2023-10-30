@@ -1,8 +1,8 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:reacthome/features/discovery/application/discovery_service.dart';
+import 'package:reacthome/features/discovery/application/discovery_collection.dart';
 import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
 
-class DiscoveryRepository implements Discovery {
+class DiscoveryRepository implements DiscoveryCollection {
   var _daemons = IMap<String, DiscoveryDaemonEntity>();
 
   @override

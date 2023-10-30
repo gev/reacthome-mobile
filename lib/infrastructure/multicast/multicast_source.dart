@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
-import 'package:reacthome/util/actor.dart';
 import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/util/handler.dart';
 
 class MulticastSource {
   final RawDatagramSocket _socket;
@@ -13,7 +13,7 @@ class MulticastSource {
   MulticastSource._(this._socket, this._timer, this._subscription);
 
   static Future<MulticastSource> create(
-      MulticastConfig config, Actor<Datagram> controller) async {
+      MulticastConfig config, Handler<Datagram> controller) async {
     final socket = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
       config.port,
@@ -24,7 +24,7 @@ class MulticastSource {
     final subscription = socket.listen((RawSocketEvent event) {
       if (event == RawSocketEvent.read) {
         final datagram = socket.receive();
-        datagram?.let(controller.execute);
+        datagram?.let(controller.handle);
       }
     });
 

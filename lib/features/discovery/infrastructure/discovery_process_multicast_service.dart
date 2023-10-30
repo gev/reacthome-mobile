@@ -1,14 +1,13 @@
-import 'package:reacthome/core/discovery_process_command.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_command.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/actor.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryProcessMulticastService
     extends EventListener<DiscoveryProcessEvent> {
-  final Actor<DiscoveryProcessCommand> actor;
+  final DiscoveryProcessCommand actor;
   final MulticastSourceFactory factory;
 
   late MulticastSource _source;
@@ -32,12 +31,12 @@ class DiscoveryProcessMulticastService
 
   void _completeStartProcess() async {
     _source = await factory.create();
-    actor.execute(DiscoveryProcessCommand.completeStart);
+    actor.completeStart();
   }
 
   void _completeStopProcess() {
     _source.close();
-    actor.execute(DiscoveryProcessCommand.completeStop);
+    actor.completeStop();
   }
 
   @override

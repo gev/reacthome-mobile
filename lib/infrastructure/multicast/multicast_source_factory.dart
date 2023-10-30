@@ -3,11 +3,11 @@ import 'dart:io';
 
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
-import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/util/handler.dart';
 
 class MulticastSourceFactory {
   final MulticastConfig config;
-  final Actor<Datagram> controller;
+  final Handler<Datagram> controller;
 
   MulticastSourceFactory({
     required this.config,

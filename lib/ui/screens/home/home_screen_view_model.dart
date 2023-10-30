@@ -1,18 +1,17 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/discovery_command.dart';
 import 'package:reacthome/core/discovery_event.dart';
 import 'package:reacthome/core/meta.dart';
-import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
-import 'package:reacthome/util/handler.dart';
+import 'package:reacthome/util/extensions.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeScreenViewModel extends EventListener<DiscoveryEvent>
     with ChangeNotifier {
-  final (Actor<DiscoveryCommand>, Handler<DiscoveryEvent>) discovery;
+  final DiscoveryService discovery;
 
   HomeScreenViewModel(this.discovery,
       {required EventBus<DiscoveryEvent> eventSource})
@@ -37,14 +36,12 @@ class HomeScreenViewModel extends EventListener<DiscoveryEvent>
   final _uuid = const Uuid();
 
   void addDaemonButtonPressed() {
-    discovery.execute(
-      DiscoveryCommandAddDaemon(
-        id: _uuid.v4(),
-        meta: Meta(
-            title: 'Daemon ${daemons.length + 1}',
-            code: 'D ${daemons.length + 1}'),
-        address: InternetAddress.anyIPv4,
-      ),
+    discovery.addDaemon(
+      id: _uuid.v4(),
+      meta: Meta(
+          title: 'Daemon ${daemons.length + 1}',
+          code: 'D ${daemons.length + 1}'),
+      address: InternetAddress.anyIPv4,
     );
   }
 

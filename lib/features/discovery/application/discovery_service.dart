@@ -1,50 +1,30 @@
 import 'dart:io';
 
-import 'package:reacthome/core/discovery_command.dart';
 import 'package:reacthome/core/discovery_event.dart';
 import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/features/discovery/application/discovery_collection.dart';
+import 'package:reacthome/features/discovery/domain/discovery_command.dart';
 import 'package:reacthome/features/discovery/domain/discovery_daemon.dart';
-import 'package:reacthome/util/actor.dart';
-import 'package:reacthome/util/event_emitter.dart';
+import 'package:reacthome/features/discovery/domain/discovery_query.dart';
 import 'package:reacthome/util/event_bus.dart';
-
-abstract interface class Discovery {
-  Iterable<String> getAllDaemons();
-  bool hasDaemon(String id);
-  DiscoveryDaemonEntity? getDaemon(String id);
-  void addDaemon(DiscoveryDaemonEntity daemon);
-  void removeDaemon(String id);
-}
+import 'package:reacthome/util/event_emitter.dart';
 
 class DiscoveryService extends EventEmitter<DiscoveryEvent>
-    implements Actor<DiscoveryCommand> {
+    implements DiscoveryCommand, DiscoveryQuery {
   final EventBus<DiscoveryEvent> eventSink;
-  final Discovery repository;
+  final DiscoveryCollection repository;
 
   DiscoveryService({required this.eventSink, required this.repository})
       : super(eventSink);
 
+  @override
   Iterable<String> getAllDaemons() => repository.getAllDaemons();
 
+  @override
   DiscoveryDaemon? getDaemonById(String id) => repository.getDaemon(id);
 
   @override
-  void execute(DiscoveryCommand command) {
-    switch (command) {
-      case DiscoveryCommandAddDaemon command:
-        _addDaemon(
-          id: command.id,
-          meta: command.meta,
-          address: command.address,
-          project: command.project,
-        );
-      case DiscoveryCommandRemoveDaemon command:
-        _removeDaemon(command.id);
-      default:
-    }
-  }
-
-  void _addDaemon({
+  void addDaemon({
     required String id,
     required Meta meta,
     required InternetAddress address,
@@ -61,7 +41,8 @@ class DiscoveryService extends EventEmitter<DiscoveryEvent>
     }
   }
 
-  void _removeDaemon(String id) {
+  @override
+  void removeDaemon({required String id}) {
     if (repository.hasDaemon(id)) {
       repository.removeDaemon(id);
       emit(DiscoveryEventDaemonRemoved(id));

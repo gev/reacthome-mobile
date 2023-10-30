@@ -1,12 +1,11 @@
-import 'package:reacthome/core/discovery_command.dart';
 import 'package:reacthome/core/discovery_event.dart';
+import 'package:reacthome/features/discovery/domain/discovery_command.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
-import 'package:reacthome/util/actor.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryTimeoutService extends EventListener<DiscoveryEvent> {
-  final Actor<DiscoveryCommand> actor;
+  final DiscoveryCommand actor;
   final Duration timeout;
 
   DiscoveryTimeoutService({
@@ -33,9 +32,7 @@ class DiscoveryTimeoutService extends EventListener<DiscoveryEvent> {
   _setTimeout(String daemon) => timeouts.set(
         id: daemon,
         duration: timeout,
-        execute: () => actor.execute(
-          DiscoveryCommandRemoveDaemon(id: daemon),
-        ),
+        execute: () => actor.removeDaemon(id: daemon),
       );
 
   _cancelTimeout(String daemon) => timeouts.cancel(id: daemon);

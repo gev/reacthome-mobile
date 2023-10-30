@@ -1,12 +1,11 @@
 import 'package:reacthome/core/app_lifecycle_event.dart';
-import 'package:reacthome/core/discovery_process_command.dart';
-import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_command.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryProcessLifecycleService
     extends EventListener<AppLifecycleEvent> {
-  final Actor<DiscoveryProcessCommand> actor;
+  final DiscoveryProcessCommand actor;
 
   DiscoveryProcessLifecycleService({
     required EventBus<AppLifecycleEvent> eventSource,
@@ -17,9 +16,9 @@ class DiscoveryProcessLifecycleService
   void handle(AppLifecycleEvent event) {
     switch (event) {
       case AppLifecycleEvent.active:
-        actor.execute(DiscoveryProcessCommand.start);
+        actor.start();
       case AppLifecycleEvent.inactive:
-        actor.execute(DiscoveryProcessCommand.stop);
+        actor.stop();
     }
   }
 }

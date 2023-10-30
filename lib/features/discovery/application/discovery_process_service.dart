@@ -1,15 +1,13 @@
-import 'package:reacthome/core/discovery_process_command.dart';
 import 'package:reacthome/core/discovery_process_event.dart';
-import 'package:reacthome/core/discovery_query.dart';
 import 'package:reacthome/features/discovery/domain/discovery_process.dart';
-import 'package:reacthome/util/actor.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_command.dart';
+import 'package:reacthome/features/discovery/domain/discovery_process_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
-import 'package:reacthome/util/query.dart';
 
 class DiscoveryProcessService extends EventEmitter<DiscoveryProcessEvent>
-    implements Actor<DiscoveryProcessCommand> implements Query<DiscoveryQuery> {
+    implements DiscoveryProcessCommand, DiscoveryProcessQuery {
   final DiscoveryProcessEntity _process;
 
   DiscoveryProcessService({
@@ -18,27 +16,18 @@ class DiscoveryProcessService extends EventEmitter<DiscoveryProcessEvent>
   })  : _process = process,
         super(eventSink);
 
-  DiscoveryProcess get process => _process;
+  @override
+  DiscoveryProcess getProcess() => _process;
 
   @override
-  void execute(DiscoveryProcessCommand command) {
-    switch (command) {
-      case DiscoveryProcessCommand.start:
-        _startProcess();
-      case DiscoveryProcessCommand.completeStart:
-        _completeStartProcess();
-      case DiscoveryProcessCommand.stop:
-        _stopProcess();
-      case DiscoveryProcessCommand.completeStop:
-        _completeStopProcess();
-    }
-  }
+  void start() => _process.start()?.let(emit);
 
-  void _startProcess() => _process.start()?.let(emit);
+  @override
+  void completeStart() => _process.completeStart()?.let(emit);
 
-  void _completeStartProcess() => _process.completeStart()?.let(emit);
+  @override
+  void stop() => _process.stop()?.let(emit);
 
-  void _stopProcess() => _process.stop()?.let(emit);
-
-  void _completeStopProcess() => _process.completeStop()?.let(emit);
+  @override
+  void completeStop() => _process.completeStop()?.let(emit);
 }
