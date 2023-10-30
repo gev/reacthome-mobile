@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view_model.dart';
 
 class HomeScreenViewAndroid extends StatelessWidget {
@@ -27,7 +29,7 @@ class HomeScreenViewAndroid extends StatelessWidget {
 class _AddDaemonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.read<HomeScreenViewModel>();
+    final model = context.read<HomeScreenAddButtonViewModel>();
     return FilledButton.icon(
       onPressed: model.addDaemonButtonPressed,
       icon: const Icon(Icons.add),
@@ -67,7 +69,7 @@ class _DaemonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = context.select<HomeScreenViewModel, String>(
+    String title = context.select<HomeScreenDaemonTileViewModel, String>(
         (model) => model.getDaemonTitleById(id));
     return ListTile(
       title: Text(title),

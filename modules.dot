@@ -4,7 +4,6 @@ digraph "" {
   edge [penwidth=1.3];
   "/ui/app/app.android.dart" [label="app.android"];
   "/ui/app/app_binding_observer.dart" [label="app_binding_observer"];
-  "/ui/app/pool.dart" [label="pool"];
   "/ui/app/app.ios.dart" [label="app.ios"];
   "/ui/app/navigation.dart" [label="navigation"];
   "/ui/app/app.dart" [label="app"];
@@ -23,6 +22,7 @@ digraph "" {
   "/core/discovery/discovery_command.dart" [label="discovery_command"];
   "/core/discovery/discovery_process_state.dart" [label="discovery_process_state"];
   "/core/discovery/discovery_process_command.dart" [label="discovery_process_command"];
+  "/core/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
   "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
   "/app/ui.dart" [label="ui"];
   "/app/config.dart" [label="config"];
@@ -63,7 +63,6 @@ digraph "" {
         label="app";
         "/ui/app/app.android.dart";
         "/ui/app/app_binding_observer.dart";
-        "/ui/app/pool.dart";
         "/ui/app/app.ios.dart";
         "/ui/app/navigation.dart";
         "/ui/app/app.dart";
@@ -96,6 +95,7 @@ digraph "" {
       }
       subgraph "cluster~/core/app_lifecycle" {
         label="app_lifecycle";
+        "/core/app_lifecycle/app_lifecycle_command.dart";
         "/core/app_lifecycle/app_lifecycle_event.dart";
       }
     }
@@ -167,11 +167,11 @@ digraph "" {
   "/ui/app/app.android.dart" -> "/ui/app/app_binding_observer.dart";
   "/ui/app/app.android.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.android.dart" -> "/ui/theme_config.dart";
-  "/ui/app/app_binding_observer.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
+  "/ui/app/app_binding_observer.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
   "/ui/app/app.ios.dart" -> "/ui/app/app_binding_observer.dart";
   "/ui/app/app.ios.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.ios.dart" -> "/ui/theme_config.dart";
-  "/ui/app/app.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
+  "/ui/app/app.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
   "/ui/app/app.dart" -> "/ui/app/app.android.dart";
   "/ui/app/app.dart" -> "/ui/app/app.ios.dart";
   "/ui/app/app.dart" -> "/ui/app/navigation.dart";
@@ -179,12 +179,15 @@ digraph "" {
   "/ui/app/app.dart" -> "/util/platform.dart";
   "/ui/screens/home/home_screen_view.android.dart" -> "/ui/screens/home/home_screen_view_model.dart";
   "/ui/screens/home/home_screen_view.ios.dart" -> "/ui/screens/home/home_screen_view_model.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen_view_model.dart" -> "/core/discovery/discovery_query.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/core/meta.dart";
-  "/ui/screens/home/home_screen_view_model.dart" -> "/features/discovery/application/discovery_service.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/util/event_bus.dart";
   "/ui/screens/home/home_screen_view_model.dart" -> "/util/event_listener.dart";
-  "/ui/screens/home/home_screen_view_model.dart" -> "/util/extensions.dart";
-  "/ui/screens/home/home_screen.dart" -> "/features/discovery/application/discovery_service.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_query.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.android.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view.ios.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen_view_model.dart";
@@ -200,6 +203,7 @@ digraph "" {
   "/app/config.dart" -> "/features/discovery/discovery_config.dart";
   "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/app/config.dart" -> "/ui/theme_config.dart";
+  "/app/app_life_cycle.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
   "/app/app_life_cycle.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
   "/app/app_life_cycle.dart" -> "/util/event_bus.dart";
   "/app/discovery.dart" -> "/app/app_life_cycle.dart";
@@ -225,6 +229,7 @@ digraph "" {
   "/util/event_listener.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/handler.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/core/discovery/discovery_command.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/features/discovery/interface/discovery_action.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/util/handler.dart";
   "/features/discovery/discovery_config.dart" -> "/infrastructure/multicast/multicast_config.dart";
@@ -270,6 +275,7 @@ digraph "" {
   "/features/discovery/domain/discovery_process_entity.dart" -> "/core/discovery/discovery_process.dart";
   "/features/discovery/domain/discovery_process_entity.dart" -> "/core/discovery/discovery_process_event.dart";
   "/features/discovery/domain/discovery_process_entity.dart" -> "/core/discovery/discovery_process_state.dart";
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_bus.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_emitter.dart";

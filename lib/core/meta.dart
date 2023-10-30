@@ -5,6 +5,19 @@ class Meta {
 
   Meta({this.title, this.code, this.timestamp});
 
+  String? get name {
+    if (title != null && code != null) {
+      return '$title / $code';
+    }
+    if (title != null) {
+      return title;
+    }
+    if (code != null) {
+      return code;
+    }
+    return null;
+  }
+
   @override
   bool operator ==(Object other) =>
       other is Meta &&

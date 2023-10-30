@@ -4,22 +4,23 @@ import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class HomeScreenViewModel extends EventListener<DiscoveryEvent>
+class HomeScreenDaemonTileViewModel extends EventListener<DiscoveryEvent>
     with ChangeNotifier {
   final DiscoveryQuery discovery;
 
-  HomeScreenViewModel(this.discovery,
+  HomeScreenDaemonTileViewModel(this.discovery,
       {required EventBus<DiscoveryEvent> eventSource})
       : super(eventSource);
 
-  Iterable<String> get daemons => discovery.getAllDaemons();
-  String get numberTitle => daemons.length.toString();
+  String getDaemonTitleById(String id) {
+    final daemon = discovery.getDaemonById(id);
+    return daemon?.meta.name ?? id;
+  }
 
   @override
   void handle(DiscoveryEvent event) {
     switch (event) {
-      case DiscoveryEventDaemonAdded _:
-      case DiscoveryEventDaemonRemoved _:
+      case DiscoveryEventDaemonMetaChanged _:
         notifyListeners();
       default:
     }

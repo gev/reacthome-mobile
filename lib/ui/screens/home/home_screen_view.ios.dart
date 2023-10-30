@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
+import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view_model.dart';
 
 class HomeScreenViewIOS extends StatelessWidget {
@@ -21,7 +23,7 @@ class HomeScreenViewIOS extends StatelessWidget {
 class _AddDaemonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final model = context.read<HomeScreenViewModel>();
+    final model = context.read<HomeScreenAddButtonViewModel>();
     return CupertinoButton.filled(
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
         onPressed: model.addDaemonButtonPressed,
@@ -64,7 +66,7 @@ class _DaemonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String title = context.select<HomeScreenViewModel, String>(
+    String title = context.select<HomeScreenDaemonTileViewModel, String>(
         (model) => model.getDaemonTitleById(id));
     return CupertinoListTile(
       title: Text(title),
