@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
-import 'package:reacthome/ui/screens/home/home_screen_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view_model.dart';
 
 class HomeScreenViewIOS extends StatelessWidget {
   final String title;
@@ -38,8 +38,8 @@ class _AddDaemonButton extends StatelessWidget {
 class _NumberTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final numberTitle = context
-        .select<HomeScreenViewModel, String>((model) => model.numberTitle);
+    final numberTitle = context.select<HomeScreenDaemonListViewModel, String>(
+        (model) => model.numberTitle);
     return Text(numberTitle);
   }
 }
@@ -48,7 +48,7 @@ class _DaemonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Iterable<String> daemons =
-        context.select<HomeScreenViewModel, Iterable<String>>(
+        context.select<HomeScreenDaemonListViewModel, Iterable<String>>(
             (model) => model.daemons);
     return Expanded(
       child: ListView(

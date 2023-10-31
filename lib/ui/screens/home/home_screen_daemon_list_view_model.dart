@@ -4,11 +4,11 @@ import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class HomeScreenViewModel extends EventListener<DiscoveryEvent>
+class HomeScreenDaemonListViewModel extends EventListener<DiscoveryEvent>
     with ChangeNotifier {
   final DiscoveryQuery discovery;
 
-  HomeScreenViewModel(this.discovery,
+  HomeScreenDaemonListViewModel(this.discovery,
       {required EventBus<DiscoveryEvent> eventSource})
       : super(eventSource);
 
