@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/core/discovery/discovery_command.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_query.dart';
+import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
@@ -12,9 +12,9 @@ import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/platform.dart';
 
 Widget makeHomeScreen({
-  required EventBus<DiscoveryEvent> eventBus,
-  required DiscoveryQuery query,
-  required DiscoveryCommand actor,
+  required EventBus<DaemonEvent> eventBus,
+  required DaemonQuery query,
+  required DaemonCommand actor,
   String title = 'Home',
 }) {
   final daemonListViewModel =

@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:uuid/uuid.dart';
 
 class HomeScreenAddButtonViewModel with ChangeNotifier {
-  final DiscoveryCommand discovery;
+  final DaemonCommand discovery;
 
   HomeScreenAddButtonViewModel(this.discovery);
 

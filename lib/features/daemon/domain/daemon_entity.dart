@@ -1,17 +1,17 @@
 import 'dart:io';
 
-import 'package:reacthome/core/discovery/discovery_daemon.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/core/daemon/daemon.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class DiscoveryDaemonEntity implements DiscoveryDaemon {
+class DaemonEntity implements Daemon {
   final String _id;
   Meta _meta;
   InternetAddress _address;
   String? _project;
 
-  DiscoveryDaemonEntity(
+  DaemonEntity(
     this._id,
     this._meta,
     this._address,
@@ -23,37 +23,37 @@ class DiscoveryDaemonEntity implements DiscoveryDaemon {
 
   @override
   Meta get meta => _meta;
-  DiscoveryEvent? updateMeta(Meta meta) {
+  DaemonEvent? updateMeta(Meta meta) {
     if (_meta != meta) {
       _meta = meta;
-      return DiscoveryEventDaemonMetaChanged(id);
+      return DaemonEventMetaChanged(id);
     }
     return null;
   }
 
   @override
   InternetAddress get address => _address;
-  DiscoveryEvent? updateAddress(InternetAddress address) {
+  DaemonEvent? updateAddress(InternetAddress address) {
     if (_address != address) {
       _address = address;
-      return DiscoveryEventDaemonAddressChanged(id);
+      return DaemonEventAddressChanged(id);
     }
     return null;
   }
 
   @override
   String? get project => _project;
-  DiscoveryEvent? updateProject(String? project) {
+  DaemonEvent? updateProject(String? project) {
     if (_project != project) {
       _project = project;
-      return DiscoveryEventDaemonProjectChanged(id);
+      return DaemonEventProjectChanged(id);
     }
     return null;
   }
 
-  Iterable<DiscoveryEvent> update(
+  Iterable<DaemonEvent> update(
       Meta meta, InternetAddress address, String? project) {
-    final events = <DiscoveryEvent>[];
+    final events = <DaemonEvent>[];
     updateMeta(meta)?.let(events.add);
     updateAddress(address)?.let(events.add);
     updateProject(project)?.let(events.add);

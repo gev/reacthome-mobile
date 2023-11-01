@@ -1,9 +1,9 @@
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:reacthome/features/discovery/application/discovery_collection.dart';
-import 'package:reacthome/features/discovery/domain/discovery_daemon_entity.dart';
+import 'package:reacthome/core/daemon/daemon_collection.dart';
+import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
 
-class DiscoveryRepository implements DiscoveryCollection {
-  var _daemons = IMap<String, DiscoveryDaemonEntity>();
+class DiscoveryRepository implements DaemonCollection {
+  var _daemons = IMap<String, DaemonEntity>();
 
   @override
   Iterable<String> getAllDaemons() => _daemons.keys;
@@ -12,10 +12,10 @@ class DiscoveryRepository implements DiscoveryCollection {
   bool hasDaemon(String id) => _daemons.containsKey(id);
 
   @override
-  DiscoveryDaemonEntity? getDaemon(String id) => _daemons.get(id);
+  DaemonEntity? getDaemon(String id) => _daemons.get(id);
 
   @override
-  void addDaemon(DiscoveryDaemonEntity daemon) =>
+  void addDaemon(DaemonEntity daemon) =>
       _daemons = _daemons.add(daemon.id, daemon);
 
   @override

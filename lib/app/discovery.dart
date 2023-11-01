@@ -1,12 +1,12 @@
 import 'package:reacthome/app/app_life_cycle.dart';
 import 'package:reacthome/app/config.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_process_event.dart';
-import 'package:reacthome/features/discovery/application/discovery_process_lifecycle_service.dart';
-import 'package:reacthome/features/discovery/application/discovery_process_service.dart';
+import 'package:reacthome/features/daemon/application/daemon_service.dart';
+import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
-import 'package:reacthome/features/discovery/domain/discovery_process_entity.dart';
-import 'package:reacthome/features/discovery/infrastructure/discovery_process_multicast_service.dart';
+import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
+import 'package:reacthome/features/discovery/infrastructure/discovery_multicast_service.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_repository.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
@@ -16,28 +16,28 @@ import 'package:reacthome/util/event_bus.dart';
 class Discovery {
   static final instance = Discovery._();
 
-  late EventBus<DiscoveryEvent> eventBus;
-  late DiscoveryService service;
+  late EventBus<DaemonEvent> eventBus;
+  late DaemonService service;
 
-  late EventBus<DiscoveryProcessEvent> processEventBus;
-  late DiscoveryProcessService processService;
+  late EventBus<DiscoveryEvent> processEventBus;
+  late DiscoveryService processService;
 
   Discovery._() {
-    eventBus = EventBus<DiscoveryEvent>();
+    eventBus = EventBus<DaemonEvent>();
 
-    service = DiscoveryService(
+    service = DaemonService(
       eventSink: eventBus,
       repository: DiscoveryRepository(),
     );
 
-    processEventBus = EventBus<DiscoveryProcessEvent>();
+    processEventBus = EventBus<DiscoveryEvent>();
 
-    processService = DiscoveryProcessService(
+    processService = DiscoveryService(
       eventSink: processEventBus,
-      process: DiscoveryProcessEntity(),
+      process: DiscoveryEntity(),
     );
 
-    DiscoveryProcessMulticastService(
+    DiscoveryMulticastService(
       eventSource: processEventBus,
       actor: processService,
       factory: MulticastSourceFactory(
@@ -52,7 +52,7 @@ class Discovery {
       timeout: Config.discovery.timeout,
     );
 
-    DiscoveryProcessLifecycleService(
+    DiscoveryLifecycleService(
       eventSource: AppLifecycle.instance.eventBus,
       actor: processService,
     );

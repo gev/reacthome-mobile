@@ -1,15 +1,15 @@
-import 'package:reacthome/core/discovery/discovery_command.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryTimeoutService extends EventListener<DiscoveryEvent> {
-  final DiscoveryCommand actor;
+class DiscoveryTimeoutService extends EventListener<DaemonEvent> {
+  final DaemonCommand actor;
   final Duration timeout;
 
   DiscoveryTimeoutService({
-    required EventBus<DiscoveryEvent> eventSource,
+    required EventBus<DaemonEvent> eventSource,
     required this.actor,
     required this.timeout,
   }) : super(eventSource);
@@ -17,13 +17,13 @@ class DiscoveryTimeoutService extends EventListener<DiscoveryEvent> {
   final timeouts = Timeout<String>();
 
   @override
-  void handle(DiscoveryEvent event) {
+  void handle(DaemonEvent event) {
     switch (event) {
-      case DiscoveryEventDaemonAdded e:
+      case DaemonEventAdded e:
         _setTimeout(e.daemon);
-      case DiscoveryEventDaemonConfirmed e:
+      case DaemonEventConfirmed e:
         _setTimeout(e.daemon);
-      case DiscoveryEventDaemonRemoved e:
+      case DaemonEventRemoved e:
         _cancelTimeout(e.daemon);
       default:
     }

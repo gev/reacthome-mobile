@@ -1,25 +1,25 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_query.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class HomeScreenDaemonListViewModel extends EventListener<DiscoveryEvent>
+class HomeScreenDaemonListViewModel extends EventListener<DaemonEvent>
     with ChangeNotifier {
-  final DiscoveryQuery discovery;
+  final DaemonQuery discovery;
 
   HomeScreenDaemonListViewModel(this.discovery,
-      {required EventBus<DiscoveryEvent> eventSource})
+      {required EventBus<DaemonEvent> eventSource})
       : super(eventSource);
 
   Iterable<String> get daemons => discovery.getAllDaemons();
   String get numberTitle => daemons.length.toString();
 
   @override
-  void handle(DiscoveryEvent event) {
+  void handle(DaemonEvent event) {
     switch (event) {
-      case DiscoveryEventDaemonAdded _:
-      case DiscoveryEventDaemonRemoved _:
+      case DaemonEventAdded _:
+      case DaemonEventRemoved _:
         notifyListeners();
       default:
     }

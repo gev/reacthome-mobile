@@ -1,6 +1,5 @@
-import 'package:reacthome/core/discovery/discovery_daemon.dart';
+import 'package:reacthome/core/discovery/discovery.dart';
 
 abstract interface class DiscoveryQuery {
-  Iterable<String> getAllDaemons();
-  DiscoveryDaemon? getDaemonById(String id);
+  Discovery getProcess();
 }

@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_query.dart';
+import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class HomeScreenDaemonTileViewModel extends EventListener<DiscoveryEvent>
+class HomeScreenDaemonTileViewModel extends EventListener<DaemonEvent>
     with ChangeNotifier {
-  final DiscoveryQuery discovery;
+  final DaemonQuery discovery;
 
   HomeScreenDaemonTileViewModel(this.discovery,
-      {required EventBus<DiscoveryEvent> eventSource})
+      {required EventBus<DaemonEvent> eventSource})
       : super(eventSource);
 
   String getDaemonTitleById(String id) {
@@ -18,9 +18,9 @@ class HomeScreenDaemonTileViewModel extends EventListener<DiscoveryEvent>
   }
 
   @override
-  void handle(DiscoveryEvent event) {
+  void handle(DaemonEvent event) {
     switch (event) {
-      case DiscoveryEventDaemonMetaChanged _:
+      case DaemonEventMetaChanged _:
         notifyListeners();
       default:
     }

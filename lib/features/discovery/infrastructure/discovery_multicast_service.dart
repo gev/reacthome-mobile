@@ -1,29 +1,28 @@
-import 'package:reacthome/core/discovery/discovery_process_command.dart';
-import 'package:reacthome/core/discovery/discovery_process_event.dart';
+import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryProcessMulticastService
-    extends EventListener<DiscoveryProcessEvent> {
-  final DiscoveryProcessCommand actor;
+class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
+  final DiscoveryCommand actor;
   final MulticastSourceFactory factory;
 
   late MulticastSource _source;
 
-  DiscoveryProcessMulticastService({
-    required EventBus<DiscoveryProcessEvent> eventSource,
+  DiscoveryMulticastService({
+    required EventBus<DiscoveryEvent> eventSource,
     required this.actor,
     required this.factory,
   }) : super(eventSource);
 
   @override
-  void handle(DiscoveryProcessEvent event) async {
+  void handle(DiscoveryEvent event) async {
     switch (event) {
-      case DiscoveryProcessEvent.startRequested:
+      case DiscoveryEvent.startRequested:
         _completeStartProcess();
-      case DiscoveryProcessEvent.stopRequested:
+      case DiscoveryEvent.stopRequested:
         _completeStopProcess();
       default:
     }
