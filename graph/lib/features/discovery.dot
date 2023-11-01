@@ -5,15 +5,12 @@ digraph "" {
   "/interface/discovery_controller.dart" [label="discovery_controller"];
   "/interface/discovery_action.dart" [label="discovery_action"];
   "/discovery_config.dart" [label="discovery_config"];
-  "/application/discovery_process_lifecycle_service.dart" [label="discovery_process_lifecycle_service"];
-  "/application/discovery_process_service.dart" [label="discovery_process_service"];
-  "/application/discovery_collection.dart" [label="discovery_collection"];
+  "/application/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
   "/application/discovery_service.dart" [label="discovery_service"];
   "/infrastructure/discovery_repository.dart" [label="discovery_repository"];
-  "/infrastructure/discovery_process_multicast_service.dart" [label="discovery_process_multicast_service"];
+  "/infrastructure/discovery_multicast_service.dart" [label="discovery_multicast_service"];
   "/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
-  "/domain/discovery_daemon_entity.dart" [label="discovery_daemon_entity"];
-  "/domain/discovery_process_entity.dart" [label="discovery_process_entity"];
+  "/domain/discovery_entity.dart" [label="discovery_entity"];
   subgraph "cluster~" {
     label="discovery";
     "/discovery_config.dart";
@@ -24,28 +21,20 @@ digraph "" {
     }
     subgraph "cluster~/application" {
       label="application";
-      "/application/discovery_process_lifecycle_service.dart";
-      "/application/discovery_process_service.dart";
-      "/application/discovery_collection.dart";
+      "/application/discovery_lifecycle_service.dart";
       "/application/discovery_service.dart";
     }
     subgraph "cluster~/infrastructure" {
       label="infrastructure";
       "/infrastructure/discovery_repository.dart";
-      "/infrastructure/discovery_process_multicast_service.dart";
+      "/infrastructure/discovery_multicast_service.dart";
       "/infrastructure/discovery_timeout_service.dart";
     }
     subgraph "cluster~/domain" {
       label="domain";
-      "/domain/discovery_daemon_entity.dart";
-      "/domain/discovery_process_entity.dart";
+      "/domain/discovery_entity.dart";
     }
   }
   "/interface/discovery_controller.dart" -> "/interface/discovery_action.dart";
-  "/application/discovery_process_service.dart" -> "/domain/discovery_process_entity.dart";
-  "/application/discovery_collection.dart" -> "/domain/discovery_daemon_entity.dart";
-  "/application/discovery_service.dart" -> "/application/discovery_collection.dart";
-  "/application/discovery_service.dart" -> "/domain/discovery_daemon_entity.dart";
-  "/infrastructure/discovery_repository.dart" -> "/application/discovery_collection.dart";
-  "/infrastructure/discovery_repository.dart" -> "/domain/discovery_daemon_entity.dart";
+  "/application/discovery_service.dart" -> "/domain/discovery_entity.dart";
 }

@@ -3,15 +3,16 @@ digraph "" {
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
   "/meta.dart" [label="meta"];
-  "/discovery/discovery_process_query.dart" [label="discovery_process_query"];
-  "/discovery/discovery_process_event.dart" [label="discovery_process_event"];
-  "/discovery/discovery_daemon.dart" [label="discovery_daemon"];
-  "/discovery/discovery_process.dart" [label="discovery_process"];
+  "/discovery/discovery_state.dart" [label="discovery_state"];
   "/discovery/discovery_query.dart" [label="discovery_query"];
   "/discovery/discovery_event.dart" [label="discovery_event"];
   "/discovery/discovery_command.dart" [label="discovery_command"];
-  "/discovery/discovery_process_state.dart" [label="discovery_process_state"];
-  "/discovery/discovery_process_command.dart" [label="discovery_process_command"];
+  "/discovery/discovery.dart" [label="discovery"];
+  "/daemon/daemon.dart" [label="daemon"];
+  "/daemon/daemon_query.dart" [label="daemon_query"];
+  "/daemon/daemon_event.dart" [label="daemon_event"];
+  "/daemon/daemon_collection.dart" [label="daemon_collection"];
+  "/daemon/daemon_command.dart" [label="daemon_command"];
   "/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
   "/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
   subgraph "cluster~" {
@@ -19,15 +20,19 @@ digraph "" {
     "/meta.dart";
     subgraph "cluster~/discovery" {
       label="discovery";
-      "/discovery/discovery_process_query.dart";
-      "/discovery/discovery_process_event.dart";
-      "/discovery/discovery_daemon.dart";
-      "/discovery/discovery_process.dart";
+      "/discovery/discovery_state.dart";
       "/discovery/discovery_query.dart";
       "/discovery/discovery_event.dart";
       "/discovery/discovery_command.dart";
-      "/discovery/discovery_process_state.dart";
-      "/discovery/discovery_process_command.dart";
+      "/discovery/discovery.dart";
+    }
+    subgraph "cluster~/daemon" {
+      label="daemon";
+      "/daemon/daemon.dart";
+      "/daemon/daemon_query.dart";
+      "/daemon/daemon_event.dart";
+      "/daemon/daemon_collection.dart";
+      "/daemon/daemon_command.dart";
     }
     subgraph "cluster~/app_lifecycle" {
       label="app_lifecycle";
@@ -35,9 +40,9 @@ digraph "" {
       "/app_lifecycle/app_lifecycle_event.dart";
     }
   }
-  "/discovery/discovery_process_query.dart" -> "/discovery/discovery_process.dart";
-  "/discovery/discovery_daemon.dart" -> "/meta.dart";
-  "/discovery/discovery_process.dart" -> "/discovery/discovery_process_state.dart";
-  "/discovery/discovery_query.dart" -> "/discovery/discovery_daemon.dart";
-  "/discovery/discovery_command.dart" -> "/meta.dart";
+  "/discovery/discovery_query.dart" -> "/discovery/discovery.dart";
+  "/discovery/discovery.dart" -> "/discovery/discovery_state.dart";
+  "/daemon/daemon.dart" -> "/meta.dart";
+  "/daemon/daemon_query.dart" -> "/daemon/daemon.dart";
+  "/daemon/daemon_command.dart" -> "/meta.dart";
 }

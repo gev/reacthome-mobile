@@ -6,7 +6,7 @@ digraph "" {
   "/home_screen_view.android.dart" [label="home_screen_view.android"];
   "/home_screen_view.ios.dart" [label="home_screen_view.ios"];
   "/home_screen_daemon_tile_view_model.dart" [label="home_screen_daemon_tile_view_model"];
-  "/home_screen_view_model.dart" [label="home_screen_view_model"];
+  "/home_screen_daemon_list_view_model.dart" [label="home_screen_daemon_list_view_model"];
   "/home_screen.dart" [label="home_screen"];
   subgraph "cluster~" {
     label="home";
@@ -14,18 +14,18 @@ digraph "" {
     "/home_screen_view.android.dart";
     "/home_screen_view.ios.dart";
     "/home_screen_daemon_tile_view_model.dart";
-    "/home_screen_view_model.dart";
+    "/home_screen_daemon_list_view_model.dart";
     "/home_screen.dart";
   }
   "/home_screen_view.android.dart" -> "/home_screen_add_button_view_model.dart";
   "/home_screen_view.android.dart" -> "/home_screen_daemon_tile_view_model.dart";
-  "/home_screen_view.android.dart" -> "/home_screen_view_model.dart";
+  "/home_screen_view.android.dart" -> "/home_screen_daemon_list_view_model.dart";
   "/home_screen_view.ios.dart" -> "/home_screen_add_button_view_model.dart";
   "/home_screen_view.ios.dart" -> "/home_screen_daemon_tile_view_model.dart";
-  "/home_screen_view.ios.dart" -> "/home_screen_view_model.dart";
+  "/home_screen_view.ios.dart" -> "/home_screen_daemon_list_view_model.dart";
   "/home_screen.dart" -> "/home_screen_add_button_view_model.dart";
+  "/home_screen.dart" -> "/home_screen_daemon_list_view_model.dart";
   "/home_screen.dart" -> "/home_screen_daemon_tile_view_model.dart";
   "/home_screen.dart" -> "/home_screen_view.android.dart";
   "/home_screen.dart" -> "/home_screen_view.ios.dart";
-  "/home_screen.dart" -> "/home_screen_view_model.dart";
 }

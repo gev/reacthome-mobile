@@ -5,15 +5,14 @@ digraph "" {
   "/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
   "/discovery/interface/discovery_action.dart" [label="discovery_action"];
   "/discovery/discovery_config.dart" [label="discovery_config"];
-  "/discovery/application/discovery_process_lifecycle_service.dart" [label="discovery_process_lifecycle_service"];
-  "/discovery/application/discovery_process_service.dart" [label="discovery_process_service"];
-  "/discovery/application/discovery_collection.dart" [label="discovery_collection"];
+  "/discovery/application/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
   "/discovery/application/discovery_service.dart" [label="discovery_service"];
   "/discovery/infrastructure/discovery_repository.dart" [label="discovery_repository"];
-  "/discovery/infrastructure/discovery_process_multicast_service.dart" [label="discovery_process_multicast_service"];
+  "/discovery/infrastructure/discovery_multicast_service.dart" [label="discovery_multicast_service"];
   "/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
-  "/discovery/domain/discovery_daemon_entity.dart" [label="discovery_daemon_entity"];
-  "/discovery/domain/discovery_process_entity.dart" [label="discovery_process_entity"];
+  "/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
+  "/daemon/application/daemon_service.dart" [label="daemon_service"];
+  "/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
   subgraph "cluster~" {
     label="features";
@@ -27,21 +26,29 @@ digraph "" {
       }
       subgraph "cluster~/discovery/application" {
         label="application";
-        "/discovery/application/discovery_process_lifecycle_service.dart";
-        "/discovery/application/discovery_process_service.dart";
-        "/discovery/application/discovery_collection.dart";
+        "/discovery/application/discovery_lifecycle_service.dart";
         "/discovery/application/discovery_service.dart";
       }
       subgraph "cluster~/discovery/infrastructure" {
         label="infrastructure";
         "/discovery/infrastructure/discovery_repository.dart";
-        "/discovery/infrastructure/discovery_process_multicast_service.dart";
+        "/discovery/infrastructure/discovery_multicast_service.dart";
         "/discovery/infrastructure/discovery_timeout_service.dart";
       }
       subgraph "cluster~/discovery/domain" {
         label="domain";
-        "/discovery/domain/discovery_daemon_entity.dart";
-        "/discovery/domain/discovery_process_entity.dart";
+        "/discovery/domain/discovery_entity.dart";
+      }
+    }
+    subgraph "cluster~/daemon" {
+      label="daemon";
+      subgraph "cluster~/daemon/application" {
+        label="application";
+        "/daemon/application/daemon_service.dart";
+      }
+      subgraph "cluster~/daemon/domain" {
+        label="domain";
+        "/daemon/domain/daemon_entity.dart";
       }
     }
     subgraph "cluster~/app_lifecycle" {
@@ -53,10 +60,7 @@ digraph "" {
     }
   }
   "/discovery/interface/discovery_controller.dart" -> "/discovery/interface/discovery_action.dart";
-  "/discovery/application/discovery_process_service.dart" -> "/discovery/domain/discovery_process_entity.dart";
-  "/discovery/application/discovery_collection.dart" -> "/discovery/domain/discovery_daemon_entity.dart";
-  "/discovery/application/discovery_service.dart" -> "/discovery/application/discovery_collection.dart";
-  "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_daemon_entity.dart";
-  "/discovery/infrastructure/discovery_repository.dart" -> "/discovery/application/discovery_collection.dart";
-  "/discovery/infrastructure/discovery_repository.dart" -> "/discovery/domain/discovery_daemon_entity.dart";
+  "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_entity.dart";
+  "/discovery/infrastructure/discovery_repository.dart" -> "/daemon/domain/daemon_entity.dart";
+  "/daemon/application/daemon_service.dart" -> "/daemon/domain/daemon_entity.dart";
 }
