@@ -7,12 +7,19 @@ digraph "" {
   "/app/app.ios.dart" [label="app.ios"];
   "/app/navigation.dart" [label="navigation"];
   "/app/app.dart" [label="app"];
+  "/screens/home/home_screen_daemon_tile_view.ios copy.dart" [label="home_screen_daemon_tile_view.ios copy"];
+  "/screens/home/home_screen_number_title_view.dart" [label="home_screen_number_title_view"];
   "/screens/home/home_screen_add_button_view_model.dart" [label="home_screen_add_button_view_model"];
+  "/screens/home/home_screen_add_button_view.android.dart" [label="home_screen_add_button_view.android"];
   "/screens/home/home_screen_view.android.dart" [label="home_screen_view.android"];
   "/screens/home/home_screen_view.ios.dart" [label="home_screen_view.ios"];
   "/screens/home/home_screen_daemon_tile_view_model.dart" [label="home_screen_daemon_tile_view_model"];
   "/screens/home/home_screen_daemon_list_view_model.dart" [label="home_screen_daemon_list_view_model"];
+  "/screens/home/home_screen_daemon_tile_view.android.dart" [label="home_screen_daemon_tile_view.android"];
+  "/screens/home/home_screen_daemon_list_view.dart" [label="home_screen_daemon_list_view"];
   "/screens/home/home_screen.dart" [label="home_screen"];
+  "/screens/home/home_screen_add_button_view.ios.dart" [label="home_screen_add_button_view.ios"];
+  "/screens/home/home_screen_daemon_tile_view.dart" [label="home_screen_daemon_tile_view"];
   "/theme_config.dart" [label="theme_config"];
   subgraph "cluster~" {
     label="ui";
@@ -29,12 +36,19 @@ digraph "" {
       label="screens";
       subgraph "cluster~/screens/home" {
         label="home";
+        "/screens/home/home_screen_daemon_tile_view.ios copy.dart";
+        "/screens/home/home_screen_number_title_view.dart";
         "/screens/home/home_screen_add_button_view_model.dart";
+        "/screens/home/home_screen_add_button_view.android.dart";
         "/screens/home/home_screen_view.android.dart";
         "/screens/home/home_screen_view.ios.dart";
         "/screens/home/home_screen_daemon_tile_view_model.dart";
         "/screens/home/home_screen_daemon_list_view_model.dart";
+        "/screens/home/home_screen_daemon_tile_view.android.dart";
+        "/screens/home/home_screen_daemon_list_view.dart";
         "/screens/home/home_screen.dart";
+        "/screens/home/home_screen_add_button_view.ios.dart";
+        "/screens/home/home_screen_daemon_tile_view.dart";
       }
     }
   }
@@ -48,15 +62,24 @@ digraph "" {
   "/app/app.dart" -> "/app/app.ios.dart";
   "/app/app.dart" -> "/app/navigation.dart";
   "/app/app.dart" -> "/theme_config.dart";
-  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
-  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
-  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_daemon_list_view_model.dart";
-  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
-  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
-  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_daemon_list_view_model.dart";
+  "/screens/home/home_screen_daemon_tile_view.ios copy.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
+  "/screens/home/home_screen_number_title_view.dart" -> "/screens/home/home_screen_daemon_list_view_model.dart";
+  "/screens/home/home_screen_add_button_view.android.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_add_button_view.android.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_daemon_list_view.dart";
+  "/screens/home/home_screen_view.android.dart" -> "/screens/home/home_screen_number_title_view.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_add_button_view.ios.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_daemon_list_view.dart";
+  "/screens/home/home_screen_view.ios.dart" -> "/screens/home/home_screen_number_title_view.dart";
+  "/screens/home/home_screen_daemon_tile_view.android.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
+  "/screens/home/home_screen_daemon_list_view.dart" -> "/screens/home/home_screen_daemon_list_view_model.dart";
+  "/screens/home/home_screen_daemon_list_view.dart" -> "/screens/home/home_screen_daemon_tile_view.dart";
   "/screens/home/home_screen.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
   "/screens/home/home_screen.dart" -> "/screens/home/home_screen_daemon_list_view_model.dart";
   "/screens/home/home_screen.dart" -> "/screens/home/home_screen_daemon_tile_view_model.dart";
   "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.android.dart";
   "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.ios.dart";
+  "/screens/home/home_screen_add_button_view.ios.dart" -> "/screens/home/home_screen_add_button_view_model.dart";
+  "/screens/home/home_screen_daemon_tile_view.dart" -> "/screens/home/home_screen_daemon_tile_view.android.dart";
+  "/screens/home/home_screen_daemon_tile_view.dart" -> "/screens/home/home_screen_daemon_tile_view.ios copy.dart";
 }
