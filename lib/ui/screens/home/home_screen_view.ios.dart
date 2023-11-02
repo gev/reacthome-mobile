@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
-import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
-import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_add_button_view.ios.dart';
+import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view.dart';
+import 'package:reacthome/ui/screens/home/home_screen_number_title_view.dart';
 
 class HomeScreenViewIOS extends StatelessWidget {
   final String title;
@@ -12,64 +11,10 @@ class HomeScreenViewIOS extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-          leading: _NumberTitle(),
+          leading: const NumberTitle(),
           middle: Text(title),
-          trailing: _AddDaemonButton()),
-      child: _DaemonsList(),
-    );
-  }
-}
-
-class _AddDaemonButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final model = context.read<HomeScreenAddButtonViewModel>();
-    return CupertinoButton.filled(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-        onPressed: model.addDaemonButtonPressed,
-        child: const Row(mainAxisSize: MainAxisSize.min, children: [
-          Icon(CupertinoIcons.add, size: 28),
-          SizedBox(width: 8),
-          Text('Add'),
-        ]));
-  }
-}
-
-class _NumberTitle extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final numberTitle = context.select<HomeScreenDaemonListViewModel, String>(
-        (model) => model.numberTitle);
-    return Text(numberTitle);
-  }
-}
-
-class _DaemonsList extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    Iterable<String> daemons =
-        context.select<HomeScreenDaemonListViewModel, Iterable<String>>(
-            (model) => model.daemons);
-    return Expanded(
-      child: ListView(
-        children: daemons
-            .map((id) => _DaemonTile(key: ValueKey(id), id: id))
-            .toList(),
-      ),
-    );
-  }
-}
-
-class _DaemonTile extends StatelessWidget {
-  final String id;
-  const _DaemonTile({super.key, required this.id});
-
-  @override
-  Widget build(BuildContext context) {
-    String title = context.select<HomeScreenDaemonTileViewModel, String>(
-        (model) => model.getDaemonTitleById(id));
-    return CupertinoListTile(
-      title: Text(title),
+          trailing: const AddDaemonButton()),
+      child: const DaemonsList(),
     );
   }
 }
