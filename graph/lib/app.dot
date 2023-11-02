@@ -2,6 +2,7 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
+  "/daemon.dart" [label="daemon"];
   "/ui.dart" [label="ui"];
   "/config.dart" [label="config"];
   "/app_life_cycle.dart" [label="app_life_cycle"];
@@ -9,12 +10,14 @@ digraph "" {
   "/make.dart" [label="make"];
   subgraph "cluster~" {
     label="app";
+    "/daemon.dart";
     "/ui.dart";
     "/config.dart";
     "/app_life_cycle.dart";
     "/discovery.dart";
     "/make.dart";
   }
+  "/ui.dart" -> "/daemon.dart";
   "/ui.dart" -> "/discovery.dart";
   "/discovery.dart" -> "/app_life_cycle.dart";
   "/discovery.dart" -> "/config.dart";

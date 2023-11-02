@@ -27,6 +27,7 @@ digraph "" {
   "/core/daemon/daemon_command.dart" [label="daemon_command"];
   "/core/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
   "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/app/daemon.dart" [label="daemon"];
   "/app/ui.dart" [label="ui"];
   "/app/config.dart" [label="config"];
   "/app/app_life_cycle.dart" [label="app_life_cycle"];
@@ -48,6 +49,7 @@ digraph "" {
   "/features/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
   "/features/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
   "/features/daemon/application/daemon_service.dart" [label="daemon_service"];
+  "/features/daemon/infrastructure/daemon_repository.dart" [label="daemon_repository"];
   "/features/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
   "/main.dart" [label="main"];
@@ -109,6 +111,7 @@ digraph "" {
     }
     subgraph "cluster~/app" {
       label="app";
+      "/app/daemon.dart";
       "/app/ui.dart";
       "/app/config.dart";
       "/app/app_life_cycle.dart";
@@ -155,6 +158,10 @@ digraph "" {
         subgraph "cluster~/features/daemon/application" {
           label="application";
           "/features/daemon/application/daemon_service.dart";
+        }
+        subgraph "cluster~/features/daemon/infrastructure" {
+          label="infrastructure";
+          "/features/daemon/infrastructure/daemon_repository.dart";
         }
         subgraph "cluster~/features/daemon/domain" {
           label="domain";
@@ -225,6 +232,11 @@ digraph "" {
   "/core/daemon/daemon_query.dart" -> "/core/daemon/daemon.dart";
   "/core/daemon/daemon_collection.dart" -> "/features/daemon/domain/daemon_entity.dart";
   "/core/daemon/daemon_command.dart" -> "/core/meta.dart";
+  "/app/daemon.dart" -> "/core/daemon/daemon_event.dart";
+  "/app/daemon.dart" -> "/features/daemon/application/daemon_service.dart";
+  "/app/daemon.dart" -> "/features/daemon/infrastructure/daemon_repository.dart";
+  "/app/daemon.dart" -> "/util/event_bus.dart";
+  "/app/ui.dart" -> "/app/daemon.dart";
   "/app/ui.dart" -> "/app/discovery.dart";
   "/app/ui.dart" -> "/ui/screens/home/home_screen.dart";
   "/app/config.dart" -> "/features/discovery/discovery_config.dart";
@@ -297,6 +309,8 @@ digraph "" {
   "/features/daemon/application/daemon_service.dart" -> "/features/daemon/domain/daemon_entity.dart";
   "/features/daemon/application/daemon_service.dart" -> "/util/event_bus.dart";
   "/features/daemon/application/daemon_service.dart" -> "/util/event_emitter.dart";
+  "/features/daemon/infrastructure/daemon_repository.dart" -> "/core/daemon/daemon_collection.dart";
+  "/features/daemon/infrastructure/daemon_repository.dart" -> "/features/daemon/domain/daemon_entity.dart";
   "/features/daemon/domain/daemon_entity.dart" -> "/core/daemon/daemon.dart";
   "/features/daemon/domain/daemon_entity.dart" -> "/core/daemon/daemon_event.dart";
   "/features/daemon/domain/daemon_entity.dart" -> "/core/meta.dart";

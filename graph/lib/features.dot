@@ -12,6 +12,7 @@ digraph "" {
   "/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
   "/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
   "/daemon/application/daemon_service.dart" [label="daemon_service"];
+  "/daemon/infrastructure/daemon_repository.dart" [label="daemon_repository"];
   "/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
   subgraph "cluster~" {
@@ -46,6 +47,10 @@ digraph "" {
         label="application";
         "/daemon/application/daemon_service.dart";
       }
+      subgraph "cluster~/daemon/infrastructure" {
+        label="infrastructure";
+        "/daemon/infrastructure/daemon_repository.dart";
+      }
       subgraph "cluster~/daemon/domain" {
         label="domain";
         "/daemon/domain/daemon_entity.dart";
@@ -63,4 +68,5 @@ digraph "" {
   "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_entity.dart";
   "/discovery/infrastructure/discovery_repository.dart" -> "/daemon/domain/daemon_entity.dart";
   "/daemon/application/daemon_service.dart" -> "/daemon/domain/daemon_entity.dart";
+  "/daemon/infrastructure/daemon_repository.dart" -> "/daemon/domain/daemon_entity.dart";
 }
