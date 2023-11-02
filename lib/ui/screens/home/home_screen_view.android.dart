@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reacthome/ui/screens/home/home_screen_add_button_view.android.dart';
-import 'package:reacthome/ui/screens/home/home_screen_number_title_view.dart';
 
 class HomeScreenViewAndroid extends StatelessWidget {
   final String title;
