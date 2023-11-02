@@ -5,6 +5,7 @@ import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view_model.dart';
+import 'package:reacthome/ui/screens/home/home_screen_daemon_panel.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view.android.dart';
 import 'package:reacthome/ui/screens/home/home_screen_view.ios.dart';
@@ -24,6 +25,28 @@ Widget makeHomeScreen({
   }) daemon,
   String title = 'Home',
 }) {
+  final left = panel(discovery);
+  final right = panel(daemon);
+  return selectPlatform(
+    ios: HomeScreenViewIOS(
+      title: title,
+      left: left,
+      right: right,
+    ),
+    android: HomeScreenViewAndroid(
+      title: title,
+      left: left,
+      right: right,
+    ),
+  );
+}
+
+Widget panel(
+    ({
+      EventBus<DaemonEvent> eventBus,
+      DaemonQuery query,
+      DaemonCommand actor,
+    }) discovery) {
   final daemonListViewModel = HomeScreenDaemonListViewModel(discovery.query,
       eventSource: discovery.eventBus);
   final daemonTileViewModel = HomeScreenDaemonTileViewModel(discovery.query,
@@ -35,9 +58,6 @@ Widget makeHomeScreen({
       ChangeNotifierProvider(create: (_) => daemonTileViewModel),
       ChangeNotifierProvider(create: (_) => addButtonViewModel),
     ],
-    child: selectPlatform(
-      ios: HomeScreenViewIOS(title: title),
-      android: HomeScreenViewAndroid(title: title),
-    ),
+    child: const DaemonPanel(),
   );
 }

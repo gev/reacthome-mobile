@@ -1,20 +1,25 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/ui/screens/home/home_screen_add_button_view.ios.dart';
-import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view.dart';
-import 'package:reacthome/ui/screens/home/home_screen_number_title_view.dart';
 
 class HomeScreenViewIOS extends StatelessWidget {
   final String title;
-  const HomeScreenViewIOS({super.key, required this.title});
+  final Widget left;
+  final Widget right;
+
+  const HomeScreenViewIOS({
+    super.key,
+    required this.title,
+    required this.left,
+    required this.right,
+  });
 
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-          leading: const NumberTitle(),
-          middle: Text(title),
-          trailing: const AddDaemonButton()),
-      child: const DaemonsList(),
+      navigationBar: CupertinoNavigationBar(middle: Text(title)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [left, right],
+      ),
     );
   }
 }

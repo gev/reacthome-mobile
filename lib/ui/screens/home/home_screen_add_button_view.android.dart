@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/screens/home/home_screen_add_button_view_model.dart';
 
-class AddDaemonButton extends StatelessWidget {
-  const AddDaemonButton({super.key});
+class AddDaemonButtonAndroid extends StatelessWidget {
+  const AddDaemonButtonAndroid({super.key});
 
   @override
   Widget build(BuildContext context) {

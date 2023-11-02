@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_list_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen_daemon_tile_view.dart';
 
-class DaemonsList extends StatelessWidget {
-  const DaemonsList({super.key});
+class DaemonList extends StatelessWidget {
+  const DaemonList({super.key});
 
   @override
   Widget build(BuildContext context) {
