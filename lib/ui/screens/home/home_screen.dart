@@ -12,16 +12,23 @@ import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/platform.dart';
 
 Widget makeHomeScreen({
-  required EventBus<DaemonEvent> eventBus,
-  required DaemonQuery query,
-  required DaemonCommand actor,
+  required ({
+    EventBus<DaemonEvent> eventBus,
+    DaemonQuery query,
+    DaemonCommand actor,
+  }) discovery,
+  required ({
+    EventBus<DaemonEvent> eventBus,
+    DaemonQuery query,
+    DaemonCommand actor,
+  }) daemon,
   String title = 'Home',
 }) {
-  final daemonListViewModel =
-      HomeScreenDaemonListViewModel(query, eventSource: eventBus);
-  final daemonTileViewModel =
-      HomeScreenDaemonTileViewModel(query, eventSource: eventBus);
-  final addButtonViewModel = HomeScreenAddButtonViewModel(actor);
+  final daemonListViewModel = HomeScreenDaemonListViewModel(discovery.query,
+      eventSource: discovery.eventBus);
+  final daemonTileViewModel = HomeScreenDaemonTileViewModel(discovery.query,
+      eventSource: discovery.eventBus);
+  final addButtonViewModel = HomeScreenAddButtonViewModel(discovery.actor);
   return MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => daemonListViewModel),

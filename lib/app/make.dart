@@ -7,7 +7,7 @@ import 'package:reacthome/ui/app/navigation.dart';
 
 Widget make() => makeApp(
     theme: Config.theme,
-    appLifeCycle: AppLifecycle.instance.service,
+    appLifeCycle: AppLifecycle.instance.appLifecycleService,
     navigation: Navigation(
       home: UI.instance.homeScreen,
     ));

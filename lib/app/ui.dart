@@ -1,3 +1,4 @@
+import 'package:reacthome/app/daemon.dart';
 import 'package:reacthome/app/discovery.dart';
 import 'package:reacthome/ui/screens/home/home_screen.dart';
 
@@ -7,8 +8,15 @@ class UI {
   UI._();
 
   final homeScreen = makeHomeScreen(
-    eventBus: Discovery.instance.eventBus,
-    query: Discovery.instance.service,
-    actor: Discovery.instance.service,
+    discovery: (
+      eventBus: Discovery.instance.daemonEventBus,
+      query: Discovery.instance.daemonService,
+      actor: Discovery.instance.daemonService,
+    ),
+    daemon: (
+      eventBus: Daemon.instance.daemonEventBus,
+      query: Daemon.instance.daemonService,
+      actor: Daemon.instance.daemonService,
+    ),
   );
 }

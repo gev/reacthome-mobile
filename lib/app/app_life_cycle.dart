@@ -5,11 +5,11 @@ import 'package:reacthome/util/event_bus.dart';
 class AppLifecycle {
   static final instance = AppLifecycle._();
 
-  late AppLifecycleService service;
-  late EventBus<AppLifecycleEvent> eventBus;
+  late EventBus<AppLifecycleEvent> appLifecycleEventBus;
+  late AppLifecycleService appLifecycleService;
 
   AppLifecycle._() {
-    eventBus = EventBus<AppLifecycleEvent>();
-    service = AppLifecycleService(eventSink: eventBus);
+    appLifecycleEventBus = EventBus<AppLifecycleEvent>();
+    appLifecycleService = AppLifecycleService(eventSink: appLifecycleEventBus);
   }
 }

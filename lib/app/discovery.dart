@@ -16,45 +16,45 @@ import 'package:reacthome/util/event_bus.dart';
 class Discovery {
   static final instance = Discovery._();
 
-  late EventBus<DaemonEvent> eventBus;
-  late DaemonService service;
+  late EventBus<DaemonEvent> daemonEventBus;
+  late DaemonService daemonService;
 
-  late EventBus<DiscoveryEvent> processEventBus;
-  late DiscoveryService processService;
+  late EventBus<DiscoveryEvent> discoveryEventBus;
+  late DiscoveryService discoveryService;
 
   Discovery._() {
-    eventBus = EventBus<DaemonEvent>();
+    daemonEventBus = EventBus<DaemonEvent>();
 
-    service = DaemonService(
-      eventSink: eventBus,
+    daemonService = DaemonService(
+      eventSink: daemonEventBus,
       repository: DiscoveryRepository(),
     );
 
-    processEventBus = EventBus<DiscoveryEvent>();
+    discoveryEventBus = EventBus<DiscoveryEvent>();
 
-    processService = DiscoveryService(
-      eventSink: processEventBus,
+    discoveryService = DiscoveryService(
+      eventSink: discoveryEventBus,
       process: DiscoveryEntity(),
     );
 
     DiscoveryMulticastService(
-      eventSource: processEventBus,
-      actor: processService,
+      eventSource: discoveryEventBus,
+      actor: discoveryService,
       factory: MulticastSourceFactory(
         config: Config.discovery.listen,
-        controller: DiscoveryController(actor: service),
+        controller: DiscoveryController(actor: daemonService),
       ),
     );
 
     DiscoveryTimeoutService(
-      eventSource: eventBus,
-      actor: service,
+      eventSource: daemonEventBus,
+      actor: daemonService,
       timeout: Config.discovery.timeout,
     );
 
     DiscoveryLifecycleService(
-      eventSource: AppLifecycle.instance.eventBus,
-      actor: processService,
+      eventSource: AppLifecycle.instance.appLifecycleEventBus,
+      actor: discoveryService,
     );
   }
 }
