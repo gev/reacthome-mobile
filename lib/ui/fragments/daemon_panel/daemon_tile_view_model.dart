@@ -4,11 +4,11 @@ import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class HomeScreenDaemonTileViewModel extends EventListener<DaemonEvent>
+class DaemonTileViewModel extends EventListener<DaemonEvent>
     with ChangeNotifier {
   final DaemonQuery discovery;
 
-  HomeScreenDaemonTileViewModel(this.discovery,
+  DaemonTileViewModel(this.discovery,
       {required EventBus<DaemonEvent> eventSource})
       : super(eventSource);
 
