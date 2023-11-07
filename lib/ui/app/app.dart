@@ -13,6 +13,6 @@ Widget makeApp({
   String title = 'Reacthome',
 }) =>
     selectPlatform(
-      ios: AppIOS(theme, navigation, title, actor: appLifeCycle),
-      android: AppAndroid(theme, navigation, title, actor: appLifeCycle),
+      ios: () => AppIOS(theme, navigation, title, actor: appLifeCycle),
+      android: () => AppAndroid(theme, navigation, title, actor: appLifeCycle),
     );

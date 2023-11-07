@@ -24,12 +24,12 @@ Widget makeHomeScreen({
   final left = daemonPanel(discovery);
   final right = daemonPanel(daemon);
   return selectPlatform(
-    ios: HomeScreenIOS(
+    ios: () => HomeScreenIOS(
       title: title,
       left: left,
       right: right,
     ),
-    android: HomeScreenAndroid(
+    android: () => HomeScreenAndroid(
       title: title,
       left: left,
       right: right,

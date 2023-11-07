@@ -8,6 +8,6 @@ Widget listTile({
   required String title,
 }) =>
     selectPlatform(
-      ios: ListTileIOS(title, key: key),
-      android: ListTileAndroid(title, key: key),
+      ios: () => ListTileIOS(title, key: key),
+      android: () => ListTileAndroid(title, key: key),
     );
