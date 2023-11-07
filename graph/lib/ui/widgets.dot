@@ -1,0 +1,30 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/list_tile/home_screen_daemon_tile_view.ios.dart" [label="home_screen_daemon_tile_view.ios"];
+  "/list_tile/home_screen_daemon_tile_view.android.dart" [label="home_screen_daemon_tile_view.android"];
+  "/list_tile/home_screen_daemon_tile_view.dart" [label="home_screen_daemon_tile_view"];
+  "/add_button/add_button.dart" [label="add_button"];
+  "/add_button/add_button.ios.dart" [label="add_button.ios"];
+  "/add_button/add_button.android.dart" [label="add_button.android"];
+  subgraph "cluster~" {
+    label="widgets";
+    subgraph "cluster~/list_tile" {
+      label="list_tile";
+      "/list_tile/home_screen_daemon_tile_view.ios.dart";
+      "/list_tile/home_screen_daemon_tile_view.android.dart";
+      "/list_tile/home_screen_daemon_tile_view.dart";
+    }
+    subgraph "cluster~/add_button" {
+      label="add_button";
+      "/add_button/add_button.dart";
+      "/add_button/add_button.ios.dart";
+      "/add_button/add_button.android.dart";
+    }
+  }
+  "/list_tile/home_screen_daemon_tile_view.dart" -> "/list_tile/home_screen_daemon_tile_view.android.dart";
+  "/list_tile/home_screen_daemon_tile_view.dart" -> "/list_tile/home_screen_daemon_tile_view.ios.dart";
+  "/add_button/add_button.dart" -> "/add_button/add_button.android.dart";
+  "/add_button/add_button.dart" -> "/add_button/add_button.ios.dart";
+}
