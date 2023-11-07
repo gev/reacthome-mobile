@@ -5,10 +5,10 @@ import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:uuid/uuid.dart';
 
-class AddDaemonButtonViewModel with ChangeNotifier {
+class DaemonCommandViewModel with ChangeNotifier {
   final DaemonCommand discovery;
 
-  AddDaemonButtonViewModel(this.discovery);
+  DaemonCommandViewModel(this.discovery);
 
   int _index = 0;
   final _uuid = const Uuid();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/daemon_list_view_model.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/daemon_tile_view.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/widgets/daemon_tile.dart';
 
 class DaemonList extends StatelessWidget {
   const DaemonList({super.key});

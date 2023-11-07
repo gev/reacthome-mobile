@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/add_daemon_button_view.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/daemon_list_view.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/number_title_view.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/widgets/add_daemon_button.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/widgets/daemon_list.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/widgets/daemon_count.dart';
 
-class DaemonPanel extends StatelessWidget {
-  const DaemonPanel({super.key});
+class DaemonPanelView extends StatelessWidget {
+  const DaemonPanelView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class DaemonPanel extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberTitle(),
+              DaemonCount(),
               AddDaemonButton(),
             ],
           ),

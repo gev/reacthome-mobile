@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class HomeScreenViewAndroid extends StatelessWidget {
+class HomeScreenAndroid extends StatelessWidget {
   final String title;
   final Widget left;
   final Widget right;
 
-  const HomeScreenViewAndroid({
+  const HomeScreenAndroid({
     super.key,
     required this.title,
     required this.left,

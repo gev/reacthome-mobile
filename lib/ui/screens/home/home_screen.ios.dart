@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
-class HomeScreenViewIOS extends StatelessWidget {
+class HomeScreenIOS extends StatelessWidget {
   final String title;
   final Widget left;
   final Widget right;
 
-  const HomeScreenViewIOS({
+  const HomeScreenIOS({
     super.key,
     required this.title,
     required this.left,
