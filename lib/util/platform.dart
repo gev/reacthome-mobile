@@ -1,6 +1,7 @@
 import 'dart:io';
 
-typedef Factory<T> = T Function();
-
-T selectPlatform<T>({required Factory<T> ios, required Factory<T> android}) =>
+T selectPlatform<T>({
+  required T Function() ios,
+  required T Function() android,
+}) =>
     Platform.isIOS || Platform.isMacOS ? ios() : android();
