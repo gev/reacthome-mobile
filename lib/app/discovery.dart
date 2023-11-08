@@ -7,11 +7,11 @@ import 'package:reacthome/features/discovery/application/discovery_lifecycle_ser
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_multicast_service.dart';
-import 'package:reacthome/features/discovery/infrastructure/discovery_repository.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/repository.dart';
 
 class Discovery {
   static final instance = Discovery._();
@@ -23,14 +23,14 @@ class Discovery {
   late DiscoveryService discoveryService;
 
   Discovery._() {
-    daemonEventBus = EventBus<DaemonEvent>();
+    daemonEventBus = EventBus();
 
     daemonService = DaemonService(
       eventSink: daemonEventBus,
-      repository: DiscoveryRepository(),
+      repository: InMemoryRepository(),
     );
 
-    discoveryEventBus = EventBus<DiscoveryEvent>();
+    discoveryEventBus = EventBus();
 
     discoveryService = DiscoveryService(
       eventSink: discoveryEventBus,
