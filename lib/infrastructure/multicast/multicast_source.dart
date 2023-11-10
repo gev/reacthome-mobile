@@ -12,8 +12,10 @@ class MulticastSource {
 
   MulticastSource._(this._socket, this._timer, this._subscription);
 
-  static Future<MulticastSource> create(
-      MulticastConfig config, Handler<Datagram> controller) async {
+  static Future<MulticastSource> create({
+    required MulticastConfig config,
+    required Handler<Datagram> controller,
+  }) async {
     final socket = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
       config.port,

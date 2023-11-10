@@ -14,6 +14,8 @@ class MulticastSourceFactory {
     required this.controller,
   });
 
-  Future<MulticastSource> create() =>
-      MulticastSource.create(config, controller);
+  Future<MulticastSource> create() => MulticastSource.create(
+        config: config,
+        controller: controller,
+      );
 }
