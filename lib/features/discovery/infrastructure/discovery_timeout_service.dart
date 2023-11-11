@@ -1,7 +1,6 @@
 import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
-import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryTimeoutService extends EventListener<DaemonEvent> {
@@ -9,10 +8,10 @@ class DiscoveryTimeoutService extends EventListener<DaemonEvent> {
   final Duration timeout;
 
   DiscoveryTimeoutService({
-    required EventBus<DaemonEvent> eventSource,
+    required super.eventSource,
     required this.actor,
     required this.timeout,
-  }) : super(eventSource);
+  });
 
   final timeouts = Timeout<String>();
 

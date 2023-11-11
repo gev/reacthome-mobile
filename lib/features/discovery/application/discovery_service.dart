@@ -3,7 +3,6 @@ import 'package:reacthome/core/discovery/discovery_command.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
-import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
@@ -12,10 +11,9 @@ class DiscoveryService extends EventEmitter<DiscoveryEvent>
   final DiscoveryEntity _process;
 
   DiscoveryService({
-    required EventBus<DiscoveryEvent> eventSink,
+    required super.eventSink,
     required DiscoveryEntity process,
-  })  : _process = process,
-        super(eventSink);
+  }) : _process = process;
 
   @override
   Discovery getProcess() => _process;

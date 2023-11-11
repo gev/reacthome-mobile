@@ -6,7 +6,6 @@ import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
-import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/repository.dart';
 
@@ -14,9 +13,10 @@ class DaemonService extends EventEmitter<DaemonEvent>
     implements DaemonCommand, DaemonQuery {
   final Repository<String, DaemonEntity> repository;
 
-  DaemonService(
-      {required EventBus<DaemonEvent> eventSink, required this.repository})
-      : super(eventSink);
+  DaemonService({
+    required super.eventSink,
+    required this.repository,
+  });
 
   @override
   Iterable<String> getAllDaemons() => repository.getAll();

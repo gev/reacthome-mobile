@@ -1,9 +1,9 @@
 import 'package:reacthome/util/event_bus.dart';
 
 abstract class EventEmitter<T> {
-  final EventBus<T> bus;
+  final EventBus<T> eventSink;
 
-  EventEmitter(this.bus);
+  EventEmitter({required this.eventSink});
 
-  void emit(T event) => bus.emit(event);
+  void emit(T event) => eventSink.emit(event);
 }
