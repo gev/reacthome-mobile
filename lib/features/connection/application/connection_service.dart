@@ -2,7 +2,6 @@ import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_query.dart';
-import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
