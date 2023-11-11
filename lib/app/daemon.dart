@@ -14,7 +14,7 @@ class Daemon {
 
     daemonService = DaemonService(
       eventSink: daemonEventBus,
-      repository: InMemoryRepository(),
+      repository: ImmutableMapRepository(),
     );
   }
 }

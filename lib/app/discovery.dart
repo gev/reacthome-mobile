@@ -27,7 +27,7 @@ class Discovery {
 
     daemonService = DaemonService(
       eventSink: daemonEventBus,
-      repository: InMemoryRepository(),
+      repository: ImmutableMapRepository(),
     );
 
     discoveryEventBus = EventBus();
