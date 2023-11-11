@@ -8,38 +8,34 @@ class DiscoveryEntity implements Discovery {
   @override
   DiscoveryState get state => _state;
 
-  DiscoveryEvent? start() => _run(
-        when: DiscoveryState.stopped,
-        next: DiscoveryState.starPending,
-        emit: DiscoveryEvent.startRequested,
-      );
+  DiscoveryEvent? start() {
+    if (_state == DiscoveryState.stopped) {
+      _state = DiscoveryState.starPending;
+      return DiscoveryEventStartRequested();
+    }
+    return null;
+  }
 
-  DiscoveryEvent? completeStart() => _run(
-        when: DiscoveryState.starPending,
-        next: DiscoveryState.running,
-        emit: DiscoveryEvent.started,
-      );
+  DiscoveryEvent completeStart<S>(S source) {
+    if (_state == DiscoveryState.starPending) {
+      _state = DiscoveryState.running;
+      return DiscoveryEventStartCompleted(source);
+    }
+    return DiscoveryEventRejected(source);
+  }
 
-  DiscoveryEvent? stop() => _run(
-        when: DiscoveryState.running,
-        next: DiscoveryState.stopPending,
-        emit: DiscoveryEvent.stopRequested,
-      );
+  DiscoveryEvent? stop() {
+    if (_state == DiscoveryState.running) {
+      _state = DiscoveryState.stopPending;
+      return DiscoveryEventStopRequested();
+    }
+    return null;
+  }
 
-  DiscoveryEvent? completeStop() => _run(
-        when: DiscoveryState.stopPending,
-        next: DiscoveryState.stopped,
-        emit: DiscoveryEvent.stopped,
-      );
-
-  DiscoveryEvent? _run({
-    required DiscoveryState when,
-    required DiscoveryState next,
-    required DiscoveryEvent emit,
-  }) {
-    if (_state == when) {
-      _state = next;
-      return emit;
+  DiscoveryEvent? completeStop() {
+    if (_state == DiscoveryState.stopPending) {
+      _state = DiscoveryState.stopped;
+      return DiscoveryEventStopCompleted();
     }
     return null;
   }
