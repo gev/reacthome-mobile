@@ -2,22 +2,22 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/fragments/daemon_panel/daemon_tile_view.dart" [label="daemon_tile_view"];
-  "/fragments/daemon_panel/daemon_list_view.dart" [label="daemon_list_view"];
+  "/fragments/daemon_panel/view_models/daemon_command_view_model.dart" [label="daemon_command_view_model"];
+  "/fragments/daemon_panel/view_models/daemon_title_view_model.dart" [label="daemon_title_view_model"];
+  "/fragments/daemon_panel/view_models/daemon_list_view_model.dart" [label="daemon_list_view_model"];
   "/fragments/daemon_panel/daemon_panel.dart" [label="daemon_panel"];
-  "/fragments/daemon_panel/add_daemon_button_view_model.dart" [label="add_daemon_button_view_model"];
-  "/fragments/daemon_panel/daemon_tile_view_model.dart" [label="daemon_tile_view_model"];
   "/fragments/daemon_panel/daemon_panel_view.dart" [label="daemon_panel_view"];
-  "/fragments/daemon_panel/add_daemon_button_view.dart" [label="add_daemon_button_view"];
-  "/fragments/daemon_panel/daemon_list_view_model.dart" [label="daemon_list_view_model"];
-  "/fragments/daemon_panel/number_title_view.dart" [label="number_title_view"];
+  "/fragments/daemon_panel/widgets/daemon_tile.dart" [label="daemon_tile"];
+  "/fragments/daemon_panel/widgets/daemon_list.dart" [label="daemon_list"];
+  "/fragments/daemon_panel/widgets/daemon_count.dart" [label="daemon_count"];
+  "/fragments/daemon_panel/widgets/add_daemon_button.dart" [label="add_daemon_button"];
   "/app/app.android.dart" [label="app.android"];
   "/app/app_binding_observer.dart" [label="app_binding_observer"];
   "/app/app.ios.dart" [label="app.ios"];
   "/app/navigation.dart" [label="navigation"];
   "/app/app.dart" [label="app"];
-  "/screens/home/home_screen_view.android.dart" [label="home_screen_view.android"];
-  "/screens/home/home_screen_view.ios.dart" [label="home_screen_view.ios"];
+  "/screens/home/home_screen.android.dart" [label="home_screen.android"];
+  "/screens/home/home_screen.ios.dart" [label="home_screen.ios"];
   "/screens/home/home_screen.dart" [label="home_screen"];
   "/theme_config.dart" [label="theme_config"];
   "/widgets/list_tile/home_screen_daemon_tile_view.ios.dart" [label="home_screen_daemon_tile_view.ios"];
@@ -33,15 +33,21 @@ digraph "" {
       label="fragments";
       subgraph "cluster~/fragments/daemon_panel" {
         label="daemon_panel";
-        "/fragments/daemon_panel/daemon_tile_view.dart";
-        "/fragments/daemon_panel/daemon_list_view.dart";
         "/fragments/daemon_panel/daemon_panel.dart";
-        "/fragments/daemon_panel/add_daemon_button_view_model.dart";
-        "/fragments/daemon_panel/daemon_tile_view_model.dart";
         "/fragments/daemon_panel/daemon_panel_view.dart";
-        "/fragments/daemon_panel/add_daemon_button_view.dart";
-        "/fragments/daemon_panel/daemon_list_view_model.dart";
-        "/fragments/daemon_panel/number_title_view.dart";
+        subgraph "cluster~/fragments/daemon_panel/view_models" {
+          label="view_models";
+          "/fragments/daemon_panel/view_models/daemon_command_view_model.dart";
+          "/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
+          "/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
+        }
+        subgraph "cluster~/fragments/daemon_panel/widgets" {
+          label="widgets";
+          "/fragments/daemon_panel/widgets/daemon_tile.dart";
+          "/fragments/daemon_panel/widgets/daemon_list.dart";
+          "/fragments/daemon_panel/widgets/daemon_count.dart";
+          "/fragments/daemon_panel/widgets/add_daemon_button.dart";
+        }
       }
     }
     subgraph "cluster~/app" {
@@ -56,8 +62,8 @@ digraph "" {
       label="screens";
       subgraph "cluster~/screens/home" {
         label="home";
-        "/screens/home/home_screen_view.android.dart";
-        "/screens/home/home_screen_view.ios.dart";
+        "/screens/home/home_screen.android.dart";
+        "/screens/home/home_screen.ios.dart";
         "/screens/home/home_screen.dart";
       }
     }
@@ -77,20 +83,20 @@ digraph "" {
       }
     }
   }
-  "/fragments/daemon_panel/daemon_tile_view.dart" -> "/fragments/daemon_panel/daemon_tile_view_model.dart";
-  "/fragments/daemon_panel/daemon_tile_view.dart" -> "/widgets/list_tile/home_screen_daemon_tile_view.dart";
-  "/fragments/daemon_panel/daemon_list_view.dart" -> "/fragments/daemon_panel/daemon_list_view_model.dart";
-  "/fragments/daemon_panel/daemon_list_view.dart" -> "/fragments/daemon_panel/daemon_tile_view.dart";
-  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/add_daemon_button_view_model.dart";
-  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/daemon_list_view_model.dart";
   "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/daemon_panel_view.dart";
-  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/daemon_tile_view_model.dart";
-  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/add_daemon_button_view.dart";
-  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/daemon_list_view.dart";
-  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/number_title_view.dart";
-  "/fragments/daemon_panel/add_daemon_button_view.dart" -> "/widgets/add_button/add_button.dart";
-  "/fragments/daemon_panel/add_daemon_button_view.dart" -> "/fragments/daemon_panel/add_daemon_button_view_model.dart";
-  "/fragments/daemon_panel/number_title_view.dart" -> "/fragments/daemon_panel/daemon_list_view_model.dart";
+  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/view_models/daemon_command_view_model.dart";
+  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
+  "/fragments/daemon_panel/daemon_panel.dart" -> "/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
+  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/widgets/add_daemon_button.dart";
+  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/widgets/daemon_list.dart";
+  "/fragments/daemon_panel/daemon_panel_view.dart" -> "/fragments/daemon_panel/widgets/daemon_count.dart";
+  "/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
+  "/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/widgets/list_tile/home_screen_daemon_tile_view.dart";
+  "/fragments/daemon_panel/widgets/daemon_list.dart" -> "/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
+  "/fragments/daemon_panel/widgets/daemon_list.dart" -> "/fragments/daemon_panel/widgets/daemon_tile.dart";
+  "/fragments/daemon_panel/widgets/daemon_count.dart" -> "/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
+  "/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/fragments/daemon_panel/view_models/daemon_command_view_model.dart";
+  "/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/widgets/add_button/add_button.dart";
   "/app/app.android.dart" -> "/app/app_binding_observer.dart";
   "/app/app.android.dart" -> "/app/navigation.dart";
   "/app/app.android.dart" -> "/theme_config.dart";
@@ -101,9 +107,9 @@ digraph "" {
   "/app/app.dart" -> "/app/app.ios.dart";
   "/app/app.dart" -> "/app/navigation.dart";
   "/app/app.dart" -> "/theme_config.dart";
-  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.android.dart";
-  "/screens/home/home_screen.dart" -> "/screens/home/home_screen_view.ios.dart";
   "/screens/home/home_screen.dart" -> "/fragments/daemon_panel/daemon_panel.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen.android.dart";
+  "/screens/home/home_screen.dart" -> "/screens/home/home_screen.ios.dart";
   "/widgets/list_tile/home_screen_daemon_tile_view.dart" -> "/widgets/list_tile/home_screen_daemon_tile_view.android.dart";
   "/widgets/list_tile/home_screen_daemon_tile_view.dart" -> "/widgets/list_tile/home_screen_daemon_tile_view.ios.dart";
   "/widgets/add_button/add_button.dart" -> "/widgets/add_button/add_button.android.dart";

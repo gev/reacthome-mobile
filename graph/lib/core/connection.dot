@@ -1,0 +1,22 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/connection_command.dart" [label="connection_command"];
+  "/connection_type.dart" [label="connection_type"];
+  "/connection.dart" [label="connection"];
+  "/connection_state.dart" [label="connection_state"];
+  "/connection_query.dart" [label="connection_query"];
+  "/connection_event.dart" [label="connection_event"];
+  subgraph "cluster~" {
+    label="connection";
+    "/connection_command.dart";
+    "/connection_type.dart";
+    "/connection.dart";
+    "/connection_state.dart";
+    "/connection_query.dart";
+    "/connection_event.dart";
+  }
+  "/connection.dart" -> "/connection_state.dart";
+  "/connection_query.dart" -> "/connection.dart";
+}

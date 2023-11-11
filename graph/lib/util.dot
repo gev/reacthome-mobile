@@ -5,18 +5,25 @@ digraph "" {
   "/handler.dart" [label="handler"];
   "/event_bus.dart" [label="event_bus"];
   "/extensions.dart" [label="extensions"];
+  "/repository.dart" [label="repository"];
   "/event_emitter.dart" [label="event_emitter"];
   "/platform.dart" [label="platform"];
   "/event_listener.dart" [label="event_listener"];
+  "/closable.dart" [label="closable"];
+  "/entity.dart" [label="entity"];
   subgraph "cluster~" {
     label="util";
     "/handler.dart";
     "/event_bus.dart";
     "/extensions.dart";
+    "/repository.dart";
     "/event_emitter.dart";
     "/platform.dart";
     "/event_listener.dart";
+    "/closable.dart";
+    "/entity.dart";
   }
+  "/repository.dart" -> "/entity.dart";
   "/event_emitter.dart" -> "/event_bus.dart";
   "/event_listener.dart" -> "/event_bus.dart";
   "/event_listener.dart" -> "/handler.dart";

@@ -5,6 +5,7 @@ digraph "" {
   "/daemon.dart" [label="daemon"];
   "/ui.dart" [label="ui"];
   "/config.dart" [label="config"];
+  "/connection.dart" [label="connection"];
   "/app_life_cycle.dart" [label="app_life_cycle"];
   "/discovery.dart" [label="discovery"];
   "/make.dart" [label="make"];
@@ -13,6 +14,7 @@ digraph "" {
     "/daemon.dart";
     "/ui.dart";
     "/config.dart";
+    "/connection.dart";
     "/app_life_cycle.dart";
     "/discovery.dart";
     "/make.dart";

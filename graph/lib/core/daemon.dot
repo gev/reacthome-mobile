@@ -5,14 +5,12 @@ digraph "" {
   "/daemon.dart" [label="daemon"];
   "/daemon_query.dart" [label="daemon_query"];
   "/daemon_event.dart" [label="daemon_event"];
-  "/daemon_collection.dart" [label="daemon_collection"];
   "/daemon_command.dart" [label="daemon_command"];
   subgraph "cluster~" {
     label="daemon";
     "/daemon.dart";
     "/daemon_query.dart";
     "/daemon_event.dart";
-    "/daemon_collection.dart";
     "/daemon_command.dart";
   }
   "/daemon_query.dart" -> "/daemon.dart";
