@@ -19,54 +19,63 @@ class ConnectionEntity<S> implements Connection {
   S get socket => _socket;
 
   ConnectionEvent? connect() {
-    if (_state == ConnectionState.disconnected) {
-      _state = ConnectionState.connectPending;
-      return ConnectionEventRemoteConnectRequested(id);
+    switch (_state) {
+      case ConnectionState.disconnected:
+        _state = ConnectionState.connectPending;
+        return ConnectionEventRemoteConnectRequested(id);
+      default:
+        return null;
     }
-    return null;
   }
 
   Iterable<ConnectionEvent> completeLocalConnect(S socket) {
-    if (_state == ConnectionState.connectPending) {
-      _state = ConnectionState.connectedLocal;
-      _socket = socket;
-      return [ConnectionEventConnectCompleted(id)];
+    switch (_state) {
+      case ConnectionState.connectPending:
+        _state = ConnectionState.connectedLocal;
+        _socket = socket;
+        return [ConnectionEventConnectCompleted(id)];
+      case ConnectionState.connectedRemote:
+        final old = _socket;
+        _state = ConnectionState.connectedLocal;
+        _socket = socket;
+        return [
+          ConnectionEventRejected(id, old),
+          ConnectionEventConnectCompleted(id),
+        ];
+      default:
+        return [ConnectionEventRejected(id, socket)];
     }
-    if (_state == ConnectionState.connectedRemote) {
-      final old = _socket;
-      _state = ConnectionState.connectedLocal;
-      _socket = socket;
-      return [
-        ConnectionEventRejected(id, old),
-        ConnectionEventConnectCompleted(id),
-      ];
-    }
-    return [ConnectionEventRejected(id, socket)];
   }
 
   ConnectionEvent completeRemoteConnect(S socket) {
-    if (_state == ConnectionState.connectPending) {
-      _state = ConnectionState.connectedRemote;
-      _socket = socket;
-      return ConnectionEventConnectCompleted(id);
+    switch (_state) {
+      case ConnectionState.connectPending:
+        _state = ConnectionState.connectedRemote;
+        _socket = socket;
+        return ConnectionEventConnectCompleted(id);
+      default:
+        return ConnectionEventRejected(id, socket);
     }
-    return ConnectionEventRejected(id, socket);
   }
 
   ConnectionEvent? disconnect() {
-    if (_state == ConnectionState.connectedLocal ||
-        _state == ConnectionState.connectedRemote) {
-      _state = ConnectionState.disconnectPending;
-      return ConnectionEventDisconnectedRequested(id, _socket);
+    switch (_state) {
+      case ConnectionState.connectedLocal:
+      case ConnectionState.connectedRemote:
+        _state = ConnectionState.disconnectPending;
+        return ConnectionEventDisconnectRequested(id, _socket);
+      default:
+        return null;
     }
-    return null;
   }
 
   ConnectionEvent? completeDisconnect() {
-    if (_state == ConnectionState.disconnectPending) {
-      _state = ConnectionState.disconnected;
-      return ConnectionEventDisconnectCompleted(id);
+    switch (_state) {
+      case ConnectionState.disconnectPending:
+        _state = ConnectionState.disconnected;
+        return ConnectionEventDisconnectCompleted(id);
+      default:
+        return null;
     }
-    return null;
   }
 }
