@@ -22,7 +22,7 @@ class ConnectionEntity<S> implements Connection {
     switch (_state) {
       case ConnectionState.disconnected:
         _state = ConnectionState.connectPending;
-        return ConnectionEventRemoteConnectRequested(id);
+        return ConnectionEventCloudConnectRequested(id);
       default:
         return null;
     }
@@ -34,7 +34,7 @@ class ConnectionEntity<S> implements Connection {
         _state = ConnectionState.connectedLocal;
         _socket = socket;
         return [ConnectionEventConnectCompleted(id)];
-      case ConnectionState.connectedRemote:
+      case ConnectionState.connectedCloud:
         final old = _socket;
         _state = ConnectionState.connectedLocal;
         _socket = socket;
@@ -50,7 +50,7 @@ class ConnectionEntity<S> implements Connection {
   ConnectionEvent completeRemoteConnect(S socket) {
     switch (_state) {
       case ConnectionState.connectPending:
-        _state = ConnectionState.connectedRemote;
+        _state = ConnectionState.connectedCloud;
         _socket = socket;
         return ConnectionEventConnectCompleted(id);
       default:
@@ -61,7 +61,7 @@ class ConnectionEntity<S> implements Connection {
   ConnectionEvent? disconnect() {
     switch (_state) {
       case ConnectionState.connectedLocal:
-      case ConnectionState.connectedRemote:
+      case ConnectionState.connectedCloud:
         _state = ConnectionState.disconnectPending;
         return ConnectionEventDisconnectRequested(id, _socket);
       default:

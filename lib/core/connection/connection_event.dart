@@ -10,8 +10,8 @@ class ConnectionEventLocalConnectRequested extends ConnectionEvent {
   ConnectionEventLocalConnectRequested(super.id, this.address);
 }
 
-class ConnectionEventRemoteConnectRequested extends ConnectionEvent {
-  ConnectionEventRemoteConnectRequested(super.id);
+class ConnectionEventCloudConnectRequested extends ConnectionEvent {
+  ConnectionEventCloudConnectRequested(super.id);
 }
 
 class ConnectionEventConnectCompleted extends ConnectionEvent {

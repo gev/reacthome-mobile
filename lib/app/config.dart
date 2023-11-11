@@ -9,7 +9,7 @@ class Config {
   static const connection = WebSocketConfig(
     protocol: 'connect',
     localPort: 3000,
-    remoteURL: 'gateway.reacthome.net',
+    cloudURL: 'gateway.reacthome.net',
   );
 
   static const discovery = DiscoveryConfig(

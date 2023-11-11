@@ -1,9 +1,9 @@
 class WebSocketConfig {
   final int localPort;
-  final String remoteURL;
+  final String cloudURL;
   final String protocol;
   const WebSocketConfig({
-    required this.remoteURL,
+    required this.cloudURL,
     required this.localPort,
     required this.protocol,
   });

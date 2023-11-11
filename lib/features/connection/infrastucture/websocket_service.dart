@@ -21,8 +21,8 @@ class WebsocketService extends EventListener<ConnectionEvent> {
     switch (event) {
       case ConnectionEventLocalConnectRequested e:
         _completeLocalConnect(e.id, e.address);
-      case ConnectionEventRemoteConnectRequested e:
-        _completeRemoteConnect(e.id);
+      case ConnectionEventCloudConnectRequested e:
+        _completeCloudConnect(e.id);
       case ConnectionEventRejected<WebSocket> e:
         _reject(e.socket);
       case ConnectionEventDisconnectRequested<WebSocket> e:
@@ -36,9 +36,9 @@ class WebsocketService extends EventListener<ConnectionEvent> {
     actor.completeLocalConnect(id: id, socket: socket);
   }
 
-  void _completeRemoteConnect(String id) async {
-    final socket = await factory.remote(id);
-    actor.completeRemoteConnect(id: id, socket: socket);
+  void _completeCloudConnect(String id) async {
+    final socket = await factory.cloud(id);
+    actor.completeCloudConnect(id: id, socket: socket);
   }
 
   void _reject(WebSocket socket) {

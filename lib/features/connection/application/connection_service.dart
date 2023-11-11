@@ -36,7 +36,7 @@ class ConnectionService<S> extends EventEmitter<ConnectionEvent>
       _getById(id).completeLocalConnect(socket).forEach(emit);
 
   @override
-  void completeRemoteConnect({
+  void completeCloudConnect({
     required String id,
     required S socket,
   }) =>

@@ -1,7 +1,7 @@
 enum ConnectionState {
   connectPending,
   connectedLocal,
-  connectedRemote,
+  connectedCloud,
   disconnectPending,
   disconnected,
 }

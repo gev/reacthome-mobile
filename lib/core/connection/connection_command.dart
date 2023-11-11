@@ -4,7 +4,7 @@ abstract class ConnectionCommand<S> {
     required String id,
     required S socket,
   });
-  void completeRemoteConnect({
+  void completeCloudConnect({
     required String id,
     required S socket,
   });

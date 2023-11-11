@@ -1,4 +1,4 @@
 enum ConnectionType {
   local,
-  remote,
+  cloud,
 }

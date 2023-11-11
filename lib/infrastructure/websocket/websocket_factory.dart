@@ -15,8 +15,8 @@ class WebSocketFactory {
         controller: controller,
       );
 
-  Future<WebSocket> remote(String id) => WebSocket.create(
-        url: 'wss://${config.remoteURL}/id',
+  Future<WebSocket> cloud(String id) => WebSocket.create(
+        url: 'wss://${config.cloudURL}/id',
         controller: controller,
         protocols: [config.protocol],
       );
