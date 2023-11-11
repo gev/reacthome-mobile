@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' as io;
 
 import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
@@ -7,7 +7,7 @@ import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class WebsocketService extends EventListener<ConnectionEvent> {
-  final ConnectionCommand actor;
+  final ConnectionCommand<WebSocket> actor;
   final WebSocketFactory factory;
 
   WebsocketService({
@@ -31,7 +31,7 @@ class WebsocketService extends EventListener<ConnectionEvent> {
     }
   }
 
-  void _completeLocalConnect(String id, InternetAddress address) async {
+  void _completeLocalConnect(String id, io.InternetAddress address) async {
     final socket = await factory.local(address);
     actor.completeLocalConnect(id: id, socket: socket);
   }

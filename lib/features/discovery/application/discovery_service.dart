@@ -6,8 +6,8 @@ import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class DiscoveryService extends EventEmitter<DiscoveryEvent>
-    implements DiscoveryCommand, DiscoveryQuery {
+class DiscoveryService<S> extends EventEmitter<DiscoveryEvent>
+    implements DiscoveryCommand<S>, DiscoveryQuery {
   final DiscoveryEntity _process;
 
   DiscoveryService({
@@ -22,7 +22,7 @@ class DiscoveryService extends EventEmitter<DiscoveryEvent>
   void start() => _process.start()?.let(emit);
 
   @override
-  void completeStart<S>(S source) => _process.completeStart(source).let(emit);
+  void completeStart(S source) => _process.completeStart(source).let(emit);
 
   @override
   void stop() => _process.stop()?.let(emit);

@@ -1,10 +1,10 @@
-abstract class ConnectionCommand {
+abstract class ConnectionCommand<S> {
   void connect({required String id});
-  void completeLocalConnect<S>({
+  void completeLocalConnect({
     required String id,
     required S socket,
   });
-  void completeRemoteConnect<S>({
+  void completeRemoteConnect({
     required String id,
     required S socket,
   });

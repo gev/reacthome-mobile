@@ -7,9 +7,9 @@ import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
-class ConnectionService extends EventEmitter<ConnectionEvent>
-    implements ConnectionCommand, ConnectionQuery {
-  final Repository<String, ConnectionEntity> repository;
+class ConnectionService<S> extends EventEmitter<ConnectionEvent>
+    implements ConnectionCommand<S>, ConnectionQuery {
+  final Repository<String, ConnectionEntity<S>> repository;
 
   ConnectionService({
     required super.eventSink,
@@ -29,14 +29,14 @@ class ConnectionService extends EventEmitter<ConnectionEvent>
       _getById(id).connect()?.let(emit);
 
   @override
-  void completeLocalConnect<S>({
+  void completeLocalConnect({
     required String id,
     required S socket,
   }) =>
       _getById(id).completeLocalConnect(socket).forEach(emit);
 
   @override
-  void completeRemoteConnect<S>({
+  void completeRemoteConnect({
     required String id,
     required S socket,
   }) =>

@@ -5,7 +5,7 @@ import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
-  final DiscoveryCommand actor;
+  final DiscoveryCommand<MulticastSource> actor;
   final MulticastSourceFactory factory;
 
   DiscoveryMulticastService({

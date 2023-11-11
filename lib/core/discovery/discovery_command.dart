@@ -1,6 +1,6 @@
-abstract interface class DiscoveryCommand {
+abstract interface class DiscoveryCommand<S> {
   void start();
-  void completeStart<S>(S source);
+  void completeStart(S source);
   void stop();
   void completeStop();
 }

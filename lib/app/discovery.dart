@@ -9,6 +9,7 @@ import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_multicast_service.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
+import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/repository.dart';
@@ -20,7 +21,7 @@ class Discovery {
   late DaemonService daemonService;
 
   late EventBus<DiscoveryEvent> discoveryEventBus;
-  late DiscoveryService discoveryService;
+  late DiscoveryService<MulticastSource> discoveryService;
 
   Discovery._() {
     daemonEventBus = EventBus();

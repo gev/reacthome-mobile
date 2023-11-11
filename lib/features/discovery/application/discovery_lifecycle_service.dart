@@ -1,9 +1,10 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
 import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryLifecycleService extends EventListener<AppLifecycleEvent> {
-  final DiscoveryCommand actor;
+  final DiscoveryCommand<MulticastSource> actor;
 
   DiscoveryLifecycleService({
     required super.eventSource,
