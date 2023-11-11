@@ -25,7 +25,7 @@ class WebsocketService extends EventListener<ConnectionEvent> {
         _completeRemoteConnect(e.id);
       case ConnectionEventRejected<WebSocket> e:
         _reject(e.socket);
-      case ConnectionEventDisconnectedRequested<WebSocket> e:
+      case ConnectionEventDisconnectRequested<WebSocket> e:
         _completeDisconnect(e.socket);
       default:
     }

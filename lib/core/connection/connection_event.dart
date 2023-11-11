@@ -23,9 +23,9 @@ class ConnectionEventRejected<S> extends ConnectionEvent {
   ConnectionEventRejected(super.id, this.socket);
 }
 
-class ConnectionEventDisconnectedRequested<S> extends ConnectionEvent {
+class ConnectionEventDisconnectRequested<S> extends ConnectionEvent {
   final S socket;
-  ConnectionEventDisconnectedRequested(super.id, this.socket);
+  ConnectionEventDisconnectRequested(super.id, this.socket);
 }
 
 class ConnectionEventDisconnectCompleted extends ConnectionEvent {
