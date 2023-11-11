@@ -1,12 +1,10 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_command.dart';
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
-import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_emitter.dart';
 
 class AppLifecycleService extends EventEmitter<AppLifecycleEvent>
     implements AppLifecycleCommand {
-  AppLifecycleService({required EventBus<AppLifecycleEvent> eventSink})
-      : super(eventSink);
+  AppLifecycleService({required super.eventSink});
 
   @override
   void makeActive() => emit(AppLifecycleEvent.active);
