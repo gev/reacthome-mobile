@@ -24,7 +24,7 @@ class DiscoveryService extends EventEmitter<DiscoveryEvent>
   void start() => _process.start()?.let(emit);
 
   @override
-  void completeStart<S>(source) => _process.completeStart(source)?.let(emit);
+  void completeStart<S>(source) => _process.completeStart(source).let(emit);
 
   @override
   void stop() => _process.stop()?.let(emit);
