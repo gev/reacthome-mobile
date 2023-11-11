@@ -54,7 +54,7 @@ class ConnectionService<S> extends EventEmitter<ConnectionEvent>
   }) =>
       _getById(id).completeDisconnect()?.let(emit);
 
-  ConnectionEntity _getById(String id) {
+  ConnectionEntity<S> _getById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
       connection = ConnectionEntity(id);
