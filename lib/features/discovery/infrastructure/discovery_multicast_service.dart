@@ -8,8 +8,6 @@ class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
   final DiscoveryCommand actor;
   final MulticastSourceFactory factory;
 
-  MulticastSource? _source;
-
   DiscoveryMulticastService({
     required super.eventSource,
     required this.actor,
@@ -21,12 +19,10 @@ class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
     switch (event) {
       case DiscoveryEventStartRequested _:
         _completeStartProcess();
-      case DiscoveryEventStartCompleted<MulticastSource> e:
-        _source = e.source;
       case DiscoveryEventRejected<MulticastSource> e:
-        e.source.close();
-      case DiscoveryEventStopRequested _:
-        _completeStopProcess();
+        _reject(e.source);
+      case DiscoveryEventStopRequested<MulticastSource> e:
+        _completeStopProcess(e.source);
       default:
     }
   }
@@ -36,11 +32,12 @@ class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
     actor.completeStart(source);
   }
 
-  void _completeStopProcess() {
-    _source?.close();
-    actor.completeStop();
+  void _reject(MulticastSource source) {
+    source.close();
   }
 
-  @override
-  void dispose() => _completeStopProcess();
+  void _completeStopProcess(MulticastSource source) {
+    source.close();
+    actor.completeStop();
+  }
 }

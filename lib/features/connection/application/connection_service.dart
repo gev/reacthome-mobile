@@ -3,7 +3,6 @@ import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
@@ -31,12 +30,18 @@ class ConnectionService extends EventEmitter<ConnectionEvent>
       _getById(id).connect()?.let(emit);
 
   @override
-  void completeConnect<S>({
+  void completeLocalConnect<S>({
     required String id,
-    required ConnectionType type,
     required S socket,
   }) =>
-      _getById(id).completeConnect(type, socket).let(emit);
+      _getById(id).completeLocalConnect(socket).forEach(emit);
+
+  @override
+  void completeRemoteConnect<S>({
+    required String id,
+    required S socket,
+  }) =>
+      _getById(id).completeRemoteConnect(socket).let(emit);
 
   @override
   void disconnect({
@@ -53,7 +58,7 @@ class ConnectionService extends EventEmitter<ConnectionEvent>
   ConnectionEntity _getById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
-      connection = ConnectionEntity(id, ConnectionState.disconnected);
+      connection = ConnectionEntity(id);
       repository.add(connection);
     }
     return connection;

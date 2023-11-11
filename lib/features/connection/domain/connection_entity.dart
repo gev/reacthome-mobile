@@ -1,13 +1,13 @@
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/core/connection/connection_type.dart';
 
-class ConnectionEntity implements Connection {
+class ConnectionEntity<S> implements Connection {
   final String _id;
-  ConnectionState _state;
+  ConnectionState _state = ConnectionState.disconnected;
+  late S _socket;
 
-  ConnectionEntity(this._id, this._state);
+  ConnectionEntity(this._id);
 
   @override
   String get id => _id;
@@ -15,27 +15,40 @@ class ConnectionEntity implements Connection {
   @override
   ConnectionState get state => _state;
 
+  @override
+  S get socket => _socket;
+
   ConnectionEvent? connect() {
     if (_state == ConnectionState.disconnected) {
       _state = ConnectionState.connectPending;
-      return ConnectionEventConnectRequested(id);
+      return ConnectionEventRemoteConnectRequested(id);
     }
     return null;
   }
 
-  ConnectionEvent completeConnect<S>(ConnectionType type, S socket) {
+  Iterable<ConnectionEvent> completeLocalConnect(S socket) {
     if (_state == ConnectionState.connectPending) {
-      switch (type) {
-        case ConnectionType.local:
-          _state = ConnectionState.connectedLocal;
-        case ConnectionType.remote:
-          _state = ConnectionState.connectedRemote;
-      }
-      return ConnectionEventConnectCompleted(id, socket);
-    } else if (_state == ConnectionState.connectedRemote &&
-        type == ConnectionType.local) {
       _state = ConnectionState.connectedLocal;
-      return ConnectionEventConnectCompleted(id, socket);
+      _socket = socket;
+      return [ConnectionEventConnectCompleted(id)];
+    }
+    if (_state == ConnectionState.connectedRemote) {
+      final old = _socket;
+      _state = ConnectionState.connectedLocal;
+      _socket = socket;
+      return [
+        ConnectionEventRejected(id, old),
+        ConnectionEventConnectCompleted(id),
+      ];
+    }
+    return [ConnectionEventRejected(id, socket)];
+  }
+
+  ConnectionEvent completeRemoteConnect(S socket) {
+    if (_state == ConnectionState.connectPending) {
+      _state = ConnectionState.connectedRemote;
+      _socket = socket;
+      return ConnectionEventConnectCompleted(id);
     }
     return ConnectionEventRejected(id, socket);
   }
@@ -44,7 +57,7 @@ class ConnectionEntity implements Connection {
     if (_state == ConnectionState.connectedLocal ||
         _state == ConnectionState.connectedRemote) {
       _state = ConnectionState.disconnectPending;
-      return ConnectionEventDisconnectedRequested(id);
+      return ConnectionEventDisconnectedRequested(id, _socket);
     }
     return null;
   }

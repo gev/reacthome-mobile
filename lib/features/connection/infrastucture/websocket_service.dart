@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
+import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
@@ -16,24 +19,31 @@ class WebsocketService extends EventListener<ConnectionEvent> {
   @override
   void handle(ConnectionEvent event) {
     switch (event) {
-      case ConnectionEventConnectRequested _:
-        _connect();
-      case ConnectionEventConnectCompleted _:
-        _complete();
-      case ConnectionEventRejected _:
-        _reject();
-      case ConnectionEventDisconnectedRequested _:
-        _disconnect();
-      case ConnectionEventDisconnectCompleted _:
-        _complete();
+      case ConnectionEventLocalConnectRequested e:
+        _completeLocalConnect(e.id, e.address);
+      case ConnectionEventRemoteConnectRequested e:
+        _completeRemoteConnect(e.id);
+      case ConnectionEventRejected<WebSocket> e:
+        _reject(e.socket);
+      case ConnectionEventDisconnectedRequested<WebSocket> e:
+        _completeDisconnect(e.socket);
+      default:
     }
   }
 
-  void _connect() {}
+  void _completeLocalConnect(String id, InternetAddress address) async {
+    final socket = await factory.local(address);
+    actor.completeLocalConnect(id: id, socket: socket);
+  }
 
-  void _complete() {}
+  void _completeRemoteConnect(String id) async {
+    final socket = await factory.remote(id);
+    actor.completeRemoteConnect(id: id, socket: socket);
+  }
 
-  void _reject() {}
+  void _reject(WebSocket socket) {
+    socket.close();
+  }
 
-  void _disconnect() {}
+  void _completeDisconnect(WebSocket socket) {}
 }
