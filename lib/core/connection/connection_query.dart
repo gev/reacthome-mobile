@@ -1,6 +1,4 @@
-import 'package:reacthome/core/connection/connection.dart';
-
-abstract interface class ConnectionQuery {
+abstract interface class ConnectionQuery<C> {
   Iterable<String> getAllConnections();
-  Connection getConnectionById(String id);
+  C getConnectionById(String id);
 }

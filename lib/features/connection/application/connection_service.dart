@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
@@ -7,9 +9,10 @@ import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
-class ConnectionService<S> extends EventEmitter<ConnectionEvent>
-    implements ConnectionCommand<S>, ConnectionQuery {
-  final Repository<String, ConnectionEntity<S>> repository;
+abstract class ConnectionService<C extends ConnectionEntity<S>, S>
+    extends EventEmitter<ConnectionEvent>
+    implements ConnectionCommand<S>, ConnectionQuery<Connection> {
+  final Repository<String, C> repository;
 
   ConnectionService({
     required super.eventSink,
@@ -23,43 +26,55 @@ class ConnectionService<S> extends EventEmitter<ConnectionEvent>
   Connection getConnectionById(String id) => _getById(id);
 
   @override
-  void connect({
-    required String id,
-  }) =>
-      _getById(id).connect()?.let(emit);
+  void completeConnect(String id, S socket) =>
+      _getById(id).completeConnect(socket).let(emit);
 
   @override
-  void completeLocalConnect({
-    required String id,
-    required S socket,
-  }) =>
-      _getById(id).completeLocalConnect(socket).forEach(emit);
+  void disconnect(String id) => _getById(id).disconnect()?.let(emit);
 
   @override
-  void completeCloudConnect({
-    required String id,
-    required S socket,
-  }) =>
-      _getById(id).completeRemoteConnect(socket).let(emit);
-
-  @override
-  void disconnect({
-    required String id,
-  }) =>
-      _getById(id).disconnect()?.let(emit);
-
-  @override
-  void completeDisconnect({
-    required String id,
-  }) =>
+  void completeDisconnect(String id) =>
       _getById(id).completeDisconnect()?.let(emit);
 
-  ConnectionEntity<S> _getById(String id) {
+  C _create(String id);
+
+  C _getById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
-      connection = ConnectionEntity(id);
+      connection = _create(id);
       repository.add(connection);
     }
     return connection;
   }
+}
+
+class LocalConnectionService<S>
+    extends ConnectionService<LocalConnectionEntity<S>, S>
+    implements LocalConnectionCommand {
+  LocalConnectionService({
+    required super.eventSink,
+    required super.repository,
+  });
+
+  @override
+  void connect(String id, InternetAddress address) =>
+      _getById(id).connect(address)?.let(emit);
+
+  @override
+  LocalConnectionEntity<S> _create(String id) => LocalConnectionEntity(id);
+}
+
+class CloudConnectionService<S>
+    extends ConnectionService<CloudConnectionEntity<S>, S>
+    implements CloudConnectionCommand {
+  CloudConnectionService({
+    required super.eventSink,
+    required super.repository,
+  });
+
+  @override
+  void connect(String id) => _getById(id).connect()?.let(emit);
+
+  @override
+  CloudConnectionEntity<S> _create(String id) => CloudConnectionEntity(id);
 }

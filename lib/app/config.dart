@@ -7,9 +7,11 @@ import 'package:reacthome/ui/theme_config.dart';
 
 class Config {
   static const connection = WebSocketConfig(
-    protocol: 'connect',
-    localPort: 3000,
-    cloudURL: 'gateway.reacthome.net',
+    local: LocalWebSocketConfig(port: 3000),
+    cloud: CloudWebSocketConfig(
+      url: 'gateway.reacthome.net',
+      protocol: 'connect',
+    ),
   );
 
   static const discovery = DiscoveryConfig(

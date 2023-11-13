@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
+import 'package:reacthome/core/connection/connection_type.dart';
 
-class ConnectionEntity<S> implements Connection {
+abstract class ConnectionEntity<S> implements Connection {
   final String _id;
   ConnectionState _state = ConnectionState.disconnected;
   late S _socket;
@@ -15,55 +18,34 @@ class ConnectionEntity<S> implements Connection {
   @override
   ConnectionState get state => _state;
 
-  @override
   S get socket => _socket;
 
-  ConnectionEvent? connect() {
+  ConnectionEvent? _connect(ConnectionEvent Function() createEvent) {
     switch (_state) {
       case ConnectionState.disconnected:
         _state = ConnectionState.connectPending;
-        return ConnectionEventCloudConnectRequested(id);
+        return createEvent();
       default:
         return null;
     }
   }
 
-  Iterable<ConnectionEvent> completeLocalConnect(S socket) {
+  ConnectionEvent completeConnect(S socket) {
     switch (_state) {
       case ConnectionState.connectPending:
-        _state = ConnectionState.connectedLocal;
+        _state = ConnectionState.connected;
         _socket = socket;
-        return [ConnectionEventConnectCompleted(id)];
-      case ConnectionState.connectedCloud:
-        final old = _socket;
-        _state = ConnectionState.connectedLocal;
-        _socket = socket;
-        return [
-          ConnectionEventRejected(id, old),
-          ConnectionEventConnectCompleted(id),
-        ];
+        return ConnectionEventConnectCompleted(id, type);
       default:
-        return [ConnectionEventRejected(id, socket)];
-    }
-  }
-
-  ConnectionEvent completeRemoteConnect(S socket) {
-    switch (_state) {
-      case ConnectionState.connectPending:
-        _state = ConnectionState.connectedCloud;
-        _socket = socket;
-        return ConnectionEventConnectCompleted(id);
-      default:
-        return ConnectionEventRejected(id, socket);
+        return ConnectionEventRejected(id, type, socket);
     }
   }
 
   ConnectionEvent? disconnect() {
     switch (_state) {
-      case ConnectionState.connectedLocal:
-      case ConnectionState.connectedCloud:
+      case ConnectionState.connected:
         _state = ConnectionState.disconnectPending;
-        return ConnectionEventDisconnectRequested(id, _socket);
+        return ConnectionEventDisconnectRequested(id, type, _socket);
       default:
         return null;
     }
@@ -73,9 +55,29 @@ class ConnectionEntity<S> implements Connection {
     switch (_state) {
       case ConnectionState.disconnectPending:
         _state = ConnectionState.disconnected;
-        return ConnectionEventDisconnectCompleted(id);
+        return ConnectionEventDisconnectCompleted(id, type);
       default:
         return null;
     }
   }
+}
+
+class LocalConnectionEntity<S> extends ConnectionEntity<S> {
+  LocalConnectionEntity(super.id);
+
+  @override
+  ConnectionType get type => ConnectionType.local;
+
+  ConnectionEvent? connect(InternetAddress address) =>
+      _connect(() => ConnectionEventLocalConnectRequested(id, type, address));
+}
+
+class CloudConnectionEntity<S> extends ConnectionEntity<S> {
+  CloudConnectionEntity(super.id);
+
+  @override
+  ConnectionType get type => ConnectionType.cloud;
+
+  ConnectionEvent? connect() =>
+      _connect(() => ConnectionEventCloudConnectRequested(id, type));
 }
