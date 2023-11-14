@@ -20,9 +20,11 @@ class HomeScreenIOS extends StatelessWidget {
         middle: Text(title),
         trailing: const DiscoveryStatus(),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [left, right],
+      child: SafeArea(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [left, right],
+        ),
       ),
     );
   }

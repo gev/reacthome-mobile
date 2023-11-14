@@ -19,7 +19,7 @@ class HomeScreenAndroid extends StatelessWidget {
           title: Text(title),
           actions: const [DiscoveryStatus()],
         ),
-        body: Center(
+        body: SafeArea(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [left, right],
