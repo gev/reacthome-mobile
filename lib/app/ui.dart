@@ -8,12 +8,17 @@ class UI {
   UI._();
 
   final homeScreen = makeHomeScreen(
-    discovery: (
+    discoveryProcess: (
+      eventBus: Discovery.instance.discoveryEventBus,
+      query: Discovery.instance.discoveryService,
+      actor: Discovery.instance.discoveryService,
+    ),
+    daemonDiscovery: (
       eventBus: Discovery.instance.daemonEventBus,
       query: Discovery.instance.daemonService,
       actor: Discovery.instance.daemonService,
     ),
-    daemon: (
+    daemonSelect: (
       eventBus: Daemon.instance.daemonEventBus,
       query: Daemon.instance.daemonService,
       actor: Daemon.instance.daemonService,

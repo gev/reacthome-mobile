@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reacthome/ui/fragments/discovery/discovery_status.dart';
 
 class HomeScreenAndroid extends StatelessWidget {
   final String title;
@@ -16,6 +17,7 @@ class HomeScreenAndroid extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text(title),
+          actions: const [DiscoveryStatus()],
         ),
         body: Center(
           child: Row(

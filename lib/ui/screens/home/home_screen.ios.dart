@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reacthome/ui/fragments/discovery/discovery_status.dart';
 
 class HomeScreenIOS extends StatelessWidget {
   final String title;
@@ -15,7 +16,10 @@ class HomeScreenIOS extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(middle: Text(title)),
+      navigationBar: CupertinoNavigationBar(
+        middle: Text(title),
+        trailing: const DiscoveryStatus(),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [left, right],

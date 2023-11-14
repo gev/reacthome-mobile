@@ -8,11 +8,11 @@ import 'package:reacthome/util/extensions.dart';
 
 class DiscoveryService<S> extends EventEmitter<DiscoveryEvent>
     implements DiscoveryCommand<S>, DiscoveryQuery {
-  final DiscoveryEntity _process;
+  final DiscoveryEntity<S> _process;
 
   DiscoveryService({
     required super.eventSink,
-    required DiscoveryEntity process,
+    required DiscoveryEntity<S> process,
   }) : _process = process;
 
   @override

@@ -2,11 +2,10 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
-import 'package:reacthome/util/closable.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/handler.dart';
 
-class MulticastSource implements Closable {
+class MulticastSource {
   final RawDatagramSocket _socket;
   final Timer _timer;
   final StreamSubscription<RawSocketEvent> _subscription;
@@ -42,7 +41,6 @@ class MulticastSource implements Closable {
     return MulticastSource._(socket, timer, subscription);
   }
 
-  @override
   void close() {
     _subscription.cancel();
     _timer.cancel();
