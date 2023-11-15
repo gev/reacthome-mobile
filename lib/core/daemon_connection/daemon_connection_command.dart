@@ -9,5 +9,5 @@ abstract interface class DaemonConnectionCommand {
   void disconnectLocal(String id);
   void disconnectCloud(String id);
 
-  void selectActive(String id);
+  void select(String id);
 }

@@ -80,10 +80,10 @@ class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
   }
 
   @override
-  void selectActive(String id) {
+  void select(String id) {
     final connection = repository.get(id);
     connection
-        ?.selectActive(
+        ?.select(
           local.query.getConnectionById(id),
           cloud.query.getConnectionById(id),
         )

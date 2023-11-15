@@ -18,14 +18,14 @@ class ActiveConnectionService extends EventListener<ConnectionEvent> {
         _activateConnection(e.id);
       case DisconnectCompletedEvent e:
         _activateConnection(e.id);
-      case ActiveConnectChangedEvent e:
+      case ConnectSelectedEvent e:
         _deactivateConnection(e.id, e.type);
       default:
     }
   }
 
   void _activateConnection(String id) {
-    actor.selectActive(id);
+    actor.select(id);
   }
 
   void _deactivateConnection(String id, ConnectionType type) {

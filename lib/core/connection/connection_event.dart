@@ -35,6 +35,6 @@ class DisconnectCompletedEvent extends ConnectionEvent {
   DisconnectCompletedEvent(super.id, super.type);
 }
 
-class ActiveConnectChangedEvent extends ConnectionEvent {
-  ActiveConnectChangedEvent(super.id, super.type);
+class ConnectSelectedEvent extends ConnectionEvent {
+  ConnectSelectedEvent(super.id, super.type);
 }

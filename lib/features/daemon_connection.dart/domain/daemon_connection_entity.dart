@@ -15,14 +15,14 @@ class DaemonConnectionEntity implements DaemonConnection {
   @override
   Connection? get connection => _connection;
 
-  ConnectionEvent? selectActive(Connection local, Connection cloud) {
+  ConnectionEvent? select(Connection local, Connection cloud) {
     if (local.state == ConnectionState.connected) {
       _connection = local;
-      return ActiveConnectChangedEvent(_id, local.type);
+      return ConnectSelectedEvent(_id, local.type);
     }
     if (cloud.state == ConnectionState.connected) {
       _connection = cloud;
-      return ActiveConnectChangedEvent(_id, cloud.type);
+      return ConnectSelectedEvent(_id, cloud.type);
     }
     _connection = null;
     return null;
