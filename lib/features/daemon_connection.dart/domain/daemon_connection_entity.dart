@@ -5,38 +5,26 @@ import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
 
 class DaemonConnectionEntity implements DaemonConnection {
   final String _id;
-  final Connection _local;
-  final Connection _cloud;
-  Connection? _active;
+  Connection? _connection;
 
-  DaemonConnectionEntity(
-    this._id,
-    this._local,
-    this._cloud,
-  );
+  DaemonConnectionEntity(this._id);
 
   @override
   String get id => _id;
 
   @override
-  Connection get local => _local;
+  Connection? get connection => _connection;
 
-  @override
-  Connection get cloud => _cloud;
-
-  @override
-  Connection? get active => _active;
-
-  ConnectionEvent? selectActive() {
-    if (_local.state == ConnectionState.connected) {
-      _active = _local;
-      return ActiveConnectChangedEvent(_id, _local.type);
+  ConnectionEvent? selectActive(Connection local, Connection cloud) {
+    if (local.state == ConnectionState.connected) {
+      _connection = local;
+      return ActiveConnectChangedEvent(_id, local.type);
     }
-    if (_cloud.state == ConnectionState.connected) {
-      _active = _cloud;
-      return ActiveConnectChangedEvent(_id, _cloud.type);
+    if (cloud.state == ConnectionState.connected) {
+      _connection = cloud;
+      return ActiveConnectChangedEvent(_id, cloud.type);
     }
-    _active = null;
+    _connection = null;
     return null;
   }
 }

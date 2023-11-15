@@ -38,11 +38,7 @@ class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
   DaemonConnection getConnectionById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
-      connection = DaemonConnectionEntity(
-        id,
-        local.query.getConnectionById(id),
-        cloud.query.getConnectionById(id),
-      );
+      connection = DaemonConnectionEntity(id);
       repository.add(connection);
     }
     return connection;
@@ -68,24 +64,29 @@ class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
   }
 
   @override
-  void disconnectLocal(Daemon daemon) {
-    local.actor.disconnect(daemon.id);
+  void disconnectLocal(String id) {
+    local.actor.disconnect(id);
   }
 
   @override
-  void disconnectCloud(Daemon daemon) {
-    cloud.actor.disconnect(daemon.id);
+  void disconnectCloud(String id) {
+    cloud.actor.disconnect(id);
   }
 
   @override
-  void disconnect(Daemon daemon) {
-    disconnectLocal(daemon);
-    disconnectCloud(daemon);
+  void disconnect(String id) {
+    disconnectLocal(id);
+    disconnectCloud(id);
   }
 
   @override
   void selectActive(String id) {
     final connection = repository.get(id);
-    connection?.selectActive()?.let(emit);
+    connection
+        ?.selectActive(
+          local.query.getConnectionById(id),
+          cloud.query.getConnectionById(id),
+        )
+        ?.let(emit);
   }
 }

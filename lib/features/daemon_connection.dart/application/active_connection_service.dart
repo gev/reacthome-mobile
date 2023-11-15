@@ -1,19 +1,14 @@
-import 'package:reacthome/core/connection/connection_command.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class ActiveConnectionService extends EventListener<ConnectionEvent> {
-  final ({DaemonConnectionCommand actor}) connection;
-  final ({LocalConnectionCommand actor}) local;
-  final ({CloudConnectionCommand actor}) cloud;
+  final DaemonConnectionCommand actor;
 
   ActiveConnectionService({
     required super.eventSource,
-    required this.connection,
-    required this.local,
-    required this.cloud,
+    required this.actor,
   });
 
   @override
@@ -30,15 +25,15 @@ class ActiveConnectionService extends EventListener<ConnectionEvent> {
   }
 
   void _activateConnection(String id) {
-    connection.actor.selectActive(id);
+    actor.selectActive(id);
   }
 
   void _deactivateConnection(String id, ConnectionType type) {
     switch (type) {
       case ConnectionType.local:
-        cloud.actor.disconnect(id);
+        actor.disconnectCloud(id);
       case ConnectionType.cloud:
-        local.actor.disconnect(id);
+        actor.disconnectLocal(id);
     }
   }
 }

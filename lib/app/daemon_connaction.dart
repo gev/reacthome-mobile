@@ -25,9 +25,7 @@ class DaemonConnection {
 
     ActiveConnectionService(
       eventSource: Connection.instance.connectionEventBus,
-      connection: (actor: daemonConnectionService),
-      local: (actor: Connection.instance.localConnectionService),
-      cloud: (actor: Connection.instance.cloudConnectionService),
+      actor: daemonConnectionService,
     );
   }
 }

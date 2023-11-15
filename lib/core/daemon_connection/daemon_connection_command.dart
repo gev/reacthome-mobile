@@ -5,9 +5,9 @@ abstract interface class DaemonConnectionCommand {
   void connectLocal(Daemon daemon);
   void connectCloud(Daemon daemon);
 
-  void disconnect(Daemon daemon);
-  void disconnectLocal(Daemon daemon);
-  void disconnectCloud(Daemon daemon);
+  void disconnect(String id);
+  void disconnectLocal(String id);
+  void disconnectCloud(String id);
 
   void selectActive(String id);
 }
