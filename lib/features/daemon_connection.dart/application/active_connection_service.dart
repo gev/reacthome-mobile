@@ -4,10 +4,10 @@ import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class ActiveConnectionService<S> extends EventListener<ConnectionEvent> {
+class ActiveConnectionService extends EventListener<ConnectionEvent> {
   final ({DaemonConnectionCommand actor}) connection;
-  final ({LocalConnectionCommand<S> actor}) local;
-  final ({CloudConnectionCommand<S> actor}) cloud;
+  final ({LocalConnectionCommand actor}) local;
+  final ({CloudConnectionCommand actor}) cloud;
 
   ActiveConnectionService({
     required super.eventSource,

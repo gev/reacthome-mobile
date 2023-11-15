@@ -11,16 +11,17 @@ class DaemonConnection {
 
   DaemonConnection._() {
     daemonConnectionService = DaemonConnectionService(
-        eventSink: Connection.instance.connectionEventBus,
-        local: (
-          query: Connection.instance.localConnectionService,
-          actor: Connection.instance.localConnectionService,
-        ),
-        cloud: (
-          query: Connection.instance.cloudConnectionService,
-          actor: Connection.instance.cloudConnectionService,
-        ),
-        repository: MapRepository());
+      eventSink: Connection.instance.connectionEventBus,
+      local: (
+        query: Connection.instance.localConnectionService,
+        actor: Connection.instance.localConnectionService,
+      ),
+      cloud: (
+        query: Connection.instance.cloudConnectionService,
+        actor: Connection.instance.cloudConnectionService,
+      ),
+      repository: MapRepository(),
+    );
 
     ActiveConnectionService(
       eventSource: Connection.instance.connectionEventBus,
