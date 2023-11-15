@@ -57,8 +57,10 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
   });
 
   @override
-  Future<WebSocket> _create(LocalConnectRequestedEvent event) =>
-      factory.create(event.address);
+  Future<WebSocket> _create(LocalConnectRequestedEvent event) => factory.create(
+        address: event.address,
+        onClose: () => actor.disconnect(event.id),
+      );
 }
 
 class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
@@ -70,6 +72,8 @@ class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
   });
 
   @override
-  Future<WebSocket> _create(CloudConnectRequestedEvent event) =>
-      factory.create(event.id);
+  Future<WebSocket> _create(CloudConnectRequestedEvent event) => factory.create(
+        id: event.id,
+        onClose: () => actor.disconnect(event.id),
+      );
 }

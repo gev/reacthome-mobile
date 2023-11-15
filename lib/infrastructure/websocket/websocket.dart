@@ -13,9 +13,13 @@ class WebSocket {
     required String url,
     required Handler<dynamic> controller,
     Iterable<String>? protocols,
+    required void Function() onClose,
   }) async {
     final socket = await io.WebSocket.connect(url, protocols: protocols);
-    final subscription = socket.listen(controller.handle);
+    final subscription = socket.listen(
+      controller.handle,
+      onDone: onClose,
+    );
     return WebSocket._(socket, subscription);
   }
 

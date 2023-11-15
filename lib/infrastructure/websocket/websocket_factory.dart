@@ -7,7 +7,9 @@ import 'package:reacthome/util/handler.dart';
 abstract class WebSocketFactory {
   final Handler<String> controller;
 
-  WebSocketFactory({required this.controller});
+  WebSocketFactory({
+    required this.controller,
+  });
 }
 
 class LocalWebSocketFactory extends WebSocketFactory {
@@ -18,9 +20,14 @@ class LocalWebSocketFactory extends WebSocketFactory {
     required super.controller,
   });
 
-  Future<WebSocket> create(io.InternetAddress address) => WebSocket.create(
+  Future<WebSocket> create({
+    required io.InternetAddress address,
+    required void Function() onClose,
+  }) =>
+      WebSocket.create(
         url: 'ws://${address.address}:${config.port}',
         controller: controller,
+        onClose: onClose,
       );
 }
 
@@ -32,9 +39,14 @@ class CloudWebSocketFactory extends WebSocketFactory {
     required super.controller,
   });
 
-  Future<WebSocket> create(String id) => WebSocket.create(
+  Future<WebSocket> create({
+    required String id,
+    required void Function() onClose,
+  }) =>
+      WebSocket.create(
         url: 'wss://${config.url}/$id',
         controller: controller,
         protocols: [config.protocol],
+        onClose: onClose,
       );
 }
