@@ -27,14 +27,14 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
 
   @override
   void completeConnect(String id, S socket) =>
-      _getById(id).completeConnect(socket).let(emit);
+      repository.get(id)?.completeConnect(socket).let(emit);
 
   @override
-  void disconnect(String id) => _getById(id).disconnect()?.let(emit);
+  void disconnect(String id) => repository.get(id)?.disconnect()?.let(emit);
 
   @override
   void completeDisconnect(String id) =>
-      _getById(id).completeDisconnect()?.let(emit);
+      repository.get(id)?.completeDisconnect()?.let(emit);
 
   C _create(String id);
 
