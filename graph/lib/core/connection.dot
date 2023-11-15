@@ -18,5 +18,6 @@ digraph "" {
     "/connection_event.dart";
   }
   "/connection.dart" -> "/connection_state.dart";
-  "/connection_query.dart" -> "/connection.dart";
+  "/connection.dart" -> "/connection_type.dart";
+  "/connection_event.dart" -> "/connection_type.dart";
 }

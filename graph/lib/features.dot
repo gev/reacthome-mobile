@@ -2,8 +2,9 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/connection/infrastucture/websocket_service.dart" [label="websocket_service"];
+  "/connection/interface/connection_controller.dart" [label="connection_controller"];
   "/connection/application/connection_service.dart" [label="connection_service"];
+  "/connection/infrastructure/websocket_service.dart" [label="websocket_service"];
   "/connection/domain/connection_entity.dart" [label="connection_entity"];
   "/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
   "/discovery/interface/discovery_action.dart" [label="discovery_action"];
@@ -16,17 +17,24 @@ digraph "" {
   "/daemon/application/daemon_service.dart" [label="daemon_service"];
   "/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
+  "/daemon_connection.dart/application/active_connection_service.dart" [label="active_connection_service"];
+  "/daemon_connection.dart/application/daemon_connection_service.dart" [label="daemon_connection_service"];
+  "/daemon_connection.dart/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
   subgraph "cluster~" {
     label="features";
     subgraph "cluster~/connection" {
       label="connection";
-      subgraph "cluster~/connection/infrastucture" {
-        label="infrastucture";
-        "/connection/infrastucture/websocket_service.dart";
+      subgraph "cluster~/connection/interface" {
+        label="interface";
+        "/connection/interface/connection_controller.dart";
       }
       subgraph "cluster~/connection/application" {
         label="application";
         "/connection/application/connection_service.dart";
+      }
+      subgraph "cluster~/connection/infrastructure" {
+        label="infrastructure";
+        "/connection/infrastructure/websocket_service.dart";
       }
       subgraph "cluster~/connection/domain" {
         label="domain";
@@ -74,9 +82,22 @@ digraph "" {
         "/app_lifecycle/application/app_lifecycle_service.dart";
       }
     }
+    subgraph "cluster~/daemon_connection.dart" {
+      label="daemon_connection.dart";
+      subgraph "cluster~/daemon_connection.dart/application" {
+        label="application";
+        "/daemon_connection.dart/application/active_connection_service.dart";
+        "/daemon_connection.dart/application/daemon_connection_service.dart";
+      }
+      subgraph "cluster~/daemon_connection.dart/domain" {
+        label="domain";
+        "/daemon_connection.dart/domain/daemon_connection_entity.dart";
+      }
+    }
   }
   "/connection/application/connection_service.dart" -> "/connection/domain/connection_entity.dart";
   "/discovery/interface/discovery_controller.dart" -> "/discovery/interface/discovery_action.dart";
   "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_entity.dart";
   "/daemon/application/daemon_service.dart" -> "/daemon/domain/daemon_entity.dart";
+  "/daemon_connection.dart/application/daemon_connection_service.dart" -> "/daemon_connection.dart/domain/daemon_connection_entity.dart";
 }

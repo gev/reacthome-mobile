@@ -20,6 +20,8 @@ digraph "" {
   "/daemon/daemon_command.dart" [label="daemon_command"];
   "/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
   "/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/daemon_connection/daemon_connection_command.dart" [label="daemon_connection_command"];
+  "/daemon_connection/daemon_connection.dart" [label="daemon_connection"];
   subgraph "cluster~" {
     label="core";
     "/meta.dart";
@@ -52,12 +54,20 @@ digraph "" {
       "/app_lifecycle/app_lifecycle_command.dart";
       "/app_lifecycle/app_lifecycle_event.dart";
     }
+    subgraph "cluster~/daemon_connection" {
+      label="daemon_connection";
+      "/daemon_connection/daemon_connection_command.dart";
+      "/daemon_connection/daemon_connection.dart";
+    }
   }
   "/connection/connection.dart" -> "/connection/connection_state.dart";
-  "/connection/connection_query.dart" -> "/connection/connection.dart";
+  "/connection/connection.dart" -> "/connection/connection_type.dart";
+  "/connection/connection_event.dart" -> "/connection/connection_type.dart";
   "/discovery/discovery_query.dart" -> "/discovery/discovery.dart";
   "/discovery/discovery.dart" -> "/discovery/discovery_state.dart";
   "/daemon/daemon.dart" -> "/meta.dart";
   "/daemon/daemon_query.dart" -> "/daemon/daemon.dart";
   "/daemon/daemon_command.dart" -> "/meta.dart";
+  "/daemon_connection/daemon_connection_command.dart" -> "/daemon/daemon.dart";
+  "/daemon_connection/daemon_connection.dart" -> "/connection/connection.dart";
 }

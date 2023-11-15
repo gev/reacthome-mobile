@@ -34,8 +34,8 @@ digraph "" {
   "/daemon_panel.dart" -> "/view_models/daemon_list_view_model.dart";
   "/daemon_panel.dart" -> "/view_models/daemon_title_view_model.dart";
   "/daemon_panel_view.dart" -> "/widgets/add_daemon_button.dart";
-  "/daemon_panel_view.dart" -> "/widgets/daemon_list.dart";
   "/daemon_panel_view.dart" -> "/widgets/daemon_count.dart";
+  "/daemon_panel_view.dart" -> "/widgets/daemon_list.dart";
   "/widgets/daemon_tile.dart" -> "/view_models/daemon_title_view_model.dart";
   "/widgets/daemon_list.dart" -> "/view_models/daemon_list_view_model.dart";
   "/widgets/daemon_list.dart" -> "/widgets/daemon_tile.dart";

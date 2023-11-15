@@ -5,6 +5,9 @@ digraph "" {
   "/list_tile/home_screen_daemon_tile_view.ios.dart" [label="home_screen_daemon_tile_view.ios"];
   "/list_tile/home_screen_daemon_tile_view.android.dart" [label="home_screen_daemon_tile_view.android"];
   "/list_tile/home_screen_daemon_tile_view.dart" [label="home_screen_daemon_tile_view"];
+  "/discovery/discovery_status.dart" [label="discovery_status"];
+  "/discovery/discovery_status.ios.dart" [label="discovery_status.ios"];
+  "/discovery/discovery_status.android.dart" [label="discovery_status.android"];
   "/add_button/add_button.dart" [label="add_button"];
   "/add_button/add_button.ios.dart" [label="add_button.ios"];
   "/add_button/add_button.android.dart" [label="add_button.android"];
@@ -16,6 +19,12 @@ digraph "" {
       "/list_tile/home_screen_daemon_tile_view.android.dart";
       "/list_tile/home_screen_daemon_tile_view.dart";
     }
+    subgraph "cluster~/discovery" {
+      label="discovery";
+      "/discovery/discovery_status.dart";
+      "/discovery/discovery_status.ios.dart";
+      "/discovery/discovery_status.android.dart";
+    }
     subgraph "cluster~/add_button" {
       label="add_button";
       "/add_button/add_button.dart";
@@ -25,6 +34,8 @@ digraph "" {
   }
   "/list_tile/home_screen_daemon_tile_view.dart" -> "/list_tile/home_screen_daemon_tile_view.android.dart";
   "/list_tile/home_screen_daemon_tile_view.dart" -> "/list_tile/home_screen_daemon_tile_view.ios.dart";
+  "/discovery/discovery_status.dart" -> "/discovery/discovery_status.android.dart";
+  "/discovery/discovery_status.dart" -> "/discovery/discovery_status.ios.dart";
   "/add_button/add_button.dart" -> "/add_button/add_button.android.dart";
   "/add_button/add_button.dart" -> "/add_button/add_button.ios.dart";
 }

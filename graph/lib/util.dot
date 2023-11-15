@@ -9,7 +9,6 @@ digraph "" {
   "/event_emitter.dart" [label="event_emitter"];
   "/platform.dart" [label="platform"];
   "/event_listener.dart" [label="event_listener"];
-  "/closable.dart" [label="closable"];
   "/entity.dart" [label="entity"];
   subgraph "cluster~" {
     label="util";
@@ -20,7 +19,6 @@ digraph "" {
     "/event_emitter.dart";
     "/platform.dart";
     "/event_listener.dart";
-    "/closable.dart";
     "/entity.dart";
   }
   "/repository.dart" -> "/entity.dart";

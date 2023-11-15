@@ -2,6 +2,8 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
+  "/ui/fragments/connection/connection_status_view_model.dart" [label="connection_status_view_model"];
+  "/ui/fragments/connection/connection_status.dart" [label="connection_status"];
   "/ui/fragments/daemon_panel/view_models/daemon_command_view_model.dart" [label="daemon_command_view_model"];
   "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" [label="daemon_title_view_model"];
   "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart" [label="daemon_list_view_model"];
@@ -11,6 +13,8 @@ digraph "" {
   "/ui/fragments/daemon_panel/widgets/daemon_list.dart" [label="daemon_list"];
   "/ui/fragments/daemon_panel/widgets/daemon_count.dart" [label="daemon_count"];
   "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" [label="add_daemon_button"];
+  "/ui/fragments/discovery/discovery_status.dart" [label="discovery_status"];
+  "/ui/fragments/discovery/discovery_status_view_model.dart" [label="discovery_status_view_model"];
   "/ui/app/app.android.dart" [label="app.android"];
   "/ui/app/app_binding_observer.dart" [label="app_binding_observer"];
   "/ui/app/app.ios.dart" [label="app.ios"];
@@ -23,6 +27,9 @@ digraph "" {
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.ios.dart" [label="home_screen_daemon_tile_view.ios"];
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.android.dart" [label="home_screen_daemon_tile_view.android"];
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart" [label="home_screen_daemon_tile_view"];
+  "/ui/widgets/discovery/discovery_status.dart" [label="discovery_status"];
+  "/ui/widgets/discovery/discovery_status.ios.dart" [label="discovery_status.ios"];
+  "/ui/widgets/discovery/discovery_status.android.dart" [label="discovery_status.android"];
   "/ui/widgets/add_button/add_button.dart" [label="add_button"];
   "/ui/widgets/add_button/add_button.ios.dart" [label="add_button.ios"];
   "/ui/widgets/add_button/add_button.android.dart" [label="add_button.android"];
@@ -44,8 +51,11 @@ digraph "" {
   "/core/daemon/daemon_command.dart" [label="daemon_command"];
   "/core/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
   "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/core/daemon_connection/daemon_connection_command.dart" [label="daemon_connection_command"];
+  "/core/daemon_connection/daemon_connection.dart" [label="daemon_connection"];
   "/app/daemon.dart" [label="daemon"];
   "/app/ui.dart" [label="ui"];
+  "/app/daemon_connaction.dart" [label="daemon_connaction"];
   "/app/config.dart" [label="config"];
   "/app/connection.dart" [label="connection"];
   "/app/app_life_cycle.dart" [label="app_life_cycle"];
@@ -58,10 +68,10 @@ digraph "" {
   "/util/event_emitter.dart" [label="event_emitter"];
   "/util/platform.dart" [label="platform"];
   "/util/event_listener.dart" [label="event_listener"];
-  "/util/closable.dart" [label="closable"];
   "/util/entity.dart" [label="entity"];
-  "/features/connection/infrastucture/websocket_service.dart" [label="websocket_service"];
+  "/features/connection/interface/connection_controller.dart" [label="connection_controller"];
   "/features/connection/application/connection_service.dart" [label="connection_service"];
+  "/features/connection/infrastructure/websocket_service.dart" [label="websocket_service"];
   "/features/connection/domain/connection_entity.dart" [label="connection_entity"];
   "/features/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
   "/features/discovery/interface/discovery_action.dart" [label="discovery_action"];
@@ -74,6 +84,9 @@ digraph "" {
   "/features/daemon/application/daemon_service.dart" [label="daemon_service"];
   "/features/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
+  "/features/daemon_connection.dart/application/active_connection_service.dart" [label="active_connection_service"];
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" [label="daemon_connection_service"];
+  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
   "/main.dart" [label="main"];
   "/infrastructure/websocket/websocket_config.dart" [label="websocket_config"];
   "/infrastructure/websocket/websocket.dart" [label="websocket"];
@@ -90,6 +103,11 @@ digraph "" {
       "/ui/theme_config.dart";
       subgraph "cluster~/ui/fragments" {
         label="fragments";
+        subgraph "cluster~/ui/fragments/connection" {
+          label="connection";
+          "/ui/fragments/connection/connection_status_view_model.dart";
+          "/ui/fragments/connection/connection_status.dart";
+        }
         subgraph "cluster~/ui/fragments/daemon_panel" {
           label="daemon_panel";
           "/ui/fragments/daemon_panel/daemon_panel.dart";
@@ -107,6 +125,11 @@ digraph "" {
             "/ui/fragments/daemon_panel/widgets/daemon_count.dart";
             "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart";
           }
+        }
+        subgraph "cluster~/ui/fragments/discovery" {
+          label="discovery";
+          "/ui/fragments/discovery/discovery_status.dart";
+          "/ui/fragments/discovery/discovery_status_view_model.dart";
         }
       }
       subgraph "cluster~/ui/app" {
@@ -133,6 +156,12 @@ digraph "" {
           "/ui/widgets/list_tile/home_screen_daemon_tile_view.ios.dart";
           "/ui/widgets/list_tile/home_screen_daemon_tile_view.android.dart";
           "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart";
+        }
+        subgraph "cluster~/ui/widgets/discovery" {
+          label="discovery";
+          "/ui/widgets/discovery/discovery_status.dart";
+          "/ui/widgets/discovery/discovery_status.ios.dart";
+          "/ui/widgets/discovery/discovery_status.android.dart";
         }
         subgraph "cluster~/ui/widgets/add_button" {
           label="add_button";
@@ -174,11 +203,17 @@ digraph "" {
         "/core/app_lifecycle/app_lifecycle_command.dart";
         "/core/app_lifecycle/app_lifecycle_event.dart";
       }
+      subgraph "cluster~/core/daemon_connection" {
+        label="daemon_connection";
+        "/core/daemon_connection/daemon_connection_command.dart";
+        "/core/daemon_connection/daemon_connection.dart";
+      }
     }
     subgraph "cluster~/app" {
       label="app";
       "/app/daemon.dart";
       "/app/ui.dart";
+      "/app/daemon_connaction.dart";
       "/app/config.dart";
       "/app/connection.dart";
       "/app/app_life_cycle.dart";
@@ -194,20 +229,23 @@ digraph "" {
       "/util/event_emitter.dart";
       "/util/platform.dart";
       "/util/event_listener.dart";
-      "/util/closable.dart";
       "/util/entity.dart";
     }
     subgraph "cluster~/features" {
       label="features";
       subgraph "cluster~/features/connection" {
         label="connection";
-        subgraph "cluster~/features/connection/infrastucture" {
-          label="infrastucture";
-          "/features/connection/infrastucture/websocket_service.dart";
+        subgraph "cluster~/features/connection/interface" {
+          label="interface";
+          "/features/connection/interface/connection_controller.dart";
         }
         subgraph "cluster~/features/connection/application" {
           label="application";
           "/features/connection/application/connection_service.dart";
+        }
+        subgraph "cluster~/features/connection/infrastructure" {
+          label="infrastructure";
+          "/features/connection/infrastructure/websocket_service.dart";
         }
         subgraph "cluster~/features/connection/domain" {
           label="domain";
@@ -255,6 +293,18 @@ digraph "" {
           "/features/app_lifecycle/application/app_lifecycle_service.dart";
         }
       }
+      subgraph "cluster~/features/daemon_connection.dart" {
+        label="daemon_connection.dart";
+        subgraph "cluster~/features/daemon_connection.dart/application" {
+          label="application";
+          "/features/daemon_connection.dart/application/active_connection_service.dart";
+          "/features/daemon_connection.dart/application/daemon_connection_service.dart";
+        }
+        subgraph "cluster~/features/daemon_connection.dart/domain" {
+          label="domain";
+          "/features/daemon_connection.dart/domain/daemon_connection_entity.dart";
+        }
+      }
     }
     subgraph "cluster~/infrastructure" {
       label="infrastructure";
@@ -273,6 +323,12 @@ digraph "" {
       }
     }
   }
+  "/ui/fragments/connection/connection_status_view_model.dart" -> "/core/connection/connection.dart";
+  "/ui/fragments/connection/connection_status_view_model.dart" -> "/core/connection/connection_event.dart";
+  "/ui/fragments/connection/connection_status_view_model.dart" -> "/core/connection/connection_query.dart";
+  "/ui/fragments/connection/connection_status_view_model.dart" -> "/core/connection/connection_state.dart";
+  "/ui/fragments/connection/connection_status_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/connection/connection_status.dart" -> "/ui/fragments/connection/connection_status_view_model.dart";
   "/ui/fragments/daemon_panel/view_models/daemon_command_view_model.dart" -> "/core/daemon/daemon_command.dart";
   "/ui/fragments/daemon_panel/view_models/daemon_command_view_model.dart" -> "/core/meta.dart";
   "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" -> "/core/daemon/daemon_event.dart";
@@ -290,8 +346,8 @@ digraph "" {
   "/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
   "/ui/fragments/daemon_panel/daemon_panel.dart" -> "/util/event_bus.dart";
   "/ui/fragments/daemon_panel/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart";
-  "/ui/fragments/daemon_panel/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_list.dart";
   "/ui/fragments/daemon_panel/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_count.dart";
+  "/ui/fragments/daemon_panel/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_list.dart";
   "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
   "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart";
   "/ui/fragments/daemon_panel/widgets/daemon_list.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
@@ -299,6 +355,13 @@ digraph "" {
   "/ui/fragments/daemon_panel/widgets/daemon_count.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
   "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_command_view_model.dart";
   "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/ui/widgets/add_button/add_button.dart";
+  "/ui/fragments/discovery/discovery_status.dart" -> "/ui/fragments/discovery/discovery_status_view_model.dart";
+  "/ui/fragments/discovery/discovery_status.dart" -> "/ui/widgets/discovery/discovery_status.dart";
+  "/ui/fragments/discovery/discovery_status_view_model.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/fragments/discovery/discovery_status_view_model.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/fragments/discovery/discovery_status_view_model.dart" -> "/core/discovery/discovery_query.dart";
+  "/ui/fragments/discovery/discovery_status_view_model.dart" -> "/core/discovery/discovery_state.dart";
+  "/ui/fragments/discovery/discovery_status_view_model.dart" -> "/util/event_listener.dart";
   "/ui/app/app.android.dart" -> "/ui/app/app_binding_observer.dart";
   "/ui/app/app.android.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.android.dart" -> "/ui/theme_config.dart";
@@ -312,10 +375,16 @@ digraph "" {
   "/ui/app/app.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.dart" -> "/ui/theme_config.dart";
   "/ui/app/app.dart" -> "/util/platform.dart";
+  "/ui/screens/home/home_screen.android.dart" -> "/ui/fragments/discovery/discovery_status.dart";
+  "/ui/screens/home/home_screen.ios.dart" -> "/ui/fragments/discovery/discovery_status.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/daemon/daemon_command.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/daemon/daemon_event.dart";
   "/ui/screens/home/home_screen.dart" -> "/core/daemon/daemon_query.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_command.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/screens/home/home_screen.dart" -> "/core/discovery/discovery_query.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/fragments/daemon_panel/daemon_panel.dart";
+  "/ui/screens/home/home_screen.dart" -> "/ui/fragments/discovery/discovery_status_view_model.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen.android.dart";
   "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen.ios.dart";
   "/ui/screens/home/home_screen.dart" -> "/util/event_bus.dart";
@@ -323,18 +392,25 @@ digraph "" {
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart" -> "/ui/widgets/list_tile/home_screen_daemon_tile_view.android.dart";
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart" -> "/ui/widgets/list_tile/home_screen_daemon_tile_view.ios.dart";
   "/ui/widgets/list_tile/home_screen_daemon_tile_view.dart" -> "/util/platform.dart";
+  "/ui/widgets/discovery/discovery_status.dart" -> "/ui/widgets/discovery/discovery_status.android.dart";
+  "/ui/widgets/discovery/discovery_status.dart" -> "/ui/widgets/discovery/discovery_status.ios.dart";
+  "/ui/widgets/discovery/discovery_status.dart" -> "/util/platform.dart";
   "/ui/widgets/add_button/add_button.dart" -> "/ui/widgets/add_button/add_button.android.dart";
   "/ui/widgets/add_button/add_button.dart" -> "/ui/widgets/add_button/add_button.ios.dart";
   "/ui/widgets/add_button/add_button.dart" -> "/util/platform.dart";
   "/core/connection/connection.dart" -> "/core/connection/connection_state.dart";
   "/core/connection/connection.dart" -> "/util/entity.dart";
-  "/core/connection/connection_query.dart" -> "/core/connection/connection.dart";
+  "/core/connection/connection.dart" -> "/core/connection/connection_type.dart";
+  "/core/connection/connection_event.dart" -> "/core/connection/connection_type.dart";
   "/core/discovery/discovery_query.dart" -> "/core/discovery/discovery.dart";
   "/core/discovery/discovery.dart" -> "/core/discovery/discovery_state.dart";
   "/core/daemon/daemon.dart" -> "/core/meta.dart";
   "/core/daemon/daemon.dart" -> "/util/entity.dart";
   "/core/daemon/daemon_query.dart" -> "/core/daemon/daemon.dart";
   "/core/daemon/daemon_command.dart" -> "/core/meta.dart";
+  "/core/daemon_connection/daemon_connection_command.dart" -> "/core/daemon/daemon.dart";
+  "/core/daemon_connection/daemon_connection.dart" -> "/core/connection/connection.dart";
+  "/core/daemon_connection/daemon_connection.dart" -> "/util/entity.dart";
   "/app/daemon.dart" -> "/core/daemon/daemon_event.dart";
   "/app/daemon.dart" -> "/features/daemon/application/daemon_service.dart";
   "/app/daemon.dart" -> "/util/event_bus.dart";
@@ -342,13 +418,22 @@ digraph "" {
   "/app/ui.dart" -> "/app/daemon.dart";
   "/app/ui.dart" -> "/app/discovery.dart";
   "/app/ui.dart" -> "/ui/screens/home/home_screen.dart";
+  "/app/daemon_connaction.dart" -> "/app/connection.dart";
+  "/app/daemon_connaction.dart" -> "/features/daemon_connection.dart/application/active_connection_service.dart";
+  "/app/daemon_connaction.dart" -> "/features/daemon_connection.dart/application/daemon_connection_service.dart";
+  "/app/daemon_connaction.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/daemon_connaction.dart" -> "/util/repository.dart";
   "/app/config.dart" -> "/features/discovery/discovery_config.dart";
   "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/app/config.dart" -> "/infrastructure/websocket/websocket_config.dart";
   "/app/config.dart" -> "/ui/theme_config.dart";
+  "/app/connection.dart" -> "/app/config.dart";
   "/app/connection.dart" -> "/core/connection/connection_event.dart";
   "/app/connection.dart" -> "/features/connection/application/connection_service.dart";
+  "/app/connection.dart" -> "/features/connection/infrastructure/websocket_service.dart";
+  "/app/connection.dart" -> "/features/connection/interface/connection_controller.dart";
   "/app/connection.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/connection.dart" -> "/infrastructure/websocket/websocket_factory.dart";
   "/app/connection.dart" -> "/util/event_bus.dart";
   "/app/connection.dart" -> "/util/repository.dart";
   "/app/app_life_cycle.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
@@ -378,11 +463,7 @@ digraph "" {
   "/util/event_emitter.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/handler.dart";
-  "/features/connection/infrastucture/websocket_service.dart" -> "/core/connection/connection_command.dart";
-  "/features/connection/infrastucture/websocket_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/connection/infrastucture/websocket_service.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/features/connection/infrastucture/websocket_service.dart" -> "/infrastructure/websocket/websocket_factory.dart";
-  "/features/connection/infrastucture/websocket_service.dart" -> "/util/event_listener.dart";
+  "/features/connection/interface/connection_controller.dart" -> "/util/handler.dart";
   "/features/connection/application/connection_service.dart" -> "/core/connection/connection.dart";
   "/features/connection/application/connection_service.dart" -> "/core/connection/connection_command.dart";
   "/features/connection/application/connection_service.dart" -> "/core/connection/connection_event.dart";
@@ -391,9 +472,15 @@ digraph "" {
   "/features/connection/application/connection_service.dart" -> "/util/event_emitter.dart";
   "/features/connection/application/connection_service.dart" -> "/util/extensions.dart";
   "/features/connection/application/connection_service.dart" -> "/util/repository.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_command.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/util/event_listener.dart";
   "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection.dart";
   "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_event.dart";
   "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_state.dart";
+  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_type.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/core/daemon/daemon_command.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
   "/features/discovery/interface/discovery_controller.dart" -> "/features/discovery/interface/discovery_action.dart";
@@ -401,7 +488,6 @@ digraph "" {
   "/features/discovery/discovery_config.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
   "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/discovery/discovery_command.dart";
-  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/infrastructure/multicast/multicast_source.dart";
   "/features/discovery/application/discovery_lifecycle_service.dart" -> "/util/event_listener.dart";
   "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery.dart";
   "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_command.dart";
@@ -437,6 +523,26 @@ digraph "" {
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_emitter.dart";
+  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/connection/connection_command.dart";
+  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/connection/connection_type.dart";
+  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/util/event_listener.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_command.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_query.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon/daemon.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/features/daemon_connection.dart/domain/daemon_connection_entity.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/event_emitter.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/extensions.dart";
+  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/repository.dart";
+  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection.dart";
+  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection_state.dart";
+  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/daemon_connection/daemon_connection.dart";
   "/main.dart" -> "/app/make.dart";
   "/infrastructure/websocket/websocket.dart" -> "/util/handler.dart";
   "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket.dart";
@@ -446,7 +552,6 @@ digraph "" {
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/handler.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/infrastructure/multicast/multicast_config.dart";
-  "/infrastructure/multicast/multicast_source.dart" -> "/util/closable.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/extensions.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/handler.dart";
 }

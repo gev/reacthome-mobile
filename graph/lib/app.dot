@@ -4,6 +4,7 @@ digraph "" {
   edge [penwidth=1.3];
   "/daemon.dart" [label="daemon"];
   "/ui.dart" [label="ui"];
+  "/daemon_connaction.dart" [label="daemon_connaction"];
   "/config.dart" [label="config"];
   "/connection.dart" [label="connection"];
   "/app_life_cycle.dart" [label="app_life_cycle"];
@@ -13,6 +14,7 @@ digraph "" {
     label="app";
     "/daemon.dart";
     "/ui.dart";
+    "/daemon_connaction.dart";
     "/config.dart";
     "/connection.dart";
     "/app_life_cycle.dart";
@@ -21,6 +23,8 @@ digraph "" {
   }
   "/ui.dart" -> "/daemon.dart";
   "/ui.dart" -> "/discovery.dart";
+  "/daemon_connaction.dart" -> "/connection.dart";
+  "/connection.dart" -> "/config.dart";
   "/discovery.dart" -> "/app_life_cycle.dart";
   "/discovery.dart" -> "/config.dart";
   "/make.dart" -> "/app_life_cycle.dart";
