@@ -38,3 +38,7 @@ class DisconnectCompletedEvent extends ConnectionEvent {
 class ConnectSelectedEvent extends ConnectionEvent {
   ConnectSelectedEvent(super.id, super.type);
 }
+
+class ConnectFailedEvent extends ConnectionEvent {
+  ConnectFailedEvent(super.id, super.type);
+}

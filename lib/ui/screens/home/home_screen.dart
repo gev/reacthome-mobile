@@ -1,8 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:reacthome/core/connection/connection.dart';
+import 'package:reacthome/core/connection/connection_event.dart';
+import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
+import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
+import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
 import 'package:reacthome/core/discovery/discovery_command.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_query.dart';
@@ -15,10 +20,18 @@ import 'package:reacthome/util/platform.dart';
 
 Widget makeHomeScreen({
   required ({
-    EventBus<DiscoveryEvent> eventBus,
-    DiscoveryQuery query,
-    DiscoveryCommand actor,
-  }) discoveryProcess,
+    EventBus<ConnectionEvent> eventBus,
+  }) connection,
+  required ({
+    ConnectionQuery<DaemonConnection> query,
+    DaemonConnectionCommand actor,
+  }) daemonConnection,
+  required ({
+    ConnectionQuery<Connection> query,
+  }) local,
+  required ({
+    ConnectionQuery<Connection> query,
+  }) cloud,
   required ({
     EventBus<DaemonEvent> eventBus,
     DaemonQuery query,
@@ -29,10 +42,27 @@ Widget makeHomeScreen({
     DaemonQuery query,
     DaemonCommand actor,
   }) daemonSelect,
+  required ({
+    EventBus<DiscoveryEvent> eventBus,
+    DiscoveryQuery query,
+    DiscoveryCommand actor,
+  }) discoveryProcess,
   String title = 'Home',
 }) {
-  final left = daemonPanel(daemonDiscovery);
-  final right = daemonPanel(daemonSelect);
+  final left = daemonPanel(
+    connection: connection,
+    daemonConnection: daemonConnection,
+    local: local,
+    cloud: cloud,
+    daemon: daemonDiscovery,
+  );
+  final right = daemonPanel(
+    connection: connection,
+    daemonConnection: daemonConnection,
+    local: local,
+    cloud: cloud,
+    daemon: daemonSelect,
+  );
   return ChangeNotifierProvider(
     create: (_) => DiscoveryStatusViewModel(
       eventSource: discoveryProcess.eventBus,

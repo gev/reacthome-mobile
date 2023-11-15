@@ -64,6 +64,12 @@ class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
   }
 
   @override
+  void disconnect(String id) {
+    disconnectLocal(id);
+    disconnectCloud(id);
+  }
+
+  @override
   void disconnectLocal(String id) {
     local.actor.disconnect(id);
   }
@@ -71,12 +77,6 @@ class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
   @override
   void disconnectCloud(String id) {
     cloud.actor.disconnect(id);
-  }
-
-  @override
-  void disconnect(String id) {
-    disconnectLocal(id);
-    disconnectCloud(id);
   }
 
   @override

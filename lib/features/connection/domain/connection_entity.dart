@@ -22,6 +22,7 @@ abstract class ConnectionEntity<S> implements Connection {
 
   ConnectionEvent? _connect(ConnectionEvent Function() createEvent) {
     switch (_state) {
+      case ConnectionState.failed:
       case ConnectionState.disconnected:
         _state = ConnectionState.connectPending;
         return createEvent();
@@ -56,6 +57,16 @@ abstract class ConnectionEntity<S> implements Connection {
       case ConnectionState.disconnectPending:
         _state = ConnectionState.disconnected;
         return DisconnectCompletedEvent(id, type);
+      default:
+        return null;
+    }
+  }
+
+  ConnectionEvent? fail() {
+    switch (_state) {
+      case ConnectionState.connectPending:
+        _state = ConnectionState.failed;
+        return ConnectFailedEvent(id, type);
       default:
         return null;
     }

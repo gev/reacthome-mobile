@@ -31,8 +31,12 @@ abstract class WebsocketService<F extends WebSocketFactory,
   Future<WebSocket> _create(E event);
 
   void _completeConnect(E event) async {
-    final socket = await _create(event);
-    actor.completeConnect(event.id, socket);
+    try {
+      final socket = await _create(event);
+      actor.completeConnect(event.id, socket);
+    } catch (e) {
+      actor.fail(event.id);
+    }
   }
 
   void _reject(ConnectRejectedEvent<WebSocket> event) {

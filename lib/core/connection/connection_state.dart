@@ -3,4 +3,5 @@ enum ConnectionState {
   connected,
   disconnectPending,
   disconnected,
+  failed,
 }

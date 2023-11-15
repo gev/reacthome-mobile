@@ -36,6 +36,9 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
   void completeDisconnect(String id) =>
       repository.get(id)?.completeDisconnect()?.let(emit);
 
+  @override
+  void fail(String id) => repository.get(id)?.fail()?.let(emit);
+
   C _create(String id);
 
   C _getById(String id) {

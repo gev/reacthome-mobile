@@ -19,7 +19,7 @@ class LocalWebSocketFactory extends WebSocketFactory {
   });
 
   Future<WebSocket> create(io.InternetAddress address) => WebSocket.create(
-        url: 'ws://$address:${config.port}',
+        url: 'ws://${address.address}:${config.port}',
         controller: controller,
       );
 }
@@ -33,7 +33,7 @@ class CloudWebSocketFactory extends WebSocketFactory {
   });
 
   Future<WebSocket> create(String id) => WebSocket.create(
-        url: 'wss://${config.url}/id',
+        url: 'wss://${config.url}/$id',
         controller: controller,
         protocols: [config.protocol],
       );

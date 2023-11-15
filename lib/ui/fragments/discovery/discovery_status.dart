@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/discovery_status_view_model.dart';
-import 'package:reacthome/ui/widgets/discovery/discovery_status.dart';
+import 'package:reacthome/ui/widgets/switch/switch.dart';
 
 class DiscoveryStatus extends StatelessWidget {
   const DiscoveryStatus({super.key});
@@ -12,7 +12,6 @@ class DiscoveryStatus extends StatelessWidget {
     final isDiscovering = context.select<DiscoveryStatusViewModel, bool>(
       (model) => model.isDiscovering,
     );
-    return discoveryStatus(
-        value: isDiscovering, onChanged: model.toggleDiscovery);
+    return switcher(value: isDiscovering, onChanged: model.toggleDiscovery);
   }
 }

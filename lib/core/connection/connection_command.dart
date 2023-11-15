@@ -4,6 +4,7 @@ abstract interface class ConnectionCommand<S> {
   void completeConnect(String id, S socket);
   void disconnect(String id);
   void completeDisconnect(String id);
+  void fail(String id);
 }
 
 abstract interface class LocalConnectionCommand<S>
