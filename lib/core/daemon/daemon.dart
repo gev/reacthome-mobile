@@ -5,6 +5,6 @@ import 'package:reacthome/util/entity.dart';
 
 abstract interface class Daemon implements Entity<String> {
   Meta get meta;
-  InternetAddress get address;
+  InternetAddress? get address;
   String? get project;
 }

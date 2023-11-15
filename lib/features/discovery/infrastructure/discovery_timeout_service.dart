@@ -18,11 +18,11 @@ class DiscoveryTimeoutService extends EventListener<DaemonEvent> {
   @override
   void handle(DaemonEvent event) {
     switch (event) {
-      case DaemonEventAdded e:
+      case DaemonAddedEvent e:
         _setTimeout(e.daemon);
-      case DaemonEventConfirmed e:
+      case DaemonConfirmedEvent e:
         _setTimeout(e.daemon);
-      case DaemonEventRemoved e:
+      case DaemonRemovedEvent e:
         _cancelTimeout(e.daemon);
       default:
     }

@@ -36,8 +36,8 @@ class ConnectionStatusViewModel extends EventListener<ConnectionEvent>
   @override
   void handle(ConnectionEvent event) {
     switch (event) {
-      case ConnectionEventConnectCompleted _:
-      case ConnectionEventDisconnectCompleted _:
+      case ConnectCompletedEvent _:
+      case DisconnectCompletedEvent _:
         notifyListeners();
       default:
     }

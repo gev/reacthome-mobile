@@ -35,10 +35,10 @@ class DaemonService extends EventEmitter<DaemonEvent>
     if (daemon == null) {
       final daemon = DaemonEntity(id, meta, address, project);
       repository.add(daemon);
-      emit(DaemonEventAdded(id));
+      emit(DaemonAddedEvent(id));
     } else {
       daemon.update(meta, address, project).forEach(emit);
-      emit(DaemonEventConfirmed(id));
+      emit(DaemonConfirmedEvent(id));
     }
   }
 
@@ -46,7 +46,7 @@ class DaemonService extends EventEmitter<DaemonEvent>
   void removeDaemon({required String id}) {
     if (repository.has(id)) {
       repository.remove(id);
-      emit(DaemonEventRemoved(id));
+      emit(DaemonRemovedEvent(id));
     }
   }
 }

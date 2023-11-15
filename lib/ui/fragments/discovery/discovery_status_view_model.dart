@@ -28,8 +28,8 @@ class DiscoveryStatusViewModel extends EventListener<DiscoveryEvent>
   @override
   void handle(DiscoveryEvent event) {
     switch (event) {
-      case DiscoveryEventStartCompleted _:
-      case DiscoveryEventStopCompleted _:
+      case DiscoveryStartCompletedEvent _:
+      case DiscoveryStopCompletedEvent _:
         notifyListeners();
       default:
     }

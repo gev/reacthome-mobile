@@ -50,7 +50,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
 
 class LocalConnectionService<S>
     extends ConnectionService<LocalConnectionEntity<S>, S>
-    implements LocalConnectionCommand {
+    implements LocalConnectionCommand<S> {
   LocalConnectionService({
     required super.eventSink,
     required super.repository,
@@ -66,7 +66,7 @@ class LocalConnectionService<S>
 
 class CloudConnectionService<S>
     extends ConnectionService<CloudConnectionEntity<S>, S>
-    implements CloudConnectionCommand {
+    implements CloudConnectionCommand<S> {
   CloudConnectionService({
     required super.eventSink,
     required super.repository,

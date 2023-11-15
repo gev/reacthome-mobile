@@ -6,10 +6,12 @@ abstract interface class ConnectionCommand<S> {
   void completeDisconnect(String id);
 }
 
-abstract interface class LocalConnectionCommand {
+abstract interface class LocalConnectionCommand<S>
+    implements ConnectionCommand<S> {
   void connect(String id, InternetAddress address);
 }
 
-abstract interface class CloudConnectionCommand {
+abstract interface class CloudConnectionCommand<S>
+    implements ConnectionCommand<S> {
   void connect(String id);
 }

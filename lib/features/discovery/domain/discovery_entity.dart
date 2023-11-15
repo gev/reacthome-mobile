@@ -13,7 +13,7 @@ class DiscoveryEntity<S> implements Discovery {
     switch (_state) {
       case DiscoveryState.stopped:
         _state = DiscoveryState.starPending;
-        return DiscoveryEventStartRequested();
+        return DiscoveryStartRequestedEvent();
       default:
         return null;
     }
@@ -24,9 +24,9 @@ class DiscoveryEntity<S> implements Discovery {
       case DiscoveryState.starPending:
         _state = DiscoveryState.running;
         _source = source;
-        return DiscoveryEventStartCompleted();
+        return DiscoveryStartCompletedEvent();
       default:
-        return DiscoveryEventRejected<S>(source);
+        return DiscoveryRejectedEvent<S>(source);
     }
   }
 
@@ -34,7 +34,7 @@ class DiscoveryEntity<S> implements Discovery {
     switch (_state) {
       case DiscoveryState.running:
         _state = DiscoveryState.stopPending;
-        return DiscoveryEventStopRequested<S>(_source);
+        return DiscoveryStopRequestedEvent<S>(_source);
       default:
         return null;
     }
@@ -44,7 +44,7 @@ class DiscoveryEntity<S> implements Discovery {
     switch (_state) {
       case DiscoveryState.stopPending:
         _state = DiscoveryState.stopped;
-        return DiscoveryEventStopCompleted();
+        return DiscoveryStopCompletedEvent();
       default:
         return null;
     }

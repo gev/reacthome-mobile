@@ -20,7 +20,7 @@ class DaemonTitleViewModel extends EventListener<DaemonEvent>
   @override
   void handle(DaemonEvent event) {
     switch (event) {
-      case DaemonEventMetaChanged _:
+      case DaemonMetaChangedEvent _:
         notifyListeners();
       default:
     }

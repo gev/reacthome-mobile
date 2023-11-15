@@ -26,7 +26,7 @@ class DaemonEntity implements Daemon {
   DaemonEvent? updateMeta(Meta meta) {
     if (_meta != meta) {
       _meta = meta;
-      return DaemonEventMetaChanged(id);
+      return DaemonMetaChangedEvent(id);
     }
     return null;
   }
@@ -36,7 +36,7 @@ class DaemonEntity implements Daemon {
   DaemonEvent? updateAddress(InternetAddress address) {
     if (_address != address) {
       _address = address;
-      return DaemonEventAddressChanged(id);
+      return DaemonAddressChangedEvent(id);
     }
     return null;
   }
@@ -46,7 +46,7 @@ class DaemonEntity implements Daemon {
   DaemonEvent? updateProject(String? project) {
     if (_project != project) {
       _project = project;
-      return DaemonEventProjectChanged(id);
+      return DaemonProjectChangedEvent(id);
     }
     return null;
   }

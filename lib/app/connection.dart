@@ -1,6 +1,5 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/features/connection/application/active_connection_service.dart';
 import 'package:reacthome/features/connection/application/connection_service.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
 import 'package:reacthome/features/connection/interface/connection_controller.dart';
@@ -13,7 +12,6 @@ class Connection {
   static final instance = Connection._();
 
   late EventBus<ConnectionEvent> connectionEventBus;
-  late ActiveConnectionService activeConnectionService;
   late LocalConnectionService<WebSocket> localConnectionService;
   late CloudConnectionService<WebSocket> cloudConnectionService;
 
@@ -27,15 +25,6 @@ class Connection {
 
     cloudConnectionService = CloudConnectionService(
       eventSink: connectionEventBus,
-      repository: MapRepository(),
-    );
-
-    activeConnectionService = ActiveConnectionService(
-      eventSource: connectionEventBus,
-      localQuery: localConnectionService,
-      localActor: localConnectionService,
-      cloudQuery: cloudConnectionService,
-      cloudActor: cloudConnectionService,
       repository: MapRepository(),
     );
 

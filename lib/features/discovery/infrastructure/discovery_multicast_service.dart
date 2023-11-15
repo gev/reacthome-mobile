@@ -17,11 +17,11 @@ class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
   @override
   void handle(DiscoveryEvent event) async {
     switch (event) {
-      case DiscoveryEventStartRequested _:
+      case DiscoveryStartRequestedEvent _:
         _completeStartProcess();
-      case DiscoveryEventRejected<MulticastSource> e:
+      case DiscoveryRejectedEvent<MulticastSource> e:
         _reject(e.source);
-      case DiscoveryEventStopRequested<MulticastSource> e:
+      case DiscoveryStopRequestedEvent<MulticastSource> e:
         _completeStopProcess(e.source);
       default:
     }

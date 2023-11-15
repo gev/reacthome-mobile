@@ -20,9 +20,9 @@ abstract class WebsocketService<F extends WebSocketFactory,
     switch (event) {
       case E e:
         _completeConnect(e);
-      case ConnectionEventRejected<WebSocket> e:
+      case ConnectRejectedEvent<WebSocket> e:
         _reject(e);
-      case ConnectionEventDisconnectRequested<WebSocket> e:
+      case DisconnectRequestedEvent<WebSocket> e:
         _completeDisconnect(e);
       default:
     }
@@ -35,18 +35,17 @@ abstract class WebsocketService<F extends WebSocketFactory,
     actor.completeConnect(event.id, socket);
   }
 
-  void _reject(ConnectionEventRejected<WebSocket> event) {
+  void _reject(ConnectRejectedEvent<WebSocket> event) {
     event.socket.close();
   }
 
-  void _completeDisconnect(
-      ConnectionEventDisconnectRequested<WebSocket> event) {
+  void _completeDisconnect(DisconnectRequestedEvent<WebSocket> event) {
     actor.completeDisconnect(event.id);
   }
 }
 
 class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
-    ConnectionEventLocalConnectRequested> {
+    LocalConnectRequestedEvent> {
   LocalWebsocketService({
     required super.eventSource,
     required super.actor,
@@ -54,12 +53,12 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
   });
 
   @override
-  Future<WebSocket> _create(ConnectionEventLocalConnectRequested event) =>
+  Future<WebSocket> _create(LocalConnectRequestedEvent event) =>
       factory.create(event.address);
 }
 
 class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
-    ConnectionEventCloudConnectRequested> {
+    CloudConnectRequestedEvent> {
   CloudWebsocketService({
     required super.eventSource,
     required super.actor,
@@ -67,6 +66,6 @@ class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
   });
 
   @override
-  Future<WebSocket> _create(ConnectionEventCloudConnectRequested event) =>
+  Future<WebSocket> _create(CloudConnectRequestedEvent event) =>
       factory.create(event.id);
 }

@@ -1,17 +1,17 @@
 sealed class DiscoveryEvent {}
 
-class DiscoveryEventStartRequested extends DiscoveryEvent {}
+class DiscoveryStartRequestedEvent extends DiscoveryEvent {}
 
-class DiscoveryEventStartCompleted extends DiscoveryEvent {}
+class DiscoveryStartCompletedEvent extends DiscoveryEvent {}
 
-class DiscoveryEventRejected<S> extends DiscoveryEvent {
+class DiscoveryRejectedEvent<S> extends DiscoveryEvent {
   final S source;
-  DiscoveryEventRejected(this.source);
+  DiscoveryRejectedEvent(this.source);
 }
 
-class DiscoveryEventStopRequested<S> extends DiscoveryEvent {
+class DiscoveryStopRequestedEvent<S> extends DiscoveryEvent {
   final S source;
-  DiscoveryEventStopRequested(this.source);
+  DiscoveryStopRequestedEvent(this.source);
 }
 
-class DiscoveryEventStopCompleted extends DiscoveryEvent {}
+class DiscoveryStopCompletedEvent extends DiscoveryEvent {}

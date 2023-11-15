@@ -8,29 +8,33 @@ sealed class ConnectionEvent {
   const ConnectionEvent(this.id, this.type);
 }
 
-class ConnectionEventLocalConnectRequested extends ConnectionEvent {
+class LocalConnectRequestedEvent extends ConnectionEvent {
   final InternetAddress address;
-  ConnectionEventLocalConnectRequested(super.id, super.type, this.address);
+  LocalConnectRequestedEvent(super.id, super.type, this.address);
 }
 
-class ConnectionEventCloudConnectRequested extends ConnectionEvent {
-  ConnectionEventCloudConnectRequested(super.id, super.type);
+class CloudConnectRequestedEvent extends ConnectionEvent {
+  CloudConnectRequestedEvent(super.id, super.type);
 }
 
-class ConnectionEventConnectCompleted extends ConnectionEvent {
-  ConnectionEventConnectCompleted(super.id, super.type);
+class ConnectCompletedEvent extends ConnectionEvent {
+  ConnectCompletedEvent(super.id, super.type);
 }
 
-class ConnectionEventRejected<S> extends ConnectionEvent {
+class ConnectRejectedEvent<S> extends ConnectionEvent {
   final S socket;
-  ConnectionEventRejected(super.id, super.type, this.socket);
+  ConnectRejectedEvent(super.id, super.type, this.socket);
 }
 
-class ConnectionEventDisconnectRequested<S> extends ConnectionEvent {
+class DisconnectRequestedEvent<S> extends ConnectionEvent {
   final S socket;
-  ConnectionEventDisconnectRequested(super.id, super.type, this.socket);
+  DisconnectRequestedEvent(super.id, super.type, this.socket);
 }
 
-class ConnectionEventDisconnectCompleted extends ConnectionEvent {
-  ConnectionEventDisconnectCompleted(super.id, super.type);
+class DisconnectCompletedEvent extends ConnectionEvent {
+  DisconnectCompletedEvent(super.id, super.type);
+}
+
+class ActiveConnectChangedEvent extends ConnectionEvent {
+  ActiveConnectChangedEvent(super.id, super.type);
 }

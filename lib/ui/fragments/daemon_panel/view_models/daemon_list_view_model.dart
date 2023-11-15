@@ -18,8 +18,8 @@ class DaemonListViewModel extends EventListener<DaemonEvent>
   @override
   void handle(DaemonEvent event) {
     switch (event) {
-      case DaemonEventAdded _:
-      case DaemonEventRemoved _:
+      case DaemonAddedEvent _:
+      case DaemonRemovedEvent _:
         notifyListeners();
       default:
     }

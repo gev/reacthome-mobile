@@ -3,26 +3,26 @@ sealed class DaemonEvent {
   DaemonEvent(this.daemon);
 }
 
-class DaemonEventMetaChanged extends DaemonEvent {
-  DaemonEventMetaChanged(super.daemon);
+class DaemonMetaChangedEvent extends DaemonEvent {
+  DaemonMetaChangedEvent(super.daemon);
 }
 
-class DaemonEventAddressChanged extends DaemonEvent {
-  DaemonEventAddressChanged(super.daemon);
+class DaemonAddressChangedEvent extends DaemonEvent {
+  DaemonAddressChangedEvent(super.daemon);
 }
 
-class DaemonEventProjectChanged extends DaemonEvent {
-  DaemonEventProjectChanged(super.daemon);
+class DaemonProjectChangedEvent extends DaemonEvent {
+  DaemonProjectChangedEvent(super.daemon);
 }
 
-class DaemonEventAdded extends DaemonEvent {
-  DaemonEventAdded(super.daemon);
+class DaemonAddedEvent extends DaemonEvent {
+  DaemonAddedEvent(super.daemon);
 }
 
-class DaemonEventRemoved extends DaemonEvent {
-  DaemonEventRemoved(super.daemon);
+class DaemonRemovedEvent extends DaemonEvent {
+  DaemonRemovedEvent(super.daemon);
 }
 
-class DaemonEventConfirmed extends DaemonEvent {
-  DaemonEventConfirmed(super.daemon);
+class DaemonConfirmedEvent extends DaemonEvent {
+  DaemonConfirmedEvent(super.daemon);
 }

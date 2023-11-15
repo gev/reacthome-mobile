@@ -35,9 +35,9 @@ abstract class ConnectionEntity<S> implements Connection {
       case ConnectionState.connectPending:
         _state = ConnectionState.connected;
         _socket = socket;
-        return ConnectionEventConnectCompleted(id, type);
+        return ConnectCompletedEvent(id, type);
       default:
-        return ConnectionEventRejected(id, type, socket);
+        return ConnectRejectedEvent(id, type, socket);
     }
   }
 
@@ -45,7 +45,7 @@ abstract class ConnectionEntity<S> implements Connection {
     switch (_state) {
       case ConnectionState.connected:
         _state = ConnectionState.disconnectPending;
-        return ConnectionEventDisconnectRequested(id, type, _socket);
+        return DisconnectRequestedEvent(id, type, _socket);
       default:
         return null;
     }
@@ -55,7 +55,7 @@ abstract class ConnectionEntity<S> implements Connection {
     switch (_state) {
       case ConnectionState.disconnectPending:
         _state = ConnectionState.disconnected;
-        return ConnectionEventDisconnectCompleted(id, type);
+        return DisconnectCompletedEvent(id, type);
       default:
         return null;
     }
@@ -69,7 +69,7 @@ class LocalConnectionEntity<S> extends ConnectionEntity<S> {
   ConnectionType get type => ConnectionType.local;
 
   ConnectionEvent? connect(InternetAddress address) =>
-      _connect(() => ConnectionEventLocalConnectRequested(id, type, address));
+      _connect(() => LocalConnectRequestedEvent(id, type, address));
 }
 
 class CloudConnectionEntity<S> extends ConnectionEntity<S> {
@@ -79,5 +79,5 @@ class CloudConnectionEntity<S> extends ConnectionEntity<S> {
   ConnectionType get type => ConnectionType.cloud;
 
   ConnectionEvent? connect() =>
-      _connect(() => ConnectionEventCloudConnectRequested(id, type));
+      _connect(() => CloudConnectRequestedEvent(id, type));
 }
