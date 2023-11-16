@@ -35,24 +35,30 @@ Widget daemonPanel({
     DaemonCommand actor,
   }) daemon,
 }) {
-  final connectionViewModel = ConnectionViewModel(
-    eventSource: connection.eventBus,
-    daemonConnection: daemonConnection,
-    local: local,
-    cloud: cloud,
-    daemon: (query: daemon.query),
-  );
-  final daemonListViewModel =
-      DaemonListViewModel(daemon.query, eventSource: daemon.eventBus);
-  final daemonTileViewModel =
-      DaemonTitleViewModel(daemon.query, eventSource: daemon.eventBus);
-  final addButtonViewModel = DaemonViewModel(daemon.actor);
+  connectionViewModel(_) => ConnectionViewModel(
+        eventSource: connection.eventBus,
+        daemonConnection: daemonConnection,
+        local: local,
+        cloud: cloud,
+        daemon: (query: daemon.query),
+      );
+  daemonListViewModel(_) => DaemonListViewModel(
+        daemon.query,
+        eventSource: daemon.eventBus,
+      );
+  daemonTileViewModel(_) => DaemonTitleViewModel(
+        daemon.query,
+        eventSource: daemon.eventBus,
+      );
+  addButtonViewModel(_) => DaemonViewModel(
+        daemon.actor,
+      );
   return MultiProvider(
     providers: [
-      ChangeNotifierProvider(create: (_) => connectionViewModel),
-      ChangeNotifierProvider(create: (_) => daemonListViewModel),
-      ChangeNotifierProvider(create: (_) => daemonTileViewModel),
-      ChangeNotifierProvider(create: (_) => addButtonViewModel),
+      ChangeNotifierProvider(create: connectionViewModel),
+      ChangeNotifierProvider(create: daemonListViewModel),
+      ChangeNotifierProvider(create: daemonTileViewModel),
+      ChangeNotifierProvider(create: addButtonViewModel),
     ],
     child: const DaemonPanelView(),
   );

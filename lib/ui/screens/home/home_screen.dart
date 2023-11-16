@@ -63,12 +63,13 @@ Widget makeHomeScreen({
     cloud: cloud,
     daemon: daemonSelect,
   );
+  discoveryVieModel(_) => DiscoveryStatusViewModel(
+        eventSource: discoveryProcess.eventBus,
+        query: discoveryProcess.query,
+        actor: discoveryProcess.actor,
+      );
   return ChangeNotifierProvider(
-    create: (_) => DiscoveryStatusViewModel(
-      eventSource: discoveryProcess.eventBus,
-      query: discoveryProcess.query,
-      actor: discoveryProcess.actor,
-    ),
+    create: discoveryVieModel,
     child: selectPlatform(
       ios: () => HomeScreenIOS(
         title: title,
