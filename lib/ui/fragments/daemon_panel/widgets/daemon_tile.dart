@@ -29,22 +29,23 @@ class DaemonTile extends StatelessWidget {
       (model) => model.isCloudConnected(id),
     );
     return listTile(
-        title: title,
-        trailing: Row(
-          children: [
-            switcher(
-              value: isConnected,
-              onChanged: model.toggleConnection(id),
-            ),
-            switcher(
-              value: isLocalConnected,
-              onChanged: model.toggleLocalConnection(id),
-            ),
-            switcher(
-              value: isCloudConnected,
-              onChanged: model.toggleCloudConnection(id),
-            )
-          ],
-        ));
+      title: title,
+      trailing: Row(
+        children: [
+          switcher(
+            value: isConnected,
+            onChanged: model.toggleConnection(id),
+          ),
+          switcher(
+            value: isLocalConnected,
+            onChanged: model.toggleLocalConnection(id),
+          ),
+          switcher(
+            value: isCloudConnected,
+            onChanged: model.toggleCloudConnection(id),
+          )
+        ],
+      ),
+    );
   }
 }
