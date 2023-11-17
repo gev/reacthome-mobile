@@ -1,8 +1,9 @@
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/widgets/switch/switch.android.dart';
 import 'package:reacthome/ui/widgets/switch/switch.ios.dart';
 import 'package:reacthome/util/platform.dart';
 
-switcher({
+Widget switcher({
   required bool value,
   required void Function(bool)? onChanged,
 }) =>
