@@ -5,7 +5,7 @@ import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 abstract class WebsocketService<F extends WebSocketFactory,
-    E extends ConnectionEvent> extends EventListener<ConnectionEvent> {
+    E extends ConnectionEvent> extends GenericEventListener<ConnectionEvent> {
   final ConnectionCommand<WebSocket> actor;
   final F factory;
 

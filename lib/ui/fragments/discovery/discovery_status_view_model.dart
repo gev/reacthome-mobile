@@ -5,7 +5,7 @@ import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryStatusViewModel extends EventListener<DiscoveryEvent>
+class DiscoveryStatusViewModel extends GenericEventListener<DiscoveryEvent>
     with ChangeNotifier {
   final DiscoveryQuery query;
   final DiscoveryCommand actor;

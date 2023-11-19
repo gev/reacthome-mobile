@@ -3,7 +3,7 @@ import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class ActiveConnectionService extends EventListener<ConnectionEvent> {
+class ActiveConnectionService extends GenericEventListener<ConnectionEvent> {
   final DaemonConnectionCommand actor;
 
   ActiveConnectionService({

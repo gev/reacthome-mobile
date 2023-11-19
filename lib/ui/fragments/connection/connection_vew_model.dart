@@ -9,7 +9,7 @@ import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart'
 import 'package:reacthome/util/event_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel extends EventListener<ConnectionEvent>
+class ConnectionViewModel extends GenericEventListener<ConnectionEvent>
     with ChangeNotifier {
   final ({
     ConnectionQuery<DaemonConnection> query,

@@ -10,7 +10,7 @@ import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
-    extends EventEmitter<ConnectionEvent>
+    extends GenericEventEmitter<ConnectionEvent>
     implements ConnectionCommand<S>, ConnectionQuery<Connection> {
   final Repository<String, C> repository;
 

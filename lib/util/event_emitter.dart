@@ -1,9 +1,14 @@
 import 'package:reacthome/util/event_bus.dart';
 
-abstract class EventEmitter<T> {
+abstract interface class EventEmitter<T> {
+  void emit(T event);
+}
+
+abstract class GenericEventEmitter<T> implements EventEmitter<T> {
   final EventBus<T> eventSink;
 
-  EventEmitter({required this.eventSink});
+  GenericEventEmitter({required this.eventSink});
 
+  @override
   void emit(T event) => eventSink.emit(event);
 }

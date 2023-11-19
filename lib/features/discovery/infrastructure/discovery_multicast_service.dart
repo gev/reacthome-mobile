@@ -4,7 +4,7 @@ import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryMulticastService extends EventListener<DiscoveryEvent> {
+class DiscoveryMulticastService extends GenericEventListener<DiscoveryEvent> {
   final DiscoveryCommand<MulticastSource> actor;
   final MulticastSourceFactory factory;
 

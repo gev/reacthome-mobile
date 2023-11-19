@@ -24,14 +24,14 @@ class Discovery {
   late DiscoveryService<MulticastSource> discoveryService;
 
   Discovery._() {
-    daemonEventBus = EventBus();
+    daemonEventBus = GenericEventBus();
 
     daemonService = DaemonService(
       eventSink: daemonEventBus,
       repository: ImmutableMapRepository(),
     );
 
-    discoveryEventBus = EventBus();
+    discoveryEventBus = GenericEventBus();
 
     discoveryService = DiscoveryService(
       eventSink: discoveryEventBus,

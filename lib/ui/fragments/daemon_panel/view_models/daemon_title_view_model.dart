@@ -3,7 +3,7 @@ import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DaemonTitleViewModel extends EventListener<DaemonEvent>
+class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
   final DaemonQuery discovery;
 

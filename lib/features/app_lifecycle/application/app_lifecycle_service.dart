@@ -2,7 +2,7 @@ import 'package:reacthome/core/app_lifecycle/app_lifecycle_command.dart';
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
 import 'package:reacthome/util/event_emitter.dart';
 
-class AppLifecycleService extends EventEmitter<AppLifecycleEvent>
+class AppLifecycleService extends GenericEventEmitter<AppLifecycleEvent>
     implements AppLifecycleCommand {
   AppLifecycleService({required super.eventSink});
 

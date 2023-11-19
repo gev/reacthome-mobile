@@ -3,7 +3,7 @@ import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryTimeoutService extends EventListener<DaemonEvent> {
+class DiscoveryTimeoutService extends GenericEventListener<DaemonEvent> {
   final DaemonCommand actor;
   final Duration timeout;
 

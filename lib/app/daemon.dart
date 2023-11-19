@@ -10,7 +10,7 @@ class Daemon {
   late DaemonService daemonService;
 
   Daemon._() {
-    daemonEventBus = EventBus();
+    daemonEventBus = GenericEventBus();
 
     daemonService = DaemonService(
       eventSink: daemonEventBus,

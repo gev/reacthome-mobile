@@ -16,7 +16,7 @@ class Connection {
   late CloudConnectionService<WebSocket> cloudConnectionService;
 
   Connection._() {
-    connectionEventBus = EventBus();
+    connectionEventBus = GenericEventBus();
 
     localConnectionService = LocalConnectionService(
       eventSink: connectionEventBus,

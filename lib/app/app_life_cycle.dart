@@ -9,7 +9,7 @@ class AppLifecycle {
   late AppLifecycleService appLifecycleService;
 
   AppLifecycle._() {
-    appLifecycleEventBus = EventBus();
+    appLifecycleEventBus = GenericEventBus();
     appLifecycleService = AppLifecycleService(eventSink: appLifecycleEventBus);
   }
 }

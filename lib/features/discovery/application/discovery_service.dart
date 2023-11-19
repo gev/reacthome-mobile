@@ -6,7 +6,7 @@ import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class DiscoveryService<S> extends EventEmitter<DiscoveryEvent>
+class DiscoveryService<S> extends GenericEventEmitter<DiscoveryEvent>
     implements DiscoveryCommand<S>, DiscoveryQuery {
   final DiscoveryEntity<S> _process;
 

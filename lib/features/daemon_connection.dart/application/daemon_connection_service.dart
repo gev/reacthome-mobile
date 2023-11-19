@@ -10,7 +10,7 @@ import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
-class DaemonConnectionService<S> extends EventEmitter<ConnectionEvent>
+class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
     implements DaemonConnectionCommand, ConnectionQuery<DaemonConnection> {
   final ({
     ConnectionQuery<Connection> query,

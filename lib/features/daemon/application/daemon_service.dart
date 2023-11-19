@@ -9,7 +9,7 @@ import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/repository.dart';
 
-class DaemonService extends EventEmitter<DaemonEvent>
+class DaemonService extends GenericEventEmitter<DaemonEvent>
     implements DaemonCommand, DaemonQuery {
   final Repository<String, DaemonEntity> repository;
 

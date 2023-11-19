@@ -24,7 +24,6 @@ class AppAndroid extends AppBindingObserver {
   }
 
   ThemeData _makeTheme(Brightness brightness) => ThemeData(
-        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           brightness: brightness,
           seedColor: theme.primaryColor,
