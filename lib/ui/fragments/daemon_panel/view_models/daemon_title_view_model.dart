@@ -7,9 +7,9 @@ class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
   final DaemonQuery query;
 
-  DaemonTitleViewModel(
-    this.query, {
+  DaemonTitleViewModel({
     required super.eventSource,
+    required this.query,
   });
 
   String getDaemonTitleById(String id) {

@@ -7,9 +7,9 @@ class DaemonListViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
   final DaemonQuery query;
 
-  DaemonListViewModel(
-    this.query, {
+  DaemonListViewModel({
     required super.eventSource,
+    required this.query,
   });
 
   Iterable<String> get daemons => query.getAllDaemons();

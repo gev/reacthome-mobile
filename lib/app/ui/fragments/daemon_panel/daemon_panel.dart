@@ -15,10 +15,10 @@ Widget daemonPanel({
 }) =>
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: connectionViewModelFactory.create),
-        ChangeNotifierProvider(create: daemonListViewModelFactory.create),
-        ChangeNotifierProvider(create: daemonTileViewModelFactory.create),
-        ChangeNotifierProvider(create: daemonAddViewModelFactory.create),
+        ChangeNotifierProvider(create: connectionViewModelFactory),
+        ChangeNotifierProvider(create: daemonListViewModelFactory),
+        ChangeNotifierProvider(create: daemonTileViewModelFactory),
+        ChangeNotifierProvider(create: daemonAddViewModelFactory),
       ],
       child: const DaemonPanelView(),
     );

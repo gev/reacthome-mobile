@@ -8,7 +8,7 @@ import 'package:uuid/uuid.dart';
 class DaemonAddViewModel with ChangeNotifier {
   final DaemonCommand actor;
 
-  DaemonAddViewModel(this.actor);
+  DaemonAddViewModel({required this.actor});
 
   int _index = 0;
   final _uuid = const Uuid();
