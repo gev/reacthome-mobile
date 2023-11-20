@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_view_model.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart';
 import 'package:reacthome/ui/widgets/add_button/add_button.dart';
 
 class AddDaemonButton extends StatelessWidget {
@@ -8,7 +8,7 @@ class AddDaemonButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<DaemonViewModel>();
+    final model = context.read<DaemonAddViewModel>();
     return addButton(onPressed: model.addDaemonButtonPressed);
   }
 }

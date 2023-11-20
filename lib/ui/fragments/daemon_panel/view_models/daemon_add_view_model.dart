@@ -5,16 +5,16 @@ import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:uuid/uuid.dart';
 
-class DaemonViewModel with ChangeNotifier {
-  final DaemonCommand discovery;
+class DaemonAddViewModel with ChangeNotifier {
+  final DaemonCommand actor;
 
-  DaemonViewModel(this.discovery);
+  DaemonAddViewModel(this.actor);
 
   int _index = 0;
   final _uuid = const Uuid();
 
   void addDaemonButtonPressed() {
-    discovery.addDaemon(
+    actor.addDaemon(
       id: _uuid.v4(),
       meta: Meta(title: 'Daemon $_index', code: 'D $_index'),
       address: InternetAddress.anyIPv4,

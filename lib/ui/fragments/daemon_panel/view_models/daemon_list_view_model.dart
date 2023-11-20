@@ -5,14 +5,14 @@ import 'package:reacthome/util/event_listener.dart';
 
 class DaemonListViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
-  final DaemonQuery discovery;
+  final DaemonQuery query;
 
   DaemonListViewModel(
-    this.discovery, {
+    this.query, {
     required super.eventSource,
   });
 
-  Iterable<String> get daemons => discovery.getAllDaemons();
+  Iterable<String> get daemons => query.getAllDaemons();
   String get countTitle => daemons.length.toString();
 
   @override

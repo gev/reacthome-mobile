@@ -5,15 +5,15 @@ import 'package:reacthome/util/event_listener.dart';
 
 class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
-  final DaemonQuery discovery;
+  final DaemonQuery query;
 
   DaemonTitleViewModel(
-    this.discovery, {
+    this.query, {
     required super.eventSource,
   });
 
   String getDaemonTitleById(String id) {
-    final daemon = discovery.getDaemonById(id);
+    final daemon = query.getDaemonById(id);
     return daemon?.meta.name ?? id;
   }
 

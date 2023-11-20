@@ -21,7 +21,9 @@ class ConnectionViewModel extends GenericEventListener<ConnectionEvent>
   final ({
     ConnectionQuery<Connection> query,
   }) cloud;
-  final ({DaemonQuery query}) daemon;
+  final ({
+    DaemonQuery query,
+  }) daemon;
 
   ConnectionViewModel({
     required super.eventSource,
