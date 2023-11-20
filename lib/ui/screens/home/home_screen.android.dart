@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reacthome/ui/fragments/discovery/discovery_status.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 
 class HomeScreenAndroid extends StatelessWidget {
   final String title;

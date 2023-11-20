@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/ui/fragments/discovery/discovery_status.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 
 class HomeScreenIOS extends StatelessWidget {
   final String title;

@@ -5,7 +5,7 @@ import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
-import 'package:reacthome/ui/fragments/connection/connection_vew_model.dart';
+import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/factory.dart';
 

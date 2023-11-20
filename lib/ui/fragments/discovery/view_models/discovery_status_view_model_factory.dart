@@ -1,8 +1,8 @@
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/discovery/discovery_command.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_query.dart';
-import 'package:reacthome/ui/fragments/discovery/discovery_status_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/factory.dart';
 

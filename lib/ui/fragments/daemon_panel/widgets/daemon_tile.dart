@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/connection/connection_vew_model.dart';
+import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart';
 import 'package:reacthome/ui/widgets/list_tile/list_tile_view.dart';
+import 'package:reacthome/ui/widgets/switch/switch.dart';
 
 class DaemonTile extends StatelessWidget {
   final String id;
@@ -29,22 +30,22 @@ class DaemonTile extends StatelessWidget {
     );
     return listTile(
       title: title,
-      // trailing: Row(
-      //   children: [
-      //     switcher(
-      //       value: isConnected,
-      //       onChanged: model.toggleConnection(id),
-      //     ),
-      //     switcher(
-      //       value: isLocalConnected,
-      //       onChanged: model.toggleLocalConnection(id),
-      //     ),
-      //     switcher(
-      //       value: isCloudConnected,
-      //       onChanged: model.toggleCloudConnection(id),
-      //     )
-      //   ],
-      // ),
+      trailing: Row(
+        children: [
+          switcher(
+            value: isConnected,
+            onChanged: model.toggleConnection(id),
+          ),
+          switcher(
+            value: isLocalConnected,
+            onChanged: model.toggleLocalConnection(id),
+          ),
+          switcher(
+            value: isCloudConnected,
+            onChanged: model.toggleCloudConnection(id),
+          )
+        ],
+      ),
     );
   }
 }
