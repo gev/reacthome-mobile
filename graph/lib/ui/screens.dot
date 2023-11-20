@@ -5,6 +5,7 @@ digraph "" {
   "/home/home_screen.android.dart" [label="home_screen.android"];
   "/home/home_screen.ios.dart" [label="home_screen.ios"];
   "/home/home_screen.dart" [label="home_screen"];
+  "/splash/splash_screen.dart" [label="splash_screen"];
   subgraph "cluster~" {
     label="screens";
     subgraph "cluster~/home" {
@@ -12,6 +13,10 @@ digraph "" {
       "/home/home_screen.android.dart";
       "/home/home_screen.ios.dart";
       "/home/home_screen.dart";
+    }
+    subgraph "cluster~/splash" {
+      label="splash";
+      "/splash/splash_screen.dart";
     }
   }
   "/home/home_screen.dart" -> "/home/home_screen.android.dart";

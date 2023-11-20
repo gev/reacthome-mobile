@@ -2,24 +2,25 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/view_models/daemon_command_view_model.dart" [label="daemon_command_view_model"];
+  "/view_models/daemon_add_view_model.dart" [label="daemon_add_view_model"];
   "/view_models/daemon_title_view_model.dart" [label="daemon_title_view_model"];
   "/view_models/daemon_list_view_model.dart" [label="daemon_list_view_model"];
-  "/daemon_panel.dart" [label="daemon_panel"];
-  "/daemon_panel_view.dart" [label="daemon_panel_view"];
+  "/views/daemon_panel_view.dart" [label="daemon_panel_view"];
   "/widgets/daemon_tile.dart" [label="daemon_tile"];
   "/widgets/daemon_list.dart" [label="daemon_list"];
   "/widgets/daemon_count.dart" [label="daemon_count"];
   "/widgets/add_daemon_button.dart" [label="add_daemon_button"];
   subgraph "cluster~" {
     label="daemon_panel";
-    "/daemon_panel.dart";
-    "/daemon_panel_view.dart";
     subgraph "cluster~/view_models" {
       label="view_models";
-      "/view_models/daemon_command_view_model.dart";
+      "/view_models/daemon_add_view_model.dart";
       "/view_models/daemon_title_view_model.dart";
       "/view_models/daemon_list_view_model.dart";
+    }
+    subgraph "cluster~/views" {
+      label="views";
+      "/views/daemon_panel_view.dart";
     }
     subgraph "cluster~/widgets" {
       label="widgets";
@@ -29,16 +30,12 @@ digraph "" {
       "/widgets/add_daemon_button.dart";
     }
   }
-  "/daemon_panel.dart" -> "/daemon_panel_view.dart";
-  "/daemon_panel.dart" -> "/view_models/daemon_command_view_model.dart";
-  "/daemon_panel.dart" -> "/view_models/daemon_list_view_model.dart";
-  "/daemon_panel.dart" -> "/view_models/daemon_title_view_model.dart";
-  "/daemon_panel_view.dart" -> "/widgets/add_daemon_button.dart";
-  "/daemon_panel_view.dart" -> "/widgets/daemon_count.dart";
-  "/daemon_panel_view.dart" -> "/widgets/daemon_list.dart";
+  "/views/daemon_panel_view.dart" -> "/widgets/add_daemon_button.dart";
+  "/views/daemon_panel_view.dart" -> "/widgets/daemon_count.dart";
+  "/views/daemon_panel_view.dart" -> "/widgets/daemon_list.dart";
   "/widgets/daemon_tile.dart" -> "/view_models/daemon_title_view_model.dart";
   "/widgets/daemon_list.dart" -> "/view_models/daemon_list_view_model.dart";
   "/widgets/daemon_list.dart" -> "/widgets/daemon_tile.dart";
   "/widgets/daemon_count.dart" -> "/view_models/daemon_list_view_model.dart";
-  "/widgets/add_daemon_button.dart" -> "/view_models/daemon_command_view_model.dart";
+  "/widgets/add_daemon_button.dart" -> "/view_models/daemon_add_view_model.dart";
 }
