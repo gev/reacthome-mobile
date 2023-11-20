@@ -12,7 +12,7 @@ import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_title_vie
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 import 'package:reacthome/ui/screens/home/home_screen.dart';
 
-Widget createHomeScreen() {
+Widget makeHomeScreen() {
   discoveryStatusViewModelFactory(_) => DiscoveryStatusViewModel(
         eventSource: Discovery.instance.discoveryEventBus,
         query: Discovery.instance.discoveryService,
@@ -60,7 +60,7 @@ Widget createHomeScreen() {
 
   return ChangeNotifierProvider(
     create: discoveryStatusViewModelFactory,
-    child: makeHomeScreen(
+    child: HomeScreen.make(
       left: left,
       right: right,
     ),

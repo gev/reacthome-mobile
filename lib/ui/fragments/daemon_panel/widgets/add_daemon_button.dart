@@ -9,6 +9,6 @@ class AddDaemonButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<DaemonAddViewModel>();
-    return addButton(onPressed: model.addDaemonButtonPressed);
+    return AddButton.make(onPressed: model.addDaemonButtonPressed);
   }
 }

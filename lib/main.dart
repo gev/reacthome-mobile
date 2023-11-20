@@ -3,5 +3,5 @@ import 'package:reacthome/app/make.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(make());
+  runApp(makeApp());
 }

@@ -12,6 +12,6 @@ class DiscoveryStatus extends StatelessWidget {
     final isDiscovering = context.select<DiscoveryStatusViewModel, bool>(
       (model) => model.isDiscovering,
     );
-    return switcher(value: isDiscovering, onChanged: model.toggleDiscovery);
+    return Switch.make(value: isDiscovering, onChanged: model.toggleDiscovery);
   }
 }

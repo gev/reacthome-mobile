@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart';
@@ -28,19 +28,19 @@ class DaemonTile extends StatelessWidget {
     bool isCloudConnected = context.select<ConnectionViewModel, bool>(
       (model) => model.isCloudConnected(id),
     );
-    return listTile(
+    return ListTile.make(
       title: title,
       trailing: Row(
         children: [
-          switcher(
+          Switch.make(
             value: isConnected,
             onChanged: model.toggleConnection(id),
           ),
-          switcher(
+          Switch.make(
             value: isLocalConnected,
             onChanged: model.toggleLocalConnection(id),
           ),
-          switcher(
+          Switch.make(
             value: isCloudConnected,
             onChanged: model.toggleCloudConnection(id),
           )
