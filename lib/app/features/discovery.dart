@@ -1,5 +1,5 @@
-import 'package:reacthome/app/app_life_cycle.dart';
 import 'package:reacthome/app/config.dart';
+import 'package:reacthome/app/features/app_life_cycle.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/features/daemon/application/daemon_service.dart';

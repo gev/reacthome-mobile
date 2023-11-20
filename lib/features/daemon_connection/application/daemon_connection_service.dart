@@ -5,7 +5,7 @@ import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/daemon/daemon.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
-import 'package:reacthome/features/daemon_connection.dart/domain/daemon_connection_entity.dart';
+import 'package:reacthome/features/daemon_connection/domain/daemon_connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';

@@ -1,6 +1,6 @@
-import 'package:reacthome/app/connection.dart';
-import 'package:reacthome/features/daemon_connection.dart/application/active_connection_service.dart';
-import 'package:reacthome/features/daemon_connection.dart/application/daemon_connection_service.dart';
+import 'package:reacthome/app/features/connection.dart';
+import 'package:reacthome/features/daemon_connection/application/active_connection_service.dart';
+import 'package:reacthome/features/daemon_connection/application/daemon_connection_service.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/util/repository.dart';
 
