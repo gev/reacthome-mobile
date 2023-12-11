@@ -1,7 +1,7 @@
-import 'package:reacthome/app/config.dart';
-import 'package:reacthome/app/features/app_life_cycle.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/factory/config.dart';
+import 'package:reacthome/factory/features/app_life_cycle_factory.dart';
 import 'package:reacthome/features/daemon/application/daemon_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
@@ -14,8 +14,8 @@ import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/repository.dart';
 
-class Discovery {
-  static final instance = Discovery._();
+class DiscoveryFactory {
+  static final instance = DiscoveryFactory._();
 
   late EventBus<DaemonEvent> daemonEventBus;
   late DaemonService daemonService;
@@ -23,7 +23,7 @@ class Discovery {
   late EventBus<DiscoveryEvent> discoveryEventBus;
   late DiscoveryService<MulticastSource> discoveryService;
 
-  Discovery._() {
+  DiscoveryFactory._() {
     daemonEventBus = GenericEventBus();
 
     daemonService = DaemonService(
@@ -54,7 +54,7 @@ class Discovery {
     );
 
     DiscoveryLifecycleService(
-      eventSource: AppLifecycle.instance.appLifecycleEventBus,
+      eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
       actor: discoveryService,
     );
   }

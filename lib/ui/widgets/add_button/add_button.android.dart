@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class AddDaemonButtonAndroid extends StatelessWidget {
+class AddButtonAndroid extends StatelessWidget {
   final void Function()? onPressed;
 
-  const AddDaemonButtonAndroid(this.onPressed, {super.key});
+  const AddButtonAndroid(this.onPressed, {super.key});
 
   @override
   Widget build(BuildContext context) => FilledButton.icon(

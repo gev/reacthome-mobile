@@ -44,6 +44,7 @@ abstract class WebsocketService<F extends WebSocketFactory,
   }
 
   void _completeDisconnect(DisconnectRequestedEvent<WebSocket> event) {
+    event.socket.close();
     actor.completeDisconnect(event.id);
   }
 }

@@ -1,33 +1,33 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/app/features/daemon.dart';
-import 'package:reacthome/app/features/discovery.dart';
 import 'package:reacthome/core/daemon/daemon_command.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/daemon/daemon_query.dart';
+import 'package:reacthome/factory/features/daemon_factory.dart';
+import 'package:reacthome/factory/features/discovery_factory.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon_panel/views/daemon_panel_view.dart';
 import 'package:reacthome/util/event_bus.dart';
 
-class DaemonPanel {
-  static final instance = DaemonPanel._();
+class DaemonPanelFactory {
+  static final instance = DaemonPanelFactory._();
 
   late Widget discoveryPanel;
   late Widget daemonPanel;
 
-  DaemonPanel._() {
+  DaemonPanelFactory._() {
     discoveryPanel = _make(
-      eventBus: Discovery.instance.daemonEventBus,
-      query: Discovery.instance.daemonService,
-      actor: Discovery.instance.daemonService,
+      eventBus: DiscoveryFactory.instance.daemonEventBus,
+      query: DiscoveryFactory.instance.daemonService,
+      actor: DiscoveryFactory.instance.daemonService,
     );
 
     daemonPanel = _make(
-      eventBus: Daemon.instance.daemonEventBus,
-      query: Daemon.instance.daemonService,
-      actor: Daemon.instance.daemonService,
+      eventBus: DaemonFactory.instance.daemonEventBus,
+      query: DaemonFactory.instance.daemonService,
+      actor: DaemonFactory.instance.daemonService,
     );
   }
 }

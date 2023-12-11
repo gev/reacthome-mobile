@@ -45,6 +45,9 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   }
 
   @override
+  void connectAll(Iterable<Daemon> daemons) => daemons.forEach(connect);
+
+  @override
   void connect(Daemon daemon) {
     connectLocal(daemon);
     connectCloud(daemon);
@@ -62,6 +65,9 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   void connectCloud(Daemon daemon) {
     cloud.actor.connect(daemon.id);
   }
+
+  @override
+  void disconnectAll() => getAllConnections().forEach(disconnect);
 
   @override
   void disconnect(String id) {

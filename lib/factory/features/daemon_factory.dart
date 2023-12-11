@@ -3,13 +3,13 @@ import 'package:reacthome/features/daemon/application/daemon_service.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/repository.dart';
 
-class Daemon {
-  static final instance = Daemon._();
+class DaemonFactory {
+  static final instance = DaemonFactory._();
 
   late EventBus<DaemonEvent> daemonEventBus;
   late DaemonService daemonService;
 
-  Daemon._() {
+  DaemonFactory._() {
     daemonEventBus = GenericEventBus();
 
     daemonService = DaemonService(

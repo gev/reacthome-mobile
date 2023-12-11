@@ -5,7 +5,7 @@ import 'package:reacthome/util/platform.dart';
 
 class AddButton {
   static Widget make({void Function()? onPressed}) => selectPlatform(
-        ios: () => AddDaemonButtonIOS(onPressed),
-        android: () => AddDaemonButtonAndroid(onPressed),
+        ios: () => AddButtonIOS(onPressed),
+        android: () => AddButtonAndroid(onPressed),
       );
 }
