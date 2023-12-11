@@ -1,5 +1,5 @@
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/factory/config.dart';
+import 'package:reacthome/factories/config.dart';
 import 'package:reacthome/features/connection/application/connection_service.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
 import 'package:reacthome/features/connection/interface/connection_controller.dart';

@@ -1,6 +1,6 @@
-import 'package:reacthome/factory/features/connection_factory.dart' as c;
-import 'package:reacthome/factory/features/daemon_connection_factory.dart';
-import 'package:reacthome/factory/features/discovery_factory.dart';
+import 'package:reacthome/factories/features/connection_factory.dart' as c;
+import 'package:reacthome/factories/features/daemon_connection_factory.dart';
+import 'package:reacthome/factories/features/discovery_factory.dart';
 import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
 
 class ConnectionFactory {

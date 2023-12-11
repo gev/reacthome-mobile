@@ -1,6 +1,6 @@
-import 'package:reacthome/factory/features/app_life_cycle_factory.dart';
-import 'package:reacthome/factory/features/connection_factory.dart';
-import 'package:reacthome/factory/features/discovery_factory.dart';
+import 'package:reacthome/factories/features/app_life_cycle_factory.dart';
+import 'package:reacthome/factories/features/connection_factory.dart';
+import 'package:reacthome/factories/features/discovery_factory.dart';
 import 'package:reacthome/features/daemon_connection/application/active_connection_service.dart';
 import 'package:reacthome/features/daemon_connection/application/daemon_connection_auto_service.dart';
 import 'package:reacthome/features/daemon_connection/application/daemon_connection_lifecycle_service.dart';
