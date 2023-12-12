@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/factories/make.dart';
+import 'package:reacthome/app/make.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

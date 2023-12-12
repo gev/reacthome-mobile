@@ -1,4 +1,4 @@
-import 'package:reacthome/factories/features/discovery_factory.dart';
+import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 
 class DiscoveryViewModelFactory {

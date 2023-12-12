@@ -1,7 +1,7 @@
+import 'package:reacthome/app/config.dart';
+import 'package:reacthome/app/features/app_life_cycle_factory.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/factories/config.dart';
-import 'package:reacthome/factories/features/app_life_cycle_factory.dart';
 import 'package:reacthome/features/daemon/application/daemon_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';

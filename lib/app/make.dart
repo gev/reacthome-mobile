@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/factories/config.dart';
-import 'package:reacthome/factories/features/app_life_cycle_factory.dart';
-import 'package:reacthome/factories/ui/screens/home_screen_factory.dart';
+import 'package:reacthome/app/config.dart';
+import 'package:reacthome/app/features/app_life_cycle_factory.dart';
+import 'package:reacthome/app/ui/screens/home_screen_factory.dart';
 import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
