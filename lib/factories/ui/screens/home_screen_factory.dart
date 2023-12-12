@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/factories/ui/fragments/connection_factory.dart';
 import 'package:reacthome/factories/ui/fragments/daemon_panel_factory.dart';
-import 'package:reacthome/factory/ui/fragments/Discovery.dart';
+import 'package:reacthome/factories/ui/fragments/discovery_view_model_factory.dart';
 import 'package:reacthome/ui/screens/home/home_screen.dart';
 
 class HomeScreenFactory {
@@ -14,7 +14,7 @@ class HomeScreenFactory {
     screen = MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: Discovery.instance.discoveryStatusViewModelFactory,
+          create: DiscoveryViewModelFactory.instance.make,
         ),
         ChangeNotifierProvider(
           create: ConnectionFactory.instance.connectionViewModelFactory,
