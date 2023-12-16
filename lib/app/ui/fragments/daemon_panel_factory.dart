@@ -14,22 +14,19 @@ import 'package:reacthome/util/event_bus.dart';
 class DaemonPanelFactory {
   static final instance = DaemonPanelFactory._();
 
-  late Widget discoveryPanel;
-  late Widget daemonPanel;
+  DaemonPanelFactory._();
 
-  DaemonPanelFactory._() {
-    discoveryPanel = _make(
-      eventBus: DiscoveryFactory.instance.daemonEventBus,
-      query: DiscoveryFactory.instance.daemonService,
-      actor: DiscoveryFactory.instance.daemonService,
-    );
+  Widget discoveryPanel() => _make(
+        eventBus: DiscoveryFactory.instance.daemonEventBus,
+        query: DiscoveryFactory.instance.daemonService,
+        actor: DiscoveryFactory.instance.daemonService,
+      );
 
-    daemonPanel = _make(
-      eventBus: DaemonFactory.instance.daemonEventBus,
-      query: DaemonFactory.instance.daemonService,
-      actor: DaemonFactory.instance.daemonService,
-    );
-  }
+  Widget daemonPanel() => _make(
+        eventBus: DaemonFactory.instance.daemonEventBus,
+        query: DaemonFactory.instance.daemonService,
+        actor: DaemonFactory.instance.daemonService,
+      );
 }
 
 Widget _make({

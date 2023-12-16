@@ -8,22 +8,22 @@ import 'package:reacthome/ui/screens/home_screen.dart';
 class HomeScreenFactory {
   static final instance = HomeScreenFactory._();
 
-  late Widget screen;
+  late WidgetBuilder screen;
 
   HomeScreenFactory._() {
-    screen = MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: DiscoveryViewModelFactory.instance.make,
-        ),
-        ChangeNotifierProvider(
-          create: ConnectionFactory.instance.connectionViewModelFactory,
-        ),
-      ],
-      child: HomeScreen.make(
-        left: DaemonPanelFactory.instance.discoveryPanel,
-        right: DaemonPanelFactory.instance.daemonPanel,
-      ),
-    );
+    screen = (_) => MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: DiscoveryViewModelFactory.instance.make,
+            ),
+            ChangeNotifierProvider(
+              create: ConnectionFactory.instance.make,
+            ),
+          ],
+          child: HomeScreen.make(
+            left: DaemonPanelFactory.instance.discoveryPanel(),
+            right: DaemonPanelFactory.instance.daemonPanel(),
+          ),
+        );
   }
 }

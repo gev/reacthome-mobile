@@ -8,7 +8,7 @@ class ConnectionFactory {
 
   ConnectionFactory._();
 
-  ConnectionViewModel connectionViewModelFactory(_) => ConnectionViewModel(
+  ConnectionViewModel make(_) => ConnectionViewModel(
         eventSource: c.ConnectionFactory.instance.connectionEventBus,
         daemonConnection: (
           query: DaemonConnectionFactory.instance.daemonConnectionService,
