@@ -18,10 +18,8 @@ digraph "" {
   "/ui/app/app.ios.dart" [label="app.ios"];
   "/ui/app/navigation.dart" [label="navigation"];
   "/ui/app/app.dart" [label="app"];
-  "/ui/screens/home/home_screen.android.dart" [label="home_screen.android"];
-  "/ui/screens/home/home_screen.ios.dart" [label="home_screen.ios"];
-  "/ui/screens/home/home_screen.dart" [label="home_screen"];
-  "/ui/screens/splash/splash_screen.dart" [label="splash_screen"];
+  "/ui/screens/home_screen.dart" [label="home_screen"];
+  "/ui/screens/splash_screen.dart" [label="splash_screen"];
   "/ui/theme_config.dart" [label="theme_config"];
   "/ui/widgets/list_tile/list_tile_view.ios.dart" [label="list_tile_view.ios"];
   "/ui/widgets/list_tile/list_tile_view.android.dart" [label="list_tile_view.android"];
@@ -29,6 +27,9 @@ digraph "" {
   "/ui/widgets/scafold/scaffold.dart" [label="scaffold"];
   "/ui/widgets/scafold/scaffold.amdroid.dart" [label="scaffold.amdroid"];
   "/ui/widgets/scafold/scaffold.ios.dart" [label="scaffold.ios"];
+  "/ui/widgets/screen/screen.ios.dart" [label="screen.ios"];
+  "/ui/widgets/screen/screen.android.dart" [label="screen.android"];
+  "/ui/widgets/screen/screen.dart" [label="screen"];
   "/ui/widgets/switch/switch.android.dart" [label="switch.android"];
   "/ui/widgets/switch/switch.dart" [label="switch"];
   "/ui/widgets/switch/switch.ios.dart" [label="switch.ios"];
@@ -55,17 +56,19 @@ digraph "" {
   "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
   "/core/daemon_connection/daemon_connection_command.dart" [label="daemon_connection_command"];
   "/core/daemon_connection/daemon_connection.dart" [label="daemon_connection"];
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" [label="daemon_panel"];
-  "/app/ui/screen/home_screen.dart" [label="home_screen"];
-  "/app/daemon.dart" [label="daemon"];
+  "/app/ui/fragments/daemon_panel_factory.dart" [label="daemon_panel_factory"];
+  "/app/ui/fragments/discovery_view_model_factory.dart" [label="discovery_view_model_factory"];
+  "/app/ui/fragments/connection_factory.dart" [label="connection_factory"];
+  "/app/ui/screens/splash_screen_factory.dart" [label="splash_screen_factory"];
+  "/app/ui/screens/home_screen_factory.dart" [label="home_screen_factory"];
+  "/app/features/daemon_connection_factory.dart" [label="daemon_connection_factory"];
+  "/app/features/connection_factory.dart" [label="connection_factory"];
+  "/app/features/discovery_factory.dart" [label="discovery_factory"];
+  "/app/features/daemon_factory.dart" [label="daemon_factory"];
+  "/app/features/app_life_cycle_factory.dart" [label="app_life_cycle_factory"];
   "/app/config.dart" [label="config"];
-  "/app/connection.dart" [label="connection"];
-  "/app/app_life_cycle.dart" [label="app_life_cycle"];
-  "/app/discovery.dart" [label="discovery"];
   "/app/make.dart" [label="make"];
-  "/app/daemon_connection.dart" [label="daemon_connection"];
   "/util/handler.dart" [label="handler"];
-  "/util/factory.dart" [label="factory"];
   "/util/event_bus.dart" [label="event_bus"];
   "/util/extensions.dart" [label="extensions"];
   "/util/repository.dart" [label="repository"];
@@ -88,9 +91,11 @@ digraph "" {
   "/features/daemon/application/daemon_service.dart" [label="daemon_service"];
   "/features/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
-  "/features/daemon_connection.dart/application/active_connection_service.dart" [label="active_connection_service"];
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" [label="daemon_connection_service"];
-  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" [label="daemon_connection_auto_service"];
+  "/features/daemon_connection/application/active_connection_service.dart" [label="active_connection_service"];
+  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" [label="daemon_connection_lifecycle_service"];
+  "/features/daemon_connection/application/daemon_connection_service.dart" [label="daemon_connection_service"];
+  "/features/daemon_connection/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
   "/main.dart" [label="main"];
   "/infrastructure/websocket/websocket_config.dart" [label="websocket_config"];
   "/infrastructure/websocket/websocket.dart" [label="websocket"];
@@ -156,16 +161,8 @@ digraph "" {
       }
       subgraph "cluster~/ui/screens" {
         label="screens";
-        subgraph "cluster~/ui/screens/home" {
-          label="home";
-          "/ui/screens/home/home_screen.android.dart";
-          "/ui/screens/home/home_screen.ios.dart";
-          "/ui/screens/home/home_screen.dart";
-        }
-        subgraph "cluster~/ui/screens/splash" {
-          label="splash";
-          "/ui/screens/splash/splash_screen.dart";
-        }
+        "/ui/screens/home_screen.dart";
+        "/ui/screens/splash_screen.dart";
       }
       subgraph "cluster~/ui/widgets" {
         label="widgets";
@@ -180,6 +177,12 @@ digraph "" {
           "/ui/widgets/scafold/scaffold.dart";
           "/ui/widgets/scafold/scaffold.amdroid.dart";
           "/ui/widgets/scafold/scaffold.ios.dart";
+        }
+        subgraph "cluster~/ui/widgets/screen" {
+          label="screen";
+          "/ui/widgets/screen/screen.ios.dart";
+          "/ui/widgets/screen/screen.android.dart";
+          "/ui/widgets/screen/screen.dart";
         }
         subgraph "cluster~/ui/widgets/switch" {
           label="switch";
@@ -235,32 +238,34 @@ digraph "" {
     }
     subgraph "cluster~/app" {
       label="app";
-      "/app/daemon.dart";
       "/app/config.dart";
-      "/app/connection.dart";
-      "/app/app_life_cycle.dart";
-      "/app/discovery.dart";
       "/app/make.dart";
-      "/app/daemon_connection.dart";
       subgraph "cluster~/app/ui" {
         label="ui";
         subgraph "cluster~/app/ui/fragments" {
           label="fragments";
-          subgraph "cluster~/app/ui/fragments/daemon_panel" {
-            label="daemon_panel";
-            "/app/ui/fragments/daemon_panel/daemon_panel.dart";
-          }
+          "/app/ui/fragments/daemon_panel_factory.dart";
+          "/app/ui/fragments/discovery_view_model_factory.dart";
+          "/app/ui/fragments/connection_factory.dart";
         }
-        subgraph "cluster~/app/ui/screen" {
-          label="screen";
-          "/app/ui/screen/home_screen.dart";
+        subgraph "cluster~/app/ui/screens" {
+          label="screens";
+          "/app/ui/screens/splash_screen_factory.dart";
+          "/app/ui/screens/home_screen_factory.dart";
         }
+      }
+      subgraph "cluster~/app/features" {
+        label="features";
+        "/app/features/daemon_connection_factory.dart";
+        "/app/features/connection_factory.dart";
+        "/app/features/discovery_factory.dart";
+        "/app/features/daemon_factory.dart";
+        "/app/features/app_life_cycle_factory.dart";
       }
     }
     subgraph "cluster~/util" {
       label="util";
       "/util/handler.dart";
-      "/util/factory.dart";
       "/util/event_bus.dart";
       "/util/extensions.dart";
       "/util/repository.dart";
@@ -331,16 +336,18 @@ digraph "" {
           "/features/app_lifecycle/application/app_lifecycle_service.dart";
         }
       }
-      subgraph "cluster~/features/daemon_connection.dart" {
-        label="daemon_connection.dart";
-        subgraph "cluster~/features/daemon_connection.dart/application" {
+      subgraph "cluster~/features/daemon_connection" {
+        label="daemon_connection";
+        subgraph "cluster~/features/daemon_connection/application" {
           label="application";
-          "/features/daemon_connection.dart/application/active_connection_service.dart";
-          "/features/daemon_connection.dart/application/daemon_connection_service.dart";
+          "/features/daemon_connection/application/daemon_connection_auto_service.dart";
+          "/features/daemon_connection/application/active_connection_service.dart";
+          "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart";
+          "/features/daemon_connection/application/daemon_connection_service.dart";
         }
-        subgraph "cluster~/features/daemon_connection.dart/domain" {
+        subgraph "cluster~/features/daemon_connection/domain" {
           label="domain";
-          "/features/daemon_connection.dart/domain/daemon_connection_entity.dart";
+          "/features/daemon_connection/domain/daemon_connection_entity.dart";
         }
       }
     }
@@ -397,12 +404,10 @@ digraph "" {
   "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/util/event_listener.dart";
   "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
   "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/widgets/switch/switch.dart";
-  "/ui/app/app.android.dart" -> "/ui/app/app.dart";
   "/ui/app/app.android.dart" -> "/ui/app/app_binding_observer.dart";
   "/ui/app/app.android.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.android.dart" -> "/ui/theme_config.dart";
   "/ui/app/app_binding_observer.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
-  "/ui/app/app.ios.dart" -> "/ui/app/app.dart";
   "/ui/app/app.ios.dart" -> "/ui/app/app_binding_observer.dart";
   "/ui/app/app.ios.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.ios.dart" -> "/ui/theme_config.dart";
@@ -412,14 +417,16 @@ digraph "" {
   "/ui/app/app.dart" -> "/ui/app/navigation.dart";
   "/ui/app/app.dart" -> "/ui/theme_config.dart";
   "/ui/app/app.dart" -> "/util/platform.dart";
-  "/ui/screens/home/home_screen.android.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
-  "/ui/screens/home/home_screen.ios.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
-  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen.android.dart";
-  "/ui/screens/home/home_screen.dart" -> "/ui/screens/home/home_screen.ios.dart";
-  "/ui/screens/home/home_screen.dart" -> "/util/platform.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/widgets/screen/screen.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/widgets/screen/screen.dart";
   "/ui/widgets/list_tile/list_tile_view.dart" -> "/ui/widgets/list_tile/list_tile_view.android.dart";
   "/ui/widgets/list_tile/list_tile_view.dart" -> "/ui/widgets/list_tile/list_tile_view.ios.dart";
   "/ui/widgets/list_tile/list_tile_view.dart" -> "/util/platform.dart";
+  "/ui/widgets/screen/screen.ios.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
+  "/ui/widgets/screen/screen.android.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
+  "/ui/widgets/screen/screen.dart" -> "/ui/widgets/screen/screen.android.dart";
+  "/ui/widgets/screen/screen.dart" -> "/ui/widgets/screen/screen.ios.dart";
+  "/ui/widgets/screen/screen.dart" -> "/util/platform.dart";
   "/ui/widgets/switch/switch.dart" -> "/ui/widgets/switch/switch.android.dart";
   "/ui/widgets/switch/switch.dart" -> "/ui/widgets/switch/switch.ios.dart";
   "/ui/widgets/switch/switch.dart" -> "/util/platform.dart";
@@ -439,68 +446,84 @@ digraph "" {
   "/core/daemon_connection/daemon_connection_command.dart" -> "/core/daemon/daemon.dart";
   "/core/daemon_connection/daemon_connection.dart" -> "/core/connection/connection.dart";
   "/core/daemon_connection/daemon_connection.dart" -> "/util/entity.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/ui/fragments/daemon_panel/views/daemon_panel_view.dart";
-  "/app/ui/fragments/daemon_panel/daemon_panel.dart" -> "/util/factory.dart";
-  "/app/ui/screen/home_screen.dart" -> "/app/connection.dart";
-  "/app/ui/screen/home_screen.dart" -> "/app/daemon.dart";
-  "/app/ui/screen/home_screen.dart" -> "/app/daemon_connection.dart";
-  "/app/ui/screen/home_screen.dart" -> "/app/discovery.dart";
-  "/app/ui/screen/home_screen.dart" -> "/app/ui/fragments/daemon_panel/daemon_panel.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
-  "/app/ui/screen/home_screen.dart" -> "/ui/screens/home/home_screen.dart";
-  "/app/daemon.dart" -> "/core/daemon/daemon_event.dart";
-  "/app/daemon.dart" -> "/features/daemon/application/daemon_service.dart";
-  "/app/daemon.dart" -> "/util/event_bus.dart";
-  "/app/daemon.dart" -> "/util/repository.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/app/features/daemon_factory.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_command.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_event.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_query.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/views/daemon_panel_view.dart";
+  "/app/ui/fragments/daemon_panel_factory.dart" -> "/util/event_bus.dart";
+  "/app/ui/fragments/discovery_view_model_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/ui/fragments/discovery_view_model_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
+  "/app/ui/fragments/connection_factory.dart" -> "/app/features/connection_factory.dart";
+  "/app/ui/fragments/connection_factory.dart" -> "/app/features/daemon_connection_factory.dart";
+  "/app/ui/fragments/connection_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/ui/fragments/connection_factory.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
+  "/app/ui/screens/splash_screen_factory.dart" -> "/ui/screens/splash_screen.dart";
+  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/connection_factory.dart";
+  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/daemon_panel_factory.dart";
+  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/discovery_view_model_factory.dart";
+  "/app/ui/screens/home_screen_factory.dart" -> "/ui/screens/home_screen.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/app/features/connection_factory.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/active_connection_service.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_auto_service.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_service.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/domain/daemon_connection_entity.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/features/daemon_connection_factory.dart" -> "/util/repository.dart";
+  "/app/features/connection_factory.dart" -> "/app/config.dart";
+  "/app/features/connection_factory.dart" -> "/core/connection/connection_event.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/application/connection_service.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/domain/connection_entity.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/infrastructure/websocket_service.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/interface/connection_controller.dart";
+  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/app/features/connection_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/connection_factory.dart" -> "/util/repository.dart";
+  "/app/features/discovery_factory.dart" -> "/app/config.dart";
+  "/app/features/discovery_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/features/discovery_factory.dart" -> "/core/daemon/daemon_event.dart";
+  "/app/features/discovery_factory.dart" -> "/core/discovery/discovery_event.dart";
+  "/app/features/discovery_factory.dart" -> "/features/daemon/application/daemon_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/daemon/domain/daemon_entity.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_lifecycle_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/domain/discovery_entity.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_multicast_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_timeout_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/interface/discovery_controller.dart";
+  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
+  "/app/features/discovery_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/discovery_factory.dart" -> "/util/repository.dart";
+  "/app/features/daemon_factory.dart" -> "/core/daemon/daemon_event.dart";
+  "/app/features/daemon_factory.dart" -> "/features/daemon/application/daemon_service.dart";
+  "/app/features/daemon_factory.dart" -> "/features/daemon/domain/daemon_entity.dart";
+  "/app/features/daemon_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/daemon_factory.dart" -> "/util/repository.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/util/event_bus.dart";
   "/app/config.dart" -> "/features/discovery/discovery_config.dart";
   "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
   "/app/config.dart" -> "/infrastructure/websocket/websocket_config.dart";
   "/app/config.dart" -> "/ui/theme_config.dart";
-  "/app/connection.dart" -> "/app/config.dart";
-  "/app/connection.dart" -> "/core/connection/connection_event.dart";
-  "/app/connection.dart" -> "/features/connection/application/connection_service.dart";
-  "/app/connection.dart" -> "/features/connection/infrastructure/websocket_service.dart";
-  "/app/connection.dart" -> "/features/connection/interface/connection_controller.dart";
-  "/app/connection.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/app/connection.dart" -> "/infrastructure/websocket/websocket_factory.dart";
-  "/app/connection.dart" -> "/util/event_bus.dart";
-  "/app/connection.dart" -> "/util/repository.dart";
-  "/app/app_life_cycle.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
-  "/app/app_life_cycle.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
-  "/app/app_life_cycle.dart" -> "/util/event_bus.dart";
-  "/app/discovery.dart" -> "/app/app_life_cycle.dart";
-  "/app/discovery.dart" -> "/app/config.dart";
-  "/app/discovery.dart" -> "/core/daemon/daemon_event.dart";
-  "/app/discovery.dart" -> "/core/discovery/discovery_event.dart";
-  "/app/discovery.dart" -> "/features/daemon/application/daemon_service.dart";
-  "/app/discovery.dart" -> "/features/discovery/application/discovery_lifecycle_service.dart";
-  "/app/discovery.dart" -> "/features/discovery/application/discovery_service.dart";
-  "/app/discovery.dart" -> "/features/discovery/domain/discovery_entity.dart";
-  "/app/discovery.dart" -> "/features/discovery/infrastructure/discovery_multicast_service.dart";
-  "/app/discovery.dart" -> "/features/discovery/infrastructure/discovery_timeout_service.dart";
-  "/app/discovery.dart" -> "/features/discovery/interface/discovery_controller.dart";
-  "/app/discovery.dart" -> "/infrastructure/multicast/multicast_source.dart";
-  "/app/discovery.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
-  "/app/discovery.dart" -> "/util/event_bus.dart";
-  "/app/discovery.dart" -> "/util/repository.dart";
-  "/app/make.dart" -> "/app/app_life_cycle.dart";
   "/app/make.dart" -> "/app/config.dart";
-  "/app/make.dart" -> "/app/ui/screen/home_screen.dart";
+  "/app/make.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/make.dart" -> "/app/features/connection_factory.dart";
+  "/app/make.dart" -> "/app/features/daemon_connection_factory.dart";
+  "/app/make.dart" -> "/app/features/discovery_factory.dart";
+  "/app/make.dart" -> "/app/ui/screens/home_screen_factory.dart";
+  "/app/make.dart" -> "/app/ui/screens/splash_screen_factory.dart";
   "/app/make.dart" -> "/ui/app/app.dart";
   "/app/make.dart" -> "/ui/app/navigation.dart";
-  "/app/daemon_connection.dart" -> "/app/connection.dart";
-  "/app/daemon_connection.dart" -> "/features/daemon_connection.dart/application/active_connection_service.dart";
-  "/app/daemon_connection.dart" -> "/features/daemon_connection.dart/application/daemon_connection_service.dart";
-  "/app/daemon_connection.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/app/daemon_connection.dart" -> "/util/repository.dart";
   "/util/repository.dart" -> "/util/entity.dart";
   "/util/event_emitter.dart" -> "/util/event_bus.dart";
   "/util/event_listener.dart" -> "/util/event_bus.dart";
@@ -565,25 +588,34 @@ digraph "" {
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
   "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_emitter.dart";
-  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/connection/connection_type.dart";
-  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection.dart/application/active_connection_service.dart" -> "/util/event_listener.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_command.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/connection/connection_query.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon/daemon.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/features/daemon_connection.dart/domain/daemon_connection_entity.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/event_emitter.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/extensions.dart";
-  "/features/daemon_connection.dart/application/daemon_connection_service.dart" -> "/util/repository.dart";
-  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection.dart";
-  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/connection/connection_state.dart";
-  "/features/daemon_connection.dart/domain/daemon_connection_entity.dart" -> "/core/daemon_connection/daemon_connection.dart";
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon/daemon_event.dart";
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon/daemon_query.dart";
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/util/event_listener.dart";
+  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/util/extensions.dart";
+  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/connection/connection_type.dart";
+  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection/application/active_connection_service.dart" -> "/util/event_listener.dart";
+  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/daemon/daemon_query.dart";
+  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/util/event_listener.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_command.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_query.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon/daemon.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/features/daemon_connection/domain/daemon_connection_entity.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/event_emitter.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/extensions.dart";
+  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/repository.dart";
+  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection.dart";
+  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection_event.dart";
+  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection_state.dart";
+  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/daemon_connection/daemon_connection.dart";
   "/main.dart" -> "/app/make.dart";
   "/infrastructure/websocket/websocket.dart" -> "/util/handler.dart";
   "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket.dart";

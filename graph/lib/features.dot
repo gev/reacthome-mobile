@@ -17,9 +17,11 @@ digraph "" {
   "/daemon/application/daemon_service.dart" [label="daemon_service"];
   "/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
   "/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
-  "/daemon_connection.dart/application/active_connection_service.dart" [label="active_connection_service"];
-  "/daemon_connection.dart/application/daemon_connection_service.dart" [label="daemon_connection_service"];
-  "/daemon_connection.dart/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
+  "/daemon_connection/application/daemon_connection_auto_service.dart" [label="daemon_connection_auto_service"];
+  "/daemon_connection/application/active_connection_service.dart" [label="active_connection_service"];
+  "/daemon_connection/application/daemon_connection_lifecycle_service.dart" [label="daemon_connection_lifecycle_service"];
+  "/daemon_connection/application/daemon_connection_service.dart" [label="daemon_connection_service"];
+  "/daemon_connection/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
   subgraph "cluster~" {
     label="features";
     subgraph "cluster~/connection" {
@@ -82,16 +84,18 @@ digraph "" {
         "/app_lifecycle/application/app_lifecycle_service.dart";
       }
     }
-    subgraph "cluster~/daemon_connection.dart" {
-      label="daemon_connection.dart";
-      subgraph "cluster~/daemon_connection.dart/application" {
+    subgraph "cluster~/daemon_connection" {
+      label="daemon_connection";
+      subgraph "cluster~/daemon_connection/application" {
         label="application";
-        "/daemon_connection.dart/application/active_connection_service.dart";
-        "/daemon_connection.dart/application/daemon_connection_service.dart";
+        "/daemon_connection/application/daemon_connection_auto_service.dart";
+        "/daemon_connection/application/active_connection_service.dart";
+        "/daemon_connection/application/daemon_connection_lifecycle_service.dart";
+        "/daemon_connection/application/daemon_connection_service.dart";
       }
-      subgraph "cluster~/daemon_connection.dart/domain" {
+      subgraph "cluster~/daemon_connection/domain" {
         label="domain";
-        "/daemon_connection.dart/domain/daemon_connection_entity.dart";
+        "/daemon_connection/domain/daemon_connection_entity.dart";
       }
     }
   }
@@ -99,5 +103,5 @@ digraph "" {
   "/discovery/interface/discovery_controller.dart" -> "/discovery/interface/discovery_action.dart";
   "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_entity.dart";
   "/daemon/application/daemon_service.dart" -> "/daemon/domain/daemon_entity.dart";
-  "/daemon_connection.dart/application/daemon_connection_service.dart" -> "/daemon_connection.dart/domain/daemon_connection_entity.dart";
+  "/daemon_connection/application/daemon_connection_service.dart" -> "/daemon_connection/domain/daemon_connection_entity.dart";
 }

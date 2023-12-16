@@ -18,10 +18,8 @@ digraph "" {
   "/app/app.ios.dart" [label="app.ios"];
   "/app/navigation.dart" [label="navigation"];
   "/app/app.dart" [label="app"];
-  "/screens/home/home_screen.android.dart" [label="home_screen.android"];
-  "/screens/home/home_screen.ios.dart" [label="home_screen.ios"];
-  "/screens/home/home_screen.dart" [label="home_screen"];
-  "/screens/splash/splash_screen.dart" [label="splash_screen"];
+  "/screens/home_screen.dart" [label="home_screen"];
+  "/screens/splash_screen.dart" [label="splash_screen"];
   "/theme_config.dart" [label="theme_config"];
   "/widgets/list_tile/list_tile_view.ios.dart" [label="list_tile_view.ios"];
   "/widgets/list_tile/list_tile_view.android.dart" [label="list_tile_view.android"];
@@ -29,6 +27,9 @@ digraph "" {
   "/widgets/scafold/scaffold.dart" [label="scaffold"];
   "/widgets/scafold/scaffold.amdroid.dart" [label="scaffold.amdroid"];
   "/widgets/scafold/scaffold.ios.dart" [label="scaffold.ios"];
+  "/widgets/screen/screen.ios.dart" [label="screen.ios"];
+  "/widgets/screen/screen.android.dart" [label="screen.android"];
+  "/widgets/screen/screen.dart" [label="screen"];
   "/widgets/switch/switch.android.dart" [label="switch.android"];
   "/widgets/switch/switch.dart" [label="switch"];
   "/widgets/switch/switch.ios.dart" [label="switch.ios"];
@@ -89,16 +90,8 @@ digraph "" {
     }
     subgraph "cluster~/screens" {
       label="screens";
-      subgraph "cluster~/screens/home" {
-        label="home";
-        "/screens/home/home_screen.android.dart";
-        "/screens/home/home_screen.ios.dart";
-        "/screens/home/home_screen.dart";
-      }
-      subgraph "cluster~/screens/splash" {
-        label="splash";
-        "/screens/splash/splash_screen.dart";
-      }
+      "/screens/home_screen.dart";
+      "/screens/splash_screen.dart";
     }
     subgraph "cluster~/widgets" {
       label="widgets";
@@ -113,6 +106,12 @@ digraph "" {
         "/widgets/scafold/scaffold.dart";
         "/widgets/scafold/scaffold.amdroid.dart";
         "/widgets/scafold/scaffold.ios.dart";
+      }
+      subgraph "cluster~/widgets/screen" {
+        label="screen";
+        "/widgets/screen/screen.ios.dart";
+        "/widgets/screen/screen.android.dart";
+        "/widgets/screen/screen.dart";
       }
       subgraph "cluster~/widgets/switch" {
         label="switch";
@@ -142,11 +141,9 @@ digraph "" {
   "/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/widgets/add_button/add_button.dart";
   "/fragments/discovery/widgets/discovery_status.dart" -> "/fragments/discovery/view_models/discovery_status_view_model.dart";
   "/fragments/discovery/widgets/discovery_status.dart" -> "/widgets/switch/switch.dart";
-  "/app/app.android.dart" -> "/app/app.dart";
   "/app/app.android.dart" -> "/app/app_binding_observer.dart";
   "/app/app.android.dart" -> "/app/navigation.dart";
   "/app/app.android.dart" -> "/theme_config.dart";
-  "/app/app.ios.dart" -> "/app/app.dart";
   "/app/app.ios.dart" -> "/app/app_binding_observer.dart";
   "/app/app.ios.dart" -> "/app/navigation.dart";
   "/app/app.ios.dart" -> "/theme_config.dart";
@@ -154,12 +151,14 @@ digraph "" {
   "/app/app.dart" -> "/app/app.ios.dart";
   "/app/app.dart" -> "/app/navigation.dart";
   "/app/app.dart" -> "/theme_config.dart";
-  "/screens/home/home_screen.android.dart" -> "/fragments/discovery/widgets/discovery_status.dart";
-  "/screens/home/home_screen.ios.dart" -> "/fragments/discovery/widgets/discovery_status.dart";
-  "/screens/home/home_screen.dart" -> "/screens/home/home_screen.android.dart";
-  "/screens/home/home_screen.dart" -> "/screens/home/home_screen.ios.dart";
+  "/screens/home_screen.dart" -> "/widgets/screen/screen.dart";
+  "/screens/splash_screen.dart" -> "/widgets/screen/screen.dart";
   "/widgets/list_tile/list_tile_view.dart" -> "/widgets/list_tile/list_tile_view.android.dart";
   "/widgets/list_tile/list_tile_view.dart" -> "/widgets/list_tile/list_tile_view.ios.dart";
+  "/widgets/screen/screen.ios.dart" -> "/fragments/discovery/widgets/discovery_status.dart";
+  "/widgets/screen/screen.android.dart" -> "/fragments/discovery/widgets/discovery_status.dart";
+  "/widgets/screen/screen.dart" -> "/widgets/screen/screen.android.dart";
+  "/widgets/screen/screen.dart" -> "/widgets/screen/screen.ios.dart";
   "/widgets/switch/switch.dart" -> "/widgets/switch/switch.android.dart";
   "/widgets/switch/switch.dart" -> "/widgets/switch/switch.ios.dart";
   "/widgets/add_button/add_button.dart" -> "/widgets/add_button/add_button.android.dart";

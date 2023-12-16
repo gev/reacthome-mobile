@@ -15,10 +15,8 @@ digraph "" {
     "/navigation.dart";
     "/app.dart";
   }
-  "/app.android.dart" -> "/app.dart";
   "/app.android.dart" -> "/app_binding_observer.dart";
   "/app.android.dart" -> "/navigation.dart";
-  "/app.ios.dart" -> "/app.dart";
   "/app.ios.dart" -> "/app_binding_observer.dart";
   "/app.ios.dart" -> "/navigation.dart";
   "/app.dart" -> "/app.android.dart";

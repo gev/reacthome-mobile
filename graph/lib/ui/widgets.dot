@@ -8,6 +8,9 @@ digraph "" {
   "/scafold/scaffold.dart" [label="scaffold"];
   "/scafold/scaffold.amdroid.dart" [label="scaffold.amdroid"];
   "/scafold/scaffold.ios.dart" [label="scaffold.ios"];
+  "/screen/screen.ios.dart" [label="screen.ios"];
+  "/screen/screen.android.dart" [label="screen.android"];
+  "/screen/screen.dart" [label="screen"];
   "/switch/switch.android.dart" [label="switch.android"];
   "/switch/switch.dart" [label="switch"];
   "/switch/switch.ios.dart" [label="switch.ios"];
@@ -28,6 +31,12 @@ digraph "" {
       "/scafold/scaffold.amdroid.dart";
       "/scafold/scaffold.ios.dart";
     }
+    subgraph "cluster~/screen" {
+      label="screen";
+      "/screen/screen.ios.dart";
+      "/screen/screen.android.dart";
+      "/screen/screen.dart";
+    }
     subgraph "cluster~/switch" {
       label="switch";
       "/switch/switch.android.dart";
@@ -43,6 +52,8 @@ digraph "" {
   }
   "/list_tile/list_tile_view.dart" -> "/list_tile/list_tile_view.android.dart";
   "/list_tile/list_tile_view.dart" -> "/list_tile/list_tile_view.ios.dart";
+  "/screen/screen.dart" -> "/screen/screen.android.dart";
+  "/screen/screen.dart" -> "/screen/screen.ios.dart";
   "/switch/switch.dart" -> "/switch/switch.android.dart";
   "/switch/switch.dart" -> "/switch/switch.ios.dart";
   "/add_button/add_button.dart" -> "/add_button/add_button.android.dart";

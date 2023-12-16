@@ -2,23 +2,11 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/home/home_screen.android.dart" [label="home_screen.android"];
-  "/home/home_screen.ios.dart" [label="home_screen.ios"];
-  "/home/home_screen.dart" [label="home_screen"];
-  "/splash/splash_screen.dart" [label="splash_screen"];
+  "/home_screen.dart" [label="home_screen"];
+  "/splash_screen.dart" [label="splash_screen"];
   subgraph "cluster~" {
     label="screens";
-    subgraph "cluster~/home" {
-      label="home";
-      "/home/home_screen.android.dart";
-      "/home/home_screen.ios.dart";
-      "/home/home_screen.dart";
-    }
-    subgraph "cluster~/splash" {
-      label="splash";
-      "/splash/splash_screen.dart";
-    }
+    "/home_screen.dart";
+    "/splash_screen.dart";
   }
-  "/home/home_screen.dart" -> "/home/home_screen.android.dart";
-  "/home/home_screen.dart" -> "/home/home_screen.ios.dart";
 }
