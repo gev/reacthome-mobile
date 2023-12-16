@@ -1,16 +1,32 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 
-class HomeScreenIOS extends StatelessWidget {
-  final String title;
-  final Widget left;
-  final Widget right;
+class ScreenIOS extends StatelessWidget {
+  final Widget body;
 
-  const HomeScreenIOS({
+  const ScreenIOS({
+    super.key,
+    required this.body,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoPageScaffold(
+      child: SafeArea(
+        child: body,
+      ),
+    );
+  }
+}
+
+class TitleScreenIOS extends StatelessWidget {
+  final String title;
+  final Widget body;
+
+  const TitleScreenIOS({
     super.key,
     required this.title,
-    required this.left,
-    required this.right,
+    required this.body,
   });
 
   @override
@@ -21,10 +37,7 @@ class HomeScreenIOS extends StatelessWidget {
         trailing: const DiscoveryStatus(),
       ),
       child: SafeArea(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [left, right],
-        ),
+        child: body,
       ),
     );
   }
