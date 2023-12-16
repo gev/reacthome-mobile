@@ -5,43 +5,55 @@ import 'package:reacthome/features/daemon_connection/application/active_connecti
 import 'package:reacthome/features/daemon_connection/application/daemon_connection_auto_service.dart';
 import 'package:reacthome/features/daemon_connection/application/daemon_connection_lifecycle_service.dart';
 import 'package:reacthome/features/daemon_connection/application/daemon_connection_service.dart';
+import 'package:reacthome/features/daemon_connection/domain/daemon_connection_entity.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/util/repository.dart';
 
 class DaemonConnectionFactory {
   static final instance = DaemonConnectionFactory._();
 
-  late DaemonConnectionService<WebSocket> daemonConnectionService;
+  DaemonConnectionFactory._();
 
-  DaemonConnectionFactory._() {
-    daemonConnectionService = DaemonConnectionService(
+  final _repository = MapRepository<String, DaemonConnectionEntity>();
+
+  DaemonConnectionService<WebSocket> makeDaemonConnectionService() {
+    final localConnectionService =
+        ConnectionFactory.instance.makeLocalConnectionService();
+
+    final cloudConnectionService =
+        ConnectionFactory.instance.makeCloudConnectionService();
+
+    return DaemonConnectionService(
       eventSink: ConnectionFactory.instance.connectionEventBus,
       local: (
-        query: ConnectionFactory.instance.localConnectionService,
-        actor: ConnectionFactory.instance.localConnectionService,
+        query: localConnectionService,
+        actor: localConnectionService,
       ),
       cloud: (
-        query: ConnectionFactory.instance.cloudConnectionService,
-        actor: ConnectionFactory.instance.cloudConnectionService,
+        query: cloudConnectionService,
+        actor: cloudConnectionService,
       ),
-      repository: MapRepository(),
-    );
-
-    ActiveConnectionService(
-      eventSource: ConnectionFactory.instance.connectionEventBus,
-      actor: daemonConnectionService,
-    );
-
-    DaemonConnectionAutoService(
-      eventSource: DiscoveryFactory.instance.daemonEventBus,
-      query: DiscoveryFactory.instance.daemonService,
-      actor: daemonConnectionService,
-    );
-
-    DaemonConnectionLifecycleService(
-      eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
-      query: DiscoveryFactory.instance.daemonService,
-      actor: daemonConnectionService,
+      repository: _repository,
     );
   }
+
+  ActiveConnectionService makeActiveConnectionService() =>
+      ActiveConnectionService(
+        eventSource: ConnectionFactory.instance.connectionEventBus,
+        actor: makeDaemonConnectionService(),
+      );
+
+  DaemonConnectionAutoService makeDaemonConnectionAutoService() =>
+      DaemonConnectionAutoService(
+        eventSource: DiscoveryFactory.instance.daemonEventBus,
+        query: DiscoveryFactory.instance.makeDaemonService(),
+        actor: makeDaemonConnectionService(),
+      );
+
+  DaemonConnectionLifecycleService makeDaemonConnectionLifecycleService() =>
+      DaemonConnectionLifecycleService(
+        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
+        query: DiscoveryFactory.instance.makeDaemonService(),
+        actor: makeDaemonConnectionService(),
+      );
 }

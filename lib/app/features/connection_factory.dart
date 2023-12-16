@@ -1,6 +1,7 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/features/connection/application/connection_service.dart';
+import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
 import 'package:reacthome/features/connection/interface/connection_controller.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
@@ -11,41 +12,43 @@ import 'package:reacthome/util/repository.dart';
 class ConnectionFactory {
   static final instance = ConnectionFactory._();
 
-  late EventBus<ConnectionEvent> connectionEventBus;
-  late LocalConnectionService<WebSocket> localConnectionService;
-  late CloudConnectionService<WebSocket> cloudConnectionService;
+  ConnectionFactory._();
 
-  ConnectionFactory._() {
-    connectionEventBus = GenericEventBus();
+  final _localConnectionRepository =
+      MapRepository<String, LocalConnectionEntity<WebSocket>>();
 
-    localConnectionService = LocalConnectionService(
-      eventSink: connectionEventBus,
-      repository: MapRepository(),
-    );
+  final _cloudConnectionRepository =
+      MapRepository<String, CloudConnectionEntity<WebSocket>>();
 
-    cloudConnectionService = CloudConnectionService(
-      eventSink: connectionEventBus,
-      repository: MapRepository(),
-    );
+  final connectionEventBus = GenericEventBus<ConnectionEvent>();
 
-    final connectionController = ConnectionController();
+  LocalConnectionService<WebSocket> makeLocalConnectionService() =>
+      LocalConnectionService(
+        eventSink: connectionEventBus,
+        repository: _localConnectionRepository,
+      );
 
-    LocalWebsocketService(
-      eventSource: connectionEventBus,
-      actor: localConnectionService,
-      factory: LocalWebSocketFactory(
-        config: Config.connection.local,
-        controller: connectionController,
-      ),
-    );
+  CloudConnectionService<WebSocket> makeCloudConnectionService() =>
+      CloudConnectionService(
+        eventSink: connectionEventBus,
+        repository: _cloudConnectionRepository,
+      );
 
-    CloudWebsocketService(
-      eventSource: connectionEventBus,
-      actor: cloudConnectionService,
-      factory: CloudWebSocketFactory(
-        config: Config.connection.cloud,
-        controller: connectionController,
-      ),
-    );
-  }
+  LocalWebsocketService makeLocalWebsocketService() => LocalWebsocketService(
+        eventSource: connectionEventBus,
+        actor: makeLocalConnectionService(),
+        factory: LocalWebSocketFactory(
+          config: Config.connection.local,
+          controller: ConnectionController(),
+        ),
+      );
+
+  CloudWebsocketService makeCloudWebsocketService() => CloudWebsocketService(
+        eventSource: connectionEventBus,
+        actor: makeCloudConnectionService(),
+        factory: CloudWebSocketFactory(
+          config: Config.connection.cloud,
+          controller: ConnectionController(),
+        ),
+      );
 }

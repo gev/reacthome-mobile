@@ -4,9 +4,7 @@ import 'package:reacthome/ui/screens/splash_screen.dart';
 class SplashScreenFactory {
   static final instance = SplashScreenFactory._();
 
-  late WidgetBuilder screen;
+  SplashScreenFactory._();
 
-  SplashScreenFactory._() {
-    screen = (_) => SplashScreen.make();
-  }
+  Widget make(_) => SplashScreen.make();
 }

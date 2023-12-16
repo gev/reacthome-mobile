@@ -1,15 +1,31 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
+import 'package:reacthome/app/features/connection_factory.dart';
+import 'package:reacthome/app/features/daemon_connection_factory.dart';
+import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/ui/screens/home_screen_factory.dart';
 import 'package:reacthome/app/ui/screens/splash_screen_factory.dart';
 import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
-Widget make() => App.make(
-    theme: Config.theme,
-    appLifeCycle: AppLifecycleFactory.instance.appLifecycleService,
-    navigation: Navigation(
-      splash: SplashScreenFactory.instance.screen,
-      home: HomeScreenFactory.instance.screen,
-    ));
+Widget make() {
+  ConnectionFactory.instance.makeLocalWebsocketService();
+  ConnectionFactory.instance.makeCloudWebsocketService();
+
+  DaemonConnectionFactory.instance.makeActiveConnectionService();
+  DaemonConnectionFactory.instance.makeDaemonConnectionAutoService();
+  DaemonConnectionFactory.instance.makeDaemonConnectionLifecycleService();
+
+  DiscoveryFactory.instance.makeDiscoveryMulticastService();
+  DiscoveryFactory.instance.makeDiscoveryTimeoutService();
+  DiscoveryFactory.instance.makeDiscoveryLifecycleService();
+
+  return App.make(
+      theme: Config.theme,
+      appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
+      navigation: Navigation(
+        splash: SplashScreenFactory.instance.make,
+        home: HomeScreenFactory.instance.make,
+      ));
+}

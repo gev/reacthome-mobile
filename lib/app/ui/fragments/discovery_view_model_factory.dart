@@ -6,9 +6,12 @@ class DiscoveryViewModelFactory {
 
   DiscoveryViewModelFactory._();
 
-  DiscoveryStatusViewModel make(_) => DiscoveryStatusViewModel(
-        eventSource: DiscoveryFactory.instance.discoveryEventBus,
-        query: DiscoveryFactory.instance.discoveryService,
-        actor: DiscoveryFactory.instance.discoveryService,
-      );
+  DiscoveryStatusViewModel make(_) {
+    final discoveryService = DiscoveryFactory.instance.makeDiscoveryService();
+    return DiscoveryStatusViewModel(
+      eventSource: DiscoveryFactory.instance.discoveryEventBus,
+      query: discoveryService,
+      actor: discoveryService,
+    );
+  }
 }

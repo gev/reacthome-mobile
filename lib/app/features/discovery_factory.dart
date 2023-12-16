@@ -3,6 +3,7 @@ import 'package:reacthome/app/features/app_life_cycle_factory.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/features/daemon/application/daemon_service.dart';
+import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
@@ -17,45 +18,48 @@ import 'package:reacthome/util/repository.dart';
 class DiscoveryFactory {
   static final instance = DiscoveryFactory._();
 
-  late EventBus<DaemonEvent> daemonEventBus;
-  late DaemonService daemonService;
+  DiscoveryFactory._();
 
-  late EventBus<DiscoveryEvent> discoveryEventBus;
-  late DiscoveryService<MulticastSource> discoveryService;
+  final _repository = ImmutableMapRepository<String, DaemonEntity>();
 
-  DiscoveryFactory._() {
-    daemonEventBus = GenericEventBus();
+  final _process = DiscoveryEntity<MulticastSource>();
 
-    daemonService = DaemonService(
-      eventSink: daemonEventBus,
-      repository: ImmutableMapRepository(),
-    );
+  final daemonEventBus = GenericEventBus<DaemonEvent>();
 
-    discoveryEventBus = GenericEventBus();
+  final discoveryEventBus = GenericEventBus<DiscoveryEvent>();
 
-    discoveryService = DiscoveryService(
-      eventSink: discoveryEventBus,
-      process: DiscoveryEntity(),
-    );
+  DaemonService makeDaemonService() => DaemonService(
+        eventSink: daemonEventBus,
+        repository: _repository,
+      );
 
-    DiscoveryMulticastService(
-      eventSource: discoveryEventBus,
-      actor: discoveryService,
-      factory: MulticastSourceFactory(
-        config: Config.discovery.listen,
-        controller: DiscoveryController(actor: daemonService),
-      ),
-    );
+  DiscoveryService<MulticastSource> makeDiscoveryService() => DiscoveryService(
+        eventSink: discoveryEventBus,
+        process: _process,
+      );
 
-    DiscoveryTimeoutService(
-      eventSource: daemonEventBus,
-      actor: daemonService,
-      timeout: Config.discovery.timeout,
-    );
+  DiscoveryMulticastService makeDiscoveryMulticastService() =>
+      DiscoveryMulticastService(
+        eventSource: discoveryEventBus,
+        actor: makeDiscoveryService(),
+        factory: MulticastSourceFactory(
+          config: Config.discovery.listen,
+          controller: DiscoveryController(
+            actor: makeDaemonService(),
+          ),
+        ),
+      );
 
-    DiscoveryLifecycleService(
-      eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
-      actor: discoveryService,
-    );
-  }
+  DiscoveryTimeoutService makeDiscoveryTimeoutService() =>
+      DiscoveryTimeoutService(
+        eventSource: daemonEventBus,
+        actor: makeDaemonService(),
+        timeout: Config.discovery.timeout,
+      );
+
+  DiscoveryLifecycleService makeDiscoveryLifecycleService() =>
+      DiscoveryLifecycleService(
+        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
+        actor: makeDiscoveryService(),
+      );
 }

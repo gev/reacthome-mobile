@@ -16,17 +16,23 @@ class DaemonPanelFactory {
 
   DaemonPanelFactory._();
 
-  Widget discoveryPanel() => _make(
-        eventBus: DiscoveryFactory.instance.daemonEventBus,
-        query: DiscoveryFactory.instance.daemonService,
-        actor: DiscoveryFactory.instance.daemonService,
-      );
+  Widget makeDiscoveryPanel() {
+    final daemonService = DiscoveryFactory.instance.makeDaemonService();
+    return _make(
+      eventBus: DiscoveryFactory.instance.daemonEventBus,
+      query: daemonService,
+      actor: daemonService,
+    );
+  }
 
-  Widget daemonPanel() => _make(
-        eventBus: DaemonFactory.instance.daemonEventBus,
-        query: DaemonFactory.instance.daemonService,
-        actor: DaemonFactory.instance.daemonService,
-      );
+  Widget makeDaemonPanel() {
+    final daemonService = DaemonFactory.instance.makeDaemonService();
+    return _make(
+      eventBus: DaemonFactory.instance.daemonEventBus,
+      query: daemonService,
+      actor: daemonService,
+    );
+  }
 }
 
 Widget _make({

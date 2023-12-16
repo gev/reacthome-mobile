@@ -8,14 +8,23 @@ class ConnectionFactory {
 
   ConnectionFactory._();
 
-  ConnectionViewModel make(_) => ConnectionViewModel(
-        eventSource: c.ConnectionFactory.instance.connectionEventBus,
-        daemonConnection: (
-          query: DaemonConnectionFactory.instance.daemonConnectionService,
-          actor: DaemonConnectionFactory.instance.daemonConnectionService,
-        ),
-        local: (query: c.ConnectionFactory.instance.localConnectionService,),
-        cloud: (query: c.ConnectionFactory.instance.cloudConnectionService,),
-        daemon: (query: DiscoveryFactory.instance.daemonService),
-      );
+  ConnectionViewModel make(_) {
+    final daemonConnectionService =
+        DaemonConnectionFactory.instance.makeDaemonConnectionService();
+
+    return ConnectionViewModel(
+      eventSource: c.ConnectionFactory.instance.connectionEventBus,
+      daemonConnection: (
+        query: daemonConnectionService,
+        actor: daemonConnectionService,
+      ),
+      local: (
+        query: c.ConnectionFactory.instance.makeLocalConnectionService(),
+      ),
+      cloud: (
+        query: c.ConnectionFactory.instance.makeCloudConnectionService(),
+      ),
+      daemon: (query: DiscoveryFactory.instance.makeDaemonService()),
+    );
+  }
 }
