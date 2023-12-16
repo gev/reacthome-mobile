@@ -35,14 +35,7 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   Iterable<String> getAllConnections() => repository.getAll();
 
   @override
-  DaemonConnection getConnectionById(String id) {
-    var connection = repository.get(id);
-    if (connection == null) {
-      connection = DaemonConnectionEntity(id);
-      repository.add(connection);
-    }
-    return connection;
-  }
+  DaemonConnection getConnectionById(String id) => _getConnectionById(id);
 
   @override
   void connectAll(Iterable<Daemon> daemons) => daemons.forEach(connect);
@@ -86,13 +79,19 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   }
 
   @override
-  void select(String id) {
-    final connection = repository.get(id);
-    connection
-        ?.select(
-          local.query.getConnectionById(id),
-          cloud.query.getConnectionById(id),
-        )
-        ?.let(emit);
+  void select(String id) => _getConnectionById(id)
+      .select(
+        local.query.getConnectionById(id),
+        cloud.query.getConnectionById(id),
+      )
+      ?.let(emit);
+
+  DaemonConnectionEntity _getConnectionById(String id) {
+    var connection = repository.get(id);
+    if (connection == null) {
+      connection = DaemonConnectionEntity(id);
+      repository.add(connection);
+    }
+    return connection;
   }
 }
