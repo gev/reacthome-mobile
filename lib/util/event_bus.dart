@@ -15,5 +15,5 @@ class GenericEventBus<E> implements EventBus<E> {
   StreamSubscription<E> listen(void Function(E) onData) =>
       _controller.stream.listen(onData);
 
-  void dispose() => _controller.close();
+  void close() => _controller.close();
 }
