@@ -7,6 +7,7 @@ abstract interface class Repository<K, V extends Entity<K>> {
   V? get(K id);
   void add(V daemon);
   void remove(K id);
+  void clear();
 }
 
 class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
@@ -26,6 +27,9 @@ class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
 
   @override
   void remove(K id) => _store.remove(id);
+
+  @override
+  void clear() => _store.clear();
 }
 
 class ImmutableMapRepository<K, V extends Entity<K>>
@@ -46,4 +50,7 @@ class ImmutableMapRepository<K, V extends Entity<K>>
 
   @override
   void remove(K id) => _store = _store.remove(id);
+
+  @override
+  void clear() => _store = IMap();
 }
