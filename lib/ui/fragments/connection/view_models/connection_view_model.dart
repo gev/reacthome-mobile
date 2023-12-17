@@ -80,4 +80,10 @@ class ConnectionViewModel extends GenericEventListener<ConnectionEvent>
       default:
     }
   }
+
+  @override
+  void dispose() {
+    cancelSubscription();
+    super.dispose();
+  }
 }

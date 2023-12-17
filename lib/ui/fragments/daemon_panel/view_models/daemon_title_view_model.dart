@@ -25,4 +25,10 @@ class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
       default:
     }
   }
+
+  @override
+  void dispose() {
+    cancelSubscription();
+    super.dispose();
+  }
 }
