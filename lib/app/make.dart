@@ -10,16 +10,16 @@ import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 Widget make() {
+  DiscoveryFactory.instance.makeDiscoveryMulticastService();
+  DiscoveryFactory.instance.makeDiscoveryTimeoutService();
+  DiscoveryFactory.instance.makeDiscoveryLifecycleService();
+
   ConnectionFactory.instance.makeLocalWebsocketService();
   ConnectionFactory.instance.makeCloudWebsocketService();
 
   DaemonConnectionFactory.instance.makeActiveConnectionService();
   DaemonConnectionFactory.instance.makeDaemonConnectionAutoService();
   DaemonConnectionFactory.instance.makeDaemonConnectionLifecycleService();
-
-  DiscoveryFactory.instance.makeDiscoveryMulticastService();
-  DiscoveryFactory.instance.makeDiscoveryTimeoutService();
-  DiscoveryFactory.instance.makeDiscoveryLifecycleService();
 
   return App.make(
       theme: Config.theme,
