@@ -7,11 +7,21 @@ class FileStore<T> {
   final List<int> Function(T data) toBytes;
   final T Function(List<int> bytes) fromBytes;
 
-  FileStore({
-    required this.path,
-    required this.toBytes,
-    required this.fromBytes,
-  });
+  FileStore._(this.path, this.toBytes, this.fromBytes);
+
+  static Future<FileStore<T>> make<T>({
+    required String path,
+    required List<int> Function(T data) toBytes,
+    required T Function(List<int> bytes) fromBytes,
+  }) async {
+    await Directory(dirname(path)).create(recursive: true);
+    return FileStore._(path, toBytes, fromBytes);
+  }
+
+  Future<bool> has(String id) async {
+    final file = _getFile(id);
+    return file.exists();
+  }
 
   Future<T> get(String id) async {
     final file = _getFile(id);
