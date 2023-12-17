@@ -28,6 +28,7 @@ class DaemonTile extends StatelessWidget {
     bool isCloudConnected = context.select<ConnectionViewModel, bool>(
       (model) => model.isCloudConnected(id),
     );
+
     return ListTile.make(
       title: title,
       trailing: Row(
