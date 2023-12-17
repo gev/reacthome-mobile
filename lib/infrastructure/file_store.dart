@@ -50,7 +50,7 @@ class FileStoreFactory<T> {
     required this.fromBytes,
   });
 
-  FileStore<T> make(String id) => FileStore<T>(
+  Future<FileStore<T>> make(String id) async => FileStore.make(
         path: join(path, id, scope),
         toBytes: toBytes,
         fromBytes: fromBytes,
