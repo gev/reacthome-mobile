@@ -11,7 +11,7 @@ class Navigation {
 
   const Navigation({required this.home, required this.splash});
 
-  String get initialRoute => NavigationRouteNames.home;
+  String get initialRoute => NavigationRouteNames.splash;
 
   Map<String, WidgetBuilder> get routes => ({
         NavigationRouteNames.splash: splash,
