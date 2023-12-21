@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:reacthome/ui/app/app_binding_observer.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/theme_config.dart';
@@ -15,6 +17,15 @@ class AppAndroid extends AppBindingObserver {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: title,
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ru'),
+      ],
       themeMode: ThemeMode.system,
       theme: _makeTheme(Brightness.light),
       darkTheme: _makeTheme(Brightness.dark),
