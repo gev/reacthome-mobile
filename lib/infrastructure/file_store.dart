@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 
+typedef ToBytes<T> = List<int> Function(T data);
+typedef FromBytes<T> = T Function(List<int> bytes);
+
 class FileStore<T> {
   final String path;
   final List<int> Function(T data) toBytes;
@@ -11,8 +14,8 @@ class FileStore<T> {
 
   static Future<FileStore<T>> make<T>({
     required String path,
-    required List<int> Function(T data) toBytes,
-    required T Function(List<int> bytes) fromBytes,
+    required ToBytes<T> toBytes,
+    required FromBytes<T> fromBytes,
   }) async {
     await Directory(dirname(path)).create(recursive: true);
     return FileStore._(path, toBytes, fromBytes);
@@ -40,8 +43,8 @@ class FileStore<T> {
 class FileStoreFactory<T> {
   final String path;
   final String? scope;
-  final List<int> Function(T data) toBytes;
-  final T Function(List<int> bytes) fromBytes;
+  final ToBytes<T> toBytes;
+  final FromBytes<T> fromBytes;
 
   FileStoreFactory({
     required this.path,
