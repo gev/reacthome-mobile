@@ -16,10 +16,4 @@ class Timeout<K> {
     _timers[id]?.cancel();
     _timers.remove(id);
   }
-
-  void dispose() {
-    for (final timer in _timers.values) {
-      timer.cancel();
-    }
-  }
 }
