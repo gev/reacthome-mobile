@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ListTileAndroid extends StatelessWidget {
+class ListTileMaterial extends StatelessWidget {
   final String title;
   final Widget? trailing;
-  const ListTileAndroid(
+  const ListTileMaterial(
     this.title, {
     this.trailing,
     super.key,

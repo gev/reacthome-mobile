@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class SwitchAndroid extends StatelessWidget {
+class SwitchCupertino extends StatelessWidget {
   final bool value;
   final void Function(bool)? onChanged;
 
-  const SwitchAndroid({
+  const SwitchCupertino({
     required this.value,
     required this.onChanged,
     super.key,
@@ -12,5 +12,5 @@ class SwitchAndroid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      Switch(value: value, onChanged: onChanged);
+      CupertinoSwitch(value: value, onChanged: onChanged);
 }

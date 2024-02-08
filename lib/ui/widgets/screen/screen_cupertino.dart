@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 
-class ScreenIOS extends StatelessWidget {
+class ScreenCupertino extends StatelessWidget {
   final Widget body;
 
-  const ScreenIOS({
+  const ScreenCupertino({
     super.key,
     required this.body,
   });
@@ -19,14 +18,16 @@ class ScreenIOS extends StatelessWidget {
   }
 }
 
-class TitleScreenIOS extends StatelessWidget {
+class TitleScreenCupertino extends StatelessWidget {
   final String title;
   final Widget body;
+  final Widget? trailing;
 
-  const TitleScreenIOS({
+  const TitleScreenCupertino({
     super.key,
     required this.title,
     required this.body,
+    this.trailing,
   });
 
   @override
@@ -34,7 +35,7 @@ class TitleScreenIOS extends StatelessWidget {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Text(title),
-        trailing: const DiscoveryStatus(),
+        trailing: trailing,
       ),
       child: SafeArea(
         child: body,

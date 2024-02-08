@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class AddButtonIOS extends StatelessWidget {
+class AddButtonCupertino extends StatelessWidget {
   final void Function()? onPressed;
 
-  const AddButtonIOS(this.onPressed, {super.key});
+  const AddButtonCupertino(this.onPressed, {super.key});
 
   @override
   Widget build(BuildContext context) => CupertinoButton.filled(

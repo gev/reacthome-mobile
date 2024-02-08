@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/widgets/screen/screen.android.dart';
-import 'package:reacthome/ui/widgets/screen/screen.ios.dart';
+import 'package:reacthome/ui/widgets/screen/screen_cupertino.dart';
+import 'package:reacthome/ui/widgets/screen/screen_material.dart';
 import 'package:reacthome/util/platform.dart';
 
 class Screen {
   static Widget make({required Widget body}) => selectPlatform(
-        ios: () => ScreenIOS(body: body),
-        android: () => ScreenAndroid(body: body),
+        cupertino: () => ScreenCupertino(body: body),
+        material: () => ScreenMaterial(body: body),
       );
 }
 
@@ -14,15 +14,18 @@ class TitleScreen {
   static Widget make({
     required String title,
     required Widget body,
+    Widget? trailing,
   }) =>
       selectPlatform(
-        ios: () => TitleScreenIOS(
+        cupertino: () => TitleScreenCupertino(
           title: title,
           body: body,
+          trailing: trailing,
         ),
-        android: () => TitleScreenAndroid(
+        material: () => TitleScreenMaterial(
           title: title,
           body: body,
+          trailing: trailing,
         ),
       );
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/widgets/list_tile/list_tile_view.android.dart';
-import 'package:reacthome/ui/widgets/list_tile/list_tile_view.ios.dart';
+import 'package:reacthome/ui/widgets/list_tile/list_tile_view_cupertino.dart';
+import 'package:reacthome/ui/widgets/list_tile/list_tile_view_material.dart';
 import 'package:reacthome/util/platform.dart';
 
 class ListTile {
@@ -10,7 +10,7 @@ class ListTile {
     Widget? trailing,
   }) =>
       selectPlatform(
-        ios: () => ListTileIOS(title, trailing: trailing, key: key),
-        android: () => ListTileAndroid(title, trailing: trailing, key: key),
+        cupertino: () => ListTileCupertino(title, trailing: trailing, key: key),
+        material: () => ListTileMaterial(title, trailing: trailing, key: key),
       );
 }
