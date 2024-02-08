@@ -20,7 +20,7 @@ class WelcomeScreen {
             FilledButton.make(
               label: locale.addYourHome,
               onPressed: () => Navigator.of(context)
-                  .pushReplacementNamed(NavigationRouteNames.discovery),
+                  .pushNamed(NavigationRouteNames.discovery),
             ),
           ],
         ),
