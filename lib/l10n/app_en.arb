@@ -1,7 +1,4 @@
 {
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  },
-  "helloWorld": "Hello World!",
-  "homeTitle": "Home"
+  "welcome": "Welcome!",
+  "addYourHome": "Add your home"
 }

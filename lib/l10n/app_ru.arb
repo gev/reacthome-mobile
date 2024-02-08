@@ -1,4 +1,4 @@
 {
-  "helloWorld": "Привет мир!",
-  "homeTitle": "Хоум"
+  "welcome": "Добро пожаловать!",
+  "addYourHome": "Добавьте ваш дом"
 }
