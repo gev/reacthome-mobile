@@ -7,7 +7,8 @@ import 'package:reacthome/ui/widgets/screen/screen.dart';
 
 class WelcomeScreen {
   static Widget make(BuildContext context) {
-    var locale = AppLocalizations.of(context)!;
+    final locale = AppLocalizations.of(context)!;
+    final navigator = Navigator.of(context);
     return Screen.make(
       body: Center(
         child: Column(
@@ -19,8 +20,8 @@ class WelcomeScreen {
             const SizedBox(height: 24),
             FilledButton.make(
               label: locale.addYourHome,
-              onPressed: () => Navigator.of(context)
-                  .pushNamed(NavigationRouteNames.discovery),
+              onPressed: () =>
+                  navigator.pushNamed(NavigationRouteNames.discovery),
             ),
           ],
         ),

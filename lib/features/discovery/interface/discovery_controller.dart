@@ -18,7 +18,6 @@ class DiscoveryController implements Handler<Datagram> {
         meta: Meta(
           title: action.payload.title,
           code: action.payload.code,
-          timestamp: action.payload.timestamp,
         ),
         project: action.payload.project,
         address: datagram.address,

@@ -5,7 +5,6 @@ import 'package:reacthome/app/features/connection_factory.dart';
 import 'package:reacthome/app/features/daemon_connection_factory.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/ui/screens/discovery_screen_factory.dart';
-import 'package:reacthome/app/ui/screens/home_screen_factory.dart';
 import 'package:reacthome/app/ui/screens/splash_screen_factory.dart';
 import 'package:reacthome/app/ui/screens/welcome_screen_factory.dart';
 import 'package:reacthome/ui/app/app.dart';
@@ -30,6 +29,5 @@ Widget make() {
         splash: SplashScreenFactory.instance.make,
         welcome: WelcomeScreenFactory.instance.make,
         discovery: DiscoveryScreenFactory.instance.make,
-        home: HomeScreenFactory.instance.make,
       ));
 }

@@ -1,14 +1,16 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
+import 'package:reacthome/ui/fragments/daemon_panel/widgets/daemon_list.dart';
 import 'package:reacthome/ui/widgets/screen/screen.dart';
 
 class DiscoveryScreen {
-  static Widget make({
-    required Widget discoveryPanel,
-  }) =>
-      TitleScreen.make(
+  static Widget make(BuildContext context) => TitleScreen.make(
         title: 'Discovery',
-        trailing: const DiscoveryStatus(),
-        body: discoveryPanel,
+        body: const Expanded(
+          child: Column(
+            children: [
+              DaemonList(),
+            ],
+          ),
+        ),
       );
 }
