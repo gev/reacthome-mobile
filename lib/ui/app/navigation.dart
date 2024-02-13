@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class NavigationRouteNames {
-  static const splash = 'splash';
+  static const splash = '/';
   static const welcome = 'welcome';
   static const discovery = 'discovery';
 }
