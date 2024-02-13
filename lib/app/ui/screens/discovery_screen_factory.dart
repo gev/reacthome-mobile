@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/ui/fragments/discovery_view_model_factory.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart';
+import 'package:reacthome/ui/fragments/daemon/view_models/daemon_list_view_model.dart';
+import 'package:reacthome/ui/fragments/daemon/view_models/daemon_title_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
 
 class DiscoveryScreenFactory {

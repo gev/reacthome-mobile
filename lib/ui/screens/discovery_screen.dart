@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/fragments/daemon_panel/widgets/daemon_list.dart';
+import 'package:reacthome/ui/fragments/daemon/widgets/daemon_list.dart';
 import 'package:reacthome/ui/widgets/app_bar/app_bar.dart';
 import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 
