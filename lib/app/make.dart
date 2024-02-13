@@ -22,7 +22,7 @@ Widget make() {
   DaemonConnectionFactory.instance.makeDaemonConnectionAutoService();
   DaemonConnectionFactory.instance.makeDaemonConnectionLifecycleService();
 
-  return App.make(
+  return App(
       theme: Config.theme,
       appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
       navigation: Navigation(

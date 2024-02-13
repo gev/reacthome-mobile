@@ -6,5 +6,5 @@ class SplashScreenFactory {
 
   SplashScreenFactory._();
 
-  Widget make(BuildContext context) => SplashScreen.make(context);
+  Widget make(BuildContext context) => SplashScreen.build(context);
 }

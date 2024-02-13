@@ -1,16 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
-class SwitchCupertino extends StatelessWidget {
-  final bool value;
-  final void Function(bool)? onChanged;
-
-  const SwitchCupertino({
-    required this.value,
-    required this.onChanged,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) =>
-      CupertinoSwitch(value: value, onChanged: onChanged);
+class SwitchCupertino {
+  static WidgetBuilder build(
+    bool value,
+    Function(bool)? onChanged,
+  ) =>
+      (_) => CupertinoSwitch(
+            value: value,
+            onChanged: onChanged,
+          );
 }

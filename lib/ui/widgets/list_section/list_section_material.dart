@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 
-class ListSectionMaterial extends StatelessWidget {
-  final String? title;
-  final List<Widget> children;
-
-  const ListSectionMaterial(this.title, this.children, {super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final String? text = title;
-    if (text != null) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListSectionTitleMaterial(text),
-          ListSectionCardMaterial(children),
-        ],
-      );
-    }
-    return ListSectionCardMaterial(children);
-  }
+class ListSectionMaterial {
+  static WidgetBuilder build(
+    String? title,
+    List<Widget> children,
+  ) =>
+      (_) => (title != null)
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListSectionTitleMaterial(title),
+                ListSectionCardMaterial(children),
+              ],
+            )
+          : ListSectionCardMaterial(children);
 }
 
 class ListSectionCardMaterial extends StatelessWidget {

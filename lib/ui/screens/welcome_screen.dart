@@ -6,10 +6,10 @@ import 'package:reacthome/ui/widgets/logo.dart';
 import 'package:reacthome/ui/widgets/screen/screen.dart';
 
 class WelcomeScreen {
-  static Widget make(BuildContext context) {
+  static Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     final navigator = Navigator.of(context);
-    return Screen.make(
+    return Screen(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -18,7 +18,7 @@ class WelcomeScreen {
             const SizedBox(height: 24),
             Text(locale.welcome, style: const TextStyle(fontSize: 28)),
             const SizedBox(height: 24),
-            FilledButton.make(
+            FilledButton(
               label: locale.addYourHome,
               onPressed: () =>
                   navigator.pushNamed(NavigationRouteNames.discovery),

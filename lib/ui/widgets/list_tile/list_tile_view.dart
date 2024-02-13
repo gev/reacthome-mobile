@@ -3,14 +3,13 @@ import 'package:reacthome/ui/widgets/list_tile/list_tile_view_cupertino.dart';
 import 'package:reacthome/ui/widgets/list_tile/list_tile_view_material.dart';
 import 'package:reacthome/util/platform.dart';
 
-class ListTile {
-  static Widget make({
-    ValueKey? key,
+class ListTile extends PlatformWidget {
+  ListTile({
     required String title,
     Widget? trailing,
-  }) =>
-      selectPlatform(
-        cupertino: () => ListTileCupertino(title, trailing: trailing, key: key),
-        material: () => ListTileMaterial(title, trailing: trailing, key: key),
-      );
+    super.key,
+  }) : super(
+          cupertino: ListTileCupertino.build(title, trailing),
+          material: ListTileMaterial.build(title, trailing),
+        );
 }

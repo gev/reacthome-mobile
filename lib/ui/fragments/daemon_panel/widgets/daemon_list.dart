@@ -15,13 +15,13 @@ class DaemonList extends StatelessWidget {
             (model) => model.daemons);
     return Expanded(
       child: ListView(children: [
-        ListSection.make(
+        ListSection(
           title: 'Available around',
           children: daemons
               .map((id) => DaemonTile(key: ValueKey(id), id: id))
               .toList(),
         ),
-        ListTile.make(title: 'Add by ID'),
+        ListTile(title: 'Add by ID'),
       ]),
     );
   }

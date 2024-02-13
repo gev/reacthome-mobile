@@ -6,11 +6,11 @@ import 'package:reacthome/ui/widgets/logo.dart';
 import 'package:reacthome/ui/widgets/screen/screen.dart';
 
 class SplashScreen {
-  static Widget make(BuildContext context) {
+  static Widget build(BuildContext context) {
     Timer(const Duration(seconds: 1), () {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });
-    return Screen.make(
+    return Screen(
       body: const Center(child: Logo()),
     );
   }

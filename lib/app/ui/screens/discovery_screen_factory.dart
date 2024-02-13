@@ -30,7 +30,7 @@ class DiscoveryScreenFactory {
                   query: daemonDiscoveryService,
                 )),
       ],
-      child: DiscoveryScreen.make(context),
+      child: DiscoveryScreen.build(context),
     );
   }
 }
