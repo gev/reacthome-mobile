@@ -5,7 +5,7 @@ class ListTileCupertino {
     String title,
     Widget? trailing,
   ) =>
-      (_) => CupertinoListTile(
+      (_) => CupertinoListTile.notched(
             title: Text(title),
             trailing: trailing,
           );
