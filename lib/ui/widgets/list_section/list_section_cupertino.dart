@@ -5,8 +5,14 @@ class ListSectionCupertino {
     String? title,
     List<Widget> children,
   ) =>
-      (_) => CupertinoListSection.insetGrouped(
-            header: title != null ? Text(title) : null,
-            children: children,
-          );
+      (_) => title != null
+          ? CupertinoListSection.insetGrouped(
+              hasLeading: false,
+              header: Text(title),
+              children: children,
+            )
+          : CupertinoListSection(
+              hasLeading: false,
+              children: children,
+            );
 }

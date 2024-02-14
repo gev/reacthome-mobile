@@ -5,25 +5,36 @@ class ListSectionMaterial {
     String? title,
     List<Widget> children,
   ) =>
-      (_) => (title != null)
+      (BuildContext context) => (title != null)
           ? Column(
+              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListSectionTitleMaterial(title),
-                ListSectionCardMaterial(children),
+                ListSectionCardMaterial.withTitle(children),
               ],
             )
-          : ListSectionCardMaterial(children);
+          : Column(
+              children: ListTile.divideTiles(
+                context: context,
+                tiles: children,
+              ).toList(),
+            );
 }
 
 class ListSectionCardMaterial extends StatelessWidget {
   final List<Widget> children;
+  final EdgeInsetsGeometry padding;
 
-  const ListSectionCardMaterial(this.children, {super.key});
+  const ListSectionCardMaterial(this.children, {super.key})
+      : padding = const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12);
+
+  const ListSectionCardMaterial.withTitle(this.children, {super.key})
+      : padding = const EdgeInsetsDirectional.fromSTEB(16, 4, 16, 16);
 
   @override
   Widget build(BuildContext context) => Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 8),
+      padding: padding,
       child: Card(
         margin: EdgeInsets.zero,
         elevation: 0,
@@ -44,7 +55,7 @@ class ListSectionTitleMaterial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 4),
+        padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
         child: Text(
           title,
           style: Theme.of(context).textTheme.titleMedium,
