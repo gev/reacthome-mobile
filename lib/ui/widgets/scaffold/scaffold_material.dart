@@ -7,8 +7,6 @@ class ScaffoldMaterial {
   ) =>
       (_) => Scaffold(
             appBar: appBar,
-            body: SafeArea(
-              child: body,
-            ),
+            body: body,
           );
 }

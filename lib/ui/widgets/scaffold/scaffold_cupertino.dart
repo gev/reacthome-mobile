@@ -7,8 +7,6 @@ class ScaffoldCupertino {
   ) =>
       (_) => CupertinoPageScaffold(
             navigationBar: appBar as ObstructingPreferredSizeWidget?,
-            child: SafeArea(
-              child: body,
-            ),
+            child: body,
           );
 }
