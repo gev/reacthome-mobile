@@ -10,22 +10,20 @@ class WelcomeScreen {
     final locale = AppLocalizations.of(context)!;
     final navigator = Navigator.of(context);
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Logo(),
-              const SizedBox(height: 24),
-              Text(locale.welcome, style: const TextStyle(fontSize: 28)),
-              const SizedBox(height: 24),
-              FilledButton(
-                label: locale.addYourHome,
-                onPressed: () =>
-                    navigator.pushNamed(NavigationRouteNames.discovery),
-              ),
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Logo(),
+            const SizedBox(height: 24),
+            Text(locale.welcome, style: const TextStyle(fontSize: 28)),
+            const SizedBox(height: 24),
+            FilledButton(
+              label: locale.addYourHome,
+              onPressed: () =>
+                  navigator.pushNamed(NavigationRouteNames.discovery),
+            ),
+          ],
         ),
       ),
     );

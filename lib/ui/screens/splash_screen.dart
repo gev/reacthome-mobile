@@ -11,7 +11,7 @@ class SplashScreen {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });
     return Scaffold(
-      body: const SafeArea(child: Center(child: Logo())),
+      body: const Center(child: Logo()),
     );
   }
 }
