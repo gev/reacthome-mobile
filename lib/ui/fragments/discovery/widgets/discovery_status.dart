@@ -3,8 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 import 'package:reacthome/ui/icons/icons.dart';
-import 'package:reacthome/ui/widgets/list_section/list_section.dart';
-import 'package:reacthome/ui/widgets/list_tile/list_tile.dart';
+import 'package:reacthome/ui/widgets/list/list_section/list_section.dart';
+import 'package:reacthome/ui/widgets/list/list_tile/list_tile.dart';
 import 'package:reacthome/ui/widgets/switch/switch.dart';
 
 class DiscoveryStatus extends StatelessWidget {

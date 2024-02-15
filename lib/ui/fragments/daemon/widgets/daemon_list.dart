@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/daemon/view_models/daemon_list_view_model.dart';
 import 'package:reacthome/ui/fragments/daemon/widgets/daemon_tile.dart';
-import 'package:reacthome/ui/widgets/list_section/list_section.dart';
+import 'package:reacthome/ui/widgets/list/list_section/list_section.dart';
 
 class DaemonList extends StatelessWidget {
   final String title;

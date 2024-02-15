@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AddButtonMaterial {
+class IconFilledButtonMaterial {
   static WidgetBuilder build(
     String label,
     IconData icon,

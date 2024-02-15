@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class AddButtonCupertino {
+class IconFilledButtonCupertino {
   static WidgetBuilder build(
     String label,
     IconData icon,
