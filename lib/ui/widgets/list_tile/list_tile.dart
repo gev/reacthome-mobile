@@ -6,10 +6,12 @@ import 'package:reacthome/util/platform.dart';
 class ListTile extends PlatformWidget {
   ListTile({
     required String title,
+    Widget? leading,
     Widget? trailing,
+    void Function()? onTap,
     super.key,
   }) : super(
-          cupertino: ListTileCupertino.build(title, trailing),
-          material: ListTileMaterial.build(title, trailing),
+          cupertino: ListTileCupertino.build(title, leading, trailing, onTap),
+          material: ListTileMaterial.build(title, leading, trailing, onTap),
         );
 }
