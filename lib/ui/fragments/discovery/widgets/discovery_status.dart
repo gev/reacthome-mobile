@@ -1,6 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
+import 'package:reacthome/ui/icons/icons.dart';
+import 'package:reacthome/ui/widgets/list_section/list_section.dart';
+import 'package:reacthome/ui/widgets/list_tile/list_tile.dart';
 import 'package:reacthome/ui/widgets/switch/switch.dart';
 
 class DiscoveryStatus extends StatelessWidget {
@@ -12,6 +15,15 @@ class DiscoveryStatus extends StatelessWidget {
     final isDiscovering = context.select<DiscoveryStatusViewModel, bool>(
       (model) => model.isDiscovering,
     );
-    return Switch(value: isDiscovering, onChanged: model.toggleDiscovery);
+    return ListSection(children: [
+      ListTile(
+        title: 'Discovery around',
+        leading: Icon(Icons.wifi),
+        trailing: Switch(
+          value: isDiscovering,
+          onChanged: model.toggleDiscovery,
+        ),
+      ),
+    ]);
   }
 }
