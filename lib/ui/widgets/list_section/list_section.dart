@@ -7,9 +7,10 @@ class ListSection extends PlatformWidget {
   ListSection({
     String? title,
     required List<Widget> children,
+    bool hasLeading = true,
     super.key,
   }) : super(
-          cupertino: ListSectionCupertino.build(title, children),
+          cupertino: ListSectionCupertino.build(title, children, hasLeading),
           material: ListSectionMaterial.build(title, children),
         );
 }
