@@ -6,17 +6,21 @@ import 'package:reacthome/ui/widgets/list_section/list_section.dart';
 
 class DaemonList extends StatelessWidget {
   final String title;
-  const DaemonList({required this.title, super.key});
+  final Widget ifEmpty;
+  const DaemonList({required this.title, required this.ifEmpty, super.key});
 
   @override
   Widget build(BuildContext context) {
     Iterable<String> daemons =
         context.select<DaemonListViewModel, Iterable<String>>(
             (model) => model.daemons);
-    return ListSection(
-      title: title,
-      children:
-          daemons.map((id) => DaemonTile(key: ValueKey(id), id: id)).toList(),
-    );
+    return daemons.isEmpty
+        ? ifEmpty
+        : ListSection(
+            title: title,
+            children: daemons
+                .map((id) => DaemonTile(key: ValueKey(id), id: id))
+                .toList(),
+          );
   }
 }
