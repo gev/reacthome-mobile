@@ -7,7 +7,6 @@ class ListSectionMaterial {
   ) =>
       (BuildContext context) => (title != null)
           ? Column(
-              mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListSectionTitleMaterial(title),
