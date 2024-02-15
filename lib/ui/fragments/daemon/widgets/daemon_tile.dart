@@ -12,6 +12,6 @@ class DaemonTile extends StatelessWidget {
     String title = context.select<DaemonTitleViewModel, String>(
       (model) => model.getDaemonTitleById(id),
     );
-    return ListTile(title: title);
+    return ListTile(title: title, subtitle: id);
   }
 }
