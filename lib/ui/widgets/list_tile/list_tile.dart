@@ -5,8 +5,8 @@ import 'package:reacthome/util/platform.dart';
 
 class ListTile extends PlatformWidget {
   ListTile({
-    required String title,
-    String? subtitle,
+    required Widget title,
+    Widget? subtitle,
     Widget? leading,
     Widget? trailing,
     void Function()? onTap,

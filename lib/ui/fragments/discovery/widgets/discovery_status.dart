@@ -19,7 +19,7 @@ class DiscoveryStatus extends StatelessWidget {
     );
     return ListSection(children: [
       ListTile(
-        title: locale.discovery,
+        title: Text(locale.discovery),
         leading: Icon(Icons.search),
         trailing: Switch(
           value: isDiscovering,

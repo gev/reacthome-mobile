@@ -12,10 +12,9 @@ class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     required this.query,
   });
 
-  String getDaemonTitleById(String id) {
-    final daemon = query.getDaemonById(id);
-    return daemon?.meta.name ?? id;
-  }
+  String? getDaemonTitleById(String id) => query.getDaemonById(id)?.meta.name;
+
+  bool hasProject(String id) => query.getDaemonById(id)?.project != null;
 
   @override
   void handle(DaemonEvent event) {

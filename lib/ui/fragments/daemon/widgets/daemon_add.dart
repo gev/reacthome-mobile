@@ -14,7 +14,7 @@ class DaemonAdd extends StatelessWidget {
     return ListSection(
       children: [
         ListTile(
-          title: locale.addYorOwnHome,
+          title: Text(locale.addYorOwnHome),
           leading: Icon(Icons.add),
           trailing: ListTileChevron(),
         ),
