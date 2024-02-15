@@ -24,12 +24,12 @@ class Icons {
   );
 
   static final IconData home = selectPlatform(
-    cupertino: CupertinoIcons.home,
-    material: material.Icons.home_filled,
+    cupertino: CupertinoIcons.house_fill,
+    material: material.Icons.home,
   );
 
   static final IconData homeOutlined = selectPlatform(
-    cupertino: CupertinoIcons.home,
+    cupertino: CupertinoIcons.house,
     material: material.Icons.home_outlined,
   );
 }
