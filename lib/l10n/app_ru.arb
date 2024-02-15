@@ -1,4 +1,7 @@
 {
   "welcome": "Добро пожаловать!",
-  "addYourHome": "Добавьте ваш дом"
+  "addYourHome": "Добавить дом",
+  "discovery": "Авто-обнаружение",
+  "discovered": "Найдено",
+  "addYorOwnHome" : "Добавить свой дом"
 }
