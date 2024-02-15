@@ -17,4 +17,19 @@ class Icons {
     cupertino: CupertinoIcons.search,
     material: material.Icons.search,
   );
+
+  static final IconData settings = selectPlatform(
+    cupertino: CupertinoIcons.settings,
+    material: material.Icons.settings,
+  );
+
+  static final IconData home = selectPlatform(
+    cupertino: CupertinoIcons.home,
+    material: material.Icons.home_filled,
+  );
+
+  static final IconData homeOutlined = selectPlatform(
+    cupertino: CupertinoIcons.home,
+    material: material.Icons.home_outlined,
+  );
 }
