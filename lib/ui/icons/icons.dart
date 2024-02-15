@@ -12,4 +12,9 @@ class Icons {
     cupertino: CupertinoIcons.wifi,
     material: material.Icons.wifi,
   );
+
+  static final IconData search = selectPlatform(
+    cupertino: CupertinoIcons.search,
+    material: material.Icons.search,
+  );
 }

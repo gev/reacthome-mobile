@@ -18,7 +18,7 @@ class DiscoveryStatus extends StatelessWidget {
     return ListSection(children: [
       ListTile(
         title: 'Discovery around',
-        leading: Icon(Icons.wifi),
+        leading: Icon(Icons.search),
         trailing: Switch(
           value: isDiscovering,
           onChanged: model.toggleDiscovery,
