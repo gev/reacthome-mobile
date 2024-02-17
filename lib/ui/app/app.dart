@@ -1,39 +1,39 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_command.dart';
-import 'package:reacthome/ui/app/app_cupertino.dart';
-import 'package:reacthome/ui/app/app_material.dart';
 import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/theme_config.dart';
-import 'package:reacthome/util/platform.dart';
 
-class App extends PlatformWidget with WidgetsBindingObserver {
+class App extends StatelessWidget with WidgetsBindingObserver {
   final AppLifecycleCommand appLifeCycle;
+  final ThemeConfig theme;
+  final Navigation navigation;
+  final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
+  final Iterable<Locale> supportedLocales;
+  final String title;
+
   App({
     required this.appLifeCycle,
-    required ThemeConfig theme,
-    required Navigation navigation,
-    required Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
-    required Iterable<Locale> supportedLocales,
-    String title = 'Reacthome',
+    required this.theme,
+    required this.navigation,
+    required this.localizationsDelegates,
+    required this.supportedLocales,
+    this.title = 'Reacthome',
     super.key,
-  }) : super(
-          cupertino: AppCupertino.build(
-            title,
-            localizationsDelegates,
-            supportedLocales,
-            theme,
-            navigation,
-          ),
-          material: AppMaterial.build(
-            title,
-            localizationsDelegates,
-            supportedLocales,
-            theme,
-            navigation,
-          ),
-        ) {
+  }) {
     WidgetsBinding.instance.addObserver(this);
     appLifeCycle.makeActive();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return app.root(
+      theme: theme,
+      navigation: navigation,
+      localizationsDelegates: localizationsDelegates,
+      supportedLocales: supportedLocales,
+      title: title,
+    );
   }
 
   @override

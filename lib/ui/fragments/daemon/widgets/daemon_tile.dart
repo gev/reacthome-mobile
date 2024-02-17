@@ -2,8 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/daemon/view_models/daemon_title_view_model.dart';
-import 'package:reacthome/ui/icons/icons.dart';
-import 'package:reacthome/ui/widgets/list/list_tile/list_tile.dart';
+import 'package:reacthome/ui/kit/kit.dart';
 
 class DaemonTile extends StatelessWidget {
   final String id;
@@ -18,14 +17,14 @@ class DaemonTile extends StatelessWidget {
     bool hasProject = context.select<DaemonTitleViewModel, bool>(
       (model) => model.hasProject(id),
     );
-    return ListTile(
+    return list.tile(
       title: Text(title ?? locale.untitled),
       subtitle: Text(
         id,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      leading: Icon(hasProject ? Icons.home : Icons.homeOutlined),
+      leading: Icon(hasProject ? icon.home.filled : icon.home.outlined),
     );
   }
 }

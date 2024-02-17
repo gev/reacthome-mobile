@@ -3,18 +3,16 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/fragments/daemon/widgets/daemon_add.dart';
 import 'package:reacthome/ui/fragments/daemon/widgets/daemon_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
-import 'package:reacthome/ui/widgets/divider/divider.dart';
-import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
-import 'package:reacthome/ui/widgets/sliver_app_bar%20/sliver_app_bar.dart';
+import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryScreen {
   static Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return Scaffold(
+    return scaffold(
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar(title: locale.addYourHome),
+          app.bar.sliver(context, title: locale.addYourHome),
           SliverFillRemaining(
             hasScrollBody: false,
             fillOverscroll: true,
@@ -23,7 +21,7 @@ class DiscoveryScreen {
                 const DiscoveryStatus(),
                 DaemonList(
                   title: locale.discovered,
-                  ifEmpty: Divider(),
+                  ifEmpty: divider(),
                 ),
                 const Expanded(child: DaemonAdd()),
               ],

@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 
 class ScaffoldCupertino {
-  static WidgetBuilder build(
+  static Widget make({
     PreferredSizeWidget? appBar,
-    Widget body,
-  ) =>
-      (_) => CupertinoPageScaffold(
-            navigationBar: appBar as ObstructingPreferredSizeWidget?,
-            child: body,
-          );
+    required Widget body,
+  }) =>
+      CupertinoPageScaffold(
+        navigationBar: appBar as ObstructingPreferredSizeWidget?,
+        child: body,
+      );
 }

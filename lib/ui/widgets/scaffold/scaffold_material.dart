@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class ScaffoldMaterial {
-  static WidgetBuilder build(
+  static Widget make({
     PreferredSizeWidget? appBar,
-    Widget body,
-  ) =>
-      (_) => Scaffold(
-            appBar: appBar,
-            body: body,
-          );
+    required Widget body,
+  }) =>
+      Scaffold(
+        appBar: appBar,
+        body: body,
+      );
 }
