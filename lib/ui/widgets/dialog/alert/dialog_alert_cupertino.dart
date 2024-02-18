@@ -1,14 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
 class AlertDialogCupertino {
-  static Widget make({
+  static void make(
+    BuildContext context, {
     Widget? title,
     Widget? content,
     required List<Widget> actions,
   }) =>
-      CupertinoAlertDialog(
-        title: title,
-        content: content,
-        actions: actions,
+      showCupertinoDialog(
+        context: context,
+        builder: (context) => CupertinoAlertDialog(
+          title: title,
+          content: content,
+          actions: actions,
+        ),
       );
 }

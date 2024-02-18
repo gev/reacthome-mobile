@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 
 class AlertDialogMaterial {
-  static Widget make({
+  static void make(
+    BuildContext context, {
     Widget? title,
     Widget? content,
     required List<Widget> actions,
   }) =>
-      AlertDialog(
-        title: title,
-        content: content,
-        actions: actions,
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: title,
+          content: content,
+          actions: actions,
+        ),
       );
 }

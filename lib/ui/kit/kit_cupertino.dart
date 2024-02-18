@@ -38,7 +38,7 @@ const ButtonContainer _button = (
 );
 
 const DialogContainer _dialog = (
-  alert: AlertDialogCupertino.make,
+  showDialog: AlertDialogCupertino.make,
   action: DialogActionCupertino.make,
 );
 

@@ -38,7 +38,7 @@ const ButtonContainer _button = (
 );
 
 const DialogContainer _dialog = (
-  alert: AlertDialogMaterial.make,
+  showDialog: AlertDialogMaterial.make,
   action: DialogActionMaterial.make,
 );
 
