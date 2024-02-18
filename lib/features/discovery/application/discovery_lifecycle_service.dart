@@ -1,10 +1,10 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
-import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryLifecycleService
     extends GenericEventListener<AppLifecycleEvent> {
-  final DiscoveryCommand actor;
+  final DiscoveryApi actor;
 
   DiscoveryLifecycleService({
     required super.eventSource,

@@ -1,12 +1,12 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:uuid/uuid.dart';
 
 class DaemonAddViewModel with ChangeNotifier {
-  final DaemonCommand actor;
+  final DaemonApi actor;
 
   DaemonAddViewModel({required this.actor});
 

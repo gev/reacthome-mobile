@@ -1,9 +1,8 @@
 import 'dart:io';
 
 import 'package:reacthome/core/connection/connection.dart';
-import 'package:reacthome/core/connection/connection_command.dart';
+import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
@@ -11,7 +10,7 @@ import 'package:reacthome/util/repository.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
     extends GenericEventEmitter<ConnectionEvent>
-    implements ConnectionCommand<S>, ConnectionQuery<Connection> {
+    implements ConnectionApi<Connection, S> {
   final Repository<String, C> repository;
 
   ConnectionService({
@@ -53,7 +52,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
 
 class LocalConnectionService<S>
     extends ConnectionService<LocalConnectionEntity<S>, S>
-    implements LocalConnectionCommand<S> {
+    implements LocalConnectionApi<Connection, S> {
   LocalConnectionService({
     required super.eventSink,
     required super.repository,
@@ -69,7 +68,7 @@ class LocalConnectionService<S>
 
 class CloudConnectionService<S>
     extends ConnectionService<CloudConnectionEntity<S>, S>
-    implements CloudConnectionCommand<S> {
+    implements CloudConnectionApi<Connection, S> {
   CloudConnectionService({
     required super.eventSink,
     required super.repository,

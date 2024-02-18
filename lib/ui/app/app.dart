@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:reacthome/core/app_lifecycle/app_lifecycle_command.dart';
+import 'package:reacthome/core/app_lifecycle/app_lifecycle_api.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/theme_config.dart';
 
 class App extends StatelessWidget with WidgetsBindingObserver {
-  final AppLifecycleCommand appLifeCycle;
+  final AppLifecycleApi appLifeCycle;
   final ThemeConfig theme;
   final Navigation navigation;
   final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;

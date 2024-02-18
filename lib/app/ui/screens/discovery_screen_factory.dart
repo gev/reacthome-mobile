@@ -22,12 +22,12 @@ class DiscoveryScreenFactory {
         ChangeNotifierProvider(
             create: (_) => DaemonListViewModel(
                   eventSource: DiscoveryFactory.instance.daemonEventBus,
-                  query: daemonDiscoveryService,
+                  daemon: daemonDiscoveryService,
                 )),
         ChangeNotifierProvider(
             create: (_) => DaemonTitleViewModel(
                   eventSource: DiscoveryFactory.instance.daemonEventBus,
-                  query: daemonDiscoveryService,
+                  daemon: daemonDiscoveryService,
                 )),
       ],
       child: DiscoveryScreen.build(context),

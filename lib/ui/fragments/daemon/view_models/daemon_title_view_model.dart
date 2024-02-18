@@ -1,20 +1,20 @@
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
-import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
-  final DaemonQuery query;
+  final DaemonApi daemon;
 
   DaemonTitleViewModel({
     required super.eventSource,
-    required this.query,
+    required this.daemon,
   });
 
-  String? getDaemonTitleById(String id) => query.getDaemonById(id)?.meta.name;
+  String? getDaemonTitleById(String id) => daemon.getDaemonById(id)?.meta.name;
 
-  bool hasProject(String id) => query.getDaemonById(id)?.project != null;
+  bool hasProject(String id) => daemon.getDaemonById(id)?.project != null;
 
   @override
   void handle(DaemonEvent event) {

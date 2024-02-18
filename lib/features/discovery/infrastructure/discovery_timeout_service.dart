@@ -1,10 +1,10 @@
-import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryTimeoutService extends GenericEventListener<DaemonEvent> {
-  final DaemonCommand actor;
+  final DaemonApi actor;
   final Duration timeout;
 
   DiscoveryTimeoutService({

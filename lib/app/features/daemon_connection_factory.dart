@@ -25,14 +25,8 @@ class DaemonConnectionFactory {
 
     return DaemonConnectionService(
       eventSink: ConnectionFactory.instance.connectionEventBus,
-      local: (
-        query: localConnectionService,
-        actor: localConnectionService,
-      ),
-      cloud: (
-        query: cloudConnectionService,
-        actor: cloudConnectionService,
-      ),
+      local: localConnectionService,
+      cloud: cloudConnectionService,
       repository: _repository,
     );
   }
@@ -40,20 +34,20 @@ class DaemonConnectionFactory {
   ActiveConnectionService makeActiveConnectionService() =>
       ActiveConnectionService(
         eventSource: ConnectionFactory.instance.connectionEventBus,
-        actor: makeDaemonConnectionService(),
+        connection: makeDaemonConnectionService(),
       );
 
   DaemonConnectionAutoService makeDaemonConnectionAutoService() =>
       DaemonConnectionAutoService(
         eventSource: DiscoveryFactory.instance.daemonEventBus,
-        query: DiscoveryFactory.instance.makeDaemonService(),
-        actor: makeDaemonConnectionService(),
+        daemon: DiscoveryFactory.instance.makeDaemonService(),
+        connection: makeDaemonConnectionService(),
       );
 
   DaemonConnectionLifecycleService makeDaemonConnectionLifecycleService() =>
       DaemonConnectionLifecycleService(
         eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
-        query: DiscoveryFactory.instance.makeDaemonService(),
-        actor: makeDaemonConnectionService(),
+        daemon: DiscoveryFactory.instance.makeDaemonService(),
+        connection: makeDaemonConnectionService(),
       );
 }

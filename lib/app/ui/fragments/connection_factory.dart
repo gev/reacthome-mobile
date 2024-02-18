@@ -14,17 +14,10 @@ class ConnectionFactory {
 
     return ConnectionViewModel(
       eventSource: c.ConnectionFactory.instance.connectionEventBus,
-      daemonConnection: (
-        query: daemonConnectionService,
-        actor: daemonConnectionService,
-      ),
-      local: (
-        query: c.ConnectionFactory.instance.makeLocalConnectionService(),
-      ),
-      cloud: (
-        query: c.ConnectionFactory.instance.makeCloudConnectionService(),
-      ),
-      daemon: (query: DiscoveryFactory.instance.makeDaemonService()),
+      daemonConnection: daemonConnectionService,
+      local: c.ConnectionFactory.instance.makeLocalConnectionService(),
+      cloud: c.ConnectionFactory.instance.makeCloudConnectionService(),
+      daemon: DiscoveryFactory.instance.makeDaemonService(),
     );
   }
 }

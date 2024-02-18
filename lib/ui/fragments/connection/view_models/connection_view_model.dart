@@ -1,29 +1,19 @@
 import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:reacthome/core/connection/connection.dart';
+import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/core/daemon/daemon_query.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
+import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
 import 'package:reacthome/util/event_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel extends GenericEventListener<ConnectionEvent>
+class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
     with ChangeNotifier {
-  final ({
-    ConnectionQuery<DaemonConnection> query,
-    DaemonConnectionCommand actor,
-  }) daemonConnection;
-  final ({
-    ConnectionQuery<Connection> query,
-  }) local;
-  final ({
-    ConnectionQuery<Connection> query,
-  }) cloud;
-  final ({
-    DaemonQuery query,
-  }) daemon;
+  final DaemonConnectionApi daemonConnection;
+  final LocalConnectionApi<Connection, S> local;
+  final CloudConnectionApi<Connection, S> cloud;
+  final DaemonApi daemon;
 
   ConnectionViewModel({
     required super.eventSource,
@@ -34,39 +24,39 @@ class ConnectionViewModel extends GenericEventListener<ConnectionEvent>
   });
 
   bool isConnected(String id) =>
-      daemonConnection.query.getConnectionById(id).connection?.state ==
+      daemonConnection.getConnectionById(id).connection?.state ==
       ConnectionState.connected;
 
   bool isLocalConnected(String id) =>
-      local.query.getConnectionById(id).state == ConnectionState.connected;
+      local.getConnectionById(id).state == ConnectionState.connected;
 
   bool isCloudConnected(String id) =>
-      cloud.query.getConnectionById(id).state == ConnectionState.connected;
+      cloud.getConnectionById(id).state == ConnectionState.connected;
 
   void Function(bool) toggleConnection(String id) =>
-      (bool value) => daemon.query.getDaemonById(id)?.let((it) {
+      (bool value) => daemon.getDaemonById(id)?.let((it) {
             if (value) {
-              daemonConnection.actor.connect(it);
+              daemonConnection.connect(it);
             } else {
-              daemonConnection.actor.disconnect(id);
+              daemonConnection.disconnect(id);
             }
           });
 
   void Function(bool) toggleLocalConnection(String id) =>
-      (bool value) => daemon.query.getDaemonById(id)?.let((it) {
+      (bool value) => daemon.getDaemonById(id)?.let((it) {
             if (value) {
-              daemonConnection.actor.connectLocal(it);
+              daemonConnection.connectLocal(it);
             } else {
-              daemonConnection.actor.disconnectLocal(id);
+              daemonConnection.disconnectLocal(id);
             }
           });
 
   void Function(bool) toggleCloudConnection(String id) =>
-      (bool value) => daemon.query.getDaemonById(id)?.let((it) {
+      (bool value) => daemon.getDaemonById(id)?.let((it) {
             if (value) {
-              daemonConnection.actor.connectCloud(it);
+              daemonConnection.connectCloud(it);
             } else {
-              daemonConnection.actor.disconnectCloud(id);
+              daemonConnection.disconnectCloud(id);
             }
           });
 

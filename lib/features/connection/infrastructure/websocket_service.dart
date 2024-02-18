@@ -1,12 +1,12 @@
-import 'package:reacthome/core/connection/connection_command.dart';
+import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-abstract class WebsocketService<F extends WebSocketFactory,
+abstract class WebsocketService<C, F extends WebSocketFactory,
     E extends ConnectionEvent> extends GenericEventListener<ConnectionEvent> {
-  final ConnectionCommand<WebSocket> actor;
+  final ConnectionApi<C, WebSocket> actor;
   final F factory;
 
   WebsocketService({
@@ -49,8 +49,8 @@ abstract class WebsocketService<F extends WebSocketFactory,
   }
 }
 
-class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
-    LocalConnectRequestedEvent> {
+class LocalWebsocketService<C> extends WebsocketService<C,
+    LocalWebSocketFactory, LocalConnectRequestedEvent> {
   LocalWebsocketService({
     required super.eventSource,
     required super.actor,
@@ -64,8 +64,8 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
       );
 }
 
-class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
-    CloudConnectRequestedEvent> {
+class CloudWebsocketService<C> extends WebsocketService<C,
+    CloudWebSocketFactory, CloudConnectRequestedEvent> {
   CloudWebsocketService({
     required super.eventSource,
     required super.actor,

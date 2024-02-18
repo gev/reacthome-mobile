@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/discovery/interface/discovery_action.dart';
 import 'package:reacthome/util/handler.dart';
 
 class DiscoveryController implements Handler<Datagram> {
-  final DaemonCommand actor;
+  final DaemonApi actor;
 
   DiscoveryController({required this.actor});
   @override

@@ -1,13 +1,12 @@
 import 'package:reacthome/core/discovery/discovery.dart';
-import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_query.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class DiscoveryService<S> extends GenericEventEmitter<DiscoveryEvent>
-    implements DiscoveryCommand<S>, DiscoveryQuery {
+    implements DiscoveryApi<S> {
   final DiscoveryEntity<S> _process;
 
   DiscoveryService({

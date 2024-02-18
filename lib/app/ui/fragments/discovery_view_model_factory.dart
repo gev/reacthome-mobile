@@ -10,8 +10,7 @@ class DiscoveryViewModelFactory {
     final discoveryService = DiscoveryFactory.instance.makeDiscoveryService();
     return DiscoveryStatusViewModel(
       eventSource: DiscoveryFactory.instance.discoveryEventBus,
-      query: discoveryService,
-      actor: discoveryService,
+      discovery: discoveryService,
     );
   }
 }

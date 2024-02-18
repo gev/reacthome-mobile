@@ -1,16 +1,15 @@
 import 'dart:io';
 
 import 'package:reacthome/core/daemon/daemon.dart';
-import 'package:reacthome/core/daemon/daemon_command.dart';
+import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
-import 'package:reacthome/core/daemon/daemon_query.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/repository.dart';
 
 class DaemonService extends GenericEventEmitter<DaemonEvent>
-    implements DaemonCommand, DaemonQuery {
+    implements DaemonApi {
   final Repository<String, DaemonEntity> repository;
 
   DaemonService({

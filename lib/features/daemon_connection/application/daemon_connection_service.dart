@@ -1,27 +1,18 @@
 import 'package:reacthome/core/connection/connection.dart';
-import 'package:reacthome/core/connection/connection_command.dart';
+import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/core/connection/connection_query.dart';
 import 'package:reacthome/core/daemon/daemon.dart';
 import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_command.dart';
+import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
 import 'package:reacthome/features/daemon_connection/domain/daemon_connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
 class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
-    implements DaemonConnectionCommand, ConnectionQuery<DaemonConnection> {
-  final ({
-    ConnectionQuery<Connection> query,
-    LocalConnectionCommand<S> actor,
-  }) local;
-
-  final ({
-    ConnectionQuery<Connection> query,
-    CloudConnectionCommand<S> actor,
-  }) cloud;
-
+    implements DaemonConnectionApi {
+  final LocalConnectionApi<Connection, S> local;
+  final CloudConnectionApi<Connection, S> cloud;
   final Repository<String, DaemonConnectionEntity> repository;
 
   DaemonConnectionService({
@@ -50,13 +41,13 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   void connectLocal(Daemon daemon) {
     final address = daemon.address;
     if (address != null) {
-      local.actor.connect(daemon.id, address);
+      local.connect(daemon.id, address);
     }
   }
 
   @override
   void connectCloud(Daemon daemon) {
-    cloud.actor.connect(daemon.id);
+    cloud.connect(daemon.id);
   }
 
   @override
@@ -70,19 +61,19 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
 
   @override
   void disconnectLocal(String id) {
-    local.actor.disconnect(id);
+    local.disconnect(id);
   }
 
   @override
   void disconnectCloud(String id) {
-    cloud.actor.disconnect(id);
+    cloud.disconnect(id);
   }
 
   @override
   void select(String id) => _getConnectionById(id)
       .select(
-        local.query.getConnectionById(id),
-        cloud.query.getConnectionById(id),
+        local.getConnectionById(id),
+        cloud.getConnectionById(id),
       )
       ?.let(emit);
 

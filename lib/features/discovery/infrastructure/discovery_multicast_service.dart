@@ -1,11 +1,11 @@
-import 'package:reacthome/core/discovery/discovery_command.dart';
+import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class DiscoveryMulticastService extends GenericEventListener<DiscoveryEvent> {
-  final DiscoveryCommand<MulticastSource> actor;
+  final DiscoveryApi<MulticastSource> actor;
   final MulticastSourceFactory factory;
 
   DiscoveryMulticastService({
