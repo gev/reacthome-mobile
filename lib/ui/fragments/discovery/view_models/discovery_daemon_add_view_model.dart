@@ -1,3 +1,3 @@
-class DaemonAddViewModel {
+class DiscoveryDaemonAddViewModel {
   void addDaemonButtonPressed() {}
 }

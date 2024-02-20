@@ -3,23 +3,23 @@ import 'package:reacthome/core/daemon/daemon_api.dart';
 import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DaemonListViewModel extends GenericEventListener<DaemonEvent>
+class DiscoveryDaemonTitleViewModel extends GenericEventListener<DaemonEvent>
     with ChangeNotifier {
   final DaemonApi daemon;
 
-  DaemonListViewModel({
+  DiscoveryDaemonTitleViewModel({
     required super.eventSource,
     required this.daemon,
   });
 
-  Iterable<String> get daemons => daemon.getAllDaemons();
-  String get countTitle => daemons.length.toString();
+  String? getDaemonTitleById(String id) => daemon.getDaemonById(id)?.meta.name;
+
+  bool hasProject(String id) => daemon.getDaemonById(id)?.project != null;
 
   @override
   void handle(DaemonEvent event) {
     switch (event) {
-      case DaemonAddedEvent _:
-      case DaemonRemovedEvent _:
+      case DaemonMetaChangedEvent _:
         notifyListeners();
       default:
     }

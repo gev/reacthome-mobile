@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/daemon/view_models/daemon_list_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_list_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
@@ -13,7 +13,7 @@ class DiscoveryDaemonList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Iterable<String> daemons =
-        context.select<DaemonListViewModel, Iterable<String>>(
+        context.select<DiscoveryDaemonListViewModel, Iterable<String>>(
             (model) => model.daemons);
     return daemons.isEmpty
         ? ifEmpty
