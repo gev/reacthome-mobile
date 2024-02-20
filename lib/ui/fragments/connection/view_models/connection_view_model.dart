@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart' show ChangeNotifier;
-import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
@@ -11,8 +10,8 @@ import 'package:reacthome/util/extensions.dart';
 class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
     with ChangeNotifier {
   final DaemonConnectionApi daemonConnection;
-  final LocalConnectionApi<Connection, S> local;
-  final CloudConnectionApi<Connection, S> cloud;
+  final LocalConnectionApi<S> local;
+  final CloudConnectionApi<S> cloud;
   final DaemonApi daemon;
 
   ConnectionViewModel({

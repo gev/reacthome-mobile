@@ -1,4 +1,3 @@
-import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/daemon/daemon.dart';
@@ -11,8 +10,8 @@ import 'package:reacthome/util/repository.dart';
 
 class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
     implements DaemonConnectionApi {
-  final LocalConnectionApi<Connection, S> local;
-  final CloudConnectionApi<Connection, S> cloud;
+  final LocalConnectionApi<S> local;
+  final CloudConnectionApi<S> cloud;
   final Repository<String, DaemonConnectionEntity> repository;
 
   DaemonConnectionService({

@@ -9,8 +9,7 @@ import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
-    extends GenericEventEmitter<ConnectionEvent>
-    implements ConnectionApi<Connection, S> {
+    extends GenericEventEmitter<ConnectionEvent> implements ConnectionApi<S> {
   final Repository<String, C> repository;
 
   ConnectionService({
@@ -52,7 +51,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
 
 class LocalConnectionService<S>
     extends ConnectionService<LocalConnectionEntity<S>, S>
-    implements LocalConnectionApi<Connection, S> {
+    implements LocalConnectionApi<S> {
   LocalConnectionService({
     required super.eventSink,
     required super.repository,
@@ -68,7 +67,7 @@ class LocalConnectionService<S>
 
 class CloudConnectionService<S>
     extends ConnectionService<CloudConnectionEntity<S>, S>
-    implements CloudConnectionApi<Connection, S> {
+    implements CloudConnectionApi<S> {
   CloudConnectionService({
     required super.eventSink,
     required super.repository,

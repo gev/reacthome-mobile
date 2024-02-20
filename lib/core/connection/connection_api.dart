@@ -1,8 +1,10 @@
 import 'dart:io';
 
-abstract interface class ConnectionApi<C, S> {
+import 'package:reacthome/core/connection/connection.dart';
+
+abstract interface class ConnectionApi<S> {
   Iterable<String> getAllConnections();
-  C getConnectionById(String id);
+  Connection getConnectionById(String id);
 
   void completeConnect(String id, S socket);
   void disconnect(String id);
@@ -10,12 +12,10 @@ abstract interface class ConnectionApi<C, S> {
   void fail(String id);
 }
 
-abstract interface class LocalConnectionApi<C, S>
-    implements ConnectionApi<C, S> {
+abstract interface class LocalConnectionApi<S> implements ConnectionApi<S> {
   void connect(String id, InternetAddress address);
 }
 
-abstract interface class CloudConnectionApi<C, S>
-    implements ConnectionApi<C, S> {
+abstract interface class CloudConnectionApi<S> implements ConnectionApi<S> {
   void connect(String id);
 }
