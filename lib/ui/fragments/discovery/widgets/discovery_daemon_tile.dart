@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/daemon/view_models/daemon_title_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class DaemonTile extends StatelessWidget {
+class DiscoveryDaemonTile extends StatelessWidget {
   final String id;
-  const DaemonTile({super.key, required this.id});
+  const DiscoveryDaemonTile({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {

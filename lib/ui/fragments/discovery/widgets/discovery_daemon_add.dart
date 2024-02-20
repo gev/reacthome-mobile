@@ -2,8 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class DaemonAdd extends StatelessWidget {
-  const DaemonAdd({super.key});
+class DiscoveryDaemonAdd extends StatelessWidget {
+  const DiscoveryDaemonAdd({super.key});
 
   @override
   Widget build(BuildContext context) {

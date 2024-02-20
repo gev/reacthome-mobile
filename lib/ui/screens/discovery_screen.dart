@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/fragments/daemon/widgets/daemon_add.dart';
-import 'package:reacthome/ui/fragments/daemon/widgets/daemon_list.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_add.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
@@ -19,11 +19,11 @@ class DiscoveryScreen {
             child: Column(
               children: [
                 const DiscoveryStatus(),
-                DaemonList(
+                DiscoveryDaemonList(
                   title: locale.discovered,
                   ifEmpty: divider(),
                 ),
-                const Expanded(child: DaemonAdd()),
+                const Expanded(child: DiscoveryDaemonAdd()),
               ],
             ),
           ),

@@ -1,13 +1,14 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/daemon/view_models/daemon_list_view_model.dart';
-import 'package:reacthome/ui/fragments/daemon/widgets/daemon_tile.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class DaemonList extends StatelessWidget {
+class DiscoveryDaemonList extends StatelessWidget {
   final String title;
   final Widget ifEmpty;
-  const DaemonList({required this.title, required this.ifEmpty, super.key});
+  const DiscoveryDaemonList(
+      {required this.title, required this.ifEmpty, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class DaemonList extends StatelessWidget {
             context,
             title: title,
             children: daemons
-                .map((id) => DaemonTile(key: ValueKey(id), id: id))
+                .map((id) => DiscoveryDaemonTile(key: ValueKey(id), id: id))
                 .toList(),
           );
   }
