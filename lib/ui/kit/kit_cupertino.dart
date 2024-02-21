@@ -22,6 +22,8 @@ import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 import 'package:reacthome/ui/widgets/scaffold/scaffold_cupertino.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher_cupertino.dart';
+import 'package:reacthome/ui/widgets/text/field/text_field_cupertino.dart';
+import 'package:reacthome/ui/widgets/text/text.dart';
 import 'package:reacthome/ui/widgets/widget.dart';
 
 const AppContainer _app = (
@@ -57,6 +59,8 @@ const ScaffoldFactory _scaffold = ScaffoldCupertino.make;
 
 const SwitcherFactory _switcher = SwitcherCupertino.make;
 
+const TextContainer _text = (field: TextFieldCupertino.make);
+
 const IconContainer _icon = (
   add: CupertinoIcons.add,
   wifi: CupertinoIcons.wifi,
@@ -78,4 +82,5 @@ const WidgetContainer cupertino = (
   list: _list,
   scaffold: _scaffold,
   switcher: _switcher,
+  text: _text,
 );

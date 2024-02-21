@@ -22,6 +22,8 @@ import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 import 'package:reacthome/ui/widgets/scaffold/scaffold_material.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher_material.dart';
+import 'package:reacthome/ui/widgets/text/field/text_field_material.dart';
+import 'package:reacthome/ui/widgets/text/text.dart';
 import 'package:reacthome/ui/widgets/widget.dart';
 
 const AppContainer _app = (
@@ -57,6 +59,8 @@ const ScaffoldFactory _scaffold = ScaffoldMaterial.make;
 
 const SwitcherFactory _switcher = SwitcherMaterial.make;
 
+const TextContainer _text = (field: TextFieldMaterial.make);
+
 const IconContainer _icon = (
   add: Icons.add,
   wifi: Icons.wifi,
@@ -78,4 +82,5 @@ const WidgetContainer material = (
   list: _list,
   scaffold: _scaffold,
   switcher: _switcher,
+  text: _text,
 );

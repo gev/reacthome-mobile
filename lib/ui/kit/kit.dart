@@ -16,3 +16,4 @@ final indicator = _kit.indicator;
 final list = _kit.list;
 final scaffold = _kit.scaffold;
 final switcher = _kit.switcher;
+final text = _kit.text;

@@ -7,6 +7,7 @@ import 'package:reacthome/ui/widgets/indicator/indicator.dart';
 import 'package:reacthome/ui/widgets/list/list.dart';
 import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher.dart';
+import 'package:reacthome/ui/widgets/text/text.dart';
 
 typedef WidgetContainer = ({
   AppContainer app,
@@ -18,4 +19,5 @@ typedef WidgetContainer = ({
   ListContainer list,
   ScaffoldFactory scaffold,
   SwitcherFactory switcher,
+  TextContainer text,
 });
