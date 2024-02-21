@@ -17,8 +17,23 @@ class AddHomeScreen extends StatelessWidget {
             hasScrollBody: false,
             fillOverscroll: true,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(locale.addHomeID), text.field()],
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 32, 16, 0),
+                  child: text.field(
+                    placeholder: 'XXXX-XXXX-XXXX-XXXX-XXXX',
+                    autofocus: true,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 32, 16, 0),
+                  child: button.filled(
+                    label: locale.add,
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
