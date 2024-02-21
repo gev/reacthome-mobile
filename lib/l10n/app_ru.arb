@@ -1,8 +1,9 @@
 {
   "welcome": "Добро пожаловать!",
-  "addYourHome": "Добавить дом",
+  "addHome": "Добавить дом",
   "discovery": "Авто-обнаружение",
   "discovered": "Найдено",
-  "addYorOwnHome" : "Добавить свой дом",
+  "addHome" : "Добавить дом",
+  "addHomeID": "Добавить ID дома",
   "untitled": "Безымянный"
 }

@@ -1,8 +1,9 @@
 {
   "welcome": "Welcome!",
-  "addYourHome": "Add your home",
+  "addHome": "Add your home",
   "discovery": "Auto discovery",
   "discovered": "Discovered",
-  "addYorOwnHome" : "Add your own home",
+  "addHome" : "Add a home",
+  "addHomeID": "Add the home ID",
   "untitled": "Untitled" 
 }
