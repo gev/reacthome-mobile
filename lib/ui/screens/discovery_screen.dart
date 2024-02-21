@@ -12,7 +12,7 @@ class DiscoveryScreen {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          app.bar.sliver(context, title: locale.addYourHome),
+          app.bar.sliver(context, title: locale.addHome),
           SliverFillRemaining(
             hasScrollBody: false,
             fillOverscroll: true,

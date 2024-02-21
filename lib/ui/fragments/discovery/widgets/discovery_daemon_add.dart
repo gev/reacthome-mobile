@@ -15,7 +15,7 @@ class DiscoveryDaemonAdd extends StatelessWidget {
       context,
       children: [
         list.tile(
-          title: Text(locale.addYorOwnHome),
+          title: Text(locale.addHomeID),
           leading: Icon(icon.add),
           trailing: list.chevron(),
           onTap: model.addDaemonButtonPressed,

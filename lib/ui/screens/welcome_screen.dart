@@ -18,7 +18,7 @@ class WelcomeScreen {
             Text(locale.welcome, style: const TextStyle(fontSize: 28)),
             const SizedBox(height: 24),
             button.filled(
-              label: locale.addYourHome,
+              label: locale.addHome,
               onPressed: () =>
                   navigator.pushNamed(NavigationRouteNames.discovery),
             ),

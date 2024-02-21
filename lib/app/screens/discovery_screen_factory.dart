@@ -17,7 +17,7 @@ class DiscoveryScreenFactory {
         DiscoveryFactory.instance.makeDaemonService();
     return MultiProvider(
       providers: [
-        Provider(create: (_) => DiscoveryDaemonAddViewModel()),
+        Provider(create: (context) => DiscoveryDaemonAddViewModel(context)),
         ChangeNotifierProvider(
           create: (_) => DiscoveryStatusViewModel(
             eventSource: DiscoveryFactory.instance.discoveryEventBus,
