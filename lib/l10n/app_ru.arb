@@ -1,11 +1,23 @@
 {
+  "no": "Нет",
+  "yes": "Да",
+
+  "close": "Закрыть",
+
+  "cancel": "Отмена",
+
+  "add": "Добавить",
+
   "welcome": "Добро пожаловать!",
-  "addHome": "Добавить дом",
+
   "discovery": "Авто-обнаружение",
   "discovered": "Найдено",
-  "add": "Добавить",
-  "addHome" : "Добавить дом",
-  "addHomeID": "Добавить ID дома",
-  "homeID": "ID дома",
+
+  "addAHome" : "Добавить дом",
+  "addTheHomeID": "Добавить ID дома",
+  "theHomeID": "ID дома",
+  "doYouWantToAddThisHome": "Желаете добавить этот дом?",
+  "cantAddTheHome": "Не могу добавить дом",
+
   "untitled": "Безымянный"
 }

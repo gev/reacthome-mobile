@@ -1,11 +1,23 @@
 {
+  "no": "No",
+  "yes": "Yes",
+
+  "close": "Close",
+
+  "cancel": "Cancel",
+
+  "add": "Add",
+
   "welcome": "Welcome!",
-  "addHome": "Add your home",
+
   "discovery": "Auto discovery",
   "discovered": "Discovered",
-  "add": "Add",
-  "addHome" : "Add a home",
-  "addHomeID": "Add the home ID",
-  "homeID": "The home ID",
-  "untitled": "Untitled" 
+
+  "addAHome" : "Add a home",
+  "addTheHomeID": "Add the home ID",
+  "theHomeID": "The home ID",
+  "doYouWantToAddThisHome": "Do you want to add this home?",
+  "cantAddTheHome": "Can't add the home",
+  
+  "untitled": "Untitled"
 }
