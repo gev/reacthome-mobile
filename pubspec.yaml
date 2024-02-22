@@ -36,7 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   fast_immutable_collections: ^10.1.1
-  flutter_svg: ^2.0.9
+  flutter_svg: ^2.0.10
   provider: ^6.1.1
   uuid: ^4.3.3
   path_provider: ^2.1.2
