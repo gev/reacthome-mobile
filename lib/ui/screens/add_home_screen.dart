@@ -27,7 +27,7 @@ class AddHomeScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16, 32, 16, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16, 32, 48, 0),
                   child: button.filled(
                     label: locale.add,
                     onPressed: () => Navigator.of(context).pop(),
