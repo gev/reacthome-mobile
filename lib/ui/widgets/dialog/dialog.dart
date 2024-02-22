@@ -7,14 +7,19 @@ typedef DialogActionFactory = Widget Function({
   void Function()? onPressed,
 });
 
-typedef DialogAlertFactory = void Function(
-  BuildContext builder, {
+typedef DialogAlertFactory = Widget Function({
   Widget? title,
   Widget? content,
   required List<Widget> actions,
 });
 
+typedef ShowDialog = Future<T?> Function<T>(
+  BuildContext context, {
+  required WidgetBuilder builder,
+});
+
 typedef DialogContainer = ({
-  DialogAlertFactory showDialog,
+  ShowDialog show,
+  DialogAlertFactory alert,
   DialogActionFactory action,
 });

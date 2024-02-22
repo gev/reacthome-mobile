@@ -9,6 +9,7 @@ import 'package:reacthome/ui/widgets/button/icon/filled/button_icon_filled_mater
 import 'package:reacthome/ui/widgets/dialog/action/dialog_action_material.dart';
 import 'package:reacthome/ui/widgets/dialog/alert/dialog_alert_material.dart';
 import 'package:reacthome/ui/widgets/dialog/dialog.dart';
+import 'package:reacthome/ui/widgets/dialog/show/show_dialog_material.dart';
 import 'package:reacthome/ui/widgets/divider/divider.dart';
 import 'package:reacthome/ui/widgets/divider/divider_material.dart';
 import 'package:reacthome/ui/widgets/icon.dart';
@@ -40,7 +41,8 @@ const ButtonContainer _button = (
 );
 
 const DialogContainer _dialog = (
-  showDialog: AlertDialogMaterial.make,
+  show: showDialogMaterial,
+  alert: AlertDialogMaterial.make,
   action: DialogActionMaterial.make,
 );
 
