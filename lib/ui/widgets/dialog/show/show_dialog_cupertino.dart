@@ -7,4 +7,5 @@ Future<T?> showDialogCupertino<T>(
     showCupertinoDialog(
       context: context,
       builder: builder,
+      barrierDismissible: true,
     );
