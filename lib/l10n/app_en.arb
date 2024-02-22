@@ -6,5 +6,6 @@
   "add": "Add",
   "addHome" : "Add a home",
   "addHomeID": "Add the home ID",
+  "homeID": "The home ID",
   "untitled": "Untitled" 
 }
