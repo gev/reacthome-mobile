@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_alert.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_confirm.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
@@ -28,8 +28,8 @@ class DiscoveryHomeTile extends StatelessWidget {
       leading: Icon(hasProject ? icon.home.filled : icon.home.outlined),
       onTap: () => model.onHomeTileTap(
         id,
-        DiscoveryHomeConfirm(id),
-        const DiscoveryHomeAlert(),
+        DiscoveryHomeAddConfirm(id),
+        const DiscoveryHomeAddAlert(),
       ),
     );
   }

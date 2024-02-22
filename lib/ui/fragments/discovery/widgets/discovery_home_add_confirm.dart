@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/widgets/confirm.dart';
 
-class DiscoveryHomeConfirm extends StatelessWidget {
+class DiscoveryHomeAddConfirm extends StatelessWidget {
   final String id;
-  const DiscoveryHomeConfirm(this.id, {super.key});
+  const DiscoveryHomeAddConfirm(this.id, {super.key});
 
   @override
   Widget build(BuildContext context) {
