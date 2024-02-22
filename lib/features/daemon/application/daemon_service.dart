@@ -27,7 +27,7 @@ class DaemonService extends GenericEventEmitter<DaemonEvent>
   void addDaemon({
     required String id,
     required Meta meta,
-    required InternetAddress address,
+    InternetAddress? address,
     String? project,
   }) {
     final daemon = repository.get(id);

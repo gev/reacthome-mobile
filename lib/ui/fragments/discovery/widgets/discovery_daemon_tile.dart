@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_title_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_alert.dart';
+import 'package:reacthome/ui/fragments/discovery/widgets/discovery_daemon_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryDaemonTile extends StatelessWidget {
@@ -10,21 +11,26 @@ class DiscoveryDaemonTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final locale = AppLocalizations.of(context)!;
-    String? title = context.select<DiscoveryDaemonTitleViewModel, String?>(
-      (model) => model.getDaemonTitleById(id),
+    final model = context.read<DiscoveryDaemonViewModel>();
+    String title = context.select<DiscoveryDaemonViewModel, String>(
+      (model) => model.getDaemonTitle(id),
     );
-    bool hasProject = context.select<DiscoveryDaemonTitleViewModel, bool>(
+    bool hasProject = context.select<DiscoveryDaemonViewModel, bool>(
       (model) => model.hasProject(id),
     );
     return list.tile(
-      title: Text(title ?? locale.untitled),
+      title: Text(title),
       subtitle: Text(
         id,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
       leading: Icon(hasProject ? icon.home.filled : icon.home.outlined),
+      onTap: () => model.onDaemonTileTap(
+        id,
+        DiscoveryDaemonConfirm(id),
+        const DiscoveryDaemonAlert(),
+      ),
     );
   }
 }

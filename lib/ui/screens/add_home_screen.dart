@@ -13,7 +13,7 @@ class AddHomeScreen extends StatelessWidget {
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          app.bar.sliver(context, title: locale.homeID),
+          app.bar.sliver(context, title: locale.addTheHomeID),
           const SliverFillRemaining(
             hasScrollBody: false,
             fillOverscroll: true,

@@ -8,7 +8,7 @@ import 'package:reacthome/util/extensions.dart';
 class DaemonEntity implements Daemon {
   final String _id;
   Meta _meta;
-  InternetAddress _address;
+  InternetAddress? _address;
   String? _project;
 
   DaemonEntity(
@@ -32,8 +32,8 @@ class DaemonEntity implements Daemon {
   }
 
   @override
-  InternetAddress get address => _address;
-  DaemonEvent? updateAddress(InternetAddress address) {
+  InternetAddress? get address => _address;
+  DaemonEvent? updateAddress(InternetAddress? address) {
     if (_address != address) {
       _address = address;
       return DaemonAddressChangedEvent(id);
@@ -52,7 +52,7 @@ class DaemonEntity implements Daemon {
   }
 
   Iterable<DaemonEvent> update(
-      Meta meta, InternetAddress address, String? project) {
+      Meta meta, InternetAddress? address, String? project) {
     final events = <DaemonEvent>[];
     updateMeta(meta)?.let(events.add);
     updateAddress(address)?.let(events.add);

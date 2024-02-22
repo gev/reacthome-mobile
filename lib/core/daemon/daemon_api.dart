@@ -9,7 +9,7 @@ abstract interface class DaemonApi {
   void addDaemon({
     required String id,
     required Meta meta,
-    required InternetAddress address,
+    InternetAddress? address,
     String? project,
   });
   void removeDaemon({

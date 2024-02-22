@@ -7,7 +7,6 @@ import 'package:reacthome/ui/widgets/logo.dart';
 class WelcomeScreen {
   static Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    final navigator = Navigator.of(context);
     return scaffold(
       body: Center(
         child: Column(
@@ -18,9 +17,9 @@ class WelcomeScreen {
             Text(locale.welcome, style: const TextStyle(fontSize: 28)),
             const SizedBox(height: 24),
             button.filled(
-              label: locale.addHome,
+              label: locale.addAHome,
               onPressed: () =>
-                  navigator.pushNamed(NavigationRouteNames.discovery),
+                  Navigator.pushNamed(context, NavigationRouteNames.discovery),
             ),
           ],
         ),

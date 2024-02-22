@@ -13,7 +13,6 @@ class AddHomeID extends StatelessWidget {
       children: [
         text.field(
           placeholder: 'XXXX-XXXX-XXXX-XXXX-XXXX',
-          autofocus: true,
         ),
         Padding(
           padding: const EdgeInsetsDirectional.fromSTEB(0, 32, 32, 0),
