@@ -1,52 +1,51 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/core/daemon/daemon_api.dart';
-import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryDaemonViewModel extends GenericEventListener<DaemonEvent>
+class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
     with ChangeNotifier {
   final BuildContext context;
-  final EventBus<DaemonEvent> eventSource;
-  final DaemonApi discoveredDaemon;
-  final DaemonApi knownDaemon;
+  final EventBus<HomeEvent> eventSource;
+  final HomeApi discoveredHome;
+  final HomeApi knownHome;
 
-  DiscoveryDaemonViewModel(
+  DiscoveryHomeViewModel(
     this.context, {
     required this.eventSource,
-    required this.discoveredDaemon,
-    required this.knownDaemon,
+    required this.discoveredHome,
+    required this.knownHome,
   }) : super(eventSource: eventSource);
 
-  Meta? getDaemonMeta(String id) => discoveredDaemon.getDaemonById(id)?.meta;
+  Meta? getHomeMeta(String id) => discoveredHome.getHomeById(id)?.meta;
 
-  String getDaemonTitle(String id) =>
-      getDaemonMeta(id)?.name ?? AppLocalizations.of(context)!.untitled;
+  String getHomeTitle(String id) =>
+      getHomeMeta(id)?.name ?? AppLocalizations.of(context)!.untitled;
 
-  bool hasProject(String id) =>
-      discoveredDaemon.getDaemonById(id)?.project != null;
+  bool hasProject(String id) => discoveredHome.getHomeById(id)?.project != null;
 
-  void addDaemonButtonPressed() {
-    Navigator.pushNamed(context, NavigationRouteNames.addDaemon);
+  void addHomeButtonPressed() {
+    Navigator.pushNamed(context, NavigationRouteNames.addHome);
   }
 
-  void onDaemonTileTap(
+  void onHomeTileTap(
       String id, Widget confirmDialog, Widget alertDialog) async {
     final navigator = Navigator.of(context);
     final confirmed = await _confirm(confirmDialog);
     if (confirmed == true) {
-      final daemon = discoveredDaemon.getDaemonById(id);
-      if (daemon != null) {
-        knownDaemon.addDaemon(
+      final home = discoveredHome.getHomeById(id);
+      if (home != null) {
+        knownHome.addHome(
           id: id,
-          meta: daemon.meta,
-          address: daemon.address,
-          project: daemon.project,
+          meta: home.meta,
+          address: home.address,
+          project: home.project,
         );
         navigator.pushNamed(NavigationRouteNames.homeList);
       } else {
@@ -58,11 +57,11 @@ class DiscoveryDaemonViewModel extends GenericEventListener<DaemonEvent>
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
         builder: (_) => ChangeNotifierProvider(
-          create: (context) => DiscoveryDaemonViewModel(
+          create: (context) => DiscoveryHomeViewModel(
             context,
             eventSource: eventSource,
-            discoveredDaemon: discoveredDaemon,
-            knownDaemon: knownDaemon,
+            discoveredHome: discoveredHome,
+            knownHome: knownHome,
           ),
           child: confirmDialog,
         ),
@@ -74,10 +73,10 @@ class DiscoveryDaemonViewModel extends GenericEventListener<DaemonEvent>
       );
 
   @override
-  void handle(DaemonEvent event) {
+  void handle(HomeEvent event) {
     switch (event) {
-      case DaemonAddedEvent _:
-      case DaemonMetaChangedEvent _:
+      case HomeAddedEvent _:
+      case HomeMetaChangedEvent _:
         notifyListeners();
       default:
     }

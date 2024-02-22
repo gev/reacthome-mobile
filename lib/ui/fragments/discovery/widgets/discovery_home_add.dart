@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class DiscoveryDaemonAdd extends StatelessWidget {
-  const DiscoveryDaemonAdd({super.key});
+class DiscoveryHomeAdd extends StatelessWidget {
+  const DiscoveryHomeAdd({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<DiscoveryDaemonViewModel>();
+    final model = context.read<DiscoveryHomeViewModel>();
     final locale = AppLocalizations.of(context)!;
     return list.section(
       context,
@@ -18,7 +18,7 @@ class DiscoveryDaemonAdd extends StatelessWidget {
           title: Text(locale.addTheHomeID),
           leading: Icon(icon.add),
           trailing: list.chevron(),
-          onTap: model.addDaemonButtonPressed,
+          onTap: model.addHomeButtonPressed,
         ),
       ],
     );

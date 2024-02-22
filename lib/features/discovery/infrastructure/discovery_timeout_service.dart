@@ -1,10 +1,10 @@
-import 'package:reacthome/core/daemon/daemon_api.dart';
-import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DiscoveryTimeoutService extends GenericEventListener<DaemonEvent> {
-  final DaemonApi actor;
+class DiscoveryTimeoutService extends GenericEventListener<HomeEvent> {
+  final HomeApi actor;
   final Duration timeout;
 
   DiscoveryTimeoutService({
@@ -16,23 +16,23 @@ class DiscoveryTimeoutService extends GenericEventListener<DaemonEvent> {
   final timeouts = Timeout<String>();
 
   @override
-  void handle(DaemonEvent event) {
+  void handle(HomeEvent event) {
     switch (event) {
-      case DaemonAddedEvent e:
-        _setTimeout(e.daemon);
-      case DaemonConfirmedEvent e:
-        _setTimeout(e.daemon);
-      case DaemonRemovedEvent e:
-        _cancelTimeout(e.daemon);
+      case HomeAddedEvent e:
+        _setTimeout(e.home);
+      case HomeConfirmedEvent e:
+        _setTimeout(e.home);
+      case HomeRemovedEvent e:
+        _cancelTimeout(e.home);
       default:
     }
   }
 
-  _setTimeout(String daemon) => timeouts.set(
-        id: daemon,
+  _setTimeout(String home) => timeouts.set(
+        id: home,
         duration: timeout,
-        execute: () => actor.removeDaemon(id: daemon),
+        execute: () => actor.removeHome(id: home),
       );
 
-  _cancelTimeout(String daemon) => timeouts.cancel(id: daemon);
+  _cancelTimeout(String home) => timeouts.cancel(id: home);
 }

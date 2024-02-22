@@ -4,7 +4,7 @@ class NavigationRouteNames {
   static const splash = '/';
   static const welcome = 'welcome';
   static const discovery = 'discovery';
-  static const addDaemon = 'addHome';
+  static const addHome = 'addHome';
   static const homeList = 'homeList';
 }
 
@@ -29,7 +29,7 @@ class Navigation {
         NavigationRouteNames.splash: splash,
         NavigationRouteNames.welcome: welcome,
         NavigationRouteNames.discovery: discovery,
-        NavigationRouteNames.addDaemon: addHome,
+        NavigationRouteNames.addHome: addHome,
         NavigationRouteNames.homeList: homeList,
       });
 }

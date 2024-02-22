@@ -2,28 +2,28 @@ import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/core/daemon/daemon_api.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
+import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/util/event_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
     with ChangeNotifier {
-  final DaemonConnectionApi daemonConnection;
+  final HomeConnectionApi homeConnection;
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
-  final DaemonApi daemon;
+  final HomeApi home;
 
   ConnectionViewModel({
     required super.eventSource,
-    required this.daemonConnection,
+    required this.homeConnection,
     required this.local,
     required this.cloud,
-    required this.daemon,
+    required this.home,
   });
 
   bool isConnected(String id) =>
-      daemonConnection.getConnectionById(id).connection?.state ==
+      homeConnection.getConnectionById(id).connection?.state ==
       ConnectionState.connected;
 
   bool isLocalConnected(String id) =>
@@ -33,29 +33,29 @@ class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
       cloud.getConnectionById(id).state == ConnectionState.connected;
 
   void Function(bool) toggleConnection(String id) =>
-      (bool value) => daemon.getDaemonById(id)?.let((it) {
+      (bool value) => home.getHomeById(id)?.let((it) {
             if (value) {
-              daemonConnection.connect(it);
+              homeConnection.connect(it);
             } else {
-              daemonConnection.disconnect(id);
+              homeConnection.disconnect(id);
             }
           });
 
   void Function(bool) toggleLocalConnection(String id) =>
-      (bool value) => daemon.getDaemonById(id)?.let((it) {
+      (bool value) => home.getHomeById(id)?.let((it) {
             if (value) {
-              daemonConnection.connectLocal(it);
+              homeConnection.connectLocal(it);
             } else {
-              daemonConnection.disconnectLocal(id);
+              homeConnection.disconnectLocal(id);
             }
           });
 
   void Function(bool) toggleCloudConnection(String id) =>
-      (bool value) => daemon.getDaemonById(id)?.let((it) {
+      (bool value) => home.getHomeById(id)?.let((it) {
             if (value) {
-              daemonConnection.connectCloud(it);
+              homeConnection.connectCloud(it);
             } else {
-              daemonConnection.disconnectCloud(id);
+              homeConnection.disconnectCloud(id);
             }
           });
 

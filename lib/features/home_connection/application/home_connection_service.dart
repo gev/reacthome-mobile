@@ -1,20 +1,20 @@
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/core/daemon/daemon.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
-import 'package:reacthome/features/daemon_connection/domain/daemon_connection_entity.dart';
+import 'package:reacthome/core/home/home.dart';
+import 'package:reacthome/core/home_connection/home_connection.dart';
+import 'package:reacthome/core/home_connection/home_connection_api.dart';
+import 'package:reacthome/features/home_connection/domain/home_connection_entity.dart';
 import 'package:reacthome/util/event_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
-class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
-    implements DaemonConnectionApi {
+class HomeConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
+    implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
-  final Repository<String, DaemonConnectionEntity> repository;
+  final Repository<String, HomeConnectionEntity> repository;
 
-  DaemonConnectionService({
+  HomeConnectionService({
     required super.eventSink,
     required this.local,
     required this.cloud,
@@ -25,28 +25,28 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
   Iterable<String> getAllConnections() => repository.getAll();
 
   @override
-  DaemonConnection getConnectionById(String id) => _getConnectionById(id);
+  HomeConnection getConnectionById(String id) => _getConnectionById(id);
 
   @override
-  void connectAll(Iterable<Daemon> daemons) => daemons.forEach(connect);
+  void connectAll(Iterable<Home> homes) => homes.forEach(connect);
 
   @override
-  void connect(Daemon daemon) {
-    connectLocal(daemon);
-    connectCloud(daemon);
+  void connect(Home home) {
+    connectLocal(home);
+    connectCloud(home);
   }
 
   @override
-  void connectLocal(Daemon daemon) {
-    final address = daemon.address;
+  void connectLocal(Home home) {
+    final address = home.address;
     if (address != null) {
-      local.connect(daemon.id, address);
+      local.connect(home.id, address);
     }
   }
 
   @override
-  void connectCloud(Daemon daemon) {
-    cloud.connect(daemon.id);
+  void connectCloud(Home home) {
+    cloud.connect(home.id);
   }
 
   @override
@@ -76,10 +76,10 @@ class DaemonConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
       )
       ?.let(emit);
 
-  DaemonConnectionEntity _getConnectionById(String id) {
+  HomeConnectionEntity _getConnectionById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
-      connection = DaemonConnectionEntity(id);
+      connection = HomeConnectionEntity(id);
       repository.add(connection);
     }
     return connection;

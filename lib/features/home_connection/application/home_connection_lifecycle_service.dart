@@ -1,16 +1,16 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
-import 'package:reacthome/core/daemon/daemon_api.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
+import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-class DaemonConnectionLifecycleService
+class HomeConnectionLifecycleService
     extends GenericEventListener<AppLifecycleEvent> {
-  final DaemonApi daemon;
-  final DaemonConnectionApi connection;
+  final HomeApi home;
+  final HomeConnectionApi connection;
 
-  DaemonConnectionLifecycleService({
+  HomeConnectionLifecycleService({
     required super.eventSource,
-    required this.daemon,
+    required this.home,
     required this.connection,
   });
 
@@ -18,8 +18,8 @@ class DaemonConnectionLifecycleService
   void handle(AppLifecycleEvent event) {
     switch (event) {
       case AppLifecycleEvent.active:
-        connection.connectAll(
-            daemon.getAllDaemons().map((id) => daemon.getDaemonById(id)!));
+        connection
+            .connectAll(home.getAllHomes().map((id) => home.getHomeById(id)!));
       case AppLifecycleEvent.inactive:
         connection.disconnectAll();
     }

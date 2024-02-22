@@ -1,0 +1,50 @@
+import 'dart:io';
+
+import 'package:reacthome/core/home/home.dart';
+import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home/home_event.dart';
+import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/features/home/domain/home_entity.dart';
+import 'package:reacthome/util/event_emitter.dart';
+import 'package:reacthome/util/repository.dart';
+
+class HomeService extends GenericEventEmitter<HomeEvent> implements HomeApi {
+  final Repository<String, HomeEntity> repository;
+
+  HomeService({
+    required super.eventSink,
+    required this.repository,
+  });
+
+  @override
+  Iterable<String> getAllHomes() => repository.getAll();
+
+  @override
+  Home? getHomeById(String id) => repository.get(id);
+
+  @override
+  void addHome({
+    required String id,
+    required Meta meta,
+    InternetAddress? address,
+    String? project,
+  }) {
+    final home = repository.get(id);
+    if (home == null) {
+      final home = HomeEntity(id, meta, address, project);
+      repository.add(home);
+      emit(HomeAddedEvent(id));
+    } else {
+      home.update(meta, address, project).forEach(emit);
+      emit(HomeConfirmedEvent(id));
+    }
+  }
+
+  @override
+  void removeHome({required String id}) {
+    if (repository.has(id)) {
+      repository.remove(id);
+      emit(HomeRemovedEvent(id));
+    }
+  }
+}

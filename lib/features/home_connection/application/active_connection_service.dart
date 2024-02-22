@@ -1,10 +1,10 @@
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_type.dart';
-import 'package:reacthome/core/daemon_connection/daemon_connection_api.dart';
+import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/util/event_listener.dart';
 
 class ActiveConnectionService extends GenericEventListener<ConnectionEvent> {
-  final DaemonConnectionApi connection;
+  final HomeConnectionApi connection;
 
   ActiveConnectionService({
     required super.eventSource,

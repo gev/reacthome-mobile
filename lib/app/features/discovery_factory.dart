@@ -1,15 +1,15 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
-import 'package:reacthome/core/daemon/daemon_event.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/features/daemon/application/daemon_service.dart';
-import 'package:reacthome/features/daemon/domain/daemon_entity.dart';
+import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_multicast_service.dart';
 import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_service.dart';
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
+import 'package:reacthome/features/home/application/home_service.dart';
+import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/event_bus.dart';
@@ -20,16 +20,16 @@ class DiscoveryFactory {
 
   DiscoveryFactory._();
 
-  final _repository = ImmutableMapRepository<String, DaemonEntity>();
+  final _repository = ImmutableMapRepository<String, HomeEntity>();
 
   final _process = DiscoveryEntity<MulticastSource>();
 
-  final daemonEventBus = GenericEventBus<DaemonEvent>();
+  final homeEventBus = GenericEventBus<HomeEvent>();
 
   final discoveryEventBus = GenericEventBus<DiscoveryEvent>();
 
-  DaemonService makeDaemonService() => DaemonService(
-        eventSink: daemonEventBus,
+  HomeService makeHomeService() => HomeService(
+        eventSink: homeEventBus,
         repository: _repository,
       );
 
@@ -45,15 +45,15 @@ class DiscoveryFactory {
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
           controller: DiscoveryController(
-            actor: makeDaemonService(),
+            actor: makeHomeService(),
           ),
         ),
       );
 
   DiscoveryTimeoutService makeDiscoveryTimeoutService() =>
       DiscoveryTimeoutService(
-        eventSource: daemonEventBus,
-        actor: makeDaemonService(),
+        eventSource: homeEventBus,
+        actor: makeHomeService(),
         timeout: Config.discovery.timeout,
       );
 

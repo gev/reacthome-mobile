@@ -4,8 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
 import 'package:reacthome/app/features/connection_factory.dart';
-import 'package:reacthome/app/features/daemon_connection_factory.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
+import 'package:reacthome/app/features/home_connection_factory.dart';
 import 'package:reacthome/app/screens/add_home_list_factory.dart';
 import 'package:reacthome/app/screens/add_home_screen_factory.dart';
 import 'package:reacthome/app/screens/discovery_screen_factory.dart';
@@ -22,9 +22,9 @@ Widget make() {
   ConnectionFactory.instance.makeLocalWebsocketService();
   ConnectionFactory.instance.makeCloudWebsocketService();
 
-  DaemonConnectionFactory.instance.makeActiveConnectionService();
-  DaemonConnectionFactory.instance.makeDaemonConnectionAutoService();
-  DaemonConnectionFactory.instance.makeDaemonConnectionLifecycleService();
+  HomeConnectionFactory.instance.makeActiveConnectionService();
+  HomeConnectionFactory.instance.makeHomeConnectionAutoService();
+  HomeConnectionFactory.instance.makeHomeConnectionLifecycleService();
 
   return App(
       theme: Config.theme,

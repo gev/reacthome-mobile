@@ -1,17 +1,17 @@
 import 'dart:io';
 
-import 'package:reacthome/core/daemon/daemon.dart';
-import 'package:reacthome/core/daemon/daemon_event.dart';
+import 'package:reacthome/core/home/home.dart';
+import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class DaemonEntity implements Daemon {
+class HomeEntity implements Home {
   final String _id;
   Meta _meta;
   InternetAddress? _address;
   String? _project;
 
-  DaemonEntity(
+  HomeEntity(
     this._id,
     this._meta,
     this._address,
@@ -23,37 +23,37 @@ class DaemonEntity implements Daemon {
 
   @override
   Meta get meta => _meta;
-  DaemonEvent? updateMeta(Meta meta) {
+  HomeEvent? updateMeta(Meta meta) {
     if (_meta != meta) {
       _meta = meta;
-      return DaemonMetaChangedEvent(id);
+      return HomeMetaChangedEvent(id);
     }
     return null;
   }
 
   @override
   InternetAddress? get address => _address;
-  DaemonEvent? updateAddress(InternetAddress? address) {
+  HomeEvent? updateAddress(InternetAddress? address) {
     if (_address != address) {
       _address = address;
-      return DaemonAddressChangedEvent(id);
+      return HomeAddressChangedEvent(id);
     }
     return null;
   }
 
   @override
   String? get project => _project;
-  DaemonEvent? updateProject(String? project) {
+  HomeEvent? updateProject(String? project) {
     if (_project != project) {
       _project = project;
-      return DaemonProjectChangedEvent(id);
+      return HomeProjectChangedEvent(id);
     }
     return null;
   }
 
-  Iterable<DaemonEvent> update(
+  Iterable<HomeEvent> update(
       Meta meta, InternetAddress? address, String? project) {
-    final events = <DaemonEvent>[];
+    final events = <HomeEvent>[];
     updateMeta(meta)?.let(events.add);
     updateAddress(address)?.let(events.add);
     updateProject(project)?.let(events.add);

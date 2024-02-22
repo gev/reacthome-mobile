@@ -5,7 +5,7 @@ abstract interface class Repository<K, V extends Entity<K>> {
   Iterable<K> getAll();
   bool has(K id);
   V? get(K id);
-  void add(V daemon);
+  void add(V home);
   void remove(K id);
   void clear();
 }

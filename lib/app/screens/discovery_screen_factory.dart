@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/app/features/daemon_factory.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_list_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_daemon_view_model.dart';
+import 'package:reacthome/app/features/home_factory.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
 
@@ -21,17 +21,17 @@ class DiscoveryScreenFactory {
             ),
           ),
           ChangeNotifierProvider(
-            create: (context) => DiscoveryDaemonViewModel(
+            create: (context) => DiscoveryHomeViewModel(
               context,
-              eventSource: DiscoveryFactory.instance.daemonEventBus,
-              discoveredDaemon: DiscoveryFactory.instance.makeDaemonService(),
-              knownDaemon: DaemonFactory.instance.makeDaemonService(),
+              eventSource: DiscoveryFactory.instance.homeEventBus,
+              discoveredHome: DiscoveryFactory.instance.makeHomeService(),
+              knownHome: HomeFactory.instance.makeHomeService(),
             ),
           ),
           ChangeNotifierProvider(
-            create: (_) => DiscoveryDaemonListViewModel(
-              eventSource: DiscoveryFactory.instance.daemonEventBus,
-              daemon: DiscoveryFactory.instance.makeDaemonService(),
+            create: (_) => DiscoveryHomeListViewModel(
+              eventSource: DiscoveryFactory.instance.homeEventBus,
+              home: DiscoveryFactory.instance.makeHomeService(),
             ),
           ),
         ],
