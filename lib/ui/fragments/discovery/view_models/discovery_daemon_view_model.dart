@@ -37,9 +37,10 @@ class DiscoveryDaemonViewModel extends GenericEventListener<DaemonEvent>
 
   void onDaemonTileTap(
       String id, Widget confirmDialog, Widget alertDialog) async {
+    final navigator = Navigator.of(context);
     final confirmed = await _confirm(confirmDialog);
     if (confirmed == true) {
-      final daemon = knownDaemon.getDaemonById(id);
+      final daemon = discoveredDaemon.getDaemonById(id);
       if (daemon != null) {
         knownDaemon.addDaemon(
           id: id,
@@ -47,6 +48,7 @@ class DiscoveryDaemonViewModel extends GenericEventListener<DaemonEvent>
           address: daemon.address,
           project: daemon.project,
         );
+        navigator.pushNamed(NavigationRouteNames.homeList);
       } else {
         _alert(alertDialog);
       }

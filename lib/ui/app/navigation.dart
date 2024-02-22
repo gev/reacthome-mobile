@@ -5,6 +5,7 @@ class NavigationRouteNames {
   static const welcome = 'welcome';
   static const discovery = 'discovery';
   static const addDaemon = 'addHome';
+  static const homeList = 'homeList';
 }
 
 class Navigation {
@@ -12,12 +13,14 @@ class Navigation {
   final WidgetBuilder welcome;
   final WidgetBuilder discovery;
   final WidgetBuilder addHome;
+  final WidgetBuilder homeList;
 
   const Navigation({
     required this.splash,
     required this.welcome,
     required this.discovery,
     required this.addHome,
+    required this.homeList,
   });
 
   String get initialRoute => NavigationRouteNames.splash;
@@ -27,5 +30,6 @@ class Navigation {
         NavigationRouteNames.welcome: welcome,
         NavigationRouteNames.discovery: discovery,
         NavigationRouteNames.addDaemon: addHome,
+        NavigationRouteNames.homeList: homeList,
       });
 }
