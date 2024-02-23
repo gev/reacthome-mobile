@@ -17,8 +17,14 @@ typedef ListSectionFactory = Widget Function(
   bool hasLeading,
 });
 
-typedef ListContainer = ({
-  ListSectionFactory section,
-  ListTileFactory tile,
-  ListChevronFactory chevron,
-});
+class ListContainer {
+  final ListSectionFactory section;
+  final ListTileFactory tile;
+  final ListChevronFactory chevron;
+
+  const ListContainer({
+    required this.section,
+    required this.tile,
+    required this.chevron,
+  });
+}

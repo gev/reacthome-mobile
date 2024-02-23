@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppBarMaterial {
+class AppBarFixedMaterial {
   static PreferredSizeWidget make({
     required String title,
     Widget? trailing,

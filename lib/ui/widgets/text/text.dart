@@ -6,6 +6,8 @@ typedef TextFieldFactory = Widget Function({
   bool autofocus,
 });
 
-typedef TextContainer = ({
-  TextFieldFactory field,
-});
+class TextContainer {
+  final TextFieldFactory field;
+
+  const TextContainer({required this.field});
+}

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class AppBarCupertino {
+class AppBarFixedCupertino {
   static PreferredSizeWidget make({
     required String title,
     Widget? trailing,

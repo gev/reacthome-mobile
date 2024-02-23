@@ -11,11 +11,16 @@ typedef ButtonIconFactory = Widget Function({
   Function()? onPressed,
 });
 
-typedef ButtonIconContainer = ({
+typedef ButtonIconKind = ({
   ButtonIconFactory filled,
 });
 
-typedef ButtonContainer = ({
-  ButtonFactory filled,
-  ButtonIconContainer icon,
-});
+class ButtonContainer {
+  final ButtonFactory filled;
+  final ButtonIconKind icon;
+
+  const ButtonContainer({
+    required this.filled,
+    required this.icon,
+  });
+}

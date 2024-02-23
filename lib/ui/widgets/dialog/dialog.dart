@@ -18,8 +18,14 @@ typedef ShowDialog = Future<T?> Function<T>(
   required WidgetBuilder builder,
 });
 
-typedef DialogContainer = ({
-  ShowDialog show,
-  DialogAlertFactory alert,
-  DialogActionFactory action,
-});
+class DialogContainer {
+  final ShowDialog show;
+  final DialogAlertFactory alert;
+  final DialogActionFactory action;
+
+  const DialogContainer({
+    required this.show,
+    required this.alert,
+    required this.action,
+  });
+}

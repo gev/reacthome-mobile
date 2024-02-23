@@ -9,15 +9,28 @@ import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher.dart';
 import 'package:reacthome/ui/widgets/text/text.dart';
 
-typedef WidgetContainer = ({
-  AppContainer app,
-  ButtonContainer button,
-  DialogContainer dialog,
-  DividerFactory divider,
-  IconContainer icon,
-  IndicatorContainer indicator,
-  ListContainer list,
-  ScaffoldFactory scaffold,
-  SwitcherFactory switcher,
-  TextContainer text,
-});
+class WidgetContainer {
+  final AppContainer app;
+  final ButtonContainer button;
+  final DialogContainer dialog;
+  final DividerFactory divider;
+  final IconContainer icon;
+  final IndicatorContainer indicator;
+  final ListContainer list;
+  final ScaffoldFactory scaffold;
+  final SwitcherFactory switcher;
+  final TextContainer text;
+
+  const WidgetContainer({
+    required this.app,
+    required this.button,
+    required this.dialog,
+    required this.divider,
+    required this.icon,
+    required this.indicator,
+    required this.list,
+    required this.scaffold,
+    required this.switcher,
+    required this.text,
+  });
+}
