@@ -3,11 +3,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/fragments/add_home/widgets/add_home_id.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class AddHomeScreen extends StatelessWidget {
-  const AddHomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+class AddHomeScreen {
+  static Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return scaffold(
       body: CustomScrollView(

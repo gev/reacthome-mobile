@@ -1,12 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/ui/fragments/home_list/widgets/home_add.dart';
+import 'package:reacthome/ui/fragments/home_list/widgets/home_list.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class HomeListScreen extends StatelessWidget {
-  const HomeListScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
+class HomeListScreen {
+  static Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return scaffold(
       body: CustomScrollView(
@@ -18,7 +17,10 @@ class HomeListScreen extends StatelessWidget {
             fillOverscroll: true,
             child: Column(
               children: [
-                Expanded(child: Placeholder()),
+                HomeList(
+                  ifEmpty: Text('There are no homes'),
+                ),
+                Expanded(child: HomeAdd()),
               ],
             ),
           ),
