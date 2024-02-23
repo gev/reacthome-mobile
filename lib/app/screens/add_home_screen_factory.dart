@@ -6,5 +6,5 @@ class AddHomeScreenFactory {
 
   AddHomeScreenFactory._();
 
-  Widget make(BuildContext context) => const AddHomeScreen();
+  Widget make(BuildContext context) => AddHomeScreen.build(context);
 }
