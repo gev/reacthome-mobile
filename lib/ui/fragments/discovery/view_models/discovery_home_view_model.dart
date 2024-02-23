@@ -47,7 +47,10 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
           address: home.address,
           project: home.project,
         );
-        navigator.pushReplacementNamed(NavigationRouteNames.homeList);
+        navigator.pushReplacementNamed(
+          NavigationRouteNames.home,
+          arguments: (home: id),
+        );
       } else {
         _alert(alertDialog);
       }

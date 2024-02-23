@@ -13,41 +13,30 @@ class HomeViewModel extends GenericEventListener<HomeEvent>
     with ChangeNotifier {
   final BuildContext context;
   final EventBus<HomeEvent> eventSource;
-  final HomeApi knownHome;
+  final HomeApi home;
 
   HomeViewModel(
     this.context, {
     required this.eventSource,
-    required this.knownHome,
+    required this.home,
   }) : super(eventSource: eventSource);
 
-  Meta? getHomeMeta(String id) => knownHome.getHomeById(id)?.meta;
+  Meta? getHomeMeta(String id) => home.getHomeById(id)?.meta;
 
   String getHomeTitle(String id) =>
       getHomeMeta(id)?.name ?? AppLocalizations.of(context)!.untitled;
 
-  bool hasProject(String id) => knownHome.getHomeById(id)?.project != null;
+  bool hasProject(String id) => home.getHomeById(id)?.project != null;
 
   void addHomeButtonPressed() {
     Navigator.pushNamed(context, NavigationRouteNames.discovery);
   }
 
-  void onHomeTileTap(String id, Widget confirmDialog) async {
-    // final navigator = Navigator.of(context);
-    final confirmed = await _confirm(confirmDialog);
-    if (confirmed == true) {
-      final home = knownHome.getHomeById(id);
-      if (home != null) {
-        knownHome.addHome(
-          id: id,
-          meta: home.meta,
-          address: home.address,
-          project: home.project,
-        );
-        // navigator.pushNamed(NavigationRouteNames.homeList);
-      }
-    }
-  }
+  void onHomeTileTap(String id, Widget confirmDialog) => Navigator.pushNamed(
+        context,
+        NavigationRouteNames.home,
+        arguments: (home: id),
+      );
 
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
@@ -55,7 +44,7 @@ class HomeViewModel extends GenericEventListener<HomeEvent>
           create: (context) => HomeViewModel(
             context,
             eventSource: eventSource,
-            knownHome: knownHome,
+            home: home,
           ),
           child: confirmDialog,
         ),

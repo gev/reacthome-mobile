@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/home_list/view_models/home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/home_list/widgets/home_tile.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/home/widgets/home_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeList extends StatelessWidget {

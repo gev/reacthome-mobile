@@ -12,7 +12,7 @@ class DiscoveryScreenFactory {
 
   DiscoveryScreenFactory._();
 
-  Widget make(BuildContext context) => MultiProvider(
+  Widget make(_) => MultiProvider(
         providers: [
           ChangeNotifierProvider(
             create: (_) => DiscoveryStatusViewModel(
@@ -35,6 +35,6 @@ class DiscoveryScreenFactory {
             ),
           ),
         ],
-        child: DiscoveryScreen.build(context),
+        child: const DiscoveryScreen(),
       );
 }

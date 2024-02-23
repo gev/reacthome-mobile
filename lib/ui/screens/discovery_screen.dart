@@ -5,8 +5,11 @@ import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_list.dar
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class DiscoveryScreen {
-  static Widget build(BuildContext context) {
+class DiscoveryScreen extends StatelessWidget {
+  const DiscoveryScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return scaffold(
       body: CustomScrollView(

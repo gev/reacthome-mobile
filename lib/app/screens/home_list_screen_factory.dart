@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/app/features/home_factory.dart';
-import 'package:reacthome/ui/fragments/home_list/view_models/home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/home_list/view_models/home_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/home_list_screen.dart';
 
 class AddHomeListFactory {
@@ -10,13 +10,13 @@ class AddHomeListFactory {
 
   AddHomeListFactory._();
 
-  Widget make(BuildContext context) => MultiProvider(
+  Widget make(_) => MultiProvider(
         providers: [
           ChangeNotifierProvider(
             create: (context) => HomeViewModel(
               context,
               eventSource: HomeFactory.instance.homeEventBus,
-              knownHome: HomeFactory.instance.makeHomeService(),
+              home: HomeFactory.instance.makeHomeService(),
             ),
           ),
           ChangeNotifierProvider(
@@ -26,6 +26,6 @@ class AddHomeListFactory {
             ),
           ),
         ],
-        child: HomeListScreen.build(context),
+        child: const HomeListScreen(),
       );
 }

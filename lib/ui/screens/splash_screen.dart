@@ -5,8 +5,11 @@ import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/widgets/logo.dart';
 
-class SplashScreen {
-  static Widget build(BuildContext context) {
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     Timer(const Duration(seconds: 1), () {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });

@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 class NavigationRouteNames {
-  static const splash = '/';
+  static const home = '/';
+  static const splash = 'splash';
   static const welcome = 'welcome';
   static const discovery = 'discovery';
   static const addHome = 'addHome';
@@ -9,6 +10,7 @@ class NavigationRouteNames {
 }
 
 class Navigation {
+  final WidgetBuilder home;
   final WidgetBuilder splash;
   final WidgetBuilder welcome;
   final WidgetBuilder discovery;
@@ -16,6 +18,7 @@ class Navigation {
   final WidgetBuilder homeList;
 
   const Navigation({
+    required this.home,
     required this.splash,
     required this.welcome,
     required this.discovery,
@@ -26,6 +29,7 @@ class Navigation {
   String get initialRoute => NavigationRouteNames.splash;
 
   Map<String, WidgetBuilder> get routes => ({
+        NavigationRouteNames.home: home,
         NavigationRouteNames.splash: splash,
         NavigationRouteNames.welcome: welcome,
         NavigationRouteNames.discovery: discovery,

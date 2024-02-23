@@ -4,8 +4,11 @@ import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/widgets/logo.dart';
 
-class WelcomeScreen {
-  static Widget build(BuildContext context) {
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return scaffold(
       body: Center(

@@ -6,5 +6,5 @@ class WelcomeScreenFactory {
 
   WelcomeScreenFactory._();
 
-  Widget make(BuildContext context) => WelcomeScreen.build(context);
+  Widget make(_) => const WelcomeScreen();
 }

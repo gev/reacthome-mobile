@@ -8,7 +8,8 @@ import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/features/home_connection_factory.dart';
 import 'package:reacthome/app/screens/add_home_screen_factory.dart';
 import 'package:reacthome/app/screens/discovery_screen_factory.dart';
-import 'package:reacthome/app/screens/home_list_factory.dart';
+import 'package:reacthome/app/screens/home_list_screen_factory.dart';
+import 'package:reacthome/app/screens/home_screen_factory.dart';
 import 'package:reacthome/app/screens/splash_screen_factory.dart';
 import 'package:reacthome/app/screens/welcome_screen_factory.dart';
 import 'package:reacthome/ui/app/app.dart';
@@ -39,6 +40,7 @@ Widget make() {
       ],
       appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
       navigation: Navigation(
+        home: HomeScreenFactory.instance.make,
         splash: SplashScreenFactory.instance.make,
         welcome: WelcomeScreenFactory.instance.make,
         discovery: DiscoveryScreenFactory.instance.make,
