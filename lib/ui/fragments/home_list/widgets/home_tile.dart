@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
+import 'package:reacthome/ui/fragments/home_list/view_models/home_view_model.dart';
+import 'package:reacthome/ui/fragments/home_list/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeTile extends StatelessWidget {
@@ -11,11 +11,11 @@ class HomeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<DiscoveryHomeViewModel>();
-    String title = context.select<DiscoveryHomeViewModel, String>(
+    final model = context.read<HomeViewModel>();
+    String title = context.select<HomeViewModel, String>(
       (model) => model.getHomeTitle(id),
     );
-    bool hasProject = context.select<DiscoveryHomeViewModel, bool>(
+    bool hasProject = context.select<HomeViewModel, bool>(
       (model) => model.hasProject(id),
     );
     return list.tile(
@@ -26,11 +26,7 @@ class HomeTile extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
       ),
       leading: Icon(hasProject ? icon.home.filled : icon.home.outlined),
-      onTap: () => model.onHomeTileTap(
-        id,
-        DiscoveryHomeAddConfirm(id),
-        const DiscoveryHomeAddAlert(),
-      ),
+      onTap: () => model.onHomeTileTap(id, HomeAddConfirm(id)),
     );
   }
 }

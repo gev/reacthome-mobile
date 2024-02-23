@@ -15,7 +15,7 @@ class HomeAdd extends StatelessWidget {
       context,
       children: [
         list.tile(
-          title: Text(locale.addTheHomeID),
+          title: Text(locale.addAHome),
           leading: Icon(icon.add),
           trailing: list.chevron(),
           onTap: model.addHomeButtonPressed,

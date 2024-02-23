@@ -29,12 +29,11 @@ class HomeViewModel extends GenericEventListener<HomeEvent>
   bool hasProject(String id) => knownHome.getHomeById(id)?.project != null;
 
   void addHomeButtonPressed() {
-    Navigator.pushNamed(context, NavigationRouteNames.addHome);
+    Navigator.pushNamed(context, NavigationRouteNames.discovery);
   }
 
-  void onHomeTileTap(
-      String id, Widget confirmDialog, Widget alertDialog) async {
-    final navigator = Navigator.of(context);
+  void onHomeTileTap(String id, Widget confirmDialog) async {
+    // final navigator = Navigator.of(context);
     final confirmed = await _confirm(confirmDialog);
     if (confirmed == true) {
       final home = knownHome.getHomeById(id);
@@ -45,7 +44,7 @@ class HomeViewModel extends GenericEventListener<HomeEvent>
           address: home.address,
           project: home.project,
         );
-        navigator.pushNamed(NavigationRouteNames.homeList);
+        // navigator.pushNamed(NavigationRouteNames.homeList);
       }
     }
   }
