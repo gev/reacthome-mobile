@@ -18,8 +18,8 @@ class WelcomeScreen {
             const SizedBox(height: 24),
             button.filled(
               label: locale.addAHome,
-              onPressed: () =>
-                  Navigator.pushNamed(context, NavigationRouteNames.discovery),
+              onPressed: () => Navigator.pushReplacementNamed(
+                  context, NavigationRouteNames.discovery),
             ),
           ],
         ),
