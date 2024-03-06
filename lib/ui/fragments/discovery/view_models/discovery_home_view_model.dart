@@ -27,8 +27,6 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
         home: discoveredHome.getHomeById(id),
       );
 
-  bool hasProject(String id) => discoveredHome.getHomeById(id)?.project != null;
-
   void addHomeButtonPressed() {
     Navigator.pushNamed(context, NavigationRouteNames.addHome);
   }

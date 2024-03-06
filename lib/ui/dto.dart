@@ -40,13 +40,17 @@ class MetaUI {
 }
 
 class HomeUI {
+  final Home? home;
   final MetaUI meta;
+
   HomeUI(
     BuildContext context, {
-    required Home? home,
+    required this.home,
   }) : meta = MetaUI(
           context,
           home?.meta ?? Meta(),
           defaultName: (context) => AppLocalizations.of(context)!.unknownHome,
         );
+
+  bool get hasProject => home?.project != null;
 }

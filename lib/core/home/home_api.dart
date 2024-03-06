@@ -12,6 +12,12 @@ abstract interface class HomeApi {
     InternetAddress? address,
     String? project,
   });
+  void updateHome({
+    required String id,
+    required Meta meta,
+    InternetAddress? address,
+    String? project,
+  });
   void removeHome({
     required String id,
   });
