@@ -1,5 +1,6 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
+import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
@@ -45,7 +46,8 @@ class DiscoveryFactory {
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
           controller: DiscoveryController(
-            actor: makeHomeService(),
+            discovered: makeHomeService(),
+            known: HomeFactory.instance.makeHomeService(),
           ),
         ),
       );
