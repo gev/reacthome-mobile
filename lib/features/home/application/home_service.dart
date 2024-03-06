@@ -36,7 +36,19 @@ class HomeService extends GenericEventEmitter<HomeEvent> implements HomeApi {
       emit(HomeAddedEvent(id));
     } else {
       home.update(meta, address, project).forEach(emit);
-      emit(HomeConfirmedEvent(id));
+    }
+  }
+
+  @override
+  void updateHome({
+    required String id,
+    required Meta meta,
+    InternetAddress? address,
+    String? project,
+  }) {
+    final home = repository.get(id);
+    if (home != null) {
+      home.update(meta, address, project).forEach(emit);
     }
   }
 

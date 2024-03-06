@@ -45,6 +45,7 @@ class DiscoveryFactory {
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
           controller: DiscoveryController(
+            eventSink: homeEventBus,
             actor: makeHomeService(),
           ),
         ),
