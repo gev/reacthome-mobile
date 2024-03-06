@@ -18,8 +18,6 @@ class DiscoveryTimeoutService extends GenericEventListener<HomeEvent> {
   @override
   void handle(HomeEvent event) {
     switch (event) {
-      case HomeAddedEvent e:
-        _setTimeout(e.home);
       case HomeConfirmedEvent e:
         _setTimeout(e.home);
       case HomeRemovedEvent e:

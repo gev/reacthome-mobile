@@ -75,8 +75,8 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
   @override
   void handle(HomeEvent event) {
     switch (event) {
-      case HomeAddedEvent _:
       case HomeMetaChangedEvent _:
+      case HomeProjectChangedEvent _:
         notifyListeners();
       default:
     }

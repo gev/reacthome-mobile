@@ -23,8 +23,5 @@ abstract interface class HomeApi {
   });
   void confirmHome({
     required String id,
-    required Meta meta,
-    InternetAddress? address,
-    String? project,
   });
 }
