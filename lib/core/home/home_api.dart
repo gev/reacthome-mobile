@@ -21,4 +21,10 @@ abstract interface class HomeApi {
   void removeHome({
     required String id,
   });
+  void confirmHome({
+    required String id,
+    required Meta meta,
+    InternetAddress? address,
+    String? project,
+  });
 }

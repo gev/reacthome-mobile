@@ -34,8 +34,6 @@ class HomeService extends GenericEventEmitter<HomeEvent> implements HomeApi {
       final home = HomeEntity(id, meta, address, project);
       repository.add(home);
       emit(HomeAddedEvent(id));
-    } else {
-      home.update(meta, address, project).forEach(emit);
     }
   }
 
@@ -57,6 +55,24 @@ class HomeService extends GenericEventEmitter<HomeEvent> implements HomeApi {
     if (repository.has(id)) {
       repository.remove(id);
       emit(HomeRemovedEvent(id));
+    }
+  }
+
+  @override
+  void confirmHome({
+    required String id,
+    required Meta meta,
+    InternetAddress? address,
+    String? project,
+  }) {
+    final home = repository.get(id);
+    if (home == null) {
+      final home = HomeEntity(id, meta, address, project);
+      repository.add(home);
+      emit(HomeAddedEvent(id));
+    } else {
+      home.update(meta, address, project).forEach(emit);
+      emit(HomeConfirmedEvent(id));
     }
   }
 }
