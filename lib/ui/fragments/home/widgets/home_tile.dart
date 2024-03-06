@@ -15,9 +15,6 @@ class HomeTile extends StatelessWidget {
     final home = context.select<HomeViewModel, HomeUI>(
       (model) => model.getHome(id),
     );
-    bool hasProject = context.select<HomeViewModel, bool>(
-      (model) => model.hasProject(id),
-    );
     return list.tile(
       title: Text(home.meta.name),
       subtitle: Text(
@@ -25,7 +22,7 @@ class HomeTile extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      leading: Icon(hasProject ? icon.home.filled : icon.home.outlined),
+      leading: Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
       onTap: () => model.onHomeTileTap(id, HomeAddConfirm(id)),
     );
   }

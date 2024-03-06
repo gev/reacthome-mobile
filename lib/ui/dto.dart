@@ -4,53 +4,74 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/meta.dart';
 
 class MetaUI {
-  final Meta _meta;
-  final BuildContext context;
+  final String? _code;
+  final String? _title;
+  final BuildContext _context;
+
   final String Function(BuildContext) defaultName;
 
-  const MetaUI(
-    this.context,
-    this._meta, {
+  MetaUI(
+    this._context,
+    Meta meta, {
     required this.defaultName,
-  });
+  })  : _code = meta.code,
+        _title = meta.title;
 
-  String get code => _meta.code ?? AppLocalizations.of(context)!.code;
+  String get code => _code ?? AppLocalizations.of(_context)!.code;
 
-  String get title => _meta.title ?? AppLocalizations.of(context)!.title;
+  String get title => _title ?? AppLocalizations.of(_context)!.title;
 
   String get name {
-    final title = _meta.title;
-    if (title != null) {
-      return title;
+    if (_title != null) {
+      return _title!;
     }
-    final code = _meta.code;
-    if (code != null) {
-      return code;
+    if (_code != null) {
+      return _code!;
     }
-    return defaultName(context);
+    return defaultName(_context);
   }
 
   String get fullName {
-    final Meta(:title, :code) = _meta;
-    if (title != null && code != null) {
-      return '$title / $code';
+    if (_title != null && _code != null) {
+      return '$_title / $_code';
     }
     return name;
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is MetaUI) {
+      return _code == other._code && _title == other._title;
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode => _code.hashCode ^ _title.hashCode;
 }
 
 class HomeUI {
-  final Home? home;
   final MetaUI meta;
+  final bool hasProject;
 
   HomeUI(
     BuildContext context, {
-    required this.home,
-  }) : meta = MetaUI(
+    Home? home,
+  })  : meta = MetaUI(
           context,
           home?.meta ?? Meta(),
           defaultName: (context) => AppLocalizations.of(context)!.unknownHome,
-        );
+        ),
+        hasProject = home?.project != null;
 
-  bool get hasProject => home?.project != null;
+  @override
+  bool operator ==(Object other) {
+    if (other is HomeUI) {
+      return meta == other.meta && hasProject == other.hasProject;
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode => meta.hashCode ^ hasProject.hashCode;
 }
