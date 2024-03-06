@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/dto.dart';
+import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
@@ -19,7 +19,7 @@ class HomeTile extends StatelessWidget {
       (model) => model.hasProject(id),
     );
     return list.tile(
-      title: Text(home.meta.title),
+      title: Text(home.meta.name),
       subtitle: Text(
         id,
         maxLines: 1,

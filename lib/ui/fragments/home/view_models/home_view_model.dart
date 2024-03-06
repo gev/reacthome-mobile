@@ -7,7 +7,7 @@ import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
-import '../../dto.dart';
+import '../../../dto.dart';
 
 class HomeViewModel extends GenericEventListener<HomeEvent>
     with ChangeNotifier {

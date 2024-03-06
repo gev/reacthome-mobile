@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
-import 'package:reacthome/ui/fragments/dto.dart';
 import 'package:reacthome/ui/widgets/confirm.dart';
 
 class DiscoveryHomeAddConfirm extends StatelessWidget {

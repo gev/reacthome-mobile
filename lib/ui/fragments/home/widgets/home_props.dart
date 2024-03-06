@@ -1,9 +1,10 @@
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/ui/dto.dart';
 
 class HomeProps extends StatelessWidget {
-  final String id;
+  final HomeUI home;
 
-  const HomeProps(this.id, {super.key});
+  const HomeProps(this.home, {super.key});
 
   @override
   Widget build(BuildContext context) {

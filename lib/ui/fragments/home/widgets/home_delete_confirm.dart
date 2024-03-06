@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/dto.dart';
+import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/widgets/confirm.dart';
 
@@ -18,7 +18,7 @@ class HomeAddConfirm extends StatelessWidget {
     return confirm(
       context,
       title: Text(locale.doYouWantToAddThisHome),
-      content: Text(home.meta.title),
+      content: Text(home.meta.name),
       cancelLabel: locale.cancel,
       confirmLabel: locale.add,
     );

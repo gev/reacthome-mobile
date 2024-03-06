@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/fragments/dto.dart';
+import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
