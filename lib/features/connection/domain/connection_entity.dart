@@ -5,7 +5,7 @@ import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/connection/connection_type.dart';
 
-abstract class ConnectionEntity<S> implements Connection {
+abstract class ConnectionEntity<S> implements Connection<S> {
   final String _id;
   ConnectionState _state = ConnectionState.disconnected;
   late S _socket;
@@ -18,6 +18,7 @@ abstract class ConnectionEntity<S> implements Connection {
   @override
   ConnectionState get state => _state;
 
+  @override
   S get socket => _socket;
 
   ConnectionEvent? _connect(ConnectionEvent Function() createEvent) {
