@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
+import 'package:reacthome/ui/fragments/dto.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
@@ -11,14 +12,14 @@ class HomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<HomeViewModel>();
-    String title = context.select<HomeViewModel, String>(
-      (model) => model.getHomeTitle(id),
+    final home = context.select<HomeViewModel, HomeUI>(
+      (model) => model.getHome(id),
     );
     bool hasProject = context.select<HomeViewModel, bool>(
       (model) => model.hasProject(id),
     );
     return list.tile(
-      title: Text(title),
+      title: Text(home.meta.title),
       subtitle: Text(
         id,
         maxLines: 1,

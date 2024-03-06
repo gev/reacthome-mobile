@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/core/meta.dart';
 import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/fragments/dto.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
@@ -23,10 +22,10 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
     required this.knownHome,
   }) : super(eventSource: eventSource);
 
-  Meta? getHomeMeta(String id) => discoveredHome.getHomeById(id)?.meta;
-
-  String getHomeTitle(String id) =>
-      getHomeMeta(id)?.name ?? AppLocalizations.of(context)!.untitled;
+  HomeUI getHome(String id) => HomeUI(
+        context,
+        home: discoveredHome.getHomeById(id),
+      );
 
   bool hasProject(String id) => discoveredHome.getHomeById(id)?.project != null;
 

@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
+import 'package:reacthome/ui/fragments/dto.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
@@ -12,14 +13,14 @@ class DiscoveryHomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final model = context.read<DiscoveryHomeViewModel>();
-    String title = context.select<DiscoveryHomeViewModel, String>(
-      (model) => model.getHomeTitle(id),
+    final home = context.select<DiscoveryHomeViewModel, HomeUI>(
+      (model) => model.getHome(id),
     );
     bool hasProject = context.select<DiscoveryHomeViewModel, bool>(
       (model) => model.hasProject(id),
     );
     return list.tile(
-      title: Text(title),
+      title: Text(home.meta.title),
       subtitle: Text(
         id,
         maxLines: 1,
