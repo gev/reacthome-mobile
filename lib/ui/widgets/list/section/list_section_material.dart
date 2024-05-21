@@ -39,7 +39,7 @@ class ListSectionCardMaterial extends StatelessWidget {
       child: Card(
         margin: EdgeInsets.zero,
         elevation: 0,
-        color: Theme.of(context).colorScheme.surfaceVariant,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: Column(
           children: ListTile.divideTiles(
             context: context,
