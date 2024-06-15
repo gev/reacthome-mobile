@@ -21,14 +21,14 @@ typedef AppBarSliverFactory = Widget Function(
   Widget? trailing,
 });
 
-typedef AppBarKnd = ({
+typedef AppBarKind = ({
   AppBarFactory fixed,
   AppBarSliverFactory sliver,
 });
 
 class AppContainer {
   final AppRootFactory root;
-  final AppBarKnd bar;
+  final AppBarKind bar;
 
   const AppContainer({
     required this.root,
