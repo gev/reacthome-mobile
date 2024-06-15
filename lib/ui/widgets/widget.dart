@@ -8,6 +8,7 @@ import 'package:reacthome/ui/widgets/list/list.dart';
 import 'package:reacthome/ui/widgets/scaffold/scaffold.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher.dart';
 import 'package:reacthome/ui/widgets/text/text.dart';
+import 'package:reacthome/ui/widgets/theme/theme.dart';
 
 class WidgetContainer {
   final AppContainer app;
@@ -20,6 +21,7 @@ class WidgetContainer {
   final ScaffoldFactory scaffold;
   final SwitcherFactory switcher;
   final TextContainer text;
+  final ThemeContainer theme;
 
   const WidgetContainer({
     required this.app,
@@ -32,5 +34,6 @@ class WidgetContainer {
     required this.scaffold,
     required this.switcher,
     required this.text,
+    required this.theme,
   });
 }
