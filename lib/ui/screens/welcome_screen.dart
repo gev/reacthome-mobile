@@ -11,9 +11,21 @@ class WelcomeScreen extends StatelessWidget {
     final media = MediaQuery.of(context);
     final aspectRatio = media.size.width / media.size.height;
     return scaffold(
-      body: aspectRatio > 1
-          ? const WelcomeLandscape()
-          : const WelcomeScreenPortrait(),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color.fromARGB(137, 54, 218, 247),
+              Color.fromARGB(139, 14, 26, 114),
+            ],
+          ),
+        ),
+        child: aspectRatio > 1
+            ? const WelcomeLandscape()
+            : const WelcomeScreenPortrait(),
+      ),
     );
   }
 }
