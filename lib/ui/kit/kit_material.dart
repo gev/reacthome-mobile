@@ -23,6 +23,8 @@ import 'package:reacthome/ui/widgets/scaffold/scaffold_material.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher_material.dart';
 import 'package:reacthome/ui/widgets/text/field/text_field_material.dart';
 import 'package:reacthome/ui/widgets/text/text.dart';
+import 'package:reacthome/ui/widgets/theme/theme.dart';
+import 'package:reacthome/ui/widgets/theme/theme_material.dart';
 import 'package:reacthome/ui/widgets/widget.dart';
 
 const material = WidgetContainer(
@@ -65,5 +67,8 @@ const material = WidgetContainer(
   switcher: SwitcherMaterial.make,
   text: TextContainer(
     field: TextFieldMaterial.make,
+  ),
+  theme: ThemeContainer(
+    largeTitle: largeTitleMaterial,
   ),
 );

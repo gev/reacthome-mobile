@@ -23,6 +23,8 @@ import 'package:reacthome/ui/widgets/scaffold/scaffold_cupertino.dart';
 import 'package:reacthome/ui/widgets/switcher/switcher_cupertino.dart';
 import 'package:reacthome/ui/widgets/text/field/text_field_cupertino.dart';
 import 'package:reacthome/ui/widgets/text/text.dart';
+import 'package:reacthome/ui/widgets/theme/theme.dart';
+import 'package:reacthome/ui/widgets/theme/theme_cupertino.dart';
 import 'package:reacthome/ui/widgets/widget.dart';
 
 const cupertino = WidgetContainer(
@@ -65,5 +67,8 @@ const cupertino = WidgetContainer(
   switcher: SwitcherCupertino.make,
   text: TextContainer(
     field: TextFieldCupertino.make,
+  ),
+  theme: ThemeContainer(
+    largeTitle: largeTitleCupertino,
   ),
 );
