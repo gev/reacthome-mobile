@@ -26,6 +26,7 @@ class AppRootMaterial {
         colorScheme: ColorScheme.fromSeed(
           brightness: brightness,
           seedColor: seedColor,
+          primary: seedColor,
         ),
       );
 }
