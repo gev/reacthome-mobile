@@ -1,5 +1,8 @@
 // lib/ui/kit/kit_material.dart
 import 'package:flutter/material.dart';
+import 'package:reacthome/ui/kit/kit_container.dart';
+import 'package:reacthome/ui/kit/theme/theme.dart';
+import 'package:reacthome/ui/kit/theme/theme_material.dart';
 import 'package:reacthome/ui/kit/widgets/app/app.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart';
@@ -23,9 +26,6 @@ import 'package:reacthome/ui/kit/widgets/scaffold/scaffold_material.dart';
 import 'package:reacthome/ui/kit/widgets/switcher/switcher_material.dart';
 import 'package:reacthome/ui/kit/widgets/text/field/text_field_material.dart';
 import 'package:reacthome/ui/kit/widgets/text/text.dart';
-import 'package:reacthome/ui/kit/theme/theme.dart';
-import 'package:reacthome/ui/kit/theme/theme_material.dart';
-import 'package:reacthome/ui/kit/kit_container.dart';
 
 const material = KitContainer(
   app: AppContainer(

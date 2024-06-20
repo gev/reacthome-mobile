@@ -1,9 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/event_bus.dart';
 import 'package:reacthome/util/event_listener.dart';
 
@@ -34,18 +32,6 @@ class HomeViewModel extends GenericEventListener<HomeEvent>
         context,
         NavigationRouteNames.home,
         arguments: (home: id),
-      );
-
-  Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
-        context,
-        builder: (_) => ChangeNotifierProvider(
-          create: (context) => HomeViewModel(
-            context,
-            eventSource: eventSource,
-            home: home,
-          ),
-          child: confirmDialog,
-        ),
       );
 
   @override
