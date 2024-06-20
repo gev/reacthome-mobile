@@ -4,6 +4,7 @@ import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_props.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/ui/widgets/screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     final home = context.select<HomeViewModel, HomeUI>(
       (model) => model.getHome(arguments.home),
     );
-    return scaffold(
+    return Screen(
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [

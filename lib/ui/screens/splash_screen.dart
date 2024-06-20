@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/widgets/logo.dart';
+import 'package:reacthome/ui/widgets/screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -13,7 +13,7 @@ class SplashScreen extends StatelessWidget {
     Timer(const Duration(seconds: 1), () {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });
-    return scaffold(
+    return Screen(
       body: Center(child: logo(width: 100)),
     );
   }
