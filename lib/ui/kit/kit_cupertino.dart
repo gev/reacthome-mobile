@@ -1,8 +1,6 @@
 // lib/ui/kit/kit_cupertino.dart
 import 'package:flutter/cupertino.dart';
 import 'package:reacthome/ui/kit/kit_container.dart';
-import 'package:reacthome/ui/kit/theme/theme.dart';
-import 'package:reacthome/ui/kit/theme/theme_cupertino.dart';
 import 'package:reacthome/ui/kit/widgets/app/app.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart';
@@ -67,8 +65,5 @@ const cupertino = KitContainer(
   switcher: SwitcherCupertino.make,
   text: TextContainer(
     field: TextFieldCupertino.make,
-  ),
-  theme: ThemeContainer(
-    largeTitle: largeTitleCupertino,
   ),
 );

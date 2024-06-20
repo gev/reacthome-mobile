@@ -1,8 +1,6 @@
 // lib/ui/kit/kit_material.dart
 import 'package:flutter/material.dart';
 import 'package:reacthome/ui/kit/kit_container.dart';
-import 'package:reacthome/ui/kit/theme/theme.dart';
-import 'package:reacthome/ui/kit/theme/theme_material.dart';
 import 'package:reacthome/ui/kit/widgets/app/app.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart';
 import 'package:reacthome/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart';
@@ -67,8 +65,5 @@ const material = KitContainer(
   switcher: SwitcherMaterial.make,
   text: TextContainer(
     field: TextFieldMaterial.make,
-  ),
-  theme: ThemeContainer(
-    largeTitle: largeTitleMaterial,
   ),
 );

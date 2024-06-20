@@ -1,4 +1,3 @@
-import 'package:reacthome/ui/kit/theme/theme.dart';
 import 'package:reacthome/ui/kit/widgets/app/app.dart';
 import 'package:reacthome/ui/kit/widgets/button/button.dart';
 import 'package:reacthome/ui/kit/widgets/dialog/dialog.dart';
@@ -21,7 +20,6 @@ class KitContainer {
   final ScaffoldFactory scaffold;
   final SwitcherFactory switcher;
   final TextContainer text;
-  final ThemeContainer theme;
 
   const KitContainer({
     required this.app,
@@ -34,6 +32,5 @@ class KitContainer {
     required this.scaffold,
     required this.switcher,
     required this.text,
-    required this.theme,
   });
 }

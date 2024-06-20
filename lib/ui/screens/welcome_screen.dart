@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/ui/kit/theme.dart';
 import 'package:reacthome/ui/widgets/screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -10,6 +11,7 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
     return Screen(
       body: Center(
         child: Column(
@@ -20,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
               child: Text(
                 locale.welcome,
                 textAlign: TextAlign.center,
-                style: theme.largeTitle(context),
+                style: theme.largeTitle,
               ),
             ),
             const SizedBox(height: 18),
