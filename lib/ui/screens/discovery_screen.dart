@@ -4,7 +4,7 @@ import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add.dart
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/defaut_layout.dart';
+import 'package:reacthome/ui/layouts/default_layout.dart';
 
 class DiscoveryScreen extends StatelessWidget {
   const DiscoveryScreen({super.key});

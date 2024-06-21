@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/fragments/add_home/widgets/add_home_id.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/defaut_layout.dart';
+import 'package:reacthome/ui/layouts/default_layout.dart';
 
 class AddHomeScreen extends StatelessWidget {
   const AddHomeScreen({super.key});
