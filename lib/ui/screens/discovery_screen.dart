@@ -4,7 +4,7 @@ import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add.dart
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/widgets/screen.dart';
+import 'package:reacthome/ui/layouts/defaut_layout.dart';
 
 class DiscoveryScreen extends StatelessWidget {
   const DiscoveryScreen({super.key});
@@ -12,7 +12,7 @@ class DiscoveryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return Screen(
+    return DefaultLayout(
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
