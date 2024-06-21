@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_props.dart';
-import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/defaut_layout.dart';
+import 'package:reacthome/ui/layouts/sliver_layout.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,18 +15,9 @@ class HomeScreen extends StatelessWidget {
     final home = context.select<HomeViewModel, HomeUI>(
       (model) => model.getHome(arguments.home),
     );
-    return DefaultLayout(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          app.bar.sliver(context, title: home.meta.name),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            fillOverscroll: true,
-            child: HomeProps(home),
-          ),
-        ],
-      ),
+    return SliverLayout(
+      title: home.meta.name,
+      body: HomeProps(home),
     );
   }
 }

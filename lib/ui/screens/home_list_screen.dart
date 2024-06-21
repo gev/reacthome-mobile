@@ -2,8 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_add.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_list.dart';
-import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/defaut_layout.dart';
+import 'package:reacthome/ui/layouts/sliver_layout.dart';
 
 class HomeListScreen extends StatelessWidget {
   const HomeListScreen({super.key});
@@ -11,23 +10,14 @@ class HomeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return DefaultLayout(
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          app.bar.sliver(context, title: locale.myHomes),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            fillOverscroll: true,
-            child: Column(
-              children: [
-                HomeList(
-                  ifEmpty: Text('There are no homes'),
-                ),
-                Expanded(child: HomeAdd()),
-              ],
-            ),
+    return SliverLayout(
+      title: locale.myHomes,
+      body: const Column(
+        children: [
+          HomeList(
+            ifEmpty: Text('There are no homes'),
           ),
+          Expanded(child: HomeAdd()),
         ],
       ),
     );
