@@ -16,12 +16,16 @@ class DiscoveryScreen extends StatelessWidget {
       title: locale.addAHome,
       body: Column(
         children: [
-          const DiscoveryStatus(),
+          list.section(
+            context,
+            children: [
+              const DiscoveryHomeAdd(),
+              const DiscoveryStatus(),
+            ],
+          ),
           DiscoveryHomeList(
             title: locale.discovered,
-            ifEmpty: divider(),
           ),
-          const Expanded(child: DiscoveryHomeAdd()),
         ],
       ),
     );
