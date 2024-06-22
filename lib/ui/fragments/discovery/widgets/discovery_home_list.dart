@@ -6,9 +6,7 @@ import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeList extends StatelessWidget {
   final String title;
-  final Widget ifEmpty;
-  const DiscoveryHomeList(
-      {required this.title, required this.ifEmpty, super.key});
+  const DiscoveryHomeList({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class DiscoveryHomeList extends StatelessWidget {
         context.select<DiscoveryHomeListViewModel, Iterable<String>>(
             (model) => model.homes);
     return homes.isEmpty
-        ? ifEmpty
+        ? const SizedBox()
         : list.section(
             context,
             title: title,

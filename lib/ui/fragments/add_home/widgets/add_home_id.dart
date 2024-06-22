@@ -9,13 +9,13 @@ class AddHomeID extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        text.field(
-          placeholder: 'XXXX-XXXX-XXXX-XXXX-XXXX',
+        layout.padding.all(
+          child: text.field(
+            placeholder: 'XXXX-XXXX-XXXX-XXXX-XXXX',
+          ),
         ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0, 32, 32, 0),
+        layout.padding.all(
           child: button.filled(
             label: locale.add,
             onPressed: () => Navigator.of(context).pop(),

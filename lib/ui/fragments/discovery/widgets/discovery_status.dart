@@ -14,15 +14,13 @@ class DiscoveryStatus extends StatelessWidget {
     final isDiscovering = context.select<DiscoveryStatusViewModel, bool>(
       (model) => model.isDiscovering,
     );
-    return list.section(context, children: [
-      list.tile(
-        title: Text(locale.discovery),
-        leading: Icon(icon.search),
-        trailing: switcher(
-          value: isDiscovering,
-          onChanged: model.toggleDiscovery,
-        ),
+    return list.tile(
+      title: Text(locale.discovery),
+      leading: Icon(icon.search),
+      trailing: switcher(
+        value: isDiscovering,
+        onChanged: model.toggleDiscovery,
       ),
-    ]);
+    );
   }
 }

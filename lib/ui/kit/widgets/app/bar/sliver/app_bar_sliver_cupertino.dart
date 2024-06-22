@@ -7,7 +7,6 @@ class AppBarSliverCupertino {
     Widget? trailing,
   }) =>
       CupertinoSliverNavigationBar(
-        backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
         stretch: true,
         largeTitle: Text(title),
         trailing: trailing,
