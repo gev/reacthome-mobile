@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });
     return CenterLayout(
-      body: logo(width: 100),
+      body: logo(width: 150),
     );
   }
 }
