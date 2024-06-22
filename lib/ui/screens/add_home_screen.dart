@@ -11,10 +11,7 @@ class AddHomeScreen extends StatelessWidget {
     final locale = AppLocalizations.of(context)!;
     return SliverLayout(
       title: locale.addTheHomeID,
-      body: const Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16, 32, 16, 0),
-        child: AddHomeID(),
-      ),
+      body: const AddHomeID(),
     );
   }
 }

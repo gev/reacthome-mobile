@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reacthome/ui/kit/layout/layout_material.dart';
 
 class AppBarSliverMaterial {
   static Widget make(
@@ -14,7 +15,7 @@ class AppBarSliverMaterial {
           collapseMode: CollapseMode.pin,
           background: Container(
             alignment: AlignmentDirectional.bottomStart,
-            padding: const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+            padding: layout.padding.edgeInsets,
             child: Text(
               title,
               style: Theme.of(context).textTheme.headlineLarge,

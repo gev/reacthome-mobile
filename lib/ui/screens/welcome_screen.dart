@@ -24,7 +24,7 @@ class WelcomeScreen extends StatelessWidget {
               style: theme.largeTitle,
             ),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: layout.padding.vertical),
           button.filled(
             label: locale.addAHome,
             onPressed: () => Navigator.pushReplacementNamed(

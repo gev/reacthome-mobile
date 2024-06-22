@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reacthome/ui/kit/layout/layout_material.dart';
 
 class ListSectionMaterial {
   static Widget make(
@@ -15,11 +16,17 @@ class ListSectionMaterial {
                 ListSectionCardMaterial.withTitle(children),
               ],
             )
-          : Column(
-              children: ListTile.divideTiles(
-                context: context,
-                tiles: children,
-              ).toList(),
+          : layout.padding.fullWidth(
+              child: Card(
+                shape: const ContinuousRectangleBorder(),
+                margin: EdgeInsets.zero,
+                child: Column(
+                  children: ListTile.divideTiles(
+                    context: context,
+                    tiles: children,
+                  ).toList(),
+                ),
+              ),
             );
 }
 
@@ -27,19 +34,22 @@ class ListSectionCardMaterial extends StatelessWidget {
   final List<Widget> children;
   final EdgeInsetsGeometry padding;
 
-  const ListSectionCardMaterial(this.children, {super.key})
-      : padding = const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 12);
+  ListSectionCardMaterial(this.children, {super.key})
+      : padding = layout.padding.edgeInsets;
 
-  const ListSectionCardMaterial.withTitle(this.children, {super.key})
-      : padding = const EdgeInsetsDirectional.fromSTEB(16, 4, 16, 16);
+  ListSectionCardMaterial.withTitle(this.children, {super.key})
+      : padding = EdgeInsetsDirectional.fromSTEB(
+          layout.padding.start,
+          4,
+          layout.padding.end,
+          layout.padding.bottom,
+        );
 
   @override
   Widget build(BuildContext context) => Padding(
       padding: padding,
       child: Card(
         margin: EdgeInsets.zero,
-        elevation: 0,
-        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         child: Column(
           children: ListTile.divideTiles(
             context: context,
@@ -56,7 +66,12 @@ class ListSectionTitleMaterial extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16, 12, 16, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(
+          layout.padding.start,
+          layout.padding.top,
+          layout.padding.end,
+          0,
+        ),
         child: Text(
           title,
           style: Theme.of(context).textTheme.titleMedium,
