@@ -14,6 +14,6 @@ class ListTileMaterial {
         leading: leading,
         trailing: trailing,
         onTap: onTap,
-        visualDensity: VisualDensity.compact,
+        visualDensity: VisualDensity.comfortable,
       );
 }
