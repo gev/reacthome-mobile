@@ -10,6 +10,8 @@ class TextFieldMaterial {
         controller: controller,
         autofocus: autofocus,
         decoration: InputDecoration(
+          border: const OutlineInputBorder(),
+          isDense: true,
           hintText: placeholder,
         ),
       );
