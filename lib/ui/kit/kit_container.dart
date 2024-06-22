@@ -1,3 +1,4 @@
+import 'package:reacthome/ui/kit/layout/layout.dart';
 import 'package:reacthome/ui/kit/widgets/app/app.dart';
 import 'package:reacthome/ui/kit/widgets/button/button.dart';
 import 'package:reacthome/ui/kit/widgets/dialog/dialog.dart';
@@ -20,6 +21,7 @@ class KitContainer {
   final ScaffoldFactory scaffold;
   final SwitcherFactory switcher;
   final TextContainer text;
+  final LayoutContainer layout;
 
   const KitContainer({
     required this.app,
@@ -32,5 +34,6 @@ class KitContainer {
     required this.scaffold,
     required this.switcher,
     required this.text,
+    required this.layout,
   });
 }
