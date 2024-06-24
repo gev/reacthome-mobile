@@ -1,5 +1,4 @@
-import 'dart:ui';
-
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/features/discovery/discovery_config.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_config.dart';
@@ -23,6 +22,14 @@ class Config {
   );
 
   static const theme = ThemeConfig(
-    primaryColor: Color.fromARGB(0xff, 0x00, 0x59, 0xff),
+    seedColor: Color.fromARGB(0xff, 0x00, 0x59, 0xff),
+    iconGradient: LinearGradient(
+      begin: Alignment.topLeft,
+      end: Alignment.bottomRight,
+      colors: [
+        Color.fromARGB(0xff, 0x00, 0x59, 0xff),
+        Color.fromARGB(0xff, 0x00, 0xff, 0xb1),
+      ],
+    ),
   );
 }

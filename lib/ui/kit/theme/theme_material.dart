@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reacthome/ui/kit/theme/theme.dart';
 
@@ -13,3 +14,14 @@ class ThemeMaterial implements ThemeContainer {
   @override
   TextStyle? get largeTitle => _themeData.textTheme.headlineLarge;
 }
+
+ThemeData makeMaterialTheme(Color seedColor, Brightness brightness,
+        [NoDefaultCupertinoThemeData? cupertinoOverrideTheme]) =>
+    ThemeData(
+      colorScheme: ColorScheme.fromSeed(
+        brightness: brightness,
+        seedColor: seedColor,
+        dynamicSchemeVariant: DynamicSchemeVariant.vibrant,
+      ),
+      cupertinoOverrideTheme: cupertinoOverrideTheme,
+    );

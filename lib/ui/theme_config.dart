@@ -1,6 +1,10 @@
 import 'package:flutter/widgets.dart';
 
 class ThemeConfig {
-  final Color primaryColor;
-  const ThemeConfig({required this.primaryColor});
+  final Color seedColor;
+  final Gradient iconGradient;
+  const ThemeConfig({
+    required this.seedColor,
+    required this.iconGradient,
+  });
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/kit/theme/theme_cupertino.dart';
 import 'package:reacthome/ui/theme_config.dart';
 
 class AppRootCupertino {
-  static Widget make({
+  static Widget make(
+    BuildContext context, {
     required String title,
     required Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
     required Iterable<Locale> supportedLocales,
@@ -14,7 +17,12 @@ class AppRootCupertino {
         title: title,
         localizationsDelegates: localizationsDelegates,
         supportedLocales: supportedLocales,
-        theme: CupertinoThemeData(primaryColor: theme.primaryColor),
+        theme: MaterialBasedCupertinoThemeData(
+          materialTheme: makeCupertinoTheme(
+            theme.seedColor,
+            MediaQuery.of(context).platformBrightness,
+          ),
+        ),
         initialRoute: navigation.initialRoute,
         routes: navigation.routes,
       );

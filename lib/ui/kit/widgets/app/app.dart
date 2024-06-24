@@ -2,7 +2,8 @@ import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/theme_config.dart';
 
-typedef AppRootFactory = Widget Function({
+typedef AppRootFactory = Widget Function(
+  BuildContext context, {
   required String title,
   required Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
   required Iterable<Locale> supportedLocales,

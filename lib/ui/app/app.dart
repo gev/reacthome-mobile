@@ -30,6 +30,7 @@ class App extends StatelessWidget with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     SystemChrome.restoreSystemUIOverlays();
     return app.root(
+      context,
       theme: theme,
       navigation: navigation,
       localizationsDelegates: localizationsDelegates,
