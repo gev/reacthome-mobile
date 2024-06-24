@@ -19,10 +19,11 @@ CupertinoThemeData makeCupertinoTheme(Color seedColor, Brightness brightness) =>
         seedColor,
         brightness,
         CupertinoThemeData(
-            brightness: brightness,
-            textTheme: const CupertinoTextThemeData(),
-            barBackgroundColor: CupertinoColors.systemBackground,
-            scaffoldBackgroundColor: CupertinoColors.systemBackground,
-            applyThemeToAll: true),
+          brightness: brightness,
+          textTheme: const CupertinoTextThemeData(),
+          barBackgroundColor: CupertinoColors.systemBackground,
+          scaffoldBackgroundColor: CupertinoColors.systemGroupedBackground,
+          applyThemeToAll: true,
+        ),
       ),
     );
