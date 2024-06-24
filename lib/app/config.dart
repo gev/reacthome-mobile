@@ -23,6 +23,6 @@ class Config {
   );
 
   static const theme = ThemeConfig(
-    primaryColor: Color.fromARGB(0xff, 0x4c, 0x7f, 0xe6),
+    primaryColor: Color.fromARGB(0xff, 0x00, 0x59, 0xff),
   );
 }

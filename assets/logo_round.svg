@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="logo_round.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.69043651"
+     inkscape:cx="396.85039"
+     inkscape:cy="561.23915"
+     inkscape:window-width="2048"
+     inkscape:window-height="1124"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient35"
+       id="linearGradient8"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.26458333,0,0,0.26458333,3e-5,0.52917367)"
+       x1="0"
+       y1="510"
+       x2="512"
+       y2="24.509771" />
+    <linearGradient
+       id="linearGradient35"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#005dff;stop-opacity:1;"
+         offset="0"
+         id="stop35" />
+      <stop
+         style="stop-color:#00ffb1;stop-opacity:1;"
+         offset="1"
+         id="stop36" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path8"
+       style="vector-effect:non-scaling-stroke;fill:url(#linearGradient8);fill-opacity:1;stroke-width:0.326948;-inkscape-stroke:hairline"
+       d="M 67.73336,7.0140497 A 16.933333,16.933333 0 0 0 55.73564,12.058186 l -0.0305,-0.02997 -50.74576,50.745747 0.0305,0.03048 A 16.933333,16.933333 0 0 0 0,74.747391 v 43.785949 a 16.933333,16.933333 0 0 0 16.93333,16.93333 h 101.6 a 16.933333,16.933333 0 0 0 16.93336,-16.93333 V 74.747389 a 16.933333,16.933333 0 0 0 -4.9599,-11.973428 v 0 l -50.8,-50.800005 A 16.933333,16.933333 0 0 0 67.73336,7.0140497 Z" />
+  </g>
+</svg>

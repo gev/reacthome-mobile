@@ -23,8 +23,10 @@ class DiscoveryScreen extends StatelessWidget {
               const DiscoveryStatus(),
             ],
           ),
-          DiscoveryHomeList(
-            title: locale.discovered,
+          Expanded(
+            child: DiscoveryHomeList(
+              title: locale.discovered,
+            ),
           ),
         ],
       ),

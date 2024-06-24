@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:reacthome/ui/assets.dart';
 
 Widget logo({double? width, double? height}) => SvgPicture.asset(
-      Assets.logo,
+      Assets.logoRound,
       width: width,
       height: height,
     );

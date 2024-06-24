@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 135.46666 135.46667"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3 (0e150ed, 2023-07-21)"
+   sodipodi:docname="logo_sharp_dark.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.69043651"
+     inkscape:cx="396.85039"
+     inkscape:cy="561.23915"
+     inkscape:window-width="2048"
+     inkscape:window-height="1124"
+     inkscape:window-x="0"
+     inkscape:window-y="28"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path10"
+       style="vector-effect:non-scaling-stroke;fill:#000000;fill-opacity:1;stroke-width:0.326948;-inkscape-stroke:hairline"
+       d="M 67.733336,7.0140227 A 16.933333,16.933333 0 0 0 55.73562,12.058161 l -0.03051,-0.02997 -50.745733,50.745728 0.03048,0.03051 A 16.933333,16.933333 0 0 0 0,74.747351 v 21.892736 21.893243 16.93334 H 16.933337 118.53334 135.46666 V 118.53332 96.640077 74.747345 a 16.933333,16.933333 0 0 0 -4.9599,-11.973428 L 79.706765,11.973928 A 16.933333,16.933333 0 0 0 67.733336,7.0145407 Z" />
+  </g>
+</svg>

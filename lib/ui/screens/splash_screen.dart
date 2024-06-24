@@ -10,11 +10,11 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacementNamed(NavigationRouteNames.welcome);
     });
     return CenterLayout(
-      body: logo(width: 150),
+      body: logo(width: 120),
     );
   }
 }

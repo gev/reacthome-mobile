@@ -7,9 +7,9 @@ class CenterLayout extends StatelessWidget {
   const CenterLayout({required this.body, super.key});
 
   @override
-  Widget build(BuildContext context) => scaffold(
-        body: Center(
-          child: body,
-        ),
-      );
+  Widget build(BuildContext context) {
+    return scaffold(
+      body: Center(child: body),
+    );
+  }
 }
