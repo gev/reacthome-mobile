@@ -13,14 +13,16 @@ class ThemeCupertino implements ThemeContainer {
   TextStyle? get largeTitle => _themeData.textTheme.navLargeTitleTextStyle;
 }
 
-ThemeData makeCupertinoTheme(Color seedColor, Brightness brightness) =>
-    makeMaterialTheme(
-      seedColor,
-      brightness,
-      CupertinoThemeData(
-          brightness: brightness,
-          textTheme: const CupertinoTextThemeData(),
-          barBackgroundColor: CupertinoColors.systemBackground,
-          scaffoldBackgroundColor: CupertinoColors.systemBackground,
-          applyThemeToAll: true),
+CupertinoThemeData makeCupertinoTheme(Color seedColor, Brightness brightness) =>
+    MaterialBasedCupertinoThemeData(
+      materialTheme: makeMaterialTheme(
+        seedColor,
+        brightness,
+        CupertinoThemeData(
+            brightness: brightness,
+            textTheme: const CupertinoTextThemeData(),
+            barBackgroundColor: CupertinoColors.systemBackground,
+            scaffoldBackgroundColor: CupertinoColors.systemBackground,
+            applyThemeToAll: true),
+      ),
     );

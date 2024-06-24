@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/theme/theme_cupertino.dart';
 import 'package:reacthome/ui/theme_config.dart';
@@ -17,11 +16,9 @@ class AppRootCupertino {
         title: title,
         localizationsDelegates: localizationsDelegates,
         supportedLocales: supportedLocales,
-        theme: MaterialBasedCupertinoThemeData(
-          materialTheme: makeCupertinoTheme(
-            theme.seedColor,
-            MediaQuery.of(context).platformBrightness,
-          ),
+        theme: makeCupertinoTheme(
+          theme.seedColor,
+          MediaQuery.of(context).platformBrightness,
         ),
         initialRoute: navigation.initialRoute,
         routes: navigation.routes,
