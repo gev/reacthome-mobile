@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
-class SliverLayout extends StatelessWidget {
+class FullWidthLayout extends StatelessWidget {
   final String title;
   final Widget body;
 
-  const SliverLayout({
+  const FullWidthLayout({
     required this.title,
     required this.body,
     super.key,
