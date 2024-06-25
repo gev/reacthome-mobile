@@ -1,3 +1,3 @@
-# Reacthome mobile
+# Reacthome X
 
-A Reacthome mobile client.
+A Reacthome X client.
