@@ -19,10 +19,11 @@ class FixedWidthLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     final media = MediaQuery.of(context);
     return scaffold(
-      body: SizedBox(
-        width: max(width, media.size.width),
-        child: Center(
+      body: Center(
+        child: SizedBox(
+          width: min(width, media.size.width),
           child: CustomScrollView(
+            shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
             slivers: [
               app.bar.sliver(context, title: title),

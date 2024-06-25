@@ -4,7 +4,7 @@ import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add.dart
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/full_width_layout.dart';
+import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class DiscoveryScreen extends StatelessWidget {
   const DiscoveryScreen({super.key});
@@ -12,8 +12,9 @@ class DiscoveryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return FullWidthLayout(
+    return FixedWidthLayout(
       title: locale.addAHome,
+      width: 720,
       body: Column(
         children: [
           list.section(
