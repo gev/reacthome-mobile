@@ -10,7 +10,7 @@ class FixedWidthLayout extends StatelessWidget {
 
   const FixedWidthLayout({
     required this.title,
-    required this.width,
+    this.width = 720,
     required this.body,
     super.key,
   });

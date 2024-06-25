@@ -14,7 +14,6 @@ class DiscoveryScreen extends StatelessWidget {
     final locale = AppLocalizations.of(context)!;
     return FixedWidthLayout(
       title: locale.addAHome,
-      width: 720,
       body: Column(
         children: [
           list.section(
