@@ -92,10 +92,10 @@ BEGIN
             VALUE "CompanyName", "net.reacthome" "\0"
             VALUE "FileDescription", "reacthome" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "reacthome" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
+            VALUE "InternalName", "Reacthome X" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
             VALUE "OriginalFilename", "reacthome.exe" "\0"
-            VALUE "ProductName", "reacthome" "\0"
+            VALUE "ProductName", "Reacthome X" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
