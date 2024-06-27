@@ -56,7 +56,7 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
 
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
-        builder: (_) => ChangeNotifierProvider(
+        builder: (context) => ChangeNotifierProvider(
           create: (context) => DiscoveryHomeViewModel(
             context,
             eventSource: eventSource,
@@ -69,7 +69,7 @@ class DiscoveryHomeViewModel extends GenericEventListener<HomeEvent>
 
   void _alert(Widget alertDialog) => dialog.show(
         context,
-        builder: (_) => alertDialog,
+        builder: (context) => alertDialog,
       );
 
   @override
