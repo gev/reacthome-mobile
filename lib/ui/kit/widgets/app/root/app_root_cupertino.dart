@@ -18,7 +18,7 @@ class AppRootCupertino {
         supportedLocales: supportedLocales,
         theme: makeCupertinoTheme(
           theme.seedColor,
-          MediaQuery.of(context).platformBrightness,
+          MediaQuery.platformBrightnessOf(context),
         ),
         initialRoute: navigation.initialRoute,
         routes: navigation.routes,

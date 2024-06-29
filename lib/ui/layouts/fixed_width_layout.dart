@@ -17,11 +17,11 @@ class FixedWidthLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final media = MediaQuery.of(context);
+    final size = MediaQuery.sizeOf(context);
     return scaffold(
       body: Center(
         child: SizedBox(
-          width: min(width, media.size.width),
+          width: min(width, size.width),
           child: CustomScrollView(
             shrinkWrap: true,
             physics: const BouncingScrollPhysics(),
