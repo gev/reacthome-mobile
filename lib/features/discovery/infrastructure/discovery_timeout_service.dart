@@ -1,9 +1,9 @@
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryTimeoutService extends GenericEventListener<HomeEvent> {
+class DiscoveryTimeoutService extends GenericBusListener<HomeEvent> {
   final HomeApi actor;
   final Duration timeout;
 

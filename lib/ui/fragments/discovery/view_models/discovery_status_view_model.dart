@@ -2,9 +2,9 @@ import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryStatusViewModel extends GenericEventListener<DiscoveryEvent>
+class DiscoveryStatusViewModel extends GenericBusListener<DiscoveryEvent>
     with ChangeNotifier {
   final DiscoveryApi discovery;
   DiscoveryStatusViewModel({

@@ -1,9 +1,8 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryLifecycleService
-    extends GenericEventListener<AppLifecycleEvent> {
+class DiscoveryLifecycleService extends GenericBusListener<AppLifecycleEvent> {
   final DiscoveryApi actor;
 
   DiscoveryLifecycleService({

@@ -4,12 +4,12 @@ import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
-import 'package:reacthome/util/event_emitter.dart';
+import 'package:reacthome/util/bus_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
-    extends GenericEventEmitter<ConnectionEvent> implements ConnectionApi<S> {
+    extends GenericBusEmitter<ConnectionEvent> implements ConnectionApi<S> {
   final Repository<String, C> repository;
 
   ConnectionService({

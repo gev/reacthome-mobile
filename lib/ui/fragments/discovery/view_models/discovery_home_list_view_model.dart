@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryHomeListViewModel extends GenericEventListener<HomeEvent>
+class DiscoveryHomeListViewModel extends GenericBusListener<HomeEvent>
     with ChangeNotifier {
   final HomeApi home;
 

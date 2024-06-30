@@ -1,10 +1,10 @@
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class HomeConnectionAutoService extends GenericEventListener<HomeEvent> {
+class HomeConnectionAutoService extends GenericBusListener<HomeEvent> {
   final HomeApi home;
   final HomeConnectionApi connection;
 

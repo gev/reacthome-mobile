@@ -6,7 +6,7 @@ import 'package:reacthome/features/connection/infrastructure/websocket_service.d
 import 'package:reacthome/features/connection/interface/connection_controller.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
-import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/repository.dart';
 
 class ConnectionFactory {
@@ -20,7 +20,7 @@ class ConnectionFactory {
   final _cloudConnectionRepository =
       MapRepository<String, CloudConnectionEntity<WebSocket>>();
 
-  final connectionEventBus = GenericEventBus<ConnectionEvent>();
+  final connectionEventBus = EventBus<ConnectionEvent>();
 
   LocalConnectionService<WebSocket> makeLocalConnectionService() =>
       LocalConnectionService(

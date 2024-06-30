@@ -2,15 +2,14 @@ import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/util/event_bus.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
 import '../../../dto.dart';
 
-class HomeViewModel extends GenericEventListener<HomeEvent>
-    with ChangeNotifier {
+class HomeViewModel extends GenericBusListener<HomeEvent> with ChangeNotifier {
   final BuildContext context;
-  final EventBus<HomeEvent> eventSource;
+  final Bus<HomeEvent> eventSource;
   final HomeApi home;
 
   HomeViewModel(

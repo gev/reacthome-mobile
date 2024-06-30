@@ -13,7 +13,7 @@ import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/repository.dart';
 
 class DiscoveryFactory {
@@ -25,9 +25,9 @@ class DiscoveryFactory {
 
   final _process = DiscoveryEntity<MulticastSource>();
 
-  final homeEventBus = GenericEventBus<HomeEvent>();
+  final homeEventBus = EventBus<HomeEvent>();
 
-  final discoveryEventBus = GenericEventBus<DiscoveryEvent>();
+  final discoveryEventBus = EventBus<DiscoveryEvent>();
 
   HomeService makeHomeService() => HomeService(
         eventSink: homeEventBus,

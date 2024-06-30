@@ -4,10 +4,10 @@ import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
+class ConnectionViewModel<S> extends GenericBusListener<ConnectionEvent>
     with ChangeNotifier {
   final HomeConnectionApi homeConnection;
   final LocalConnectionApi<S> local;
