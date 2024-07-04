@@ -1,35 +1,25 @@
-import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_state.dart';
-import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryStatusViewModel extends GenericBusListener<DiscoveryEvent>
-    with ChangeNotifier {
+class DiscoveryStatusViewModel {
+  final Stream<DiscoveryEvent> eventSource;
   final DiscoveryApi discovery;
-  DiscoveryStatusViewModel({
-    required super.eventSource,
+
+  const DiscoveryStatusViewModel({
+    required this.eventSource,
     required this.discovery,
   });
 
-  bool get isDiscovering =>
-      discovery.getProcess().state == DiscoveryState.running;
+  bool get initialState => false;
 
-  void toggleDiscovery(bool value) {
+  Stream<bool> get stream =>
+      eventSource.map((event) => event is DiscoveryStartCompletedEvent);
+
+  void onSwitchTap(bool value) {
     if (value) {
       discovery.start();
     } else {
       discovery.stop();
-    }
-  }
-
-  @override
-  void handle(DiscoveryEvent event) {
-    switch (event) {
-      case DiscoveryStartCompletedEvent _:
-      case DiscoveryStopCompletedEvent _:
-        notifyListeners();
-      default:
     }
   }
 }

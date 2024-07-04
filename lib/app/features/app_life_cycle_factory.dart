@@ -7,9 +7,9 @@ class AppLifecycleFactory {
 
   AppLifecycleFactory._();
 
-  final appLifecycleEventBus = EventBus<AppLifecycleEvent>();
+  final appLifecycleEventBus = Bus<AppLifecycleEvent>();
 
   AppLifecycleService makeAppLifecycleService() => AppLifecycleService(
-        eventSink: appLifecycleEventBus,
+        eventSink: appLifecycleEventBus.sink,
       );
 }

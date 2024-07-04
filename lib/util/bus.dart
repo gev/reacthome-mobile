@@ -2,40 +2,22 @@ import 'dart:async';
 
 import 'package:reacthome/util/replay_latest_stream.dart';
 
-abstract interface class Bus<T> {
-  void emit(T value);
-  Stream<T> get stream;
-  StreamSubscription<T> listen(void Function(T) handle);
-}
+class Bus<T> {
+  late final Sink<T> sink;
+  late final Stream<T> stream;
+  final _controller = StreamController<T>.broadcast();
 
-class EventBus<E> implements Bus<E> {
-  final _controller = StreamController<E>.broadcast();
-
-  @override
-  Stream<E> get stream => _controller.stream;
-
-  @override
-  StreamSubscription<E> listen(void Function(E) handle) =>
-      _controller.stream.listen(handle);
-
-  @override
-  void emit(E event) {
-    _controller.add(event);
+  Bus({T? startWith}) {
+    sink = _controller.sink;
+    switch (startWith) {
+      case null:
+        stream = _controller.stream;
+      default:
+        stream = ReplayLatestStream(startWith, _controller.stream);
+    }
   }
 
   void close() {
     _controller.close();
   }
-}
-
-class StateBus<S> extends EventBus<S> {
-  late final Stream<S> stream;
-
-  StateBus(S startWith) {
-    stream = ReplayLatestStream(startWith, _controller.stream);
-  }
-
-  @override
-  StreamSubscription<S> listen(void Function(S) handle) =>
-      stream.listen(handle);
 }

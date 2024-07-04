@@ -11,10 +11,10 @@ class HomeFactory {
 
   final _repository = ImmutableMapRepository<String, HomeEntity>();
 
-  final homeEventBus = EventBus<HomeEvent>();
+  final homeEventBus = Bus<HomeEvent>();
 
   HomeService makeHomeService() => HomeService(
-        eventSink: homeEventBus,
+        eventSink: homeEventBus.sink,
         repository: _repository,
       );
 }

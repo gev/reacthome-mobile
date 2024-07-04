@@ -20,22 +20,22 @@ class ConnectionFactory {
   final _cloudConnectionRepository =
       MapRepository<String, CloudConnectionEntity<WebSocket>>();
 
-  final connectionEventBus = EventBus<ConnectionEvent>();
+  final connectionEventBus = Bus<ConnectionEvent>();
 
   LocalConnectionService<WebSocket> makeLocalConnectionService() =>
       LocalConnectionService(
-        eventSink: connectionEventBus,
+        eventSink: connectionEventBus.sink,
         repository: _localConnectionRepository,
       );
 
   CloudConnectionService<WebSocket> makeCloudConnectionService() =>
       CloudConnectionService(
-        eventSink: connectionEventBus,
+        eventSink: connectionEventBus.sink,
         repository: _cloudConnectionRepository,
       );
 
   LocalWebsocketService makeLocalWebsocketService() => LocalWebsocketService(
-        eventSource: connectionEventBus,
+        eventSource: connectionEventBus.stream,
         actor: makeLocalConnectionService(),
         factory: LocalWebSocketFactory(
           config: Config.connection.local,
@@ -44,7 +44,7 @@ class ConnectionFactory {
       );
 
   CloudWebsocketService makeCloudWebsocketService() => CloudWebsocketService(
-        eventSource: connectionEventBus,
+        eventSource: connectionEventBus.stream,
         actor: makeCloudConnectionService(),
         factory: CloudWebSocketFactory(
           config: Config.connection.cloud,

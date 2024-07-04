@@ -15,13 +15,13 @@ class HomeScreenFactory {
           ChangeNotifierProvider(
             create: (context) => HomeViewModel(
               context,
-              eventSource: HomeFactory.instance.homeEventBus,
+              eventSource: HomeFactory.instance.homeEventBus.stream,
               home: HomeFactory.instance.makeHomeService(),
             ),
           ),
           ChangeNotifierProvider(
             create: (_) => HomeListViewModel(
-              eventSource: HomeFactory.instance.homeEventBus,
+              eventSource: HomeFactory.instance.homeEventBus.stream,
               home: HomeFactory.instance.makeHomeService(),
             ),
           ),

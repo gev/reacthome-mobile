@@ -25,23 +25,24 @@ class DiscoveryFactory {
 
   final _process = DiscoveryEntity<MulticastSource>();
 
-  final homeEventBus = EventBus<HomeEvent>();
+  final homeEventBus = Bus<HomeEvent>();
 
-  final discoveryEventBus = EventBus<DiscoveryEvent>();
+  final discoveryEventBus =
+      Bus<DiscoveryEvent>(startWith: DiscoveryStopCompletedEvent());
 
   HomeService makeHomeService() => HomeService(
-        eventSink: homeEventBus,
+        eventSink: homeEventBus.sink,
         repository: _repository,
       );
 
   DiscoveryService<MulticastSource> makeDiscoveryService() => DiscoveryService(
-        eventSink: discoveryEventBus,
+        eventSink: discoveryEventBus.sink,
         process: _process,
       );
 
   DiscoveryMulticastService makeDiscoveryMulticastService() =>
       DiscoveryMulticastService(
-        eventSource: discoveryEventBus,
+        eventSource: discoveryEventBus.stream,
         actor: makeDiscoveryService(),
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
@@ -54,14 +55,14 @@ class DiscoveryFactory {
 
   DiscoveryTimeoutService makeDiscoveryTimeoutService() =>
       DiscoveryTimeoutService(
-        eventSource: homeEventBus,
+        eventSource: homeEventBus.stream,
         actor: makeHomeService(),
         timeout: Config.discovery.timeout,
       );
 
   DiscoveryLifecycleService makeDiscoveryLifecycleService() =>
       DiscoveryLifecycleService(
-        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
+        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
         actor: makeDiscoveryService(),
       );
 }
