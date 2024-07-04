@@ -4,11 +4,15 @@ import 'package:reacthome/util/replay_latest_stream.dart';
 
 abstract interface class Bus<T> {
   void emit(T value);
+  Stream<T> get stream;
   StreamSubscription<T> listen(void Function(T) handle);
 }
 
 class EventBus<E> implements Bus<E> {
   final _controller = StreamController<E>.broadcast();
+
+  @override
+  Stream<E> get stream => _controller.stream;
 
   @override
   StreamSubscription<E> listen(void Function(E) handle) =>
