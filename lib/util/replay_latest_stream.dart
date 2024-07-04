@@ -21,3 +21,7 @@ class ReplayLatestStream<T> extends StreamView<T> {
         onError: onError, onDone: onDone, cancelOnError: cancelOnError);
   }
 }
+
+extension ReplayLatestStreamExtension<T> on Stream<T> {
+  Stream<T> replayLatest(T startWith) => ReplayLatestStream<T>(startWith, this);
+}
