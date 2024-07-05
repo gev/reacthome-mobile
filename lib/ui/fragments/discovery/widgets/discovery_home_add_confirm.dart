@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/app/screens/discovery_screen_factory.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/widgets/confirm.dart';
+import 'package:reacthome/util/service_locator.dart';
 
 class DiscoveryHomeAddConfirm extends StatelessWidget {
   final String id;
@@ -10,8 +12,7 @@ class DiscoveryHomeAddConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    final viewModel =
-        DiscoveryScreenFactory.instance.makeDiscoveryHomeViewModel(context);
+    final viewModel = $.get<DiscoveryHomeViewModel>(context);
     return StreamBuilder(
         stream: viewModel.stream(id),
         initialData: viewModel.home(id),

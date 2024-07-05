@@ -58,11 +58,11 @@ class DiscoveryHomeViewModel {
 
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
-        builder: (context) => confirmDialog,
+        builder: (_) => confirmDialog,
       );
 
   void _alert(Widget alertDialog) => dialog.show(
         context,
-        builder: (context) => alertDialog,
+        builder: (_) => alertDialog,
       );
 }

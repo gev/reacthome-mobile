@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/app/screens/home_screen_factory.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/widgets/confirm.dart';
+import 'package:reacthome/util/service_locator.dart';
 
 class HomeAddConfirm extends StatelessWidget {
   final String id;
@@ -10,7 +11,7 @@ class HomeAddConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    final viewModel = HomeScreenFactory.instance.makeHomeViewModel(context);
+    final viewModel = $.get<HomeViewModel>(context);
     return StreamBuilder(
       stream: viewModel.stream(id),
       initialData: viewModel.getHome(id),

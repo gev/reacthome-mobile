@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/app/screens/home_screen_factory.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/service_locator.dart';
 
 class HomeTile extends StatelessWidget {
   final String id;
@@ -9,7 +10,7 @@ class HomeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = HomeScreenFactory.instance.makeHomeViewModel(context);
+    final viewModel = $.get<HomeViewModel>(context);
     return StreamBuilder(
         stream: viewModel.stream(id),
         initialData: viewModel.getHome(id),

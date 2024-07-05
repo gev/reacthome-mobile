@@ -1,8 +1,9 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/app/screens/discovery_screen_factory.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/service_locator.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
@@ -10,8 +11,7 @@ class DiscoveryHomeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel =
-        DiscoveryScreenFactory.instance.makeDiscoveryHomeViewModel(context);
+    final viewModel = $.get<DiscoveryHomeViewModel>(context);
     return StreamBuilder(
       stream: viewModel.stream(id),
       initialData: viewModel.home(id),

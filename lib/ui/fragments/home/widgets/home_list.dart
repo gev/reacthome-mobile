@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/app/screens/home_screen_factory.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/service_locator.dart';
 
 class HomeList extends StatelessWidget {
   final Widget ifEmpty;
@@ -9,7 +10,7 @@ class HomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = HomeScreenFactory.instance.makeHomeListViewModel();
+    final viewModel = $.get<HomeListViewModel>();
     return StreamBuilder(
       stream: viewModel.stream,
       initialData: viewModel.homes,
