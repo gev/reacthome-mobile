@@ -5,7 +5,6 @@ import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
-// import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
 
 class DiscoveryScreenFactory {
@@ -21,7 +20,7 @@ class DiscoveryScreenFactory {
               discovery: DiscoveryFactory.instance.makeDiscoveryService(),
             ),
           ),
-          ChangeNotifierProvider(
+          Provider(
             create: (context) => DiscoveryHomeViewModel(
               context,
               eventSource: DiscoveryFactory.instance.homeEventBus.stream,
@@ -29,7 +28,7 @@ class DiscoveryScreenFactory {
               knownHome: HomeFactory.instance.makeHomeService(),
             ),
           ),
-          ChangeNotifierProvider(
+          Provider(
             create: (_) => DiscoveryHomeListViewModel(
               eventSource: DiscoveryFactory.instance.homeEventBus.stream,
               home: DiscoveryFactory.instance.makeHomeService(),

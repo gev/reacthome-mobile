@@ -15,7 +15,7 @@ class DiscoveryStatusViewModel {
   Stream<bool> get stream =>
       eventSource.map((event) => event is DiscoveryStartCompletedEvent);
 
-  void onSwitchTap(bool value) {
+  void onDiscoverySwitchTap(bool value) {
     if (value) {
       discovery.start();
     } else {

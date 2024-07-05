@@ -1,33 +1,20 @@
-import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/util/bus_listener.dart';
+import 'package:reacthome/util/replay_latest_stream.dart';
 
-class DiscoveryHomeListViewModel extends GenericBusListener<HomeEvent>
-    with ChangeNotifier {
+class DiscoveryHomeListViewModel {
+  final Stream<HomeEvent> eventSource;
   final HomeApi home;
 
   DiscoveryHomeListViewModel({
-    required super.eventSource,
+    required this.eventSource,
     required this.home,
   });
 
   Iterable<String> get homes => home.getAllHomes();
-  String get countTitle => homes.length.toString();
 
-  @override
-  void handle(HomeEvent event) {
-    switch (event) {
-      case HomeAddedEvent _:
-      case HomeRemovedEvent _:
-        notifyListeners();
-      default:
-    }
-  }
-
-  @override
-  void dispose() {
-    cancelSubscription();
-    super.dispose();
-  }
+  Stream<Iterable<String>> get stream => eventSource
+      .where((event) => event is HomeAddedEvent || event is HomeRemovedEvent)
+      .map((event) => homes)
+      .replayLatest(homes);
 }

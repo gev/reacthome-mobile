@@ -10,17 +10,21 @@ class DiscoveryHomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Iterable<String> homes =
-        context.select<DiscoveryHomeListViewModel, Iterable<String>>(
-            (model) => model.homes);
-    return homes.isEmpty
-        ? const SizedBox()
-        : list.section(
-            context,
-            title: title,
-            children: homes
-                .map((id) => DiscoveryHomeTile(key: ValueKey(id), id: id))
-                .toList(),
-          );
+    final viewModel = context.read<DiscoveryHomeListViewModel>();
+    return StreamBuilder(
+        stream: viewModel.stream,
+        initialData: viewModel.homes,
+        builder: (context, snapshot) {
+          final homes = snapshot.data!;
+          return homes.isEmpty
+              ? const SizedBox()
+              : list.section(
+                  context,
+                  title: title,
+                  children: homes
+                      .map((id) => DiscoveryHomeTile(key: ValueKey(id), id: id))
+                      .toList(),
+                );
+        });
   }
 }

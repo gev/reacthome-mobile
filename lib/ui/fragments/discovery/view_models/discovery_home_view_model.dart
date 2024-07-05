@@ -5,10 +5,8 @@ import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/util/bus_listener.dart';
 
-class DiscoveryHomeViewModel extends GenericBusListener<HomeEvent>
-    with ChangeNotifier {
+class DiscoveryHomeViewModel {
   final BuildContext context;
   final Stream<HomeEvent> eventSource;
   final HomeApi discoveredHome;
@@ -19,12 +17,18 @@ class DiscoveryHomeViewModel extends GenericBusListener<HomeEvent>
     required this.eventSource,
     required this.discoveredHome,
     required this.knownHome,
-  }) : super(eventSource: eventSource);
+  });
 
-  HomeUI getHome(String id) => HomeUI(
+  HomeUI home(String id) => HomeUI(
         context,
         home: discoveredHome.getHomeById(id),
       );
+
+  Stream<HomeUI> stream(String id) => eventSource
+      .where((event) =>
+          (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent) &&
+          event.home == id)
+      .map((event) => home(id));
 
   void addHomeButtonPressed() {
     Navigator.pushNamed(context, NavigationRouteNames.addHome);
@@ -55,7 +59,7 @@ class DiscoveryHomeViewModel extends GenericBusListener<HomeEvent>
 
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
-        builder: (context) => ChangeNotifierProvider(
+        builder: (context) => Provider(
           create: (context) => DiscoveryHomeViewModel(
             context,
             eventSource: eventSource,
@@ -70,20 +74,4 @@ class DiscoveryHomeViewModel extends GenericBusListener<HomeEvent>
         context,
         builder: (context) => alertDialog,
       );
-
-  @override
-  void handle(HomeEvent event) {
-    switch (event) {
-      case HomeMetaChangedEvent _:
-      case HomeProjectChangedEvent _:
-        notifyListeners();
-      default:
-    }
-  }
-
-  @override
-  void dispose() {
-    cancelSubscription();
-    super.dispose();
-  }
 }
