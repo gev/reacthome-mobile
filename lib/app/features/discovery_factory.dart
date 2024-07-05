@@ -27,8 +27,7 @@ class DiscoveryFactory {
 
   final homeEventBus = Bus<HomeEvent>();
 
-  final discoveryEventBus =
-      Bus<DiscoveryEvent>(startWith: DiscoveryStopCompletedEvent());
+  final discoveryEventBus = Bus<DiscoveryEvent>();
 
   HomeService makeHomeService() => HomeService(
         eventSink: homeEventBus.sink,
