@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
+import 'package:reacthome/app/screens/discovery_screen_factory.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeAdd extends StatelessWidget {
@@ -9,7 +8,8 @@ class DiscoveryHomeAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<DiscoveryHomeViewModel>();
+    final viewModel =
+        DiscoveryScreenFactory.instance.makeDiscoveryHomeViewModel(context);
     final locale = AppLocalizations.of(context)!;
     return list.tile(
       title: Text(locale.addTheHomeID),

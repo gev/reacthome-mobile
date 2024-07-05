@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
+import 'package:reacthome/app/screens/discovery_screen_factory.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryStatus extends StatelessWidget {
@@ -10,7 +9,8 @@ class DiscoveryStatus extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    final viewModel = context.read<DiscoveryStatusViewModel>();
+    final viewModel =
+        DiscoveryScreenFactory.instance.makeDiscoveryStatusViewModel();
     return list.tile(
       title: Text(locale.discovery),
       leading: Icon(icon.search),

@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/app/screens/home_screen_factory.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
@@ -10,14 +9,21 @@ class HomeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Iterable<String> homes = context
-        .select<HomeListViewModel, Iterable<String>>((model) => model.homes);
-    return homes.isEmpty
-        ? ifEmpty
-        : list.section(
-            context,
-            children:
-                homes.map((id) => HomeTile(key: ValueKey(id), id: id)).toList(),
-          );
+    final viewModel = HomeScreenFactory.instance.makeHomeListViewModel();
+    return StreamBuilder(
+      stream: viewModel.stream,
+      initialData: viewModel.homes,
+      builder: (context, snapshot) {
+        final homes = snapshot.data!;
+        return homes.isEmpty
+            ? ifEmpty
+            : list.section(
+                context,
+                children: homes
+                    .map((id) => HomeTile(key: ValueKey(id), id: id))
+                    .toList(),
+              );
+      },
+    );
   }
 }

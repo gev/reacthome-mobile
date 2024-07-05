@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
@@ -59,15 +58,7 @@ class DiscoveryHomeViewModel {
 
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
-        builder: (context) => Provider(
-          create: (context) => DiscoveryHomeViewModel(
-            context,
-            eventSource: eventSource,
-            discoveredHome: discoveredHome,
-            knownHome: knownHome,
-          ),
-          child: confirmDialog,
-        ),
+        builder: (context) => confirmDialog,
       );
 
   void _alert(Widget alertDialog) => dialog.show(
