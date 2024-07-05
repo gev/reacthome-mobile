@@ -1,6 +1,5 @@
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/util/replay_latest_stream.dart';
 
 class DiscoveryHomeListViewModel {
   final Stream<HomeEvent> eventSource;
@@ -15,6 +14,5 @@ class DiscoveryHomeListViewModel {
 
   Stream<Iterable<String>> get stream => eventSource
       .where((event) => event is HomeAddedEvent || event is HomeRemovedEvent)
-      .map((event) => homes)
-      .replayLatest(homes);
+      .map((event) => homes);
 }
