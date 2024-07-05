@@ -12,7 +12,6 @@ class DiscoveryHomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<DiscoveryHomeViewModel>();
-
     return StreamBuilder(
       stream: viewModel.stream(id),
       initialData: viewModel.home(id),

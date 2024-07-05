@@ -1,21 +1,19 @@
-import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
-import 'package:reacthome/util/bus_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel<S> extends GenericBusListener<ConnectionEvent>
-    with ChangeNotifier {
+class ConnectionViewModel<S> {
+  final Stream<ConnectionEvent> eventSource;
   final HomeConnectionApi homeConnection;
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
   final HomeApi home;
 
   ConnectionViewModel({
-    required super.eventSource,
+    required this.eventSource,
     required this.homeConnection,
     required this.local,
     required this.cloud,
@@ -58,21 +56,4 @@ class ConnectionViewModel<S> extends GenericBusListener<ConnectionEvent>
               homeConnection.disconnectCloud(id);
             }
           });
-
-  @override
-  void handle(ConnectionEvent event) {
-    switch (event) {
-      case ConnectSelectedEvent _:
-      case ConnectCompletedEvent _:
-      case DisconnectCompletedEvent _:
-        notifyListeners();
-      default:
-    }
-  }
-
-  @override
-  void dispose() {
-    cancelSubscription();
-    super.dispose();
-  }
 }

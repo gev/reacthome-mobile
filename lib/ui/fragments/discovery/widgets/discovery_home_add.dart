@@ -9,13 +9,13 @@ class DiscoveryHomeAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<DiscoveryHomeViewModel>();
+    final viewModel = context.read<DiscoveryHomeViewModel>();
     final locale = AppLocalizations.of(context)!;
     return list.tile(
       title: Text(locale.addTheHomeID),
       leading: Icon(icon.add),
       trailing: list.chevron(),
-      onTap: model.addHomeButtonPressed,
+      onTap: viewModel.addHomeButtonPressed,
     );
   }
 }

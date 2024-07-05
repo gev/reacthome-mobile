@@ -12,14 +12,14 @@ class HomeScreenFactory {
 
   Widget make(_) => MultiProvider(
         providers: [
-          ChangeNotifierProvider(
+          Provider(
             create: (context) => HomeViewModel(
               context,
               eventSource: HomeFactory.instance.homeEventBus.stream,
               home: HomeFactory.instance.makeHomeService(),
             ),
           ),
-          ChangeNotifierProvider(
+          Provider(
             create: (_) => HomeListViewModel(
               eventSource: HomeFactory.instance.homeEventBus.stream,
               home: HomeFactory.instance.makeHomeService(),
