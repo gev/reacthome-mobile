@@ -1,12 +1,19 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/screens/discovery_screen_factory.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
-  const DiscoveryHomeTile({super.key, required this.id});
+  final DiscoveryHomeViewModel viewModel;
+
+  const DiscoveryHomeTile({
+    required this.id,
+    required this.viewModel,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +35,7 @@ class DiscoveryHomeTile extends StatelessWidget {
               Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
           onTap: () => viewModel.onHomeTileTap(
             id,
-            DiscoveryHomeAddConfirm(id),
+            DiscoveryHomeAddConfirm(id, viewModel),
             const DiscoveryHomeAddAlert(),
           ),
         );

@@ -31,5 +31,9 @@ class DiscoveryScreenFactory {
         home: DiscoveryFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => const DiscoveryScreen();
+  Widget make(BuildContext context) => DiscoveryScreen(
+        statusViewModel: makeDiscoveryStatusViewModel(),
+        homeViewModel: makeDiscoveryHomeViewModel(context),
+        homeListViewModel: makeDiscoveryHomeListViewModel(),
+      );
 }

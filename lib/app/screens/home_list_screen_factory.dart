@@ -20,5 +20,8 @@ class AddHomeListFactory {
         home: HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => const HomeListScreen();
+  Widget make(BuildContext context) => HomeListScreen(
+        homeViewModel: makeHomeViewModel(context),
+        homeListViewModel: makeHomeListViewModel(),
+      );
 }

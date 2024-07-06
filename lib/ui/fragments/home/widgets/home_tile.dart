@@ -1,15 +1,20 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/app/screens/home_screen_factory.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeTile extends StatelessWidget {
   final String id;
-  const HomeTile({super.key, required this.id});
+  final HomeViewModel viewModel;
+
+  const HomeTile({
+    required this.id,
+    required this.viewModel,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = HomeScreenFactory.instance.makeHomeViewModel(context);
     return StreamBuilder(
         stream: viewModel.stream(id),
         initialData: viewModel.getHome(id),
@@ -25,7 +30,8 @@ class HomeTile extends StatelessWidget {
             leading:
                 Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
             trailing: list.chevron(),
-            onTap: () => viewModel.onHomeTileTap(id, HomeAddConfirm(id)),
+            onTap: () =>
+                viewModel.onHomeTileTap(id, HomeAddConfirm(id, viewModel)),
           );
         });
   }
