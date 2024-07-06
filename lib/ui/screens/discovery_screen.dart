@@ -38,7 +38,6 @@ class DiscoveryScreen extends StatelessWidget {
           DiscoveryHomeList(
             homeViewModel,
             homeListViewModel,
-            locale.discovered,
           ),
         ],
       ),

@@ -5,12 +5,10 @@ import 'package:reacthome/ui/fragments/home/widgets/home_tile.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeList extends StatelessWidget {
-  final Widget ifEmpty;
   final HomeViewModel homeViewModel;
   final HomeListViewModel homeListViewModel;
 
-  const HomeList(this.homeViewModel, this.homeListViewModel, this.ifEmpty,
-      {super.key});
+  const HomeList(this.homeViewModel, this.homeListViewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +18,7 @@ class HomeList extends StatelessWidget {
       builder: (context, snapshot) {
         final homes = snapshot.data!;
         return homes.isEmpty
-            ? ifEmpty
+            ? const Text('There are no homes')
             : list.section(
                 context,
                 children: homes

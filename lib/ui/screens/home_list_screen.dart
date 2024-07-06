@@ -26,7 +26,6 @@ class HomeListScreen extends StatelessWidget {
           HomeList(
             homeViewModel,
             homeListViewModel,
-            const Text('There are no homes'),
           ),
           Expanded(child: HomeAdd(homeViewModel)),
         ],
