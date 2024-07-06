@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/features/home_factory.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/home_screen.dart';
 
@@ -15,10 +14,7 @@ class HomeScreenFactory {
         home: HomeFactory.instance.makeHomeService(),
       );
 
-  HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
-        eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+  Widget make(BuildContext context) => HomeScreen(
+        viewModel: makeHomeViewModel(context),
       );
-
-  Widget make(_) => const HomeScreen();
 }
