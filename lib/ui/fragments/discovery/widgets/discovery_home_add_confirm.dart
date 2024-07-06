@@ -6,6 +6,7 @@ import 'package:reacthome/ui/widgets/confirm.dart';
 class DiscoveryHomeAddConfirm extends StatelessWidget {
   final String id;
   final DiscoveryHomeViewModel viewModel;
+
   const DiscoveryHomeAddConfirm(this.id, this.viewModel, {super.key});
 
   @override

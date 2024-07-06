@@ -9,12 +9,9 @@ class DiscoveryHomeList extends StatelessWidget {
   final DiscoveryHomeViewModel homeViewModel;
   final DiscoveryHomeListViewModel homeListViewModel;
 
-  const DiscoveryHomeList({
-    required this.homeViewModel,
-    required this.homeListViewModel,
-    required this.title,
-    super.key,
-  });
+  const DiscoveryHomeList(
+      this.homeViewModel, this.homeListViewModel, this.title,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +26,8 @@ class DiscoveryHomeList extends StatelessWidget {
                   context,
                   title: title,
                   children: homes
-                      .map((id) => DiscoveryHomeTile(
-                          key: ValueKey(id), id: id, viewModel: homeViewModel))
+                      .map((id) => DiscoveryHomeTile(id, homeViewModel,
+                          key: ValueKey(id)))
                       .toList(),
                 );
         });

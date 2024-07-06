@@ -9,12 +9,8 @@ class HomeList extends StatelessWidget {
   final HomeViewModel homeViewModel;
   final HomeListViewModel homeListViewModel;
 
-  const HomeList({
-    required this.homeViewModel,
-    required this.homeListViewModel,
-    required this.ifEmpty,
-    super.key,
-  });
+  const HomeList(this.homeViewModel, this.homeListViewModel, this.ifEmpty,
+      {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +24,7 @@ class HomeList extends StatelessWidget {
             : list.section(
                 context,
                 children: homes
-                    .map((id) => HomeTile(
-                        key: ValueKey(id), id: id, viewModel: homeViewModel))
+                    .map((id) => HomeTile(id, homeViewModel, key: ValueKey(id)))
                     .toList(),
               );
       },

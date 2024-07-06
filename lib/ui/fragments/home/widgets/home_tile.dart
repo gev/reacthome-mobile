@@ -7,11 +7,7 @@ class HomeTile extends StatelessWidget {
   final String id;
   final HomeViewModel viewModel;
 
-  const HomeTile({
-    required this.id,
-    required this.viewModel,
-    super.key,
-  });
+  const HomeTile(this.id, this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {

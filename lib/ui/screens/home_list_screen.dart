@@ -10,10 +10,11 @@ class HomeListScreen extends StatelessWidget {
   final HomeViewModel homeViewModel;
   final HomeListViewModel homeListViewModel;
 
-  const HomeListScreen(
-      {required this.homeViewModel,
-      required this.homeListViewModel,
-      super.key});
+  const HomeListScreen({
+    required this.homeViewModel,
+    required this.homeListViewModel,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,9 @@ class HomeListScreen extends StatelessWidget {
       body: Column(
         children: [
           HomeList(
-            homeViewModel: homeViewModel,
-            homeListViewModel: homeListViewModel,
-            ifEmpty: const Text('There are no homes'),
+            homeViewModel,
+            homeListViewModel,
+            const Text('There are no homes'),
           ),
           Expanded(child: HomeAdd(homeViewModel)),
         ],

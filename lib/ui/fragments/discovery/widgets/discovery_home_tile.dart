@@ -9,11 +9,7 @@ class DiscoveryHomeTile extends StatelessWidget {
   final String id;
   final DiscoveryHomeViewModel viewModel;
 
-  const DiscoveryHomeTile({
-    required this.id,
-    required this.viewModel,
-    super.key,
-  });
+  const DiscoveryHomeTile(this.id, this.viewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {

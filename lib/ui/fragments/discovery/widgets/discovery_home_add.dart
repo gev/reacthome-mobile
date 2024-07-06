@@ -5,6 +5,7 @@ import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeAdd extends StatelessWidget {
   final DiscoveryHomeViewModel viewModel;
+
   const DiscoveryHomeAdd(this.viewModel, {super.key});
 
   @override
