@@ -14,6 +14,5 @@ class HomeListViewModel {
 
   Stream<Iterable<String>> get stream => eventSource
       .where((event) => event is HomeAddedEvent || event is HomeRemovedEvent)
-      .map((event) => homes)
-      .distinct();
+      .map((event) => homes);
 }

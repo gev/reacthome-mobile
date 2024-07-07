@@ -39,15 +39,15 @@ class MetaUI {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (other is MetaUI) {
-      return _code == other._code && _title == other._title;
-    }
-    return false;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MetaUI &&
+          runtimeType == other.runtimeType &&
+          _code == other._code &&
+          _title == other._title;
 
   @override
-  int get hashCode => _code.hashCode ^ _title.hashCode;
+  int get hashCode => Object.hash(_code, _title);
 }
 
 class HomeUI {
@@ -65,13 +65,13 @@ class HomeUI {
         hasProject = home?.project != null;
 
   @override
-  bool operator ==(Object other) {
-    if (other is HomeUI) {
-      return meta == other.meta && hasProject == other.hasProject;
-    }
-    return false;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HomeUI &&
+          runtimeType == other.runtimeType &&
+          meta == other.meta &&
+          hasProject == other.hasProject;
 
   @override
-  int get hashCode => meta.hashCode ^ hasProject.hashCode;
+  int get hashCode => Object.hash(meta, hasProject);
 }

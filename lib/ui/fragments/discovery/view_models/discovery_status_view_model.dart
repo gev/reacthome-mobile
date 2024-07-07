@@ -13,9 +13,8 @@ class DiscoveryStatusViewModel {
 
   bool get initialState => discovery.state == DiscoveryState.running;
 
-  Stream<bool> get stream => eventSource
-      .map((event) => event is DiscoveryStartCompletedEvent)
-      .distinct();
+  Stream<bool> get stream =>
+      eventSource.map((event) => event is DiscoveryStartCompletedEvent);
 
   void onDiscoverySwitchTap(bool value) {
     if (value) {
