@@ -27,7 +27,8 @@ class DiscoveryHomeViewModel {
       .where((event) =>
           (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent) &&
           event.home == id)
-      .map((event) => home(id));
+      .map((event) => home(id))
+      .distinct();
 
   void addHomeButtonPressed() {
     Navigator.pushNamed(context, NavigationRouteNames.addHome);

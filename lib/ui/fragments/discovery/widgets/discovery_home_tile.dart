@@ -17,6 +17,7 @@ class DiscoveryHomeTile extends StatelessWidget {
       initialData: viewModel.home(id),
       builder: (context, snapshot) {
         final home = snapshot.data!;
+        print('render');
         return list.tile(
           title: Text(home.meta.title),
           subtitle: Text(
