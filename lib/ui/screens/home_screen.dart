@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
-import 'package:reacthome/ui/fragments/home/widgets/home_props.dart';
-import 'package:reacthome/ui/layouts/full_width_layout.dart';
+import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class HomeScreen extends StatelessWidget {
   final HomeViewModel viewModel;
@@ -17,9 +17,18 @@ class HomeScreen extends StatelessWidget {
         initialData: viewModel.getHome(arguments.home),
         builder: (context, snapshot) {
           final home = snapshot.data!;
-          return FullWidthLayout(
+          return FixedWidthLayout(
             title: home.meta.name,
-            body: HomeProps(home),
+            body: Column(
+              children: [
+                layout.padding.all(
+                  child: button.filled(
+                    label: 'List',
+                    onPressed: viewModel.listHomeButtonPressed,
+                  ),
+                ),
+              ],
+            ),
           );
         });
   }

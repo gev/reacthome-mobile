@@ -28,12 +28,24 @@ class HomeViewModel {
       .map((event) => getHome(id));
 
   void addHomeButtonPressed() {
-    Navigator.pushNamed(context, NavigationRouteNames.discovery);
+    Navigator.pushNamed(
+      context,
+      NavigationRouteNames.discovery,
+    );
   }
 
-  void onHomeTileTap(String id, Widget confirmDialog) => Navigator.pushNamed(
+  void listHomeButtonPressed() {
+    Navigator.pushNamed(
+      context,
+      NavigationRouteNames.homeList,
+    );
+  }
+
+  void onHomeTileTap(String id, Widget confirmDialog) =>
+      Navigator.pushNamedAndRemoveUntil(
         context,
         NavigationRouteNames.home,
         arguments: (home: id),
+        (_) => false,
       );
 }

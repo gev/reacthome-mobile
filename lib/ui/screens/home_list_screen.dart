@@ -4,7 +4,7 @@ import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dar
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_add.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_list.dart';
-import 'package:reacthome/ui/layouts/full_width_layout.dart';
+import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class HomeListScreen extends StatelessWidget {
   final HomeViewModel homeViewModel;
@@ -19,7 +19,7 @@ class HomeListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return FullWidthLayout(
+    return FixedWidthLayout(
       title: locale.myHomes,
       body: Column(
         children: [
@@ -27,7 +27,7 @@ class HomeListScreen extends StatelessWidget {
             homeViewModel,
             homeListViewModel,
           ),
-          Expanded(child: HomeAdd(homeViewModel)),
+          HomeAdd(homeViewModel),
         ],
       ),
     );

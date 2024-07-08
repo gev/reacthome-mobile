@@ -35,7 +35,6 @@ class DiscoveryHomeViewModel {
 
   void onHomeTileTap(
       String id, Widget confirmDialog, Widget alertDialog) async {
-    final navigator = Navigator.of(context);
     final confirmed = await _confirm(confirmDialog);
     if (confirmed == true) {
       final home = discoveredHome.getHomeById(id);
@@ -46,23 +45,29 @@ class DiscoveryHomeViewModel {
           address: home.address,
           project: home.project,
         );
-        navigator.pushReplacementNamed(
-          NavigationRouteNames.home,
-          arguments: (home: id),
-        );
+        goToHome(id);
       } else {
         _alert(alertDialog);
       }
     }
   }
 
+  void goToHome(String id) {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      NavigationRouteNames.home,
+      arguments: (home: id),
+      (_) => false,
+    );
+  }
+
   Future<bool?> _confirm(Widget confirmDialog) => dialog.show<bool>(
         context,
-        builder: (context) => confirmDialog,
+        builder: (_) => confirmDialog,
       );
 
   void _alert(Widget alertDialog) => dialog.show(
         context,
-        builder: (context) => alertDialog,
+        builder: (_) => alertDialog,
       );
 }
