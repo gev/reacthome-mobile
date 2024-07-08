@@ -27,8 +27,11 @@ class WelcomeScreen extends StatelessWidget {
           SizedBox(height: layout.padding.vertical),
           button.filled(
             label: locale.addAHome,
-            onPressed: () => Navigator.pushReplacementNamed(
-                context, NavigationRouteNames.discovery),
+            onPressed: () => Navigator.pushNamedAndRemoveUntil(
+              context,
+              NavigationRouteNames.discovery,
+              (_) => false,
+            ),
           ),
         ],
       ),
