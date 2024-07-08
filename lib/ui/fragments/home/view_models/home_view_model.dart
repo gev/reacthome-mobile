@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 import '../../../dto.dart';
 
@@ -28,24 +29,18 @@ class HomeViewModel {
       .map((event) => getHome(id));
 
   void addHomeButtonPressed() {
-    Navigator.pushNamed(
-      context,
+    Navigator.of(context).pushNamed(
       NavigationRouteNames.discovery,
     );
   }
 
-  void listHomeButtonPressed() {
-    Navigator.pushNamed(
-      context,
-      NavigationRouteNames.homeList,
-    );
-  }
+  void listHomeButtonPressed() => Navigator.of(context).pushNamed(
+        NavigationRouteNames.homeList,
+      );
 
   void onHomeTileTap(String id, Widget confirmDialog) =>
-      Navigator.pushNamedAndRemoveUntil(
-        context,
+      Navigator.of(context).clearNamed(
         NavigationRouteNames.home,
         arguments: (home: id),
-        (_) => false,
       );
 }

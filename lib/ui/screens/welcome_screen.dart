@@ -4,6 +4,7 @@ import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/kit/theme.dart';
 import 'package:reacthome/ui/layouts/center_layout.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,11 +28,8 @@ class WelcomeScreen extends StatelessWidget {
           SizedBox(height: layout.padding.vertical),
           button.filled(
             label: locale.addAHome,
-            onPressed: () => Navigator.pushNamedAndRemoveUntil(
-              context,
-              NavigationRouteNames.discovery,
-              (_) => false,
-            ),
+            onPressed: () => Navigator.of(context)
+                .clearNamed(NavigationRouteNames.discovery),
           ),
         ],
       ),

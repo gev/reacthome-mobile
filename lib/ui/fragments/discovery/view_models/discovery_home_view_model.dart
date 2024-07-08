@@ -4,6 +4,7 @@ import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 class DiscoveryHomeViewModel {
   final BuildContext context;
@@ -25,13 +26,12 @@ class DiscoveryHomeViewModel {
 
   Stream<HomeUI> stream(String id) => eventSource
       .where((event) =>
-          (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent) &&
-          event.home == id)
+          event.home == id &&
+          (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent))
       .map((event) => home(id));
 
-  void addHomeButtonPressed() {
-    Navigator.pushNamed(context, NavigationRouteNames.addHome);
-  }
+  void addHomeButtonPressed() =>
+      Navigator.of(context).pushNamed(NavigationRouteNames.addHome);
 
   void onHomeTileTap(
       String id, Widget confirmDialog, Widget alertDialog) async {
@@ -53,11 +53,9 @@ class DiscoveryHomeViewModel {
   }
 
   void goToHome(String id) {
-    Navigator.pushNamedAndRemoveUntil(
-      context,
+    Navigator.of(context).clearNamed(
       NavigationRouteNames.home,
       arguments: (home: id),
-      (_) => false,
     );
   }
 

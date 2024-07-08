@@ -14,11 +14,11 @@ Widget confirm(
       actions: [
         dialog.action(
           label: cancelLabel,
-          onPressed: () => Navigator.pop(context, false),
+          onPressed: () => Navigator.of(context).pop(false),
         ),
         dialog.action(
           label: confirmLabel,
-          onPressed: () => Navigator.pop(context, true),
+          onPressed: () => Navigator.of(context).pop(true),
         ),
       ],
     );
