@@ -8,13 +8,12 @@ class HomeScreenFactory {
 
   HomeScreenFactory._();
 
-  HomeViewModel makeHomeViewModel(BuildContext context) => HomeViewModel(
-        context,
+  HomeViewModel makeHomeViewModel() => HomeViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
         home: HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(BuildContext context) => HomeScreen(
-        viewModel: makeHomeViewModel(context),
+  Widget make(_) => HomeScreen(
+        viewModel: makeHomeViewModel(),
       );
 }

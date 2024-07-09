@@ -1,7 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
-import 'package:reacthome/ui/fragments/home/widgets/home_delete_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 class HomeTile extends StatelessWidget {
   final String id;
@@ -11,9 +13,10 @@ class HomeTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return StreamBuilder(
-        stream: viewModel.stream(id),
-        initialData: viewModel.getHome(id),
+        stream: viewModel.stream(id, locale),
+        initialData: viewModel.getHome(id, locale),
         builder: (context, snapshot) {
           final home = snapshot.data!;
           return list.tile(
@@ -26,8 +29,10 @@ class HomeTile extends StatelessWidget {
             leading:
                 Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
             trailing: list.chevron(),
-            onTap: () =>
-                viewModel.onHomeTileTap(id, HomeAddConfirm(id, viewModel)),
+            onTap: () => Navigator.of(context).clearNamed(
+              NavigationRouteNames.home,
+              arguments: (home: id),
+            ),
           );
         });
   }

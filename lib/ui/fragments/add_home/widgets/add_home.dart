@@ -1,12 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/fragments/add_home/view_models/add_home_view_model.dart';
+import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 class AddHome extends StatefulWidget {
-  final AddHomeViewModel viewModel;
-
-  const AddHome(this.viewModel, {super.key});
+  const AddHome({super.key});
 
   @override
   State<StatefulWidget> createState() => _AddHomeState();
@@ -35,7 +34,10 @@ class _AddHomeState extends State<AddHome> {
         layout.padding.all(
           child: button.filled(
             label: locale.add,
-            onPressed: () => widget.viewModel.onAddHomeButtonPressed(_id.text),
+            onPressed: () => Navigator.of(context).clearNamed(
+              NavigationRouteNames.home,
+              arguments: (home: _id.text),
+            ),
           ),
         ),
       ],

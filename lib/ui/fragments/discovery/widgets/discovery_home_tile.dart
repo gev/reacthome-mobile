@@ -1,8 +1,11 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
 import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/util/navigator_extension.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
@@ -10,11 +13,37 @@ class DiscoveryHomeTile extends StatelessWidget {
 
   const DiscoveryHomeTile(this.id, this.viewModel, {super.key});
 
+  void onHomeTileTap(
+      String id, BuildContext context, AppLocalizations locale) async {
+    final confirmed = await dialog.show<bool>(
+      context,
+      builder: (_) => DiscoveryHomeAddConfirm(id, viewModel),
+    );
+    if (confirmed == true) {
+      if (viewModel.addHome(id)) {
+        if (context.mounted) {
+          Navigator.of(context).clearNamed(
+            NavigationRouteNames.home,
+            arguments: (home: id),
+          );
+        }
+      } else {
+        if (context.mounted) {
+          dialog.show(
+            context,
+            builder: (_) => const DiscoveryHomeAddAlert(),
+          );
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return StreamBuilder(
-      stream: viewModel.stream(id),
-      initialData: viewModel.home(id),
+      stream: viewModel.stream(id, locale),
+      initialData: viewModel.home(id, locale),
       builder: (context, snapshot) {
         final home = snapshot.data!;
         return list.tile(
@@ -26,11 +55,7 @@ class DiscoveryHomeTile extends StatelessWidget {
           ),
           leading:
               Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
-          onTap: () => viewModel.onHomeTileTap(
-            id,
-            DiscoveryHomeAddConfirm(id, viewModel),
-            const DiscoveryHomeAddAlert(),
-          ),
+          onTap: () => onHomeTileTap(id, context, locale),
         );
       },
     );

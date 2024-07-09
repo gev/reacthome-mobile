@@ -13,8 +13,8 @@ class DiscoveryHomeAddConfirm extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return StreamBuilder(
-        stream: viewModel.stream(id),
-        initialData: viewModel.home(id),
+        stream: viewModel.stream(id, locale),
+        initialData: viewModel.home(id, locale),
         builder: (context, snapshot) {
           final home = snapshot.data!;
           return confirm(

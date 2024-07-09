@@ -17,9 +17,7 @@ class DiscoveryScreenFactory {
         discovery: DiscoveryFactory.instance.makeDiscoveryService(),
       );
 
-  DiscoveryHomeViewModel makeDiscoveryHomeViewModel(BuildContext context) =>
-      DiscoveryHomeViewModel(
-        context,
+  DiscoveryHomeViewModel makeDiscoveryHomeViewModel() => DiscoveryHomeViewModel(
         eventSource: DiscoveryFactory.instance.homeEventBus.stream,
         discoveredHome: DiscoveryFactory.instance.makeHomeService(),
         knownHome: HomeFactory.instance.makeHomeService(),
@@ -31,9 +29,9 @@ class DiscoveryScreenFactory {
         home: DiscoveryFactory.instance.makeHomeService(),
       );
 
-  Widget make(BuildContext context) => DiscoveryScreen(
+  Widget make(_) => DiscoveryScreen(
         statusViewModel: makeDiscoveryStatusViewModel(),
-        homeViewModel: makeDiscoveryHomeViewModel(context),
+        homeViewModel: makeDiscoveryHomeViewModel(),
         homeListViewModel: makeDiscoveryHomeListViewModel(),
       );
 }

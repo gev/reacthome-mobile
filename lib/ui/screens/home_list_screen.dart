@@ -27,7 +27,7 @@ class HomeListScreen extends StatelessWidget {
             homeViewModel,
             homeListViewModel,
           ),
-          HomeAdd(homeViewModel),
+          const HomeAdd(),
         ],
       ),
     );

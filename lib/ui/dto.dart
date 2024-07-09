@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/meta.dart';
@@ -6,20 +5,20 @@ import 'package:reacthome/core/meta.dart';
 class MetaUI {
   final String? _code;
   final String? _title;
-  final BuildContext _context;
+  final AppLocalizations _locale;
 
-  final String Function(BuildContext) defaultName;
+  final String Function(AppLocalizations) defaultName;
 
   MetaUI(
-    this._context,
+    this._locale,
     Meta meta, {
     required this.defaultName,
   })  : _code = meta.code,
         _title = meta.title;
 
-  String get code => _code ?? AppLocalizations.of(_context)!.code;
+  String get code => _code ?? _locale.code;
 
-  String get title => _title ?? AppLocalizations.of(_context)!.title;
+  String get title => _title ?? _locale.title;
 
   String get name {
     if (_title != null) {
@@ -28,7 +27,7 @@ class MetaUI {
     if (_code != null) {
       return _code!;
     }
-    return defaultName(_context);
+    return defaultName(_locale);
   }
 
   String get fullName {
@@ -55,12 +54,12 @@ class HomeUI {
   final bool hasProject;
 
   HomeUI(
-    BuildContext context, {
+    AppLocalizations locale, {
     Home? home,
   })  : meta = MetaUI(
-          context,
+          locale,
           home?.meta ?? Meta(),
-          defaultName: (context) => AppLocalizations.of(context)!.unknownHome,
+          defaultName: (context) => locale.unknownHome,
         ),
         hasProject = home?.project != null;
 

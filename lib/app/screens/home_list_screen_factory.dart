@@ -9,8 +9,7 @@ class AddHomeListFactory {
 
   AddHomeListFactory._();
 
-  HomeViewModel makeHomeViewModel(BuildContext context) => HomeViewModel(
-        context,
+  HomeViewModel makeHomeViewModel() => HomeViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
         home: HomeFactory.instance.makeHomeService(),
       );
@@ -20,8 +19,8 @@ class AddHomeListFactory {
         home: HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(BuildContext context) => HomeListScreen(
-        homeViewModel: makeHomeViewModel(context),
+  Widget make(_) => HomeListScreen(
+        homeViewModel: makeHomeViewModel(),
         homeListViewModel: makeHomeListViewModel(),
       );
 }

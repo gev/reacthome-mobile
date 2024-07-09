@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
@@ -15,7 +16,8 @@ class DiscoveryHomeAdd extends StatelessWidget {
       title: Text(locale.addTheHomeID),
       leading: Icon(icon.add),
       trailing: list.chevron(),
-      onTap: viewModel.addHomeButtonPressed,
+      onTap: () =>
+          Navigator.of(context).pushNamed(NavigationRouteNames.addHome),
     );
   }
 }
