@@ -4,14 +4,14 @@ import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 
-class AddHome extends StatefulWidget {
-  const AddHome({super.key});
+class HomeAddForm extends StatefulWidget {
+  const HomeAddForm({super.key});
 
   @override
-  State<StatefulWidget> createState() => _AddHomeState();
+  State<StatefulWidget> createState() => _HomeAddFormState();
 }
 
-class _AddHomeState extends State<AddHome> {
+class _HomeAddFormState extends State<HomeAddForm> {
   late TextEditingController _id;
 
   @override

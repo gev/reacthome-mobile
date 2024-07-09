@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/features/home_factory.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_status_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
 
 class DiscoveryScreenFactory {
@@ -11,27 +11,26 @@ class DiscoveryScreenFactory {
 
   DiscoveryScreenFactory._();
 
-  DiscoveryStatusViewModel makeDiscoveryStatusViewModel() =>
-      DiscoveryStatusViewModel(
+  DiscoveryViewModel makeDiscoveryStatusViewModel() => DiscoveryViewModel(
         eventSource: DiscoveryFactory.instance.discoveryEventBus.stream,
         discovery: DiscoveryFactory.instance.makeDiscoveryService(),
-      );
-
-  DiscoveryHomeViewModel makeDiscoveryHomeViewModel() => DiscoveryHomeViewModel(
-        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
         discoveredHome: DiscoveryFactory.instance.makeHomeService(),
         knownHome: HomeFactory.instance.makeHomeService(),
       );
 
-  DiscoveryHomeListViewModel makeDiscoveryHomeListViewModel() =>
-      DiscoveryHomeListViewModel(
+  HomeViewModel makeHomeViewModel() => HomeViewModel(
+        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
+        home: DiscoveryFactory.instance.makeHomeService(),
+      );
+
+  HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
         eventSource: DiscoveryFactory.instance.homeEventBus.stream,
         home: DiscoveryFactory.instance.makeHomeService(),
       );
 
   Widget make(_) => DiscoveryScreen(
-        statusViewModel: makeDiscoveryStatusViewModel(),
-        homeViewModel: makeDiscoveryHomeViewModel(),
-        homeListViewModel: makeDiscoveryHomeListViewModel(),
+        discoveryViewModel: makeDiscoveryStatusViewModel(),
+        homeViewModel: makeHomeViewModel(),
+        homeListViewModel: makeHomeListViewModel(),
       );
 }

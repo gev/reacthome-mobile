@@ -1,8 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-
-import '../../../dto.dart';
+import 'package:reacthome/ui/dto.dart';
 
 class HomeViewModel {
   final Stream<HomeEvent> eventSource;

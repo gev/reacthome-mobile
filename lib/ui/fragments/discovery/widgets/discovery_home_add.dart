@@ -1,11 +1,11 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeAdd extends StatelessWidget {
-  final DiscoveryHomeViewModel viewModel;
+  final HomeViewModel viewModel;
 
   const DiscoveryHomeAdd(this.viewModel, {super.key});
 

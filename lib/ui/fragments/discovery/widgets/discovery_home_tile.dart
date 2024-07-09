@@ -1,26 +1,33 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
-  final DiscoveryHomeViewModel viewModel;
+  final DiscoveryViewModel discoveryViewModel;
+  final HomeViewModel homeViewModel;
 
-  const DiscoveryHomeTile(this.id, this.viewModel, {super.key});
+  const DiscoveryHomeTile(
+    this.id,
+    this.discoveryViewModel,
+    this.homeViewModel, {
+    super.key,
+  });
 
   void onHomeTileTap(
       String id, BuildContext context, AppLocalizations locale) async {
     final confirmed = await dialog.show<bool>(
       context,
-      builder: (_) => DiscoveryHomeAddConfirm(id, viewModel),
+      builder: (_) => DiscoveryHomeAddConfirm(id, homeViewModel),
     );
     if (confirmed == true) {
-      if (viewModel.addHome(id)) {
+      if (discoveryViewModel.addHome(id)) {
         if (context.mounted) {
           Navigator.of(context).clearNamed(
             NavigationRouteNames.home,
@@ -42,8 +49,8 @@ class DiscoveryHomeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return StreamBuilder(
-      stream: viewModel.stream(id, locale),
-      initialData: viewModel.home(id, locale),
+      stream: homeViewModel.stream(id, locale),
+      initialData: homeViewModel.getHome(id, locale),
       builder: (context, snapshot) {
         final home = snapshot.data!;
         return list.tile(

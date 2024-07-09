@@ -1,16 +1,22 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_tile.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeList extends StatelessWidget {
-  final DiscoveryHomeViewModel homeViewModel;
-  final DiscoveryHomeListViewModel homeListViewModel;
+  final DiscoveryViewModel discoveryViewModel;
+  final HomeListViewModel homeListViewModel;
+  final HomeViewModel homeViewModel;
 
-  const DiscoveryHomeList(this.homeViewModel, this.homeListViewModel,
-      {super.key});
+  const DiscoveryHomeList(
+    this.discoveryViewModel,
+    this.homeListViewModel,
+    this.homeViewModel, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +32,12 @@ class DiscoveryHomeList extends StatelessWidget {
                   context,
                   title: locale.discovered,
                   children: homes
-                      .map((id) => DiscoveryHomeTile(id, homeViewModel,
-                          key: ValueKey(id)))
+                      .map((id) => DiscoveryHomeTile(
+                            id,
+                            discoveryViewModel,
+                            homeViewModel,
+                            key: ValueKey(id),
+                          ))
                       .toList(),
                 );
         });
