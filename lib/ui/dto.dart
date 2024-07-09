@@ -76,3 +76,9 @@ class HomeUI {
   @override
   int get hashCode => Object.hash(meta, hasProject);
 }
+
+typedef ConnectionUI = ({
+  bool isConnected,
+  bool isLocalConnected,
+  bool isCloudConnected,
+});
