@@ -24,7 +24,7 @@ class HomeConnectionFactory {
         ConnectionFactory.instance.makeCloudConnectionService();
 
     return HomeConnectionService(
-      eventSink: ConnectionFactory.instance.connectionEventBus,
+      eventSink: ConnectionFactory.instance.connectionEventBus.sink,
       local: localConnectionService,
       cloud: cloudConnectionService,
       repository: _repository,
@@ -33,20 +33,20 @@ class HomeConnectionFactory {
 
   ActiveConnectionService makeActiveConnectionService() =>
       ActiveConnectionService(
-        eventSource: ConnectionFactory.instance.connectionEventBus,
+        eventSource: ConnectionFactory.instance.connectionEventBus.stream,
         connection: makeHomeConnectionService(),
       );
 
   HomeConnectionAutoService makeHomeConnectionAutoService() =>
       HomeConnectionAutoService(
-        eventSource: DiscoveryFactory.instance.homeEventBus,
+        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
         home: DiscoveryFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),
       );
 
   HomeConnectionLifecycleService makeHomeConnectionLifecycleService() =>
       HomeConnectionLifecycleService(
-        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
+        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
         home: DiscoveryFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),
       );

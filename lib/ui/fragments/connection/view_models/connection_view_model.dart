@@ -1,21 +1,20 @@
-import 'package:flutter/widgets.dart' show ChangeNotifier;
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
-    with ChangeNotifier {
+class ConnectionViewModel<S> {
+  final Stream<ConnectionEvent> eventSource;
   final HomeConnectionApi homeConnection;
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
   final HomeApi home;
 
   ConnectionViewModel({
-    required super.eventSource,
+    required this.eventSource,
     required this.homeConnection,
     required this.local,
     required this.cloud,
@@ -31,6 +30,20 @@ class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
 
   bool isCloudConnected(String id) =>
       cloud.getConnectionById(id).state == ConnectionState.connected;
+
+  ConnectionUI getConnectionState(String id) => (
+        isConnected: isConnected(id),
+        isLocalConnected: isLocalConnected(id),
+        isCloudConnected: isCloudConnected(id),
+      );
+
+  Stream<ConnectionUI> stream(String id) => eventSource
+      .where((event) =>
+          id == event.id &&
+          (event is ConnectSelectedEvent ||
+              event is ConnectCompletedEvent ||
+              event is DisconnectCompletedEvent))
+      .map((event) => getConnectionState(id));
 
   void Function(bool) toggleConnection(String id) =>
       (bool value) => home.getHomeById(id)?.let((it) {
@@ -58,21 +71,4 @@ class ConnectionViewModel<S> extends GenericEventListener<ConnectionEvent>
               homeConnection.disconnectCloud(id);
             }
           });
-
-  @override
-  void handle(ConnectionEvent event) {
-    switch (event) {
-      case ConnectSelectedEvent _:
-      case ConnectCompletedEvent _:
-      case DisconnectCompletedEvent _:
-        notifyListeners();
-      default:
-    }
-  }
-
-  @override
-  void dispose() {
-    cancelSubscription();
-    super.dispose();
-  }
 }

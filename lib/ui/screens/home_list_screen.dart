@@ -1,23 +1,33 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/fragments/home/widgets/home_add.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
+import 'package:reacthome/ui/fragments/home/widgets/home_go_to_add.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_list.dart';
-import 'package:reacthome/ui/layouts/full_width_layout.dart';
+import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class HomeListScreen extends StatelessWidget {
-  const HomeListScreen({super.key});
+  final HomeViewModel homeViewModel;
+  final HomeListViewModel homeListViewModel;
+
+  const HomeListScreen({
+    required this.homeViewModel,
+    required this.homeListViewModel,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return FullWidthLayout(
+    return FixedWidthLayout(
       title: locale.myHomes,
-      body: const Column(
+      body: Column(
         children: [
           HomeList(
-            ifEmpty: Text('There are no homes'),
+            homeViewModel,
+            homeListViewModel,
           ),
-          Expanded(child: HomeAdd()),
+          const HomeGoToAdd(),
         ],
       ),
     );

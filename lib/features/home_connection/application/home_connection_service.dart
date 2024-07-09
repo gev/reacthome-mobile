@@ -4,11 +4,11 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/features/home_connection/domain/home_connection_entity.dart';
-import 'package:reacthome/util/event_emitter.dart';
+import 'package:reacthome/util/bus_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository.dart';
 
-class HomeConnectionService<S> extends GenericEventEmitter<ConnectionEvent>
+class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
     implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;

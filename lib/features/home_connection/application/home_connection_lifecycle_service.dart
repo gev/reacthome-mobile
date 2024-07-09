@@ -1,10 +1,10 @@
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
 class HomeConnectionLifecycleService
-    extends GenericEventListener<AppLifecycleEvent> {
+    extends GenericBusListener<AppLifecycleEvent> {
   final HomeApi home;
   final HomeConnectionApi connection;
 

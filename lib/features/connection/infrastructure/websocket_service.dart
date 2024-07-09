@@ -2,10 +2,10 @@ import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
-import 'package:reacthome/util/event_listener.dart';
+import 'package:reacthome/util/bus_listener.dart';
 
 abstract class WebsocketService<F extends WebSocketFactory,
-    E extends ConnectionEvent> extends GenericEventListener<ConnectionEvent> {
+    E extends ConnectionEvent> extends GenericBusListener<ConnectionEvent> {
   final ConnectionApi<WebSocket> actor;
   final F factory;
 

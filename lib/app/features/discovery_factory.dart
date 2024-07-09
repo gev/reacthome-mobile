@@ -13,7 +13,7 @@ import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/event_bus.dart';
+import 'package:reacthome/util/bus.dart';
 import 'package:reacthome/util/repository.dart';
 
 class DiscoveryFactory {
@@ -25,23 +25,23 @@ class DiscoveryFactory {
 
   final _process = DiscoveryEntity<MulticastSource>();
 
-  final homeEventBus = GenericEventBus<HomeEvent>();
+  final homeEventBus = Bus<HomeEvent>();
 
-  final discoveryEventBus = GenericEventBus<DiscoveryEvent>();
+  final discoveryEventBus = Bus<DiscoveryEvent>();
 
   HomeService makeHomeService() => HomeService(
-        eventSink: homeEventBus,
+        eventSink: homeEventBus.sink,
         repository: _repository,
       );
 
   DiscoveryService<MulticastSource> makeDiscoveryService() => DiscoveryService(
-        eventSink: discoveryEventBus,
+        eventSink: discoveryEventBus.sink,
         process: _process,
       );
 
   DiscoveryMulticastService makeDiscoveryMulticastService() =>
       DiscoveryMulticastService(
-        eventSource: discoveryEventBus,
+        eventSource: discoveryEventBus.stream,
         actor: makeDiscoveryService(),
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
@@ -54,14 +54,14 @@ class DiscoveryFactory {
 
   DiscoveryTimeoutService makeDiscoveryTimeoutService() =>
       DiscoveryTimeoutService(
-        eventSource: homeEventBus,
+        eventSource: homeEventBus.stream,
         actor: makeHomeService(),
         timeout: Config.discovery.timeout,
       );
 
   DiscoveryLifecycleService makeDiscoveryLifecycleService() =>
       DiscoveryLifecycleService(
-        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus,
+        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
         actor: makeDiscoveryService(),
       );
 }

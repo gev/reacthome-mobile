@@ -1,35 +1,43 @@
 import 'package:flutter/widgets.dart';
-import 'package:provider/provider.dart';
-import 'package:reacthome/ui/dto.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_home_view_model.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
-import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
+import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
-  const DiscoveryHomeTile({super.key, required this.id});
+  final DiscoveryViewModel discoveryViewModel;
+  final HomeViewModel homeViewModel;
+  final void Function() onTap;
+
+  const DiscoveryHomeTile(
+    this.id,
+    this.discoveryViewModel,
+    this.homeViewModel, {
+    required this.onTap,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final model = context.read<DiscoveryHomeViewModel>();
-    final home = context.select<DiscoveryHomeViewModel, HomeUI>(
-      (model) => model.getHome(id),
-    );
-
-    return list.tile(
-      title: Text(home.meta.title),
-      subtitle: Text(
-        id,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-      leading: Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
-      onTap: () => model.onHomeTileTap(
-        id,
-        DiscoveryHomeAddConfirm(id),
-        const DiscoveryHomeAddAlert(),
-      ),
+    final locale = AppLocalizations.of(context)!;
+    return StreamBuilder(
+      stream: homeViewModel.stream(id, locale),
+      initialData: homeViewModel.getHome(id, locale),
+      builder: (context, snapshot) {
+        final home = snapshot.data!;
+        return list.tile(
+          title: Text(home.meta.title),
+          subtitle: Text(
+            id,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          leading:
+              Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
+          onTap: onTap,
+        );
+      },
     );
   }
 }

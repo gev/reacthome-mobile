@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 class NavigationRouteNames {
-  static const home = '/';
-  static const splash = 'splash';
+  static const home = 'home';
+  static const splash = '/';
   static const welcome = 'welcome';
   static const discovery = 'discovery';
   static const addHome = 'addHome';

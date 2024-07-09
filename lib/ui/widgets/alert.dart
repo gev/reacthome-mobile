@@ -13,7 +13,7 @@ Widget alert(
       actions: [
         dialog.action(
           label: actionLabel,
-          onPressed: () => Navigator.pop(context, false),
+          onPressed: () => Navigator.of(context).pop(false),
         ),
       ],
     );

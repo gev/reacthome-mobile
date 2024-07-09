@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/meta.dart';
@@ -6,20 +5,20 @@ import 'package:reacthome/core/meta.dart';
 class MetaUI {
   final String? _code;
   final String? _title;
-  final BuildContext _context;
+  final AppLocalizations _locale;
 
-  final String Function(BuildContext) defaultName;
+  final String Function(AppLocalizations) defaultName;
 
   MetaUI(
-    this._context,
+    this._locale,
     Meta meta, {
     required this.defaultName,
   })  : _code = meta.code,
         _title = meta.title;
 
-  String get code => _code ?? AppLocalizations.of(_context)!.code;
+  String get code => _code ?? _locale.code;
 
-  String get title => _title ?? AppLocalizations.of(_context)!.title;
+  String get title => _title ?? _locale.title;
 
   String get name {
     if (_title != null) {
@@ -28,7 +27,7 @@ class MetaUI {
     if (_code != null) {
       return _code!;
     }
-    return defaultName(_context);
+    return defaultName(_locale);
   }
 
   String get fullName {
@@ -39,39 +38,47 @@ class MetaUI {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (other is MetaUI) {
-      return _code == other._code && _title == other._title;
-    }
-    return false;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MetaUI &&
+          runtimeType == other.runtimeType &&
+          _code == other._code &&
+          _title == other._title;
 
   @override
-  int get hashCode => _code.hashCode ^ _title.hashCode;
+  int get hashCode => Object.hash(_code, _title);
 }
 
 class HomeUI {
   final MetaUI meta;
   final bool hasProject;
+  final String? address;
 
   HomeUI(
-    BuildContext context, {
+    AppLocalizations locale, {
     Home? home,
   })  : meta = MetaUI(
-          context,
+          locale,
           home?.meta ?? Meta(),
-          defaultName: (context) => AppLocalizations.of(context)!.unknownHome,
+          defaultName: (context) => locale.unknownHome,
         ),
-        hasProject = home?.project != null;
+        hasProject = home?.project != null,
+        address = home?.address?.address;
 
   @override
-  bool operator ==(Object other) {
-    if (other is HomeUI) {
-      return meta == other.meta && hasProject == other.hasProject;
-    }
-    return false;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is HomeUI &&
+          runtimeType == other.runtimeType &&
+          meta == other.meta &&
+          hasProject == other.hasProject;
 
   @override
-  int get hashCode => meta.hashCode ^ hasProject.hashCode;
+  int get hashCode => Object.hash(meta, hasProject);
 }
+
+typedef ConnectionUI = ({
+  bool isConnected,
+  bool isLocalConnected,
+  bool isCloudConnected,
+});
