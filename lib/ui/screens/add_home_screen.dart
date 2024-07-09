@@ -11,7 +11,7 @@ class AddHomeScreen extends StatelessWidget {
     final locale = AppLocalizations.of(context)!;
     return FixedWidthLayout(
       title: locale.addTheHomeID,
-      body: AddHome(),
+      body: const AddHome(),
     );
   }
 }
