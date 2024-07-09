@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
+import 'package:reacthome/ui/fragments/home/widgets/home_go_to_list.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_props.dart';
 import 'package:reacthome/ui/fragments/meta/widgets/meta_props.dart';
-import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,18 +27,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               MetaProps(arguments.id, home.meta),
               HomeProps(home),
-              list.section(
-                context,
-                children: [
-                  list.tile(
-                    title: Text(locale.myHomes),
-                    trailing: list.chevron(),
-                    onTap: () => Navigator.of(context).pushNamed(
-                      NavigationRouteNames.homeList,
-                    ),
-                  ),
-                ],
-              ),
+              const HomeGoToList(),
             ],
           ),
         );
