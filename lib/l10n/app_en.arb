@@ -16,12 +16,17 @@
   "discovery": "Auto discovery",
   "discovered": "Discovered",
 
+  "myHomes" : "My homes",
   "addAHome" : "Add a home",
   "addTheHomeID": "Add the home ID",
   "theHomeID": "The home ID",
   "doYouWantToAddThisHome": "Do you want to add this home?",
   "doYouWantToRemoveThisHome": "Do you want to remove this home?",
   "cantAddTheHome": "Can't add the home",
+
+  "connection" : "Connection",
+  "localConnection" : "Local connection",
+  "cloudConnection" : "Cloud connection",
 
   "myHomes": "My homes",
   

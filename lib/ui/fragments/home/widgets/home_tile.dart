@@ -31,7 +31,7 @@ class HomeTile extends StatelessWidget {
             trailing: list.chevron(),
             onTap: () => Navigator.of(context).clearNamed(
               NavigationRouteNames.home,
-              arguments: (home: id),
+              arguments: (id: id),
             ),
           );
         });

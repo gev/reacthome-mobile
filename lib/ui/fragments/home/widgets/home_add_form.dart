@@ -36,7 +36,7 @@ class _HomeAddFormState extends State<HomeAddForm> {
             label: locale.add,
             onPressed: () => Navigator.of(context).clearNamed(
               NavigationRouteNames.home,
-              arguments: (home: _id.text),
+              arguments: (id: _id.text),
             ),
           ),
         ),

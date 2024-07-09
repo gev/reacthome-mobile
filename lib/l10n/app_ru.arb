@@ -16,12 +16,17 @@
   "discovery": "Авто-обнаружение",
   "discovered": "Найдено",
 
+  "myHomes" : "Мои дома",
   "addAHome" : "Добавить дом",
   "addTheHomeID": "Добавить ID дома",
   "theHomeID": "ID дома",
   "doYouWantToAddThisHome": "Желаете добавить этот дом?",
   "doYouWantToRemoveThisHome": "Желаете удалить этот дом?",
   "cantAddTheHome": "Не могу добавить дом",
+
+  "connection" : "Подключение",
+  "localConnection" : "Локальное подключение",
+  "cloudConnection" : "Облачное подключение",
 
   "myHomes": "Мои дома",
   "unknownHome": "Неизвестный дом"

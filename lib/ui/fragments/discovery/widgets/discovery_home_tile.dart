@@ -31,7 +31,7 @@ class DiscoveryHomeTile extends StatelessWidget {
         if (context.mounted) {
           Navigator.of(context).clearNamed(
             NavigationRouteNames.home,
-            arguments: (home: id),
+            arguments: (id: id),
           );
         }
       } else {

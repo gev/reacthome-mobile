@@ -52,6 +52,7 @@ class MetaUI {
 class HomeUI {
   final MetaUI meta;
   final bool hasProject;
+  final String? address;
 
   HomeUI(
     AppLocalizations locale, {
@@ -61,7 +62,8 @@ class HomeUI {
           home?.meta ?? Meta(),
           defaultName: (context) => locale.unknownHome,
         ),
-        hasProject = home?.project != null;
+        hasProject = home?.project != null,
+        address = home?.address?.address;
 
   @override
   bool operator ==(Object other) =>
