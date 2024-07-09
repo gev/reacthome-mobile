@@ -21,7 +21,7 @@ class DiscoveryViewModel {
   Stream<bool> get stream =>
       eventSource.map((event) => event is DiscoveryStartCompletedEvent);
 
-  void onDiscoverySwitchTap(bool value) {
+  void toggleDiscovery(bool value) {
     if (value) {
       discovery.start();
     } else {

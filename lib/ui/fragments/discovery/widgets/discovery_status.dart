@@ -19,7 +19,7 @@ class DiscoveryStatus extends StatelessWidget {
         initialData: viewModel.initialState,
         builder: (context, snapshot) => switcher(
           value: snapshot.data!,
-          onChanged: viewModel.onDiscoverySwitchTap,
+          onChanged: viewModel.toggleDiscovery,
         ),
       ),
     );
