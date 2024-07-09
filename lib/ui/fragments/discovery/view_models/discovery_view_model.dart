@@ -29,7 +29,7 @@ class DiscoveryViewModel {
     }
   }
 
-  bool addHome(String id) {
+  bool tryAddHome(String id) {
     final home = discoveredHome.getHomeById(id);
     if (home == null) {
       return false;

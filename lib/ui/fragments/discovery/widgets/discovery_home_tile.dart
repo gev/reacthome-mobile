@@ -27,7 +27,7 @@ class DiscoveryHomeTile extends StatelessWidget {
       builder: (_) => DiscoveryHomeAddConfirm(id, homeViewModel),
     );
     if (confirmed == true) {
-      if (discoveryViewModel.addHome(id)) {
+      if (discoveryViewModel.tryAddHome(id)) {
         if (context.mounted) {
           Navigator.of(context).clearNamed(
             NavigationRouteNames.home,
