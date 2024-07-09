@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_props.dart';
+import 'package:reacthome/ui/fragments/meta/widgets/meta_props.dart';
 import 'package:reacthome/ui/kit/kit.dart';
 import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
@@ -25,7 +26,8 @@ class HomeScreen extends StatelessWidget {
           title: home.meta.name,
           body: Column(
             children: [
-              HomeProps(arguments.id, home),
+              MetaProps(arguments.id, home.meta),
+              HomeProps(home),
               list.section(
                 context,
                 children: [
