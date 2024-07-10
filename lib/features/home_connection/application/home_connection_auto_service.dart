@@ -19,6 +19,8 @@ class HomeConnectionAutoService extends GenericBusListener<HomeEvent> {
     switch (event) {
       case HomeAddedEvent e:
         home.getHomeById(e.home)?.let(connection.connect);
+      case HomeRemovedEvent e:
+        connection.disconnect(e.home);
       default:
     }
   }
