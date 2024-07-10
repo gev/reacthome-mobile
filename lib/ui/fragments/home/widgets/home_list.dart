@@ -18,7 +18,7 @@ class HomeList extends StatelessWidget {
       builder: (context, snapshot) {
         final homes = snapshot.data!;
         return homes.isEmpty
-            ? const Text('There are no homes')
+            ? const SizedBox()
             : list.section(
                 context,
                 children: homes

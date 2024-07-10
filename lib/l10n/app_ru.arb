@@ -7,6 +7,7 @@
   "cancel": "Отмена",
 
   "add": "Добавить",
+  "remove": "Удалить",
 
   "welcome": "Добро пожаловать!",
 
@@ -18,6 +19,7 @@
 
   "myHomes" : "Мои дома",
   "addAHome" : "Добавить дом",
+  "removeThisHome" : "Удалить дом",
   "addTheHomeID": "Добавить ID дома",
   "theHomeID": "ID дома",
   "doYouWantToAddThisHome": "Желаете добавить этот дом?",

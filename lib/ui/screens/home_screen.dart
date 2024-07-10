@@ -4,6 +4,7 @@ import 'package:reacthome/ui/fragments/connection/view_models/connection_view_mo
 import 'package:reacthome/ui/fragments/connection/widgets/connections.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_go_to_list.dart';
+import 'package:reacthome/ui/fragments/home/widgets/home_remove.dart';
 import 'package:reacthome/ui/fragments/meta/widgets/meta_props.dart';
 import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
@@ -37,6 +38,7 @@ class HomeScreen extends StatelessWidget {
                 home.address,
                 connectionViewModel,
               ),
+              HomeRemove(arguments.id, homeViewModel),
               const HomeGoToList(),
             ],
           ),

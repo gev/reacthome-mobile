@@ -5,6 +5,7 @@ Widget confirm(
   BuildContext context, {
   Widget? title,
   Widget? content,
+  bool isDestructive = false,
   required String confirmLabel,
   required String cancelLabel,
 }) =>
@@ -18,6 +19,7 @@ Widget confirm(
         ),
         dialog.action(
           label: confirmLabel,
+          isDestructiveAction: isDestructive,
           onPressed: () => Navigator.of(context).pop(true),
         ),
       ],

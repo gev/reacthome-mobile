@@ -46,9 +46,10 @@ const cupertino = KitContainer(
   divider: DividerCupertino.make,
   icon: IconContainer(
     add: CupertinoIcons.add,
-    wifi: CupertinoIcons.wifi,
+    delete: CupertinoIcons.delete,
     search: CupertinoIcons.search,
     settings: CupertinoIcons.settings,
+    wifi: CupertinoIcons.wifi,
     home: (
       filled: CupertinoIcons.house_fill,
       outlined: CupertinoIcons.house,

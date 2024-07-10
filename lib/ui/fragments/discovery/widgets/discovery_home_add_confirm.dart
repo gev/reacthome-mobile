@@ -19,8 +19,8 @@ class DiscoveryHomeAddConfirm extends StatelessWidget {
           final home = snapshot.data!;
           return confirm(
             context,
-            title: Text(locale.doYouWantToAddThisHome),
-            content: Text(home.meta.fullName),
+            title: Text(home.meta.fullName),
+            content: Text(locale.doYouWantToAddThisHome),
             cancelLabel: locale.cancel,
             confirmLabel: locale.add,
           );

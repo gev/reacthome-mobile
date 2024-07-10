@@ -8,6 +8,7 @@ typedef IconKind = ({
 
 class IconContainer {
   final IconData add;
+  final IconData delete;
   final IconData search;
   final IconData settings;
   final IconData wifi;
@@ -15,6 +16,7 @@ class IconContainer {
 
   const IconContainer({
     required this.add,
+    required this.delete,
     required this.search,
     required this.settings,
     required this.wifi,

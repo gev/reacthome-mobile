@@ -46,6 +46,7 @@ const material = KitContainer(
   divider: DividerMaterial.make,
   icon: IconContainer(
     add: Icons.add,
+    delete: Icons.delete,
     wifi: Icons.wifi,
     search: Icons.search,
     settings: Icons.settings,

@@ -28,4 +28,6 @@ class HomeViewModel {
         id: id,
         meta: Meta(),
       );
+
+  void removeHome(String id) => home.removeHome(id: id);
 }
