@@ -6,12 +6,12 @@ import 'package:reacthome/util/bus_listener.dart';
 
 abstract class WebsocketService<F extends WebSocketFactory,
     E extends ConnectionEvent> extends GenericBusListener<ConnectionEvent> {
-  final ConnectionApi<WebSocket> actor;
+  final ConnectionApi<WebSocket> connection;
   final F factory;
 
   WebsocketService({
     required super.eventSource,
-    required this.actor,
+    required this.connection,
     required this.factory,
   });
 
@@ -33,9 +33,9 @@ abstract class WebsocketService<F extends WebSocketFactory,
   void _completeConnect(E event) async {
     try {
       final socket = await _create(event);
-      actor.completeConnect(event.id, socket);
+      connection.completeConnect(event.id, socket);
     } catch (e) {
-      actor.fail(event.id);
+      connection.fail(event.id);
     }
   }
 
@@ -45,7 +45,7 @@ abstract class WebsocketService<F extends WebSocketFactory,
 
   void _completeDisconnect(DisconnectRequestedEvent<WebSocket> event) {
     event.socket.close();
-    actor.completeDisconnect(event.id);
+    connection.completeDisconnect(event.id);
   }
 }
 
@@ -53,14 +53,14 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
     LocalConnectRequestedEvent> {
   LocalWebsocketService({
     required super.eventSource,
-    required super.actor,
+    required super.connection,
     required super.factory,
   });
 
   @override
   Future<WebSocket> _create(LocalConnectRequestedEvent event) => factory.create(
         address: event.address,
-        onClose: () => actor.disconnect(event.id),
+        onClose: () => connection.disconnect(event.id),
       );
 }
 
@@ -68,13 +68,13 @@ class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
     CloudConnectRequestedEvent> {
   CloudWebsocketService({
     required super.eventSource,
-    required super.actor,
+    required super.connection,
     required super.factory,
   });
 
   @override
   Future<WebSocket> _create(CloudConnectRequestedEvent event) => factory.create(
         id: event.id,
-        onClose: () => actor.disconnect(event.id),
+        onClose: () => connection.disconnect(event.id),
       );
 }

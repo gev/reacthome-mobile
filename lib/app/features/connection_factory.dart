@@ -39,7 +39,7 @@ class ConnectionFactory {
 
   LocalWebsocketService makeLocalWebsocketService() => LocalWebsocketService(
         eventSource: connectionEventBus.stream,
-        actor: makeLocalConnectionService(),
+        connection: makeLocalConnectionService(),
         factory: LocalWebSocketFactory(
           config: Config.connection.local,
           controller: ConnectionController(),
@@ -48,7 +48,7 @@ class ConnectionFactory {
 
   CloudWebsocketService makeCloudWebsocketService() => CloudWebsocketService(
         eventSource: connectionEventBus.stream,
-        actor: makeCloudConnectionService(),
+        connection: makeCloudConnectionService(),
         factory: CloudWebSocketFactory(
           config: Config.connection.cloud,
           controller: ConnectionController(),
