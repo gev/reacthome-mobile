@@ -61,6 +61,7 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
   Future<WebSocket> _create(LocalConnectRequestedEvent event) => factory.create(
         address: event.address,
         onClose: () => connection.disconnect(event.id),
+        onError: (_) => connection.disconnect(event.id),
       );
 }
 
@@ -76,5 +77,6 @@ class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
   Future<WebSocket> _create(CloudConnectRequestedEvent event) => factory.create(
         id: event.id,
         onClose: () => connection.disconnect(event.id),
+        onError: (_) => connection.disconnect(event.id),
       );
 }
