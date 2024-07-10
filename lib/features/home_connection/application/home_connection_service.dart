@@ -32,21 +32,31 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
 
   @override
   void connect(Home home) {
-    connectLocal(home);
-    connectCloud(home);
+    _connectLocal(home);
+    _connectCloud(home);
   }
 
-  @override
-  void connectLocal(Home home) {
+  void _connectLocal(Home home) {
     final address = home.address;
     if (address != null) {
       local.connect(home.id, address);
     }
   }
 
+  void _connectCloud(Home home) {
+    cloud.connect(home.id);
+  }
+
+  @override
+  void connectLocal(Home home) {
+    disconnectCloud(home.id);
+    _connectLocal(home);
+  }
+
   @override
   void connectCloud(Home home) {
-    cloud.connect(home.id);
+    disconnectLocal(home.id);
+    _connectCloud(home);
   }
 
   @override
