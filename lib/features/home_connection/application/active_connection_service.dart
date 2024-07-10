@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
@@ -29,11 +31,16 @@ class ActiveConnectionService extends GenericBusListener<ConnectionEvent> {
   }
 
   void _deactivateConnection(String id, ConnectionType type) {
-    switch (type) {
-      case ConnectionType.local:
-        connection.disconnectCloud(id);
-      case ConnectionType.cloud:
-        connection.disconnectLocal(id);
-    }
+    Timer(
+      const Duration(seconds: 1),
+      () {
+        switch (type) {
+          case ConnectionType.local:
+            connection.disconnectCloud(id);
+          case ConnectionType.cloud:
+            connection.disconnectLocal(id);
+        }
+      },
+    );
   }
 }

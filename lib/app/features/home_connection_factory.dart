@@ -14,7 +14,7 @@ class HomeConnectionFactory {
 
   HomeConnectionFactory._();
 
-  final _repository = MapRepository<String, HomeConnectionEntity>();
+  final _repository = MapRepository<String, HomeConnectionEntity<WebSocket>>();
 
   HomeConnectionService<WebSocket> makeHomeConnectionService() {
     final localConnectionService =
@@ -23,7 +23,7 @@ class HomeConnectionFactory {
     final cloudConnectionService =
         ConnectionFactory.instance.makeCloudConnectionService();
 
-    return HomeConnectionService(
+    return HomeConnectionService<WebSocket>(
       eventSink: ConnectionFactory.instance.connectionEventBus.sink,
       local: localConnectionService,
       cloud: cloudConnectionService,

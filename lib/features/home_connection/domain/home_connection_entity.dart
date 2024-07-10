@@ -3,9 +3,9 @@ import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 
-class HomeConnectionEntity implements HomeConnection {
+class HomeConnectionEntity<S> implements HomeConnection<S> {
   final String _id;
-  Connection? _connection;
+  Connection<S>? _connection;
 
   HomeConnectionEntity(this._id);
 
@@ -13,9 +13,9 @@ class HomeConnectionEntity implements HomeConnection {
   String get id => _id;
 
   @override
-  Connection? get connection => _connection;
+  Connection<S>? get connection => _connection;
 
-  ConnectionEvent? select(Connection local, Connection cloud) {
+  ConnectionEvent? select(Connection<S> local, Connection<S> cloud) {
     if (local.state == ConnectionState.connected) {
       _connection = local;
       return ConnectSelectedEvent(_id, local.type);

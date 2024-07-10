@@ -12,7 +12,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
     implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
-  final Repository<String, HomeConnectionEntity> repository;
+  final Repository<String, HomeConnectionEntity<S>> repository;
 
   HomeConnectionService({
     required super.eventSink,
@@ -25,38 +25,32 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   Iterable<String> getAllConnections() => repository.getAll();
 
   @override
-  HomeConnection getConnectionById(String id) => _getConnectionById(id);
+  HomeConnection<S> getConnectionById(String id) => _getConnectionById(id);
 
   @override
   void connectAll(Iterable<Home> homes) => homes.forEach(connect);
 
   @override
   void connect(Home home) {
-    _connectLocal(home);
-    _connectCloud(home);
+    // final connection = getConnectionById(home.id).connection;
+    // switch (connection.type) {
+    //   c
+    // }
+    connectLocal(home);
+    connectCloud(home);
   }
 
-  void _connectLocal(Home home) {
+  @override
+  void connectLocal(Home home) {
     final address = home.address;
     if (address != null) {
       local.connect(home.id, address);
     }
   }
 
-  void _connectCloud(Home home) {
-    cloud.connect(home.id);
-  }
-
-  @override
-  void connectLocal(Home home) {
-    disconnectCloud(home.id);
-    _connectLocal(home);
-  }
-
   @override
   void connectCloud(Home home) {
-    disconnectLocal(home.id);
-    _connectCloud(home);
+    cloud.connect(home.id);
   }
 
   @override
@@ -86,10 +80,10 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
       )
       ?.let(emit);
 
-  HomeConnectionEntity _getConnectionById(String id) {
+  HomeConnectionEntity<S> _getConnectionById(String id) {
     var connection = repository.get(id);
     if (connection == null) {
-      connection = HomeConnectionEntity(id);
+      connection = HomeConnectionEntity<S>(id);
       repository.add(connection);
     }
     return connection;

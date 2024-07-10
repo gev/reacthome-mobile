@@ -21,7 +21,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
   Iterable<String> getAllConnections() => repository.getAll();
 
   @override
-  Connection getConnectionById(String id) => _getById(id);
+  Connection<S> getConnectionById(String id) => _getById(id);
 
   @override
   void completeConnect(String id, S socket) =>

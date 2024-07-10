@@ -4,7 +4,7 @@ import 'package:reacthome/core/connection/connection.dart';
 
 abstract interface class ConnectionApi<S> {
   Iterable<String> getAllConnections();
-  Connection getConnectionById(String id);
+  Connection<S> getConnectionById(String id);
 
   void completeConnect(String id, S socket);
   void disconnect(String id);
