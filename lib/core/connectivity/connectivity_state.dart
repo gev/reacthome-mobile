@@ -1,5 +1,4 @@
 class ConnectivityState {
-  final bool isConnected;
   final bool hasBluetooth;
   final bool hasWifi;
   final bool hasEthernet;
@@ -8,7 +7,6 @@ class ConnectivityState {
   final bool hasOther;
 
   ConnectivityState({
-    this.isConnected = false,
     this.hasBluetooth = false,
     this.hasWifi = false,
     this.hasEthernet = false,
@@ -21,7 +19,6 @@ class ConnectivityState {
   operator ==(Object other) =>
       identical(this, other) ||
       other is ConnectivityState &&
-          isConnected == other.isConnected &&
           runtimeType == other.runtimeType &&
           hasBluetooth == other.hasBluetooth &&
           hasWifi == other.hasWifi &&
@@ -32,7 +29,6 @@ class ConnectivityState {
 
   @override
   int get hashCode => Object.hash(
-        isConnected,
         hasBluetooth,
         hasWifi,
         hasEthernet,
