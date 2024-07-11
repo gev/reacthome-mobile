@@ -10,7 +10,7 @@ class HomeListViewModel {
     required this.home,
   });
 
-  Iterable<String> get homes => home.getAllHomes();
+  Iterable<String> get homes => home.getAllHomesId();
 
   Stream<Iterable<String>> get stream => eventSource
       .where((event) => event is HomeAddedEvent || event is HomeRemovedEvent)

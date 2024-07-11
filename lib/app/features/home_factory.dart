@@ -1,3 +1,4 @@
+import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
@@ -13,7 +14,7 @@ class HomeFactory {
 
   final homeEventBus = Bus<HomeEvent>();
 
-  HomeService makeHomeService() => HomeService(
+  HomeApi makeHomeService() => HomeService(
         eventSink: homeEventBus.sink,
         repository: _repository,
       );

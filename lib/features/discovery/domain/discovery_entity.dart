@@ -32,6 +32,9 @@ class DiscoveryEntity<S> implements Discovery {
 
   DiscoveryEvent? stop() {
     switch (_state) {
+      case DiscoveryState.starPending:
+        _state = DiscoveryState.stopped;
+        return DiscoveryStopCompletedEvent();
       case DiscoveryState.running:
         _state = DiscoveryState.stopPending;
         return DiscoveryStopRequestedEvent<S>(_source);

@@ -4,7 +4,7 @@ import 'package:reacthome/util/bus_emitter.dart';
 
 class AppLifecycleService extends GenericBusEmitter<AppLifecycleEvent>
     implements AppLifecycleApi {
-  AppLifecycleService({required super.eventSink});
+  const AppLifecycleService({required super.eventSink});
 
   @override
   void makeActive() => emit(AppLifecycleEvent.active);

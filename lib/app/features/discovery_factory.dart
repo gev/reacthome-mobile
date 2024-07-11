@@ -1,9 +1,13 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
+import 'package:reacthome/app/features/connectivity_factory.dart';
 import 'package:reacthome/app/features/home_connection_factory.dart';
 import 'package:reacthome/app/features/home_factory.dart';
+import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
+import 'package:reacthome/features/discovery/application/discovery_connectivity_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_lifecycle_service.dart';
 import 'package:reacthome/features/discovery/application/discovery_service.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
@@ -30,12 +34,12 @@ class DiscoveryFactory {
 
   final discoveryEventBus = Bus<DiscoveryEvent>();
 
-  HomeService makeHomeService() => HomeService(
+  HomeApi makeHomeService() => HomeService(
         eventSink: homeEventBus.sink,
         repository: _repository,
       );
 
-  DiscoveryService<MulticastSource> makeDiscoveryService() => DiscoveryService(
+  DiscoveryApi<MulticastSource> makeDiscoveryService() => DiscoveryService(
         eventSink: discoveryEventBus.sink,
         process: _process,
       );
@@ -43,7 +47,8 @@ class DiscoveryFactory {
   DiscoveryMulticastService makeDiscoveryMulticastService() =>
       DiscoveryMulticastService(
         eventSource: discoveryEventBus.stream,
-        actor: makeDiscoveryService(),
+        discovery: makeDiscoveryService(),
+        connectivity: ConnectivityFactory.instance.makeConnectivityService(),
         factory: MulticastSourceFactory(
           config: Config.discovery.listen,
           controller: DiscoveryController(
@@ -65,6 +70,12 @@ class DiscoveryFactory {
   DiscoveryLifecycleService makeDiscoveryLifecycleService() =>
       DiscoveryLifecycleService(
         eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
-        actor: makeDiscoveryService(),
+        discovery: makeDiscoveryService(),
+      );
+
+  DiscoveryConnectivityService makeDiscoveryConnectivityService() =>
+      DiscoveryConnectivityService(
+        eventSource: ConnectivityFactory.instance.connectivityEventBus.stream,
+        discovery: makeDiscoveryService(),
       );
 }

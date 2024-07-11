@@ -18,8 +18,7 @@ class HomeConnectionLifecycleService
   void handle(AppLifecycleEvent event) {
     switch (event) {
       case AppLifecycleEvent.active:
-        connection
-            .connectAll(home.getAllHomes().map((id) => home.getHomeById(id)!));
+        connection.connectAll(home.getAllHomes());
       case AppLifecycleEvent.inactive:
         connection.disconnectAll();
     }

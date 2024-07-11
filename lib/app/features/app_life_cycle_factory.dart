@@ -1,3 +1,4 @@
+import 'package:reacthome/core/app_lifecycle/app_lifecycle_api.dart';
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
 import 'package:reacthome/features/app_lifecycle/application/app_lifecycle_service.dart';
 import 'package:reacthome/util/bus.dart';
@@ -9,7 +10,7 @@ class AppLifecycleFactory {
 
   final appLifecycleEventBus = Bus<AppLifecycleEvent>();
 
-  AppLifecycleService makeAppLifecycleService() => AppLifecycleService(
+  AppLifecycleApi makeAppLifecycleService() => AppLifecycleService(
         eventSink: appLifecycleEventBus.sink,
       );
 }

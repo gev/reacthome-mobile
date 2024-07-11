@@ -1,4 +1,5 @@
 class ConnectivityState {
+  final bool isConnected;
   final bool hasBluetooth;
   final bool hasWifi;
   final bool hasEthernet;
@@ -7,12 +8,13 @@ class ConnectivityState {
   final bool hasOther;
 
   ConnectivityState({
-    required this.hasBluetooth,
-    required this.hasWifi,
-    required this.hasEthernet,
-    required this.hasMobile,
-    required this.hasVpn,
-    required this.hasOther,
+    this.isConnected = false,
+    this.hasBluetooth = false,
+    this.hasWifi = false,
+    this.hasEthernet = false,
+    this.hasMobile = false,
+    this.hasVpn = false,
+    this.hasOther = false,
   });
 
   @override

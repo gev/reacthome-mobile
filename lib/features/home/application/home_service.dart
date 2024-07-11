@@ -11,13 +11,16 @@ import 'package:reacthome/util/repository.dart';
 class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
   final Repository<String, HomeEntity> repository;
 
-  HomeService({
+  const HomeService({
     required super.eventSink,
     required this.repository,
   });
 
   @override
-  Iterable<String> getAllHomes() => repository.getAll();
+  Iterable<String> getAllHomesId() => repository.getAllId();
+
+  @override
+  Iterable<Home> getAllHomes() => repository.getAll();
 
   @override
   Home? getHomeById(String id) => repository.get(id);

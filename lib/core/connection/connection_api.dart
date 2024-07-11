@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:reacthome/core/connection/connection.dart';
 
 abstract interface class ConnectionApi<S> {
-  Iterable<String> getAllConnections();
+  Iterable<String> getAllConnectionsId();
+
+  Iterable<Connection<S>> getAllConnections();
+
   Connection<S> getConnectionById(String id);
 
   void completeConnect(String id, S socket);

@@ -2,7 +2,8 @@ import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:reacthome/util/entity.dart';
 
 abstract interface class Repository<K, V extends Entity<K>> {
-  Iterable<K> getAll();
+  Iterable<K> getAllId();
+  Iterable<V> getAll();
   bool has(K id);
   V? get(K id);
   void add(V home);
@@ -14,7 +15,10 @@ class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
   final Map<K, V> _store = {};
 
   @override
-  Iterable<K> getAll() => _store.keys;
+  Iterable<K> getAllId() => _store.keys;
+
+  @override
+  Iterable<V> getAll() => _store.values;
 
   @override
   bool has(K id) => _store.containsKey(id);
@@ -37,7 +41,10 @@ class ImmutableMapRepository<K, V extends Entity<K>>
   IMap<K, V> _store = IMap();
 
   @override
-  Iterable<K> getAll() => _store.keys;
+  Iterable<K> getAllId() => _store.keys;
+
+  @override
+  Iterable<V> getAll() => _store.values;
 
   @override
   bool has(K id) => _store.containsKey(id);

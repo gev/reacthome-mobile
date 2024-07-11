@@ -10,7 +10,7 @@ class DiscoveryService<S> extends GenericBusEmitter<DiscoveryEvent>
     implements DiscoveryApi<S> {
   final DiscoveryEntity<S> _process;
 
-  DiscoveryService({
+  const DiscoveryService({
     required super.eventSink,
     required DiscoveryEntity<S> process,
   }) : _process = process;

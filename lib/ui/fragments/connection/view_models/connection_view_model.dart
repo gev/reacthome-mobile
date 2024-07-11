@@ -43,7 +43,8 @@ class ConnectionViewModel<S> {
           (event is ConnectSelectedEvent ||
               event is ConnectCompletedEvent ||
               event is DisconnectCompletedEvent))
-      .map((event) => getConnectionState(id));
+      .map((event) => getConnectionState(id))
+      .distinct();
 
   void Function(bool) toggleConnection(String id) =>
       (bool value) => home.getHomeById(id)?.let((it) {

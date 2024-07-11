@@ -5,7 +5,7 @@ abstract interface class BusEmitter<T> {
 abstract class GenericBusEmitter<T> implements BusEmitter<T> {
   final Sink<T> eventSink;
 
-  GenericBusEmitter({required this.eventSink});
+  const GenericBusEmitter({required this.eventSink});
 
   @override
   void emit(T event) => eventSink.add(event);

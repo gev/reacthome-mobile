@@ -16,7 +16,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   final CloudConnectionApi<S> cloud;
   final Repository<String, HomeConnectionEntity<S>> repository;
 
-  HomeConnectionService({
+  const HomeConnectionService({
     required super.eventSink,
     required this.local,
     required this.cloud,
@@ -24,7 +24,10 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   });
 
   @override
-  Iterable<String> getAllConnections() => repository.getAll();
+  Iterable<String> getAllConnectionsId() => repository.getAllId();
+
+  @override
+  Iterable<HomeConnection<S>> getAllConnections() => repository.getAll();
 
   @override
   HomeConnection<S> getConnectionById(String id) => _getConnectionById(id);
@@ -39,12 +42,18 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   }
 
   @override
+  void connectLocalAll(Iterable<Home> homes) => homes.forEach(connectLocal);
+
+  @override
   void connectLocal(Home home) {
     final address = home.address;
     if (address != null) {
       local.connect(home.id, address);
     }
   }
+
+  @override
+  void connectCloudAll(Iterable<Home> homes) => homes.forEach(connectCloud);
 
   @override
   void connectCloud(Home home) {
@@ -57,7 +66,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   }
 
   @override
-  void disconnectAll() => getAllConnections().forEach(disconnect);
+  void disconnectAll() => getAllConnectionsId().forEach(disconnect);
 
   @override
   void disconnect(String id) {
@@ -66,9 +75,15 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
   }
 
   @override
+  void disconnectLocalAll() => getAllConnectionsId().forEach(disconnectLocal);
+
+  @override
   void disconnectLocal(String id) {
     local.disconnect(id);
   }
+
+  @override
+  void disconnectCloudAll() => getAllConnectionsId().forEach(disconnectCloud);
 
   @override
   void disconnectCloud(String id) {
