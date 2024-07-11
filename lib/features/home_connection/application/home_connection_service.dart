@@ -53,7 +53,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
 
   @override
   void reconnectLocal(Home home, InternetAddress address) {
-    if (home.address != null) local.reconnect(home.id, address);
+    if (home.address != address) local.reconnect(home.id, address);
   }
 
   @override
