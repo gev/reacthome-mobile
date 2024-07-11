@@ -23,12 +23,14 @@ class MulticastSource {
       reusePort: true,
     );
 
-    final subscription = socket.listen((RawSocketEvent event) {
-      if (event == RawSocketEvent.read) {
-        final datagram = socket.receive();
-        datagram?.let(controller.handle);
-      }
-    });
+    final subscription = socket.listen(
+      (RawSocketEvent event) {
+        if (event == RawSocketEvent.read) {
+          final datagram = socket.receive();
+          datagram?.let(controller.handle);
+        }
+      },
+    );
 
     final timer = Timer.periodic(const Duration(seconds: 1), (_) async {
       for (final interface in await _interfaces()) {
