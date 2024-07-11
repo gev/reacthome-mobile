@@ -6,6 +6,11 @@ class ConnectivityState {
   final bool hasVpn;
   final bool hasOther;
 
+  bool get hasAny =>
+      hasBluetooth || hasWifi || hasEthernet || hasMobile || hasVpn || hasOther;
+
+  bool get hasNetwork => hasWifi || hasEthernet || hasMobile;
+
   ConnectivityState({
     this.hasBluetooth = false,
     this.hasWifi = false,
