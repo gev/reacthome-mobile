@@ -1,5 +1,6 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
+import 'package:reacthome/app/features/home_connection_factory.dart';
 import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/home/home_event.dart';
@@ -48,6 +49,8 @@ class DiscoveryFactory {
           controller: DiscoveryController(
             discovered: makeHomeService(),
             known: HomeFactory.instance.makeHomeService(),
+            connection:
+                HomeConnectionFactory.instance.makeHomeConnectionService(),
           ),
         ),
       );

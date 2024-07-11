@@ -14,6 +14,7 @@ abstract interface class ConnectionApi<S> {
 
 abstract interface class LocalConnectionApi<S> implements ConnectionApi<S> {
   void connect(String id, InternetAddress address);
+  void reconnect(String id, InternetAddress address);
 }
 
 abstract interface class CloudConnectionApi<S> implements ConnectionApi<S> {

@@ -62,6 +62,12 @@ class LocalConnectionService<S>
       _getById(id).connect(address)?.let(emit);
 
   @override
+  void reconnect(String id, InternetAddress address) {
+    disconnect(id);
+    connect(id, address);
+  }
+
+  @override
   LocalConnectionEntity<S> _create(String id) => LocalConnectionEntity(id);
 }
 
