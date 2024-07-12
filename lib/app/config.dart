@@ -11,6 +11,7 @@ class Config {
       url: 'gate.reacthome.net',
       protocol: 'connect',
     ),
+    reconnectTimeout: Duration(seconds: 5),
   );
 
   static const discovery = DiscoveryConfig(
@@ -18,7 +19,8 @@ class Config {
       group: '224.0.0.2',
       port: 2021,
     ),
-    timeout: Duration(seconds: 15),
+    renewTimeout: Duration(seconds: 15),
+    restartTimeout: Duration(seconds: 5),
   );
 
   static const theme = ThemeConfig(
