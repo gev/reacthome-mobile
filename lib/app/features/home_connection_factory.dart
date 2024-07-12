@@ -4,7 +4,7 @@ import 'package:reacthome/app/features/connectivity_factory.dart';
 import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/features/home_connection/application/active_connection_service.dart';
-import 'package:reacthome/features/home_connection/application/home_connection_auto_service.dart';
+import 'package:reacthome/features/home_connection/application/home_connection_registry_service.dart';
 import 'package:reacthome/features/home_connection/application/home_connection_service.dart';
 import 'package:reacthome/features/home_connection/domain/home_connection_entity.dart';
 import 'package:reacthome/features/home_connection/infrastructure/home_connection_connectivity_service.dart';
@@ -40,8 +40,8 @@ class HomeConnectionFactory {
         connection: makeHomeConnectionService(),
       );
 
-  HomeConnectionAutoService makeHomeConnectionAutoService() =>
-      HomeConnectionAutoService(
+  HomeConnectionRegistryService makeHomeConnectionAutoService() =>
+      HomeConnectionRegistryService(
         eventSource: HomeFactory.instance.homeEventBus.stream,
         home: HomeFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),

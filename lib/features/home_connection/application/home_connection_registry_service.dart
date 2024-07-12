@@ -4,11 +4,11 @@ import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/util/bus_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class HomeConnectionAutoService extends GenericBusListener<HomeEvent> {
+class HomeConnectionRegistryService extends GenericBusListener<HomeEvent> {
   final HomeApi home;
   final HomeConnectionApi connection;
 
-  HomeConnectionAutoService({
+  HomeConnectionRegistryService({
     required super.eventSource,
     required this.home,
     required this.connection,
