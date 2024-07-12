@@ -18,8 +18,8 @@ import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/repository.dart';
+import 'package:reacthome/util/bus/bus.dart';
+import 'package:reacthome/util/repository/immutable_map_repository.dart';
 
 class DiscoveryFactory {
   static final instance = DiscoveryFactory._();

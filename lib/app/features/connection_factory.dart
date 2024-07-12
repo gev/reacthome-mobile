@@ -10,8 +10,8 @@ import 'package:reacthome/features/connection/interface/connection_controller.da
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
-import 'package:reacthome/util/bus.dart';
-import 'package:reacthome/util/repository.dart';
+import 'package:reacthome/util/bus/bus.dart';
+import 'package:reacthome/util/repository/map_repository.dart';
 
 class ConnectionFactory {
   static final instance = ConnectionFactory._();

@@ -11,7 +11,7 @@ import 'package:reacthome/features/home_connection/domain/home_connection_entity
 import 'package:reacthome/features/home_connection/infrastructure/home_connection_connectivity_service.dart';
 import 'package:reacthome/features/home_connection/infrastructure/home_connection_lifecycle_service.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
-import 'package:reacthome/util/repository.dart';
+import 'package:reacthome/util/repository/map_repository.dart';
 
 class HomeConnectionFactory {
   static final instance = HomeConnectionFactory._();

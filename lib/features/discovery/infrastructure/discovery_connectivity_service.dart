@@ -1,6 +1,6 @@
 import 'package:reacthome/core/connectivity/connectivity_event.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
-import 'package:reacthome/util/bus_listener.dart';
+import 'package:reacthome/util/bus/bus_listener.dart';
 
 class DiscoveryConnectivityService
     extends GenericBusListener<ConnectivityEvent> {
