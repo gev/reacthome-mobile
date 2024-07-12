@@ -17,19 +17,19 @@ class DiscoveryLifecycleService extends GenericBusListener<AppLifecycleEvent> {
     required this.restartTimeout,
   });
 
-  Timer? _interval;
+  Timer? _timer;
 
   @override
   void handle(AppLifecycleEvent event) {
     switch (event) {
       case AppLifecycleEvent.active:
-        _interval = Timer.periodic(restartTimeout, (_) {
+        _timer = Timer.periodic(restartTimeout, (_) {
           if (connectivity.state.hasLocalNetworks) {
             discovery.start();
           }
         });
       case AppLifecycleEvent.inactive:
-        _interval?.cancel();
+        _timer?.cancel();
         discovery.stop();
     }
   }

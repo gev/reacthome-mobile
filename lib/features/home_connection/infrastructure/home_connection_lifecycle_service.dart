@@ -13,7 +13,7 @@ class HomeConnectionLifecycleService
   final ConnectivityApi connectivity;
   final Duration reconnectTimeout;
 
-  Timer? _interval;
+  Timer? _timer;
 
   HomeConnectionLifecycleService({
     required super.eventSource,
@@ -27,7 +27,7 @@ class HomeConnectionLifecycleService
   void handle(AppLifecycleEvent event) {
     switch (event) {
       case AppLifecycleEvent.active:
-        _interval = Timer.periodic(reconnectTimeout, (_) {
+        _timer = Timer.periodic(reconnectTimeout, (_) {
           if (connectivity.state.hasLocalNetworks) {
             connection.connectLocalAll(home.getAllHomes());
           }
@@ -36,7 +36,7 @@ class HomeConnectionLifecycleService
           }
         });
       case AppLifecycleEvent.inactive:
-        _interval?.cancel();
+        _timer?.cancel();
         connection.disconnectAll();
     }
   }
