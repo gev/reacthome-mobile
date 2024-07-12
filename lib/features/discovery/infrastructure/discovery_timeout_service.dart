@@ -18,7 +18,7 @@ class DiscoveryTimeoutService extends GenericBusListener<HomeEvent> {
   @override
   void handle(HomeEvent event) {
     switch (event) {
-      case HomeConfirmedEvent e:
+      case HomeRenewEvent e:
         _setTimeout(e.home);
       case HomeRemovedEvent e:
         _cancelTimeout(e.home);

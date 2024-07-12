@@ -23,6 +23,6 @@ class HomeRemovedEvent extends HomeEvent {
   HomeRemovedEvent(super.home);
 }
 
-class HomeConfirmedEvent extends HomeEvent {
-  HomeConfirmedEvent(super.home);
+class HomeRenewEvent extends HomeEvent {
+  HomeRenewEvent(super.home);
 }

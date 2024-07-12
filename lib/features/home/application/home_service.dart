@@ -65,6 +65,6 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
 
   @override
   void confirmHome({required String id}) {
-    emit(HomeConfirmedEvent(id));
+    emit(HomeRenewEvent(id));
   }
 }
