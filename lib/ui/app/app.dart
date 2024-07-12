@@ -21,7 +21,7 @@ class App extends StatelessWidget with WidgetsBindingObserver {
     required this.navigation,
     required this.localizationsDelegates,
     required this.supportedLocales,
-    this.title = 'Reacthome',
+    this.title = 'Reacthome X',
     super.key,
   }) {
     WidgetsBinding.instance.addObserver(this);
