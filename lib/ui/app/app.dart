@@ -41,16 +41,16 @@ class App extends StatelessWidget with WidgetsBindingObserver {
     );
   }
 
-  Timer? _timer;
+  final _timer = _Wrapper<Timer>();
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
-        _timer?.cancel();
+        _timer.value?.cancel();
         appLifeCycle.makeActive();
       case AppLifecycleState.paused:
-        _timer = Timer(const Duration(seconds: 10), () {
+        _timer.value = Timer(const Duration(seconds: 10), () {
           appLifeCycle.makeInactive();
         });
       default:
@@ -58,8 +58,12 @@ class App extends StatelessWidget with WidgetsBindingObserver {
   }
 
   void dispose() {
-    _timer?.cancel();
+    _timer.value?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     appLifeCycle.makeInactive();
   }
+}
+
+class _Wrapper<T> {
+  T? value;
 }
