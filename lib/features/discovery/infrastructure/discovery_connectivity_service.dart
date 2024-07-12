@@ -13,7 +13,7 @@ class DiscoveryConnectivityService
 
   @override
   void handle(ConnectivityEvent event) {
-    if (event.state.hasEthernet || event.state.hasWifi) {
+    if (event.state.hasLocalNetworks) {
       discovery.start();
     } else {
       discovery.stop();

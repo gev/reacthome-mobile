@@ -64,13 +64,15 @@ class DiscoveryFactory {
       DiscoveryTimeoutService(
         eventSource: homeEventBus.stream,
         actor: makeHomeService(),
-        timeout: Config.discovery.timeout,
+        timeout: Config.discovery.renewTimeout,
       );
 
   DiscoveryLifecycleService makeDiscoveryLifecycleService() =>
       DiscoveryLifecycleService(
         eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
         discovery: makeDiscoveryService(),
+        connectivity: ConnectivityFactory.instance.makeConnectivityService(),
+        restartTimeout: Config.discovery.restartTimeout,
       );
 
   DiscoveryConnectivityService makeDiscoveryConnectivityService() =>
