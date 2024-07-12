@@ -11,12 +11,12 @@ class ConnectivityEntity implements Connectivity {
   @override
   ConnectivityEvent makeConnected(ConnectivityState state) {
     _state = state;
-    return ConnectivityConnectedEvent(state);
+    return ConnectivityEvent(_state);
   }
 
   @override
   ConnectivityEvent makeDisconnected() {
     _state = ConnectivityState();
-    return ConnectivityDisconnectedEvent();
+    return ConnectivityEvent(_state);
   }
 }

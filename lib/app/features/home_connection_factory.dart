@@ -52,6 +52,7 @@ class HomeConnectionFactory {
         eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
         home: HomeFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),
+        connectivity: ConnectivityFactory.instance.makeConnectivityService(),
       );
 
   HomeConnectionConnectivityService makeHomeConnectionConnectivityService() =>

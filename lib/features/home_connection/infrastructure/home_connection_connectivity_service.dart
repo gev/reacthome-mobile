@@ -16,16 +16,11 @@ class HomeConnectionConnectivityService
 
   @override
   void handle(ConnectivityEvent event) {
-    switch (event) {
-      case ConnectivityConnectedEvent e:
-        if (!e.state.hasEthernet && !e.state.hasWifi) {
-          connection.disconnectLocalAll();
-          connection.connectCloudAll(home.getAllHomes());
-        } else {
-          connection.connectAll(home.getAllHomes());
-        }
-      case ConnectivityDisconnectedEvent _:
-        connection.disconnectAll();
+    if (!event.state.hasLocalNetworks) {
+      connection.disconnectLocalAll();
+    }
+    if (!event.state.hasMobile) {
+      connection.disconnectCloudAll();
     }
   }
 }

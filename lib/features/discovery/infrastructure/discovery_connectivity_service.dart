@@ -13,15 +13,10 @@ class DiscoveryConnectivityService
 
   @override
   void handle(ConnectivityEvent event) {
-    switch (event) {
-      case ConnectivityConnectedEvent e:
-        if (e.state.hasEthernet || e.state.hasWifi) {
-          discovery.start();
-        } else {
-          discovery.stop();
-        }
-      case ConnectivityDisconnectedEvent _:
-        discovery.stop();
+    if (event.state.hasEthernet || event.state.hasWifi) {
+      discovery.start();
+    } else {
+      discovery.stop();
     }
   }
 }

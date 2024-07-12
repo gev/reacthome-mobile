@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
+import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
@@ -57,7 +58,10 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
 
   @override
   void connectCloud(Home home) {
-    cloud.connect(home.id);
+    final connection = local.getConnectionById(home.id);
+    if (connection.state != ConnectionState.connected) {
+      cloud.connect(home.id);
+    }
   }
 
   @override

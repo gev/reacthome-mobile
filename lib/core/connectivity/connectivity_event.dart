@@ -1,10 +1,6 @@
 import 'package:reacthome/core/connectivity/connectivity_state.dart';
 
-sealed class ConnectivityEvent {}
-
-class ConnectivityConnectedEvent extends ConnectivityEvent {
+class ConnectivityEvent {
   final ConnectivityState state;
-  ConnectivityConnectedEvent(this.state);
+  ConnectivityEvent(this.state);
 }
-
-class ConnectivityDisconnectedEvent extends ConnectivityEvent {}
