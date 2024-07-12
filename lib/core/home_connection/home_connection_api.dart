@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 
@@ -17,8 +15,6 @@ abstract interface class HomeConnectionApi {
 
   void connectCloudAll(Iterable<Home> homes);
   void connectCloud(Home home);
-
-  void reconnectLocal(Home home, InternetAddress address);
 
   void disconnectAll();
   void disconnect(String id);

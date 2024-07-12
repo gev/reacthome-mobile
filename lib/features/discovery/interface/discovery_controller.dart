@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/core/meta.dart';
@@ -31,9 +32,7 @@ class DiscoveryController implements Handler<Datagram> {
       );
       discovered.confirmHome(id: action.id);
       final home = known.getHomeById(action.id);
-      if (home != null) {
-        connection.reconnectLocal(home, datagram.address);
-      }
+      final shouldReconnect = home != null && home.address != datagram.address;
       known.updateHome(
         id: action.id,
         meta: Meta(
@@ -43,6 +42,10 @@ class DiscoveryController implements Handler<Datagram> {
         project: action.payload.project,
         address: datagram.address,
       );
+      if (shouldReconnect) {
+        connection.disconnectLocal(home.id);
+        connection.connectLocal(home);
+      }
     }
   }
 }
