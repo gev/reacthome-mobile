@@ -10,7 +10,7 @@ import 'package:reacthome/util/repository/repository.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
     extends GenericBusEmitter<ConnectionEvent> implements ConnectionApi<S> {
-  final Repository<String, C> repository;
+  final InMemoryRepository<String, C> repository;
 
   ConnectionService({
     required super.eventSink,

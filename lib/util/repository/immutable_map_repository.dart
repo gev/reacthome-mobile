@@ -3,7 +3,7 @@ import 'package:reacthome/util/entity.dart';
 import 'package:reacthome/util/repository/repository.dart';
 
 class ImmutableMapRepository<K, V extends Entity<K>>
-    implements Repository<K, V> {
+    implements InMemoryRepository<K, V> {
   IMap<K, V> _store = IMap();
 
   @override
