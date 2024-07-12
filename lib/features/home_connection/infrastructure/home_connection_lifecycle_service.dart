@@ -20,7 +20,7 @@ class HomeConnectionLifecycleService
     required this.home,
     required this.connection,
     required this.connectivity,
-    this.reconnectTimeout = const Duration(seconds: 5),
+    required this.reconnectTimeout,
   });
 
   @override

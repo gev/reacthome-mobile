@@ -1,9 +1,11 @@
 class WebSocketConfig {
   final LocalWebSocketConfig local;
   final CloudWebSocketConfig cloud;
+  final Duration reconnectTimeout;
   const WebSocketConfig({
     required this.local,
     required this.cloud,
+    required this.reconnectTimeout,
   });
 }
 

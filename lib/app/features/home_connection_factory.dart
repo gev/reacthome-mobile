@@ -1,3 +1,4 @@
+import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
 import 'package:reacthome/app/features/connection_factory.dart';
 import 'package:reacthome/app/features/connectivity_factory.dart';
@@ -53,6 +54,7 @@ class HomeConnectionFactory {
         home: HomeFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),
         connectivity: ConnectivityFactory.instance.makeConnectivityService(),
+        reconnectTimeout: Config.connection.reconnectTimeout,
       );
 
   HomeConnectionConnectivityService makeHomeConnectionConnectivityService() =>
