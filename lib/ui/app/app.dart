@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:reacthome/core/app_lifecycle/app_lifecycle_api.dart';
@@ -39,18 +41,24 @@ class App extends StatelessWidget with WidgetsBindingObserver {
     );
   }
 
+  Timer? _timer;
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
+        _timer?.cancel();
         appLifeCycle.makeActive();
       case AppLifecycleState.paused:
-        appLifeCycle.makeInactive();
+        _timer = Timer(const Duration(seconds: 10), () {
+          appLifeCycle.makeInactive();
+        });
       default:
     }
   }
 
   void dispose() {
+    _timer?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     appLifeCycle.makeInactive();
   }
