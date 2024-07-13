@@ -3,7 +3,7 @@ import 'package:reacthome/core/connectivity/connectivity_event.dart';
 import 'package:reacthome/core/connectivity/connectivity_state.dart';
 
 class ConnectivityEntity implements Connectivity {
-  ConnectivityState _state = ConnectivityState();
+  ConnectivityState _state = const ConnectivityState();
 
   @override
   ConnectivityState get state => _state;
@@ -16,7 +16,7 @@ class ConnectivityEntity implements Connectivity {
 
   @override
   ConnectivityEvent makeDisconnected() {
-    _state = ConnectivityState();
+    _state = const ConnectivityState();
     return ConnectivityEvent(_state);
   }
 }

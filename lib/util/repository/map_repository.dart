@@ -5,6 +5,8 @@ class MapRepository<K, V extends Entity<K>>
     implements InMemoryRepository<K, V> {
   final Map<K, V> _store = {};
 
+  MapRepository();
+
   @override
   Iterable<K> getAllId() => _store.keys;
 

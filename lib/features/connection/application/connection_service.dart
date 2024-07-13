@@ -12,7 +12,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
     extends GenericBusEmitter<ConnectionEvent> implements ConnectionApi<S> {
   final InMemoryRepository<String, C> repository;
 
-  ConnectionService({
+  const ConnectionService({
     required super.eventSink,
     required this.repository,
   });

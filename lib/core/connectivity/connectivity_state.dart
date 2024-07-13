@@ -13,7 +13,7 @@ class ConnectivityState {
 
   bool get hasLocalNetworks => hasWifi || hasEthernet;
 
-  ConnectivityState({
+  const ConnectivityState({
     this.hasBluetooth = false,
     this.hasWifi = false,
     this.hasEthernet = false,

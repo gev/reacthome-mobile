@@ -7,6 +7,7 @@ TextStyle? largeTitleMaterial(BuildContext context) =>
 
 class ThemeMaterial implements ThemeContainer {
   late final ThemeData _themeData;
+
   ThemeMaterial(BuildContext context) {
     _themeData = Theme.of(context);
   }

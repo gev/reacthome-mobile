@@ -10,7 +10,7 @@ class FileStore<T> {
   final List<int> Function(T data) toBytes;
   final T Function(List<int> bytes) fromBytes;
 
-  FileStore._(this.path, this.toBytes, this.fromBytes);
+  const FileStore._(this.path, this.toBytes, this.fromBytes);
 
   static Future<FileStore<T>> make<T>({
     required String path,
@@ -46,7 +46,7 @@ class FileStoreFactory<T> {
   final ToBytes<T> toBytes;
   final FromBytes<T> fromBytes;
 
-  FileStoreFactory({
+  const FileStoreFactory({
     required this.path,
     this.scope,
     required this.toBytes,

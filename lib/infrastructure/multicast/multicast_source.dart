@@ -10,7 +10,7 @@ class MulticastSource {
   final Timer _timer;
   final StreamSubscription<RawSocketEvent> _subscription;
 
-  MulticastSource._(this._socket, this._timer, this._subscription);
+  const MulticastSource._(this._socket, this._timer, this._subscription);
 
   static Future<MulticastSource> create({
     required MulticastConfig config,

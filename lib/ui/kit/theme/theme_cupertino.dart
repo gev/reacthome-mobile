@@ -5,6 +5,7 @@ import 'package:reacthome/ui/kit/theme/theme_material.dart';
 
 class ThemeCupertino implements ThemeContainer {
   late final CupertinoThemeData _themeData;
+
   ThemeCupertino(BuildContext context) {
     _themeData = CupertinoTheme.of(context);
   }

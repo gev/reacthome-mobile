@@ -11,7 +11,7 @@ class DiscoveryController implements Handler<Datagram> {
   final HomeApi known;
   final HomeConnectionApi connection;
 
-  DiscoveryController({
+  const DiscoveryController({
     required this.discovered,
     required this.known,
     required this.connection,

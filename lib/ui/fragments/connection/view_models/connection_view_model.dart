@@ -13,7 +13,7 @@ class ConnectionViewModel<S> {
   final CloudConnectionApi<S> cloud;
   final HomeApi home;
 
-  ConnectionViewModel({
+  const ConnectionViewModel({
     required this.eventSource,
     required this.homeConnection,
     required this.local,

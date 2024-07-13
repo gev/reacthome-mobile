@@ -5,7 +5,7 @@ class HomeListViewModel {
   final Stream<HomeEvent> eventSource;
   final HomeApi home;
 
-  HomeListViewModel({
+  const HomeListViewModel({
     required this.eventSource,
     required this.home,
   });

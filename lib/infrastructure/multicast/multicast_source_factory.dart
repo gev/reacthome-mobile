@@ -9,7 +9,7 @@ class MulticastSourceFactory {
   final MulticastConfig config;
   final Handler<Datagram> controller;
 
-  MulticastSourceFactory({
+  const MulticastSourceFactory({
     required this.config,
     required this.controller,
   });

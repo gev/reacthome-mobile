@@ -3,6 +3,8 @@ import 'dart:async';
 class Timeout<K> {
   final Map<K, Timer> _timers = {};
 
+  Timeout();
+
   void set({
     required K id,
     required Duration duration,

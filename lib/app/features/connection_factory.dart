@@ -43,7 +43,7 @@ class ConnectionFactory {
         connection: makeLocalConnectionService(),
         factory: LocalWebSocketFactory(
           config: Config.connection.local,
-          controller: ConnectionController(),
+          controller: const ConnectionController(),
         ),
       );
 
@@ -52,7 +52,7 @@ class ConnectionFactory {
         connection: makeCloudConnectionService(),
         factory: CloudWebSocketFactory(
           config: Config.connection.cloud,
-          controller: ConnectionController(),
+          controller: const ConnectionController(),
         ),
       );
 

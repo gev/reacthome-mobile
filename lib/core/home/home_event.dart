@@ -1,28 +1,28 @@
 sealed class HomeEvent {
   final String home;
-  HomeEvent(this.home);
+  const HomeEvent(this.home);
 }
 
 class HomeMetaChangedEvent extends HomeEvent {
-  HomeMetaChangedEvent(super.home);
+  const HomeMetaChangedEvent(super.home);
 }
 
 class HomeAddressChangedEvent extends HomeEvent {
-  HomeAddressChangedEvent(super.home);
+  const HomeAddressChangedEvent(super.home);
 }
 
 class HomeProjectChangedEvent extends HomeEvent {
-  HomeProjectChangedEvent(super.home);
+  const HomeProjectChangedEvent(super.home);
 }
 
 class HomeAddedEvent extends HomeEvent {
-  HomeAddedEvent(super.home);
+  const HomeAddedEvent(super.home);
 }
 
 class HomeRemovedEvent extends HomeEvent {
-  HomeRemovedEvent(super.home);
+  const HomeRemovedEvent(super.home);
 }
 
 class HomeRenewEvent extends HomeEvent {
-  HomeRenewEvent(super.home);
+  const HomeRenewEvent(super.home);
 }

@@ -59,7 +59,7 @@ class HomeUI {
     Home? home,
   })  : meta = MetaUI(
           locale,
-          home?.meta ?? Meta(),
+          home?.meta ?? const Meta(),
           defaultName: (context) => locale.unknownHome,
         ),
         hasProject = home?.project != null,

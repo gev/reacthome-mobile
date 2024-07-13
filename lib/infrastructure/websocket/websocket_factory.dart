@@ -7,7 +7,7 @@ import 'package:reacthome/util/handler.dart';
 abstract class WebSocketFactory {
   final Handler<String> controller;
 
-  WebSocketFactory({
+  const WebSocketFactory({
     required this.controller,
   });
 }
@@ -15,7 +15,7 @@ abstract class WebSocketFactory {
 class LocalWebSocketFactory extends WebSocketFactory {
   final LocalWebSocketConfig config;
 
-  LocalWebSocketFactory({
+  const LocalWebSocketFactory({
     required this.config,
     required super.controller,
   });
@@ -36,7 +36,7 @@ class LocalWebSocketFactory extends WebSocketFactory {
 class CloudWebSocketFactory extends WebSocketFactory {
   final CloudWebSocketConfig config;
 
-  CloudWebSocketFactory({
+  const CloudWebSocketFactory({
     required this.config,
     required super.controller,
   });

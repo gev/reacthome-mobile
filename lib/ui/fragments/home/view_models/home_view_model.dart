@@ -8,7 +8,7 @@ class HomeViewModel {
   final Stream<HomeEvent> eventSource;
   final HomeApi home;
 
-  HomeViewModel({
+  const HomeViewModel({
     required this.eventSource,
     required this.home,
   });
@@ -26,7 +26,7 @@ class HomeViewModel {
 
   void addHome(String id) => home.addHome(
         id: id,
-        meta: Meta(),
+        meta: const Meta(),
       );
 
   void removeHome(String id) => home.removeHome(id: id);

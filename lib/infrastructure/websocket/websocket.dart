@@ -7,7 +7,7 @@ class WebSocket {
   final io.WebSocket _socket;
   final StreamSubscription _subscription;
 
-  WebSocket._(this._socket, this._subscription);
+  const WebSocket._(this._socket, this._subscription);
 
   static Future<WebSocket> create({
     required String url,
