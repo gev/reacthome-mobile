@@ -3,7 +3,7 @@ import 'package:reacthome/util/repository/repository.dart';
 
 class MapRepository<K, V extends Entity<K>>
     implements InMemoryRepository<K, V> {
-  final Map<K, V> _store = {};
+  final _store = <K, V>{};
 
   MapRepository();
 

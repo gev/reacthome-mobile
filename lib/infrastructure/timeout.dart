@@ -1,7 +1,7 @@
 import 'dart:async';
 
 class Timeout<K> {
-  final Map<K, Timer> _timers = {};
+  final _timers = <K, Timer>{};
 
   Timeout();
 
