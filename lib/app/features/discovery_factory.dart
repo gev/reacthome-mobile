@@ -19,14 +19,14 @@ import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/util/bus/bus.dart';
-import 'package:reacthome/util/repository/immutable_map_repository.dart';
+import 'package:reacthome/util/repository/map_repository.dart';
 
 class DiscoveryFactory {
   static final instance = DiscoveryFactory._();
 
   DiscoveryFactory._();
 
-  final _repository = ImmutableMapRepository<String, HomeEntity>();
+  final _repository = MapRepository<String, HomeEntity>();
 
   final _process = DiscoveryEntity<MulticastSource>();
 
