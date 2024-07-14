@@ -46,7 +46,7 @@ Future<Widget> make() async {
       appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
       navigation: Navigation(
         home: await HomeScreenFactory.instance.make(),
-        splash: SplashScreenFactory.instance.make,
+        splash: await SplashScreenFactory.instance.make(),
         welcome: WelcomeScreenFactory.instance.make,
         discovery: await DiscoveryScreenFactory.instance.make(),
         addHome: await AddHomeScreenFactory.instance.make(),

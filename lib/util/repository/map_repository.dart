@@ -4,6 +4,9 @@ import 'package:reacthome/util/repository/repository.dart';
 class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
   final _store = <K, V>{};
 
+  @override
+  int get length => _store.length;
+
   MapRepository();
 
   @override

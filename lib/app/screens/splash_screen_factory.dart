@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/ui/screens/splash_screen.dart';
 
 class SplashScreenFactory {
@@ -6,5 +7,8 @@ class SplashScreenFactory {
 
   SplashScreenFactory._();
 
-  Widget make(_) => const SplashScreen();
+  Future<WidgetBuilder> make() async {
+    final homeService = await HomeFactory.instance.makeHomeService();
+    return (_) => SplashScreen(home: homeService);
+  }
 }

@@ -105,6 +105,9 @@ class PersistentRepository<E extends Entity<String>>
   }
 
   @override
+  int get length => _store.length;
+
+  @override
   Iterable<String> getAllId() => _store.keys;
 
   @override

@@ -17,6 +17,9 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
   });
 
   @override
+  int get count => repository.length;
+
+  @override
   Iterable<String> getAllHomesId() => repository.getAllId();
 
   @override
