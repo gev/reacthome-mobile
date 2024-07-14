@@ -1,0 +1,25 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/application/active_connection_service.dart" [label="active_connection_service"];
+  "/application/home_connection_auto_service.dart" [label="home_connection_auto_service"];
+  "/application/home_connection_lifecycle_service.dart" [label="home_connection_lifecycle_service"];
+  "/application/home_connection_service.dart" [label="home_connection_service"];
+  "/domain/home_connection_entity.dart" [label="home_connection_entity"];
+  subgraph "cluster~" {
+    label="home_connection";
+    subgraph "cluster~/application" {
+      label="application";
+      "/application/active_connection_service.dart";
+      "/application/home_connection_auto_service.dart";
+      "/application/home_connection_lifecycle_service.dart";
+      "/application/home_connection_service.dart";
+    }
+    subgraph "cluster~/domain" {
+      label="domain";
+      "/domain/home_connection_entity.dart";
+    }
+  }
+  "/application/home_connection_service.dart" -> "/domain/home_connection_entity.dart";
+}

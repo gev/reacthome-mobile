@@ -1,0 +1,28 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/entity.dart" [label="entity"];
+  "/event_bus.dart" [label="event_bus"];
+  "/event_emitter.dart" [label="event_emitter"];
+  "/event_listener.dart" [label="event_listener"];
+  "/extensions.dart" [label="extensions"];
+  "/handler.dart" [label="handler"];
+  "/platform.dart" [label="platform"];
+  "/repository.dart" [label="repository"];
+  subgraph "cluster~" {
+    label="util";
+    "/entity.dart";
+    "/event_bus.dart";
+    "/event_emitter.dart";
+    "/event_listener.dart";
+    "/extensions.dart";
+    "/handler.dart";
+    "/platform.dart";
+    "/repository.dart";
+  }
+  "/event_emitter.dart" -> "/event_bus.dart";
+  "/event_listener.dart" -> "/event_bus.dart";
+  "/event_listener.dart" -> "/handler.dart";
+  "/repository.dart" -> "/entity.dart";
+}

@@ -1,0 +1,462 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/app/app.dart" [label="app"];
+  "/app/navigation.dart" [label="navigation"];
+  "/assets.dart" [label="assets"];
+  "/dto.dart" [label="dto"];
+  "/fragments/add_home/widgets/add_home_id.dart" [label="add_home_id"];
+  "/fragments/connection/view_models/connection_view_model.dart" [label="connection_view_model"];
+  "/fragments/discovery/view_models/discovery_home_list_view_model.dart" [label="discovery_home_list_view_model"];
+  "/fragments/discovery/view_models/discovery_home_view_model.dart" [label="discovery_home_view_model"];
+  "/fragments/discovery/view_models/discovery_status_view_model.dart" [label="discovery_status_view_model"];
+  "/fragments/discovery/widgets/discovery_home_add.dart" [label="discovery_home_add"];
+  "/fragments/discovery/widgets/discovery_home_add_alert.dart" [label="discovery_home_add_alert"];
+  "/fragments/discovery/widgets/discovery_home_add_confirm.dart" [label="discovery_home_add_confirm"];
+  "/fragments/discovery/widgets/discovery_home_list.dart" [label="discovery_home_list"];
+  "/fragments/discovery/widgets/discovery_home_tile.dart" [label="discovery_home_tile"];
+  "/fragments/discovery/widgets/discovery_status.dart" [label="discovery_status"];
+  "/fragments/home/view_models/home_list_view_model.dart" [label="home_list_view_model"];
+  "/fragments/home/view_models/home_view_model.dart" [label="home_view_model"];
+  "/fragments/home/widgets/home_add.dart" [label="home_add"];
+  "/fragments/home/widgets/home_delete_confirm.dart" [label="home_delete_confirm"];
+  "/fragments/home/widgets/home_list.dart" [label="home_list"];
+  "/fragments/home/widgets/home_props.dart" [label="home_props"];
+  "/fragments/home/widgets/home_tile.dart" [label="home_tile"];
+  "/kit/kit.dart" [label="kit"];
+  "/kit/kit_container.dart" [label="kit_container"];
+  "/kit/kit_cupertino.dart" [label="kit_cupertino"];
+  "/kit/kit_material.dart" [label="kit_material"];
+  "/kit/layout/layout.dart" [label="layout"];
+  "/kit/layout/layout_cupertino.dart" [label="layout_cupertino"];
+  "/kit/layout/layout_material.dart" [label="layout_material"];
+  "/kit/theme/theme.dart" [label="theme"];
+  "/kit/theme/theme_cupertino.dart" [label="theme_cupertino"];
+  "/kit/theme/theme_material.dart" [label="theme_material"];
+  "/kit/theme.dart" [label="theme"];
+  "/kit/widgets/app/app.dart" [label="app"];
+  "/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart" [label="app_bar_fixed_cupertino"];
+  "/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart" [label="app_bar_fixed_material"];
+  "/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart" [label="app_bar_sliver_cupertino"];
+  "/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" [label="app_bar_sliver_material"];
+  "/kit/widgets/app/root/app_root_cupertino.dart" [label="app_root_cupertino"];
+  "/kit/widgets/app/root/app_root_material.dart" [label="app_root_material"];
+  "/kit/widgets/button/button.dart" [label="button"];
+  "/kit/widgets/button/filled/button_filled_cupertino.dart" [label="button_filled_cupertino"];
+  "/kit/widgets/button/filled/button_filled_material.dart" [label="button_filled_material"];
+  "/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart" [label="button_icon_filled_cupertino"];
+  "/kit/widgets/button/icon/filled/button_icon_filled_material.dart" [label="button_icon_filled_material"];
+  "/kit/widgets/dialog/action/dialog_action_cupertino.dart" [label="dialog_action_cupertino"];
+  "/kit/widgets/dialog/action/dialog_action_material.dart" [label="dialog_action_material"];
+  "/kit/widgets/dialog/alert/dialog_alert_cupertino.dart" [label="dialog_alert_cupertino"];
+  "/kit/widgets/dialog/alert/dialog_alert_material.dart" [label="dialog_alert_material"];
+  "/kit/widgets/dialog/dialog.dart" [label="dialog"];
+  "/kit/widgets/dialog/show/show_dialog_cupertino.dart" [label="show_dialog_cupertino"];
+  "/kit/widgets/dialog/show/show_dialog_material.dart" [label="show_dialog_material"];
+  "/kit/widgets/divider/divider.dart" [label="divider"];
+  "/kit/widgets/divider/divider_cupertino.dart" [label="divider_cupertino"];
+  "/kit/widgets/divider/divider_material.dart" [label="divider_material"];
+  "/kit/widgets/icon.dart" [label="icon"];
+  "/kit/widgets/indicator/activity/indicator_activity_cupertino.dart" [label="indicator_activity_cupertino"];
+  "/kit/widgets/indicator/activity/indicator_activity_material.dart" [label="indicator_activity_material"];
+  "/kit/widgets/indicator/indicator.dart" [label="indicator"];
+  "/kit/widgets/list/chevron/list_chevron_cupertino.dart" [label="list_chevron_cupertino"];
+  "/kit/widgets/list/chevron/list_chevron_material.dart" [label="list_chevron_material"];
+  "/kit/widgets/list/list.dart" [label="list"];
+  "/kit/widgets/list/section/list_section_cupertino.dart" [label="list_section_cupertino"];
+  "/kit/widgets/list/section/list_section_material.dart" [label="list_section_material"];
+  "/kit/widgets/list/tile/list_tile_cupertino.dart" [label="list_tile_cupertino"];
+  "/kit/widgets/list/tile/list_tile_material.dart" [label="list_tile_material"];
+  "/kit/widgets/scaffold/scaffold.dart" [label="scaffold"];
+  "/kit/widgets/scaffold/scaffold_cupertino.dart" [label="scaffold_cupertino"];
+  "/kit/widgets/scaffold/scaffold_material.dart" [label="scaffold_material"];
+  "/kit/widgets/switcher/switcher.dart" [label="switcher"];
+  "/kit/widgets/switcher/switcher_cupertino.dart" [label="switcher_cupertino"];
+  "/kit/widgets/switcher/switcher_material.dart" [label="switcher_material"];
+  "/kit/widgets/text/field/text_field_cupertino.dart" [label="text_field_cupertino"];
+  "/kit/widgets/text/field/text_field_material.dart" [label="text_field_material"];
+  "/kit/widgets/text/text.dart" [label="text"];
+  "/layouts/center_layout.dart" [label="center_layout"];
+  "/layouts/default_layout.dart" [label="default_layout"];
+  "/layouts/fixed_width_layout.dart" [label="fixed_width_layout"];
+  "/layouts/full_width_layout.dart" [label="full_width_layout"];
+  "/screens/add_home_screen.dart" [label="add_home_screen"];
+  "/screens/discovery_screen.dart" [label="discovery_screen"];
+  "/screens/home_list_screen.dart" [label="home_list_screen"];
+  "/screens/home_screen.dart" [label="home_screen"];
+  "/screens/splash_screen.dart" [label="splash_screen"];
+  "/screens/welcome_screen.dart" [label="welcome_screen"];
+  "/theme_config.dart" [label="theme_config"];
+  "/widgets/alert.dart" [label="alert"];
+  "/widgets/confirm.dart" [label="confirm"];
+  "/widgets/logo.dart" [label="logo"];
+  subgraph "cluster~" {
+    label="ui";
+    "/assets.dart";
+    "/dto.dart";
+    "/theme_config.dart";
+    subgraph "cluster~/app" {
+      label="app";
+      "/app/app.dart";
+      "/app/navigation.dart";
+    }
+    subgraph "cluster~/fragments" {
+      label="fragments";
+      subgraph "cluster~/fragments/add_home" {
+        label="add_home";
+        subgraph "cluster~/fragments/add_home/widgets" {
+          label="widgets";
+          "/fragments/add_home/widgets/add_home_id.dart";
+        }
+      }
+      subgraph "cluster~/fragments/connection" {
+        label="connection";
+        subgraph "cluster~/fragments/connection/view_models" {
+          label="view_models";
+          "/fragments/connection/view_models/connection_view_model.dart";
+        }
+      }
+      subgraph "cluster~/fragments/discovery" {
+        label="discovery";
+        subgraph "cluster~/fragments/discovery/view_models" {
+          label="view_models";
+          "/fragments/discovery/view_models/discovery_home_list_view_model.dart";
+          "/fragments/discovery/view_models/discovery_home_view_model.dart";
+          "/fragments/discovery/view_models/discovery_status_view_model.dart";
+        }
+        subgraph "cluster~/fragments/discovery/widgets" {
+          label="widgets";
+          "/fragments/discovery/widgets/discovery_home_add.dart";
+          "/fragments/discovery/widgets/discovery_home_add_alert.dart";
+          "/fragments/discovery/widgets/discovery_home_add_confirm.dart";
+          "/fragments/discovery/widgets/discovery_home_list.dart";
+          "/fragments/discovery/widgets/discovery_home_tile.dart";
+          "/fragments/discovery/widgets/discovery_status.dart";
+        }
+      }
+      subgraph "cluster~/fragments/home" {
+        label="home";
+        subgraph "cluster~/fragments/home/view_models" {
+          label="view_models";
+          "/fragments/home/view_models/home_list_view_model.dart";
+          "/fragments/home/view_models/home_view_model.dart";
+        }
+        subgraph "cluster~/fragments/home/widgets" {
+          label="widgets";
+          "/fragments/home/widgets/home_add.dart";
+          "/fragments/home/widgets/home_delete_confirm.dart";
+          "/fragments/home/widgets/home_list.dart";
+          "/fragments/home/widgets/home_props.dart";
+          "/fragments/home/widgets/home_tile.dart";
+        }
+      }
+    }
+    subgraph "cluster~/kit" {
+      label="kit";
+      "/kit/kit.dart";
+      "/kit/kit_container.dart";
+      "/kit/kit_cupertino.dart";
+      "/kit/kit_material.dart";
+      "/kit/theme.dart";
+      subgraph "cluster~/kit/layout" {
+        label="layout";
+        "/kit/layout/layout.dart";
+        "/kit/layout/layout_cupertino.dart";
+        "/kit/layout/layout_material.dart";
+      }
+      subgraph "cluster~/kit/theme" {
+        label="theme";
+        "/kit/theme/theme.dart";
+        "/kit/theme/theme_cupertino.dart";
+        "/kit/theme/theme_material.dart";
+      }
+      subgraph "cluster~/kit/widgets" {
+        label="widgets";
+        "/kit/widgets/icon.dart";
+        subgraph "cluster~/kit/widgets/app" {
+          label="app";
+          "/kit/widgets/app/app.dart";
+          subgraph "cluster~/kit/widgets/app/bar" {
+            label="bar";
+            subgraph "cluster~/kit/widgets/app/bar/fixed" {
+              label="fixed";
+              "/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+              "/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+            }
+            subgraph "cluster~/kit/widgets/app/bar/sliver" {
+              label="sliver";
+              "/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+              "/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+            }
+          }
+          subgraph "cluster~/kit/widgets/app/root" {
+            label="root";
+            "/kit/widgets/app/root/app_root_cupertino.dart";
+            "/kit/widgets/app/root/app_root_material.dart";
+          }
+        }
+        subgraph "cluster~/kit/widgets/button" {
+          label="button";
+          "/kit/widgets/button/button.dart";
+          subgraph "cluster~/kit/widgets/button/filled" {
+            label="filled";
+            "/kit/widgets/button/filled/button_filled_cupertino.dart";
+            "/kit/widgets/button/filled/button_filled_material.dart";
+          }
+          subgraph "cluster~/kit/widgets/button/icon" {
+            label="icon";
+            subgraph "cluster~/kit/widgets/button/icon/filled" {
+              label="filled";
+              "/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+              "/kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+            }
+          }
+        }
+        subgraph "cluster~/kit/widgets/dialog" {
+          label="dialog";
+          "/kit/widgets/dialog/dialog.dart";
+          subgraph "cluster~/kit/widgets/dialog/action" {
+            label="action";
+            "/kit/widgets/dialog/action/dialog_action_cupertino.dart";
+            "/kit/widgets/dialog/action/dialog_action_material.dart";
+          }
+          subgraph "cluster~/kit/widgets/dialog/alert" {
+            label="alert";
+            "/kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+            "/kit/widgets/dialog/alert/dialog_alert_material.dart";
+          }
+          subgraph "cluster~/kit/widgets/dialog/show" {
+            label="show";
+            "/kit/widgets/dialog/show/show_dialog_cupertino.dart";
+            "/kit/widgets/dialog/show/show_dialog_material.dart";
+          }
+        }
+        subgraph "cluster~/kit/widgets/divider" {
+          label="divider";
+          "/kit/widgets/divider/divider.dart";
+          "/kit/widgets/divider/divider_cupertino.dart";
+          "/kit/widgets/divider/divider_material.dart";
+        }
+        subgraph "cluster~/kit/widgets/indicator" {
+          label="indicator";
+          "/kit/widgets/indicator/indicator.dart";
+          subgraph "cluster~/kit/widgets/indicator/activity" {
+            label="activity";
+            "/kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+            "/kit/widgets/indicator/activity/indicator_activity_material.dart";
+          }
+        }
+        subgraph "cluster~/kit/widgets/list" {
+          label="list";
+          "/kit/widgets/list/list.dart";
+          subgraph "cluster~/kit/widgets/list/chevron" {
+            label="chevron";
+            "/kit/widgets/list/chevron/list_chevron_cupertino.dart";
+            "/kit/widgets/list/chevron/list_chevron_material.dart";
+          }
+          subgraph "cluster~/kit/widgets/list/section" {
+            label="section";
+            "/kit/widgets/list/section/list_section_cupertino.dart";
+            "/kit/widgets/list/section/list_section_material.dart";
+          }
+          subgraph "cluster~/kit/widgets/list/tile" {
+            label="tile";
+            "/kit/widgets/list/tile/list_tile_cupertino.dart";
+            "/kit/widgets/list/tile/list_tile_material.dart";
+          }
+        }
+        subgraph "cluster~/kit/widgets/scaffold" {
+          label="scaffold";
+          "/kit/widgets/scaffold/scaffold.dart";
+          "/kit/widgets/scaffold/scaffold_cupertino.dart";
+          "/kit/widgets/scaffold/scaffold_material.dart";
+        }
+        subgraph "cluster~/kit/widgets/switcher" {
+          label="switcher";
+          "/kit/widgets/switcher/switcher.dart";
+          "/kit/widgets/switcher/switcher_cupertino.dart";
+          "/kit/widgets/switcher/switcher_material.dart";
+        }
+        subgraph "cluster~/kit/widgets/text" {
+          label="text";
+          "/kit/widgets/text/text.dart";
+          subgraph "cluster~/kit/widgets/text/field" {
+            label="field";
+            "/kit/widgets/text/field/text_field_cupertino.dart";
+            "/kit/widgets/text/field/text_field_material.dart";
+          }
+        }
+      }
+    }
+    subgraph "cluster~/layouts" {
+      label="layouts";
+      "/layouts/center_layout.dart";
+      "/layouts/default_layout.dart";
+      "/layouts/fixed_width_layout.dart";
+      "/layouts/full_width_layout.dart";
+    }
+    subgraph "cluster~/screens" {
+      label="screens";
+      "/screens/add_home_screen.dart";
+      "/screens/discovery_screen.dart";
+      "/screens/home_list_screen.dart";
+      "/screens/home_screen.dart";
+      "/screens/splash_screen.dart";
+      "/screens/welcome_screen.dart";
+    }
+    subgraph "cluster~/widgets" {
+      label="widgets";
+      "/widgets/alert.dart";
+      "/widgets/confirm.dart";
+      "/widgets/logo.dart";
+    }
+  }
+  "/app/app.dart" -> "/app/navigation.dart";
+  "/app/app.dart" -> "/kit/kit.dart";
+  "/app/app.dart" -> "/theme_config.dart";
+  "/fragments/add_home/widgets/add_home_id.dart" -> "/kit/kit.dart";
+  "/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/app/navigation.dart";
+  "/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/dto.dart";
+  "/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/kit/kit.dart";
+  "/fragments/discovery/widgets/discovery_home_add.dart" -> "/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/fragments/discovery/widgets/discovery_home_add.dart" -> "/kit/kit.dart";
+  "/fragments/discovery/widgets/discovery_home_add_alert.dart" -> "/widgets/alert.dart";
+  "/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/dto.dart";
+  "/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/widgets/confirm.dart";
+  "/fragments/discovery/widgets/discovery_home_list.dart" -> "/fragments/discovery/view_models/discovery_home_list_view_model.dart";
+  "/fragments/discovery/widgets/discovery_home_list.dart" -> "/fragments/discovery/widgets/discovery_home_tile.dart";
+  "/fragments/discovery/widgets/discovery_home_list.dart" -> "/kit/kit.dart";
+  "/fragments/discovery/widgets/discovery_home_tile.dart" -> "/dto.dart";
+  "/fragments/discovery/widgets/discovery_home_tile.dart" -> "/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/fragments/discovery/widgets/discovery_home_tile.dart" -> "/fragments/discovery/widgets/discovery_home_add_alert.dart";
+  "/fragments/discovery/widgets/discovery_home_tile.dart" -> "/fragments/discovery/widgets/discovery_home_add_confirm.dart";
+  "/fragments/discovery/widgets/discovery_home_tile.dart" -> "/kit/kit.dart";
+  "/fragments/discovery/widgets/discovery_status.dart" -> "/fragments/discovery/view_models/discovery_status_view_model.dart";
+  "/fragments/discovery/widgets/discovery_status.dart" -> "/kit/kit.dart";
+  "/fragments/home/view_models/home_view_model.dart" -> "/app/navigation.dart";
+  "/fragments/home/view_models/home_view_model.dart" -> "/dto.dart";
+  "/fragments/home/widgets/home_add.dart" -> "/fragments/home/view_models/home_view_model.dart";
+  "/fragments/home/widgets/home_add.dart" -> "/kit/kit.dart";
+  "/fragments/home/widgets/home_delete_confirm.dart" -> "/dto.dart";
+  "/fragments/home/widgets/home_delete_confirm.dart" -> "/fragments/home/view_models/home_view_model.dart";
+  "/fragments/home/widgets/home_delete_confirm.dart" -> "/widgets/confirm.dart";
+  "/fragments/home/widgets/home_list.dart" -> "/fragments/home/view_models/home_list_view_model.dart";
+  "/fragments/home/widgets/home_list.dart" -> "/fragments/home/widgets/home_tile.dart";
+  "/fragments/home/widgets/home_list.dart" -> "/kit/kit.dart";
+  "/fragments/home/widgets/home_props.dart" -> "/dto.dart";
+  "/fragments/home/widgets/home_tile.dart" -> "/dto.dart";
+  "/fragments/home/widgets/home_tile.dart" -> "/fragments/home/view_models/home_view_model.dart";
+  "/fragments/home/widgets/home_tile.dart" -> "/fragments/home/widgets/home_delete_confirm.dart";
+  "/fragments/home/widgets/home_tile.dart" -> "/kit/kit.dart";
+  "/kit/kit.dart" -> "/kit/kit_cupertino.dart";
+  "/kit/kit.dart" -> "/kit/kit_material.dart";
+  "/kit/kit_container.dart" -> "/kit/layout/layout.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/app/app.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/button/button.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/dialog/dialog.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/divider/divider.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/icon.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/indicator/indicator.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/list/list.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/scaffold/scaffold.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/switcher/switcher.dart";
+  "/kit/kit_container.dart" -> "/kit/widgets/text/text.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/kit_container.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/layout/layout_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/app/app.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/app/root/app_root_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/button/button.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/button/filled/button_filled_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/dialog/action/dialog_action_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/dialog/dialog.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/dialog/show/show_dialog_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/divider/divider_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/icon.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/indicator/indicator.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/list/chevron/list_chevron_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/list/list.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/list/section/list_section_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/list/tile/list_tile_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/scaffold/scaffold_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/switcher/switcher_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/text/field/text_field_cupertino.dart";
+  "/kit/kit_cupertino.dart" -> "/kit/widgets/text/text.dart";
+  "/kit/kit_material.dart" -> "/kit/kit_container.dart";
+  "/kit/kit_material.dart" -> "/kit/layout/layout_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/app/app.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/app/root/app_root_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/button/button.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/button/filled/button_filled_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/dialog/action/dialog_action_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/dialog/alert/dialog_alert_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/dialog/dialog.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/dialog/show/show_dialog_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/divider/divider_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/icon.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/indicator/activity/indicator_activity_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/indicator/indicator.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/list/chevron/list_chevron_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/list/list.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/list/section/list_section_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/list/tile/list_tile_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/scaffold/scaffold_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/switcher/switcher_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/text/field/text_field_material.dart";
+  "/kit/kit_material.dart" -> "/kit/widgets/text/text.dart";
+  "/kit/layout/layout_cupertino.dart" -> "/kit/layout/layout.dart";
+  "/kit/layout/layout_material.dart" -> "/kit/layout/layout.dart";
+  "/kit/theme/theme_cupertino.dart" -> "/kit/theme/theme.dart";
+  "/kit/theme/theme_cupertino.dart" -> "/kit/theme/theme_material.dart";
+  "/kit/theme/theme_material.dart" -> "/kit/theme/theme.dart";
+  "/kit/theme.dart" -> "/kit/theme/theme.dart";
+  "/kit/theme.dart" -> "/kit/theme/theme_cupertino.dart";
+  "/kit/theme.dart" -> "/kit/theme/theme_material.dart";
+  "/kit/widgets/app/app.dart" -> "/app/navigation.dart";
+  "/kit/widgets/app/app.dart" -> "/theme_config.dart";
+  "/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" -> "/kit/layout/layout_material.dart";
+  "/kit/widgets/app/root/app_root_cupertino.dart" -> "/app/navigation.dart";
+  "/kit/widgets/app/root/app_root_cupertino.dart" -> "/kit/theme/theme_cupertino.dart";
+  "/kit/widgets/app/root/app_root_cupertino.dart" -> "/theme_config.dart";
+  "/kit/widgets/app/root/app_root_material.dart" -> "/app/navigation.dart";
+  "/kit/widgets/app/root/app_root_material.dart" -> "/kit/theme/theme_material.dart";
+  "/kit/widgets/app/root/app_root_material.dart" -> "/theme_config.dart";
+  "/kit/widgets/list/section/list_section_material.dart" -> "/kit/layout/layout_material.dart";
+  "/layouts/center_layout.dart" -> "/kit/kit.dart";
+  "/layouts/default_layout.dart" -> "/kit/kit.dart";
+  "/layouts/fixed_width_layout.dart" -> "/kit/kit.dart";
+  "/layouts/full_width_layout.dart" -> "/kit/kit.dart";
+  "/screens/add_home_screen.dart" -> "/fragments/add_home/widgets/add_home_id.dart";
+  "/screens/add_home_screen.dart" -> "/layouts/fixed_width_layout.dart";
+  "/screens/discovery_screen.dart" -> "/fragments/discovery/widgets/discovery_home_add.dart";
+  "/screens/discovery_screen.dart" -> "/fragments/discovery/widgets/discovery_home_list.dart";
+  "/screens/discovery_screen.dart" -> "/fragments/discovery/widgets/discovery_status.dart";
+  "/screens/discovery_screen.dart" -> "/kit/kit.dart";
+  "/screens/discovery_screen.dart" -> "/layouts/fixed_width_layout.dart";
+  "/screens/home_list_screen.dart" -> "/fragments/home/widgets/home_add.dart";
+  "/screens/home_list_screen.dart" -> "/fragments/home/widgets/home_list.dart";
+  "/screens/home_list_screen.dart" -> "/layouts/full_width_layout.dart";
+  "/screens/home_screen.dart" -> "/dto.dart";
+  "/screens/home_screen.dart" -> "/fragments/home/view_models/home_view_model.dart";
+  "/screens/home_screen.dart" -> "/fragments/home/widgets/home_props.dart";
+  "/screens/home_screen.dart" -> "/layouts/full_width_layout.dart";
+  "/screens/splash_screen.dart" -> "/app/navigation.dart";
+  "/screens/splash_screen.dart" -> "/layouts/center_layout.dart";
+  "/screens/splash_screen.dart" -> "/widgets/logo.dart";
+  "/screens/welcome_screen.dart" -> "/app/navigation.dart";
+  "/screens/welcome_screen.dart" -> "/kit/kit.dart";
+  "/screens/welcome_screen.dart" -> "/kit/theme.dart";
+  "/screens/welcome_screen.dart" -> "/layouts/center_layout.dart";
+  "/widgets/alert.dart" -> "/kit/kit.dart";
+  "/widgets/confirm.dart" -> "/kit/kit.dart";
+  "/widgets/logo.dart" -> "/assets.dart";
+}

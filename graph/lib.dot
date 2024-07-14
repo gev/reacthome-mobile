@@ -1,0 +1,917 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/app/config.dart" [label="config"];
+  "/app/features/app_life_cycle_factory.dart" [label="app_life_cycle_factory"];
+  "/app/features/connection_factory.dart" [label="connection_factory"];
+  "/app/features/discovery_factory.dart" [label="discovery_factory"];
+  "/app/features/home_connection_factory.dart" [label="home_connection_factory"];
+  "/app/features/home_factory.dart" [label="home_factory"];
+  "/app/make.dart" [label="make"];
+  "/app/screens/add_home_screen_factory.dart" [label="add_home_screen_factory"];
+  "/app/screens/discovery_screen_factory.dart" [label="discovery_screen_factory"];
+  "/app/screens/home_list_screen_factory.dart" [label="home_list_screen_factory"];
+  "/app/screens/home_screen_factory.dart" [label="home_screen_factory"];
+  "/app/screens/splash_screen_factory.dart" [label="splash_screen_factory"];
+  "/app/screens/welcome_screen_factory.dart" [label="welcome_screen_factory"];
+  "/core/app_lifecycle/app_lifecycle_api.dart" [label="app_lifecycle_api"];
+  "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/core/connection/connection.dart" [label="connection"];
+  "/core/connection/connection_api.dart" [label="connection_api"];
+  "/core/connection/connection_event.dart" [label="connection_event"];
+  "/core/connection/connection_state.dart" [label="connection_state"];
+  "/core/connection/connection_type.dart" [label="connection_type"];
+  "/core/discovery/discovery.dart" [label="discovery"];
+  "/core/discovery/discovery_api.dart" [label="discovery_api"];
+  "/core/discovery/discovery_event.dart" [label="discovery_event"];
+  "/core/discovery/discovery_state.dart" [label="discovery_state"];
+  "/core/home/home.dart" [label="home"];
+  "/core/home/home_api.dart" [label="home_api"];
+  "/core/home/home_event.dart" [label="home_event"];
+  "/core/home_connection/home_connection.dart" [label="home_connection"];
+  "/core/home_connection/home_connection_api.dart" [label="home_connection_api"];
+  "/core/meta.dart" [label="meta"];
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
+  "/features/connection/application/connection_service.dart" [label="connection_service"];
+  "/features/connection/domain/connection_entity.dart" [label="connection_entity"];
+  "/features/connection/infrastructure/websocket_service.dart" [label="websocket_service"];
+  "/features/connection/interface/connection_controller.dart" [label="connection_controller"];
+  "/features/discovery/application/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
+  "/features/discovery/application/discovery_service.dart" [label="discovery_service"];
+  "/features/discovery/discovery_config.dart" [label="discovery_config"];
+  "/features/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" [label="discovery_multicast_service"];
+  "/features/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
+  "/features/discovery/interface/discovery_action.dart" [label="discovery_action"];
+  "/features/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
+  "/features/home/application/home_service.dart" [label="home_service"];
+  "/features/home/domain/home_entity.dart" [label="home_entity"];
+  "/features/home_connection/application/active_connection_service.dart" [label="active_connection_service"];
+  "/features/home_connection/application/home_connection_auto_service.dart" [label="home_connection_auto_service"];
+  "/features/home_connection/application/home_connection_lifecycle_service.dart" [label="home_connection_lifecycle_service"];
+  "/features/home_connection/application/home_connection_service.dart" [label="home_connection_service"];
+  "/features/home_connection/domain/home_connection_entity.dart" [label="home_connection_entity"];
+  "/infrastructure/file_store.dart" [label="file_store"];
+  "/infrastructure/multicast/multicast_config.dart" [label="multicast_config"];
+  "/infrastructure/multicast/multicast_source.dart" [label="multicast_source"];
+  "/infrastructure/multicast/multicast_source_factory.dart" [label="multicast_source_factory"];
+  "/infrastructure/timeout.dart" [label="timeout"];
+  "/infrastructure/websocket/websocket.dart" [label="websocket"];
+  "/infrastructure/websocket/websocket_config.dart" [label="websocket_config"];
+  "/infrastructure/websocket/websocket_factory.dart" [label="websocket_factory"];
+  "/main.dart" [label="main"];
+  "/ui/app/app.dart" [label="app"];
+  "/ui/app/navigation.dart" [label="navigation"];
+  "/ui/assets.dart" [label="assets"];
+  "/ui/dto.dart" [label="dto"];
+  "/ui/fragments/add_home/widgets/add_home_id.dart" [label="add_home_id"];
+  "/ui/fragments/connection/view_models/connection_view_model.dart" [label="connection_view_model"];
+  "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart" [label="discovery_home_list_view_model"];
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" [label="discovery_home_view_model"];
+  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" [label="discovery_status_view_model"];
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" [label="discovery_home_add"];
+  "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart" [label="discovery_home_add_alert"];
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" [label="discovery_home_add_confirm"];
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" [label="discovery_home_list"];
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" [label="discovery_home_tile"];
+  "/ui/fragments/discovery/widgets/discovery_status.dart" [label="discovery_status"];
+  "/ui/fragments/home/view_models/home_list_view_model.dart" [label="home_list_view_model"];
+  "/ui/fragments/home/view_models/home_view_model.dart" [label="home_view_model"];
+  "/ui/fragments/home/widgets/home_add.dart" [label="home_add"];
+  "/ui/fragments/home/widgets/home_delete_confirm.dart" [label="home_delete_confirm"];
+  "/ui/fragments/home/widgets/home_list.dart" [label="home_list"];
+  "/ui/fragments/home/widgets/home_props.dart" [label="home_props"];
+  "/ui/fragments/home/widgets/home_tile.dart" [label="home_tile"];
+  "/ui/kit/kit.dart" [label="kit"];
+  "/ui/kit/kit_container.dart" [label="kit_container"];
+  "/ui/kit/kit_cupertino.dart" [label="kit_cupertino"];
+  "/ui/kit/kit_material.dart" [label="kit_material"];
+  "/ui/kit/layout/layout.dart" [label="layout"];
+  "/ui/kit/layout/layout_cupertino.dart" [label="layout_cupertino"];
+  "/ui/kit/layout/layout_material.dart" [label="layout_material"];
+  "/ui/kit/theme/theme.dart" [label="theme"];
+  "/ui/kit/theme/theme_cupertino.dart" [label="theme_cupertino"];
+  "/ui/kit/theme/theme_material.dart" [label="theme_material"];
+  "/ui/kit/theme.dart" [label="theme"];
+  "/ui/kit/widgets/app/app.dart" [label="app"];
+  "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart" [label="app_bar_fixed_cupertino"];
+  "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart" [label="app_bar_fixed_material"];
+  "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart" [label="app_bar_sliver_cupertino"];
+  "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" [label="app_bar_sliver_material"];
+  "/ui/kit/widgets/app/root/app_root_cupertino.dart" [label="app_root_cupertino"];
+  "/ui/kit/widgets/app/root/app_root_material.dart" [label="app_root_material"];
+  "/ui/kit/widgets/button/button.dart" [label="button"];
+  "/ui/kit/widgets/button/filled/button_filled_cupertino.dart" [label="button_filled_cupertino"];
+  "/ui/kit/widgets/button/filled/button_filled_material.dart" [label="button_filled_material"];
+  "/ui/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart" [label="button_icon_filled_cupertino"];
+  "/ui/kit/widgets/button/icon/filled/button_icon_filled_material.dart" [label="button_icon_filled_material"];
+  "/ui/kit/widgets/dialog/action/dialog_action_cupertino.dart" [label="dialog_action_cupertino"];
+  "/ui/kit/widgets/dialog/action/dialog_action_material.dart" [label="dialog_action_material"];
+  "/ui/kit/widgets/dialog/alert/dialog_alert_cupertino.dart" [label="dialog_alert_cupertino"];
+  "/ui/kit/widgets/dialog/alert/dialog_alert_material.dart" [label="dialog_alert_material"];
+  "/ui/kit/widgets/dialog/dialog.dart" [label="dialog"];
+  "/ui/kit/widgets/dialog/show/show_dialog_cupertino.dart" [label="show_dialog_cupertino"];
+  "/ui/kit/widgets/dialog/show/show_dialog_material.dart" [label="show_dialog_material"];
+  "/ui/kit/widgets/divider/divider.dart" [label="divider"];
+  "/ui/kit/widgets/divider/divider_cupertino.dart" [label="divider_cupertino"];
+  "/ui/kit/widgets/divider/divider_material.dart" [label="divider_material"];
+  "/ui/kit/widgets/icon.dart" [label="icon"];
+  "/ui/kit/widgets/indicator/activity/indicator_activity_cupertino.dart" [label="indicator_activity_cupertino"];
+  "/ui/kit/widgets/indicator/activity/indicator_activity_material.dart" [label="indicator_activity_material"];
+  "/ui/kit/widgets/indicator/indicator.dart" [label="indicator"];
+  "/ui/kit/widgets/list/chevron/list_chevron_cupertino.dart" [label="list_chevron_cupertino"];
+  "/ui/kit/widgets/list/chevron/list_chevron_material.dart" [label="list_chevron_material"];
+  "/ui/kit/widgets/list/list.dart" [label="list"];
+  "/ui/kit/widgets/list/section/list_section_cupertino.dart" [label="list_section_cupertino"];
+  "/ui/kit/widgets/list/section/list_section_material.dart" [label="list_section_material"];
+  "/ui/kit/widgets/list/tile/list_tile_cupertino.dart" [label="list_tile_cupertino"];
+  "/ui/kit/widgets/list/tile/list_tile_material.dart" [label="list_tile_material"];
+  "/ui/kit/widgets/scaffold/scaffold.dart" [label="scaffold"];
+  "/ui/kit/widgets/scaffold/scaffold_cupertino.dart" [label="scaffold_cupertino"];
+  "/ui/kit/widgets/scaffold/scaffold_material.dart" [label="scaffold_material"];
+  "/ui/kit/widgets/switcher/switcher.dart" [label="switcher"];
+  "/ui/kit/widgets/switcher/switcher_cupertino.dart" [label="switcher_cupertino"];
+  "/ui/kit/widgets/switcher/switcher_material.dart" [label="switcher_material"];
+  "/ui/kit/widgets/text/field/text_field_cupertino.dart" [label="text_field_cupertino"];
+  "/ui/kit/widgets/text/field/text_field_material.dart" [label="text_field_material"];
+  "/ui/kit/widgets/text/text.dart" [label="text"];
+  "/ui/layouts/center_layout.dart" [label="center_layout"];
+  "/ui/layouts/default_layout.dart" [label="default_layout"];
+  "/ui/layouts/fixed_width_layout.dart" [label="fixed_width_layout"];
+  "/ui/layouts/full_width_layout.dart" [label="full_width_layout"];
+  "/ui/screens/add_home_screen.dart" [label="add_home_screen"];
+  "/ui/screens/discovery_screen.dart" [label="discovery_screen"];
+  "/ui/screens/home_list_screen.dart" [label="home_list_screen"];
+  "/ui/screens/home_screen.dart" [label="home_screen"];
+  "/ui/screens/splash_screen.dart" [label="splash_screen"];
+  "/ui/screens/welcome_screen.dart" [label="welcome_screen"];
+  "/ui/theme_config.dart" [label="theme_config"];
+  "/ui/widgets/alert.dart" [label="alert"];
+  "/ui/widgets/confirm.dart" [label="confirm"];
+  "/ui/widgets/logo.dart" [label="logo"];
+  "/util/entity.dart" [label="entity"];
+  "/util/event_bus.dart" [label="event_bus"];
+  "/util/event_emitter.dart" [label="event_emitter"];
+  "/util/event_listener.dart" [label="event_listener"];
+  "/util/extensions.dart" [label="extensions"];
+  "/util/handler.dart" [label="handler"];
+  "/util/platform.dart" [label="platform"];
+  "/util/repository.dart" [label="repository"];
+  subgraph "cluster~" {
+    label="lib";
+    "/main.dart";
+    subgraph "cluster~/app" {
+      label="app";
+      "/app/config.dart";
+      "/app/make.dart";
+      subgraph "cluster~/app/features" {
+        label="features";
+        "/app/features/app_life_cycle_factory.dart";
+        "/app/features/connection_factory.dart";
+        "/app/features/discovery_factory.dart";
+        "/app/features/home_connection_factory.dart";
+        "/app/features/home_factory.dart";
+      }
+      subgraph "cluster~/app/screens" {
+        label="screens";
+        "/app/screens/add_home_screen_factory.dart";
+        "/app/screens/discovery_screen_factory.dart";
+        "/app/screens/home_list_screen_factory.dart";
+        "/app/screens/home_screen_factory.dart";
+        "/app/screens/splash_screen_factory.dart";
+        "/app/screens/welcome_screen_factory.dart";
+      }
+    }
+    subgraph "cluster~/core" {
+      label="core";
+      "/core/meta.dart";
+      subgraph "cluster~/core/app_lifecycle" {
+        label="app_lifecycle";
+        "/core/app_lifecycle/app_lifecycle_api.dart";
+        "/core/app_lifecycle/app_lifecycle_event.dart";
+      }
+      subgraph "cluster~/core/connection" {
+        label="connection";
+        "/core/connection/connection.dart";
+        "/core/connection/connection_api.dart";
+        "/core/connection/connection_event.dart";
+        "/core/connection/connection_state.dart";
+        "/core/connection/connection_type.dart";
+      }
+      subgraph "cluster~/core/discovery" {
+        label="discovery";
+        "/core/discovery/discovery.dart";
+        "/core/discovery/discovery_api.dart";
+        "/core/discovery/discovery_event.dart";
+        "/core/discovery/discovery_state.dart";
+      }
+      subgraph "cluster~/core/home" {
+        label="home";
+        "/core/home/home.dart";
+        "/core/home/home_api.dart";
+        "/core/home/home_event.dart";
+      }
+      subgraph "cluster~/core/home_connection" {
+        label="home_connection";
+        "/core/home_connection/home_connection.dart";
+        "/core/home_connection/home_connection_api.dart";
+      }
+    }
+    subgraph "cluster~/features" {
+      label="features";
+      subgraph "cluster~/features/app_lifecycle" {
+        label="app_lifecycle";
+        subgraph "cluster~/features/app_lifecycle/application" {
+          label="application";
+          "/features/app_lifecycle/application/app_lifecycle_service.dart";
+        }
+      }
+      subgraph "cluster~/features/connection" {
+        label="connection";
+        subgraph "cluster~/features/connection/application" {
+          label="application";
+          "/features/connection/application/connection_service.dart";
+        }
+        subgraph "cluster~/features/connection/domain" {
+          label="domain";
+          "/features/connection/domain/connection_entity.dart";
+        }
+        subgraph "cluster~/features/connection/infrastructure" {
+          label="infrastructure";
+          "/features/connection/infrastructure/websocket_service.dart";
+        }
+        subgraph "cluster~/features/connection/interface" {
+          label="interface";
+          "/features/connection/interface/connection_controller.dart";
+        }
+      }
+      subgraph "cluster~/features/discovery" {
+        label="discovery";
+        "/features/discovery/discovery_config.dart";
+        subgraph "cluster~/features/discovery/application" {
+          label="application";
+          "/features/discovery/application/discovery_lifecycle_service.dart";
+          "/features/discovery/application/discovery_service.dart";
+        }
+        subgraph "cluster~/features/discovery/domain" {
+          label="domain";
+          "/features/discovery/domain/discovery_entity.dart";
+        }
+        subgraph "cluster~/features/discovery/infrastructure" {
+          label="infrastructure";
+          "/features/discovery/infrastructure/discovery_multicast_service.dart";
+          "/features/discovery/infrastructure/discovery_timeout_service.dart";
+        }
+        subgraph "cluster~/features/discovery/interface" {
+          label="interface";
+          "/features/discovery/interface/discovery_action.dart";
+          "/features/discovery/interface/discovery_controller.dart";
+        }
+      }
+      subgraph "cluster~/features/home" {
+        label="home";
+        subgraph "cluster~/features/home/application" {
+          label="application";
+          "/features/home/application/home_service.dart";
+        }
+        subgraph "cluster~/features/home/domain" {
+          label="domain";
+          "/features/home/domain/home_entity.dart";
+        }
+      }
+      subgraph "cluster~/features/home_connection" {
+        label="home_connection";
+        subgraph "cluster~/features/home_connection/application" {
+          label="application";
+          "/features/home_connection/application/active_connection_service.dart";
+          "/features/home_connection/application/home_connection_auto_service.dart";
+          "/features/home_connection/application/home_connection_lifecycle_service.dart";
+          "/features/home_connection/application/home_connection_service.dart";
+        }
+        subgraph "cluster~/features/home_connection/domain" {
+          label="domain";
+          "/features/home_connection/domain/home_connection_entity.dart";
+        }
+      }
+    }
+    subgraph "cluster~/infrastructure" {
+      label="infrastructure";
+      "/infrastructure/file_store.dart";
+      "/infrastructure/timeout.dart";
+      subgraph "cluster~/infrastructure/multicast" {
+        label="multicast";
+        "/infrastructure/multicast/multicast_config.dart";
+        "/infrastructure/multicast/multicast_source.dart";
+        "/infrastructure/multicast/multicast_source_factory.dart";
+      }
+      subgraph "cluster~/infrastructure/websocket" {
+        label="websocket";
+        "/infrastructure/websocket/websocket.dart";
+        "/infrastructure/websocket/websocket_config.dart";
+        "/infrastructure/websocket/websocket_factory.dart";
+      }
+    }
+    subgraph "cluster~/ui" {
+      label="ui";
+      "/ui/assets.dart";
+      "/ui/dto.dart";
+      "/ui/theme_config.dart";
+      subgraph "cluster~/ui/app" {
+        label="app";
+        "/ui/app/app.dart";
+        "/ui/app/navigation.dart";
+      }
+      subgraph "cluster~/ui/fragments" {
+        label="fragments";
+        subgraph "cluster~/ui/fragments/add_home" {
+          label="add_home";
+          subgraph "cluster~/ui/fragments/add_home/widgets" {
+            label="widgets";
+            "/ui/fragments/add_home/widgets/add_home_id.dart";
+          }
+        }
+        subgraph "cluster~/ui/fragments/connection" {
+          label="connection";
+          subgraph "cluster~/ui/fragments/connection/view_models" {
+            label="view_models";
+            "/ui/fragments/connection/view_models/connection_view_model.dart";
+          }
+        }
+        subgraph "cluster~/ui/fragments/discovery" {
+          label="discovery";
+          subgraph "cluster~/ui/fragments/discovery/view_models" {
+            label="view_models";
+            "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart";
+            "/ui/fragments/discovery/view_models/discovery_home_view_model.dart";
+            "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
+          }
+          subgraph "cluster~/ui/fragments/discovery/widgets" {
+            label="widgets";
+            "/ui/fragments/discovery/widgets/discovery_home_add.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_list.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_tile.dart";
+            "/ui/fragments/discovery/widgets/discovery_status.dart";
+          }
+        }
+        subgraph "cluster~/ui/fragments/home" {
+          label="home";
+          subgraph "cluster~/ui/fragments/home/view_models" {
+            label="view_models";
+            "/ui/fragments/home/view_models/home_list_view_model.dart";
+            "/ui/fragments/home/view_models/home_view_model.dart";
+          }
+          subgraph "cluster~/ui/fragments/home/widgets" {
+            label="widgets";
+            "/ui/fragments/home/widgets/home_add.dart";
+            "/ui/fragments/home/widgets/home_delete_confirm.dart";
+            "/ui/fragments/home/widgets/home_list.dart";
+            "/ui/fragments/home/widgets/home_props.dart";
+            "/ui/fragments/home/widgets/home_tile.dart";
+          }
+        }
+      }
+      subgraph "cluster~/ui/kit" {
+        label="kit";
+        "/ui/kit/kit.dart";
+        "/ui/kit/kit_container.dart";
+        "/ui/kit/kit_cupertino.dart";
+        "/ui/kit/kit_material.dart";
+        "/ui/kit/theme.dart";
+        subgraph "cluster~/ui/kit/layout" {
+          label="layout";
+          "/ui/kit/layout/layout.dart";
+          "/ui/kit/layout/layout_cupertino.dart";
+          "/ui/kit/layout/layout_material.dart";
+        }
+        subgraph "cluster~/ui/kit/theme" {
+          label="theme";
+          "/ui/kit/theme/theme.dart";
+          "/ui/kit/theme/theme_cupertino.dart";
+          "/ui/kit/theme/theme_material.dart";
+        }
+        subgraph "cluster~/ui/kit/widgets" {
+          label="widgets";
+          "/ui/kit/widgets/icon.dart";
+          subgraph "cluster~/ui/kit/widgets/app" {
+            label="app";
+            "/ui/kit/widgets/app/app.dart";
+            subgraph "cluster~/ui/kit/widgets/app/bar" {
+              label="bar";
+              subgraph "cluster~/ui/kit/widgets/app/bar/fixed" {
+                label="fixed";
+                "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+                "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+              }
+              subgraph "cluster~/ui/kit/widgets/app/bar/sliver" {
+                label="sliver";
+                "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+                "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+              }
+            }
+            subgraph "cluster~/ui/kit/widgets/app/root" {
+              label="root";
+              "/ui/kit/widgets/app/root/app_root_cupertino.dart";
+              "/ui/kit/widgets/app/root/app_root_material.dart";
+            }
+          }
+          subgraph "cluster~/ui/kit/widgets/button" {
+            label="button";
+            "/ui/kit/widgets/button/button.dart";
+            subgraph "cluster~/ui/kit/widgets/button/filled" {
+              label="filled";
+              "/ui/kit/widgets/button/filled/button_filled_cupertino.dart";
+              "/ui/kit/widgets/button/filled/button_filled_material.dart";
+            }
+            subgraph "cluster~/ui/kit/widgets/button/icon" {
+              label="icon";
+              subgraph "cluster~/ui/kit/widgets/button/icon/filled" {
+                label="filled";
+                "/ui/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+                "/ui/kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+              }
+            }
+          }
+          subgraph "cluster~/ui/kit/widgets/dialog" {
+            label="dialog";
+            "/ui/kit/widgets/dialog/dialog.dart";
+            subgraph "cluster~/ui/kit/widgets/dialog/action" {
+              label="action";
+              "/ui/kit/widgets/dialog/action/dialog_action_cupertino.dart";
+              "/ui/kit/widgets/dialog/action/dialog_action_material.dart";
+            }
+            subgraph "cluster~/ui/kit/widgets/dialog/alert" {
+              label="alert";
+              "/ui/kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+              "/ui/kit/widgets/dialog/alert/dialog_alert_material.dart";
+            }
+            subgraph "cluster~/ui/kit/widgets/dialog/show" {
+              label="show";
+              "/ui/kit/widgets/dialog/show/show_dialog_cupertino.dart";
+              "/ui/kit/widgets/dialog/show/show_dialog_material.dart";
+            }
+          }
+          subgraph "cluster~/ui/kit/widgets/divider" {
+            label="divider";
+            "/ui/kit/widgets/divider/divider.dart";
+            "/ui/kit/widgets/divider/divider_cupertino.dart";
+            "/ui/kit/widgets/divider/divider_material.dart";
+          }
+          subgraph "cluster~/ui/kit/widgets/indicator" {
+            label="indicator";
+            "/ui/kit/widgets/indicator/indicator.dart";
+            subgraph "cluster~/ui/kit/widgets/indicator/activity" {
+              label="activity";
+              "/ui/kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+              "/ui/kit/widgets/indicator/activity/indicator_activity_material.dart";
+            }
+          }
+          subgraph "cluster~/ui/kit/widgets/list" {
+            label="list";
+            "/ui/kit/widgets/list/list.dart";
+            subgraph "cluster~/ui/kit/widgets/list/chevron" {
+              label="chevron";
+              "/ui/kit/widgets/list/chevron/list_chevron_cupertino.dart";
+              "/ui/kit/widgets/list/chevron/list_chevron_material.dart";
+            }
+            subgraph "cluster~/ui/kit/widgets/list/section" {
+              label="section";
+              "/ui/kit/widgets/list/section/list_section_cupertino.dart";
+              "/ui/kit/widgets/list/section/list_section_material.dart";
+            }
+            subgraph "cluster~/ui/kit/widgets/list/tile" {
+              label="tile";
+              "/ui/kit/widgets/list/tile/list_tile_cupertino.dart";
+              "/ui/kit/widgets/list/tile/list_tile_material.dart";
+            }
+          }
+          subgraph "cluster~/ui/kit/widgets/scaffold" {
+            label="scaffold";
+            "/ui/kit/widgets/scaffold/scaffold.dart";
+            "/ui/kit/widgets/scaffold/scaffold_cupertino.dart";
+            "/ui/kit/widgets/scaffold/scaffold_material.dart";
+          }
+          subgraph "cluster~/ui/kit/widgets/switcher" {
+            label="switcher";
+            "/ui/kit/widgets/switcher/switcher.dart";
+            "/ui/kit/widgets/switcher/switcher_cupertino.dart";
+            "/ui/kit/widgets/switcher/switcher_material.dart";
+          }
+          subgraph "cluster~/ui/kit/widgets/text" {
+            label="text";
+            "/ui/kit/widgets/text/text.dart";
+            subgraph "cluster~/ui/kit/widgets/text/field" {
+              label="field";
+              "/ui/kit/widgets/text/field/text_field_cupertino.dart";
+              "/ui/kit/widgets/text/field/text_field_material.dart";
+            }
+          }
+        }
+      }
+      subgraph "cluster~/ui/layouts" {
+        label="layouts";
+        "/ui/layouts/center_layout.dart";
+        "/ui/layouts/default_layout.dart";
+        "/ui/layouts/fixed_width_layout.dart";
+        "/ui/layouts/full_width_layout.dart";
+      }
+      subgraph "cluster~/ui/screens" {
+        label="screens";
+        "/ui/screens/add_home_screen.dart";
+        "/ui/screens/discovery_screen.dart";
+        "/ui/screens/home_list_screen.dart";
+        "/ui/screens/home_screen.dart";
+        "/ui/screens/splash_screen.dart";
+        "/ui/screens/welcome_screen.dart";
+      }
+      subgraph "cluster~/ui/widgets" {
+        label="widgets";
+        "/ui/widgets/alert.dart";
+        "/ui/widgets/confirm.dart";
+        "/ui/widgets/logo.dart";
+      }
+    }
+    subgraph "cluster~/util" {
+      label="util";
+      "/util/entity.dart";
+      "/util/event_bus.dart";
+      "/util/event_emitter.dart";
+      "/util/event_listener.dart";
+      "/util/extensions.dart";
+      "/util/handler.dart";
+      "/util/platform.dart";
+      "/util/repository.dart";
+    }
+  }
+  "/app/config.dart" -> "/features/discovery/discovery_config.dart";
+  "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/app/config.dart" -> "/infrastructure/websocket/websocket_config.dart";
+  "/app/config.dart" -> "/ui/theme_config.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
+  "/app/features/app_life_cycle_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/connection_factory.dart" -> "/app/config.dart";
+  "/app/features/connection_factory.dart" -> "/core/connection/connection_event.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/application/connection_service.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/domain/connection_entity.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/infrastructure/websocket_service.dart";
+  "/app/features/connection_factory.dart" -> "/features/connection/interface/connection_controller.dart";
+  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/app/features/connection_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/connection_factory.dart" -> "/util/repository.dart";
+  "/app/features/discovery_factory.dart" -> "/app/config.dart";
+  "/app/features/discovery_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/features/discovery_factory.dart" -> "/app/features/home_factory.dart";
+  "/app/features/discovery_factory.dart" -> "/core/discovery/discovery_event.dart";
+  "/app/features/discovery_factory.dart" -> "/core/home/home_event.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_lifecycle_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/domain/discovery_entity.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_multicast_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_timeout_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/discovery/interface/discovery_controller.dart";
+  "/app/features/discovery_factory.dart" -> "/features/home/application/home_service.dart";
+  "/app/features/discovery_factory.dart" -> "/features/home/domain/home_entity.dart";
+  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
+  "/app/features/discovery_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/discovery_factory.dart" -> "/util/repository.dart";
+  "/app/features/home_connection_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/features/home_connection_factory.dart" -> "/app/features/connection_factory.dart";
+  "/app/features/home_connection_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/features/home_connection_factory.dart" -> "/features/home_connection/application/active_connection_service.dart";
+  "/app/features/home_connection_factory.dart" -> "/features/home_connection/application/home_connection_auto_service.dart";
+  "/app/features/home_connection_factory.dart" -> "/features/home_connection/application/home_connection_lifecycle_service.dart";
+  "/app/features/home_connection_factory.dart" -> "/features/home_connection/application/home_connection_service.dart";
+  "/app/features/home_connection_factory.dart" -> "/features/home_connection/domain/home_connection_entity.dart";
+  "/app/features/home_connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/app/features/home_connection_factory.dart" -> "/util/repository.dart";
+  "/app/features/home_factory.dart" -> "/core/home/home_event.dart";
+  "/app/features/home_factory.dart" -> "/features/home/application/home_service.dart";
+  "/app/features/home_factory.dart" -> "/features/home/domain/home_entity.dart";
+  "/app/features/home_factory.dart" -> "/util/event_bus.dart";
+  "/app/features/home_factory.dart" -> "/util/repository.dart";
+  "/app/make.dart" -> "/app/config.dart";
+  "/app/make.dart" -> "/app/features/app_life_cycle_factory.dart";
+  "/app/make.dart" -> "/app/features/connection_factory.dart";
+  "/app/make.dart" -> "/app/features/discovery_factory.dart";
+  "/app/make.dart" -> "/app/features/home_connection_factory.dart";
+  "/app/make.dart" -> "/app/screens/add_home_screen_factory.dart";
+  "/app/make.dart" -> "/app/screens/discovery_screen_factory.dart";
+  "/app/make.dart" -> "/app/screens/home_list_screen_factory.dart";
+  "/app/make.dart" -> "/app/screens/home_screen_factory.dart";
+  "/app/make.dart" -> "/app/screens/splash_screen_factory.dart";
+  "/app/make.dart" -> "/app/screens/welcome_screen_factory.dart";
+  "/app/make.dart" -> "/ui/app/app.dart";
+  "/app/make.dart" -> "/ui/app/navigation.dart";
+  "/app/screens/add_home_screen_factory.dart" -> "/ui/screens/add_home_screen.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/app/features/discovery_factory.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/app/features/home_factory.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
+  "/app/screens/discovery_screen_factory.dart" -> "/ui/screens/discovery_screen.dart";
+  "/app/screens/home_list_screen_factory.dart" -> "/app/features/home_factory.dart";
+  "/app/screens/home_list_screen_factory.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/app/screens/home_list_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/app/screens/home_list_screen_factory.dart" -> "/ui/screens/home_list_screen.dart";
+  "/app/screens/home_screen_factory.dart" -> "/app/features/home_factory.dart";
+  "/app/screens/home_screen_factory.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/app/screens/home_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/app/screens/home_screen_factory.dart" -> "/ui/screens/home_screen.dart";
+  "/app/screens/splash_screen_factory.dart" -> "/ui/screens/splash_screen.dart";
+  "/app/screens/welcome_screen_factory.dart" -> "/ui/screens/welcome_screen.dart";
+  "/core/connection/connection.dart" -> "/core/connection/connection_state.dart";
+  "/core/connection/connection.dart" -> "/util/entity.dart";
+  "/core/connection/connection.dart" -> "/core/connection/connection_type.dart";
+  "/core/connection/connection_api.dart" -> "/core/connection/connection.dart";
+  "/core/connection/connection_event.dart" -> "/core/connection/connection_type.dart";
+  "/core/discovery/discovery.dart" -> "/core/discovery/discovery_state.dart";
+  "/core/discovery/discovery_api.dart" -> "/core/discovery/discovery.dart";
+  "/core/home/home.dart" -> "/core/meta.dart";
+  "/core/home/home.dart" -> "/util/entity.dart";
+  "/core/home/home_api.dart" -> "/core/home/home.dart";
+  "/core/home/home_api.dart" -> "/core/meta.dart";
+  "/core/home_connection/home_connection.dart" -> "/core/connection/connection.dart";
+  "/core/home_connection/home_connection.dart" -> "/util/entity.dart";
+  "/core/home_connection/home_connection_api.dart" -> "/core/home/home.dart";
+  "/core/home_connection/home_connection_api.dart" -> "/core/home_connection/home_connection.dart";
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_api.dart";
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_emitter.dart";
+  "/features/connection/application/connection_service.dart" -> "/core/connection/connection.dart";
+  "/features/connection/application/connection_service.dart" -> "/core/connection/connection_api.dart";
+  "/features/connection/application/connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/connection/application/connection_service.dart" -> "/features/connection/domain/connection_entity.dart";
+  "/features/connection/application/connection_service.dart" -> "/util/event_emitter.dart";
+  "/features/connection/application/connection_service.dart" -> "/util/extensions.dart";
+  "/features/connection/application/connection_service.dart" -> "/util/repository.dart";
+  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection.dart";
+  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_event.dart";
+  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_state.dart";
+  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_type.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_api.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/features/connection/infrastructure/websocket_service.dart" -> "/util/event_listener.dart";
+  "/features/connection/interface/connection_controller.dart" -> "/util/handler.dart";
+  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/discovery/discovery_api.dart";
+  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/util/event_listener.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_api.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_event.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/features/discovery/domain/discovery_entity.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/util/event_emitter.dart";
+  "/features/discovery/application/discovery_service.dart" -> "/util/extensions.dart";
+  "/features/discovery/discovery_config.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery.dart";
+  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery_event.dart";
+  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery_state.dart";
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/core/discovery/discovery_api.dart";
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/core/discovery/discovery_event.dart";
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
+  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/util/event_listener.dart";
+  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/core/home/home_api.dart";
+  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/core/home/home_event.dart";
+  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/infrastructure/timeout.dart";
+  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/util/event_listener.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/core/home/home_api.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/features/discovery/interface/discovery_action.dart";
+  "/features/discovery/interface/discovery_controller.dart" -> "/util/handler.dart";
+  "/features/home/application/home_service.dart" -> "/core/home/home.dart";
+  "/features/home/application/home_service.dart" -> "/core/home/home_api.dart";
+  "/features/home/application/home_service.dart" -> "/core/home/home_event.dart";
+  "/features/home/application/home_service.dart" -> "/core/meta.dart";
+  "/features/home/application/home_service.dart" -> "/features/home/domain/home_entity.dart";
+  "/features/home/application/home_service.dart" -> "/util/event_emitter.dart";
+  "/features/home/application/home_service.dart" -> "/util/repository.dart";
+  "/features/home/domain/home_entity.dart" -> "/core/home/home.dart";
+  "/features/home/domain/home_entity.dart" -> "/core/home/home_event.dart";
+  "/features/home/domain/home_entity.dart" -> "/core/meta.dart";
+  "/features/home/domain/home_entity.dart" -> "/util/extensions.dart";
+  "/features/home_connection/application/active_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/home_connection/application/active_connection_service.dart" -> "/core/connection/connection_type.dart";
+  "/features/home_connection/application/active_connection_service.dart" -> "/core/home_connection/home_connection_api.dart";
+  "/features/home_connection/application/active_connection_service.dart" -> "/util/event_listener.dart";
+  "/features/home_connection/application/home_connection_auto_service.dart" -> "/core/home/home_api.dart";
+  "/features/home_connection/application/home_connection_auto_service.dart" -> "/core/home/home_event.dart";
+  "/features/home_connection/application/home_connection_auto_service.dart" -> "/core/home_connection/home_connection_api.dart";
+  "/features/home_connection/application/home_connection_auto_service.dart" -> "/util/event_listener.dart";
+  "/features/home_connection/application/home_connection_auto_service.dart" -> "/util/extensions.dart";
+  "/features/home_connection/application/home_connection_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
+  "/features/home_connection/application/home_connection_lifecycle_service.dart" -> "/core/home/home_api.dart";
+  "/features/home_connection/application/home_connection_lifecycle_service.dart" -> "/core/home_connection/home_connection_api.dart";
+  "/features/home_connection/application/home_connection_lifecycle_service.dart" -> "/util/event_listener.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/core/connection/connection_api.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/core/connection/connection_event.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/core/home/home.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/core/home_connection/home_connection.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/core/home_connection/home_connection_api.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/features/home_connection/domain/home_connection_entity.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/util/event_emitter.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/util/extensions.dart";
+  "/features/home_connection/application/home_connection_service.dart" -> "/util/repository.dart";
+  "/features/home_connection/domain/home_connection_entity.dart" -> "/core/connection/connection.dart";
+  "/features/home_connection/domain/home_connection_entity.dart" -> "/core/connection/connection_event.dart";
+  "/features/home_connection/domain/home_connection_entity.dart" -> "/core/connection/connection_state.dart";
+  "/features/home_connection/domain/home_connection_entity.dart" -> "/core/home_connection/home_connection.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/util/extensions.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/util/handler.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/handler.dart";
+  "/infrastructure/websocket/websocket.dart" -> "/util/handler.dart";
+  "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket_config.dart";
+  "/infrastructure/websocket/websocket_factory.dart" -> "/util/handler.dart";
+  "/main.dart" -> "/app/make.dart";
+  "/ui/app/app.dart" -> "/core/app_lifecycle/app_lifecycle_api.dart";
+  "/ui/app/app.dart" -> "/ui/app/navigation.dart";
+  "/ui/app/app.dart" -> "/ui/kit/kit.dart";
+  "/ui/app/app.dart" -> "/ui/theme_config.dart";
+  "/ui/dto.dart" -> "/core/home/home.dart";
+  "/ui/dto.dart" -> "/core/meta.dart";
+  "/ui/fragments/add_home/widgets/add_home_id.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_event.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_state.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/home/home_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/home_connection/home_connection_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/util/extensions.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart" -> "/core/home/home_api.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart" -> "/core/home/home_event.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/core/home/home_api.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/core/home/home_event.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/ui/dto.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/util/event_bus.dart";
+  "/ui/fragments/discovery/view_models/discovery_home_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_api.dart";
+  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_event.dart";
+  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_state.dart";
+  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" -> "/ui/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart" -> "/ui/widgets/alert.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/ui/dto.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/ui/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/ui/widgets/confirm.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/view_models/discovery_home_list_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/widgets/discovery_home_tile.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/dto.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/fragments/discovery/view_models/discovery_home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/home/view_models/home_list_view_model.dart" -> "/core/home/home_api.dart";
+  "/ui/fragments/home/view_models/home_list_view_model.dart" -> "/core/home/home_event.dart";
+  "/ui/fragments/home/view_models/home_list_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/core/home/home_api.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/core/home/home_event.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/util/event_bus.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/ui/dto.dart";
+  "/ui/fragments/home/widgets/home_add.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_add.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/home/widgets/home_delete_confirm.dart" -> "/ui/dto.dart";
+  "/ui/fragments/home/widgets/home_delete_confirm.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_delete_confirm.dart" -> "/ui/widgets/confirm.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/fragments/home/widgets/home_tile.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/kit/kit.dart";
+  "/ui/fragments/home/widgets/home_props.dart" -> "/ui/dto.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/dto.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/fragments/home/widgets/home_delete_confirm.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/kit/kit.dart";
+  "/ui/kit/kit.dart" -> "/ui/kit/kit_cupertino.dart";
+  "/ui/kit/kit.dart" -> "/ui/kit/kit_material.dart";
+  "/ui/kit/kit.dart" -> "/util/platform.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/layout/layout.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/app/app.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/button/button.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/dialog/dialog.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/divider/divider.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/icon.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/indicator/indicator.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/list/list.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/scaffold/scaffold.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/switcher/switcher.dart";
+  "/ui/kit/kit_container.dart" -> "/ui/kit/widgets/text/text.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/kit_container.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/layout/layout_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/app/app.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/app/root/app_root_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/button/button.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/button/filled/button_filled_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/dialog/action/dialog_action_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/dialog/dialog.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/dialog/show/show_dialog_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/divider/divider_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/icon.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/indicator/indicator.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/list/chevron/list_chevron_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/list/list.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/list/section/list_section_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/list/tile/list_tile_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/scaffold/scaffold_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/switcher/switcher_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/text/field/text_field_cupertino.dart";
+  "/ui/kit/kit_cupertino.dart" -> "/ui/kit/widgets/text/text.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/kit_container.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/layout/layout_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/app/app.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/app/root/app_root_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/button/button.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/button/filled/button_filled_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/dialog/action/dialog_action_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/dialog/alert/dialog_alert_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/dialog/dialog.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/dialog/show/show_dialog_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/divider/divider_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/icon.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/indicator/activity/indicator_activity_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/indicator/indicator.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/list/chevron/list_chevron_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/list/list.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/list/section/list_section_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/list/tile/list_tile_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/scaffold/scaffold_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/switcher/switcher_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/text/field/text_field_material.dart";
+  "/ui/kit/kit_material.dart" -> "/ui/kit/widgets/text/text.dart";
+  "/ui/kit/layout/layout_cupertino.dart" -> "/ui/kit/layout/layout.dart";
+  "/ui/kit/layout/layout_material.dart" -> "/ui/kit/layout/layout.dart";
+  "/ui/kit/theme/theme_cupertino.dart" -> "/ui/kit/theme/theme.dart";
+  "/ui/kit/theme/theme_cupertino.dart" -> "/ui/kit/theme/theme_material.dart";
+  "/ui/kit/theme/theme_material.dart" -> "/ui/kit/theme/theme.dart";
+  "/ui/kit/theme.dart" -> "/ui/kit/theme/theme.dart";
+  "/ui/kit/theme.dart" -> "/ui/kit/theme/theme_cupertino.dart";
+  "/ui/kit/theme.dart" -> "/ui/kit/theme/theme_material.dart";
+  "/ui/kit/theme.dart" -> "/util/platform.dart";
+  "/ui/kit/widgets/app/app.dart" -> "/ui/app/navigation.dart";
+  "/ui/kit/widgets/app/app.dart" -> "/ui/theme_config.dart";
+  "/ui/kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" -> "/ui/kit/layout/layout_material.dart";
+  "/ui/kit/widgets/app/root/app_root_cupertino.dart" -> "/ui/app/navigation.dart";
+  "/ui/kit/widgets/app/root/app_root_cupertino.dart" -> "/ui/kit/theme/theme_cupertino.dart";
+  "/ui/kit/widgets/app/root/app_root_cupertino.dart" -> "/ui/theme_config.dart";
+  "/ui/kit/widgets/app/root/app_root_material.dart" -> "/ui/app/navigation.dart";
+  "/ui/kit/widgets/app/root/app_root_material.dart" -> "/ui/kit/theme/theme_material.dart";
+  "/ui/kit/widgets/app/root/app_root_material.dart" -> "/ui/theme_config.dart";
+  "/ui/kit/widgets/list/section/list_section_material.dart" -> "/ui/kit/layout/layout_material.dart";
+  "/ui/layouts/center_layout.dart" -> "/ui/kit/kit.dart";
+  "/ui/layouts/default_layout.dart" -> "/ui/kit/kit.dart";
+  "/ui/layouts/fixed_width_layout.dart" -> "/ui/kit/kit.dart";
+  "/ui/layouts/full_width_layout.dart" -> "/ui/kit/kit.dart";
+  "/ui/screens/add_home_screen.dart" -> "/ui/fragments/add_home/widgets/add_home_id.dart";
+  "/ui/screens/add_home_screen.dart" -> "/ui/layouts/fixed_width_layout.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_home_list.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/kit/kit.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/layouts/fixed_width_layout.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/widgets/home_add.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/widgets/home_list.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/layouts/full_width_layout.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/dto.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/home/widgets/home_props.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/layouts/full_width_layout.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/app/navigation.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/layouts/center_layout.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/widgets/logo.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui/app/navigation.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui/kit/kit.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui/kit/theme.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui/layouts/center_layout.dart";
+  "/ui/widgets/alert.dart" -> "/ui/kit/kit.dart";
+  "/ui/widgets/confirm.dart" -> "/ui/kit/kit.dart";
+  "/ui/widgets/logo.dart" -> "/ui/assets.dart";
+  "/util/event_emitter.dart" -> "/util/event_bus.dart";
+  "/util/event_listener.dart" -> "/util/event_bus.dart";
+  "/util/event_listener.dart" -> "/util/handler.dart";
+  "/util/repository.dart" -> "/util/entity.dart";
+}

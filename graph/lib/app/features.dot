@@ -1,0 +1,23 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/app_life_cycle_factory.dart" [label="app_life_cycle_factory"];
+  "/connection_factory.dart" [label="connection_factory"];
+  "/discovery_factory.dart" [label="discovery_factory"];
+  "/home_connection_factory.dart" [label="home_connection_factory"];
+  "/home_factory.dart" [label="home_factory"];
+  subgraph "cluster~" {
+    label="features";
+    "/app_life_cycle_factory.dart";
+    "/connection_factory.dart";
+    "/discovery_factory.dart";
+    "/home_connection_factory.dart";
+    "/home_factory.dart";
+  }
+  "/discovery_factory.dart" -> "/app_life_cycle_factory.dart";
+  "/discovery_factory.dart" -> "/home_factory.dart";
+  "/home_connection_factory.dart" -> "/app_life_cycle_factory.dart";
+  "/home_connection_factory.dart" -> "/connection_factory.dart";
+  "/home_connection_factory.dart" -> "/discovery_factory.dart";
+}

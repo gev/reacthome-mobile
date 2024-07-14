@@ -1,0 +1,12 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/discovery_multicast_service.dart" [label="discovery_multicast_service"];
+  "/discovery_timeout_service.dart" [label="discovery_timeout_service"];
+  subgraph "cluster~" {
+    label="infrastructure";
+    "/discovery_multicast_service.dart";
+    "/discovery_timeout_service.dart";
+  }
+}

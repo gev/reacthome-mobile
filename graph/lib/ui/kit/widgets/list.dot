@@ -1,0 +1,31 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/chevron/list_chevron_cupertino.dart" [label="list_chevron_cupertino"];
+  "/chevron/list_chevron_material.dart" [label="list_chevron_material"];
+  "/list.dart" [label="list"];
+  "/section/list_section_cupertino.dart" [label="list_section_cupertino"];
+  "/section/list_section_material.dart" [label="list_section_material"];
+  "/tile/list_tile_cupertino.dart" [label="list_tile_cupertino"];
+  "/tile/list_tile_material.dart" [label="list_tile_material"];
+  subgraph "cluster~" {
+    label="list";
+    "/list.dart";
+    subgraph "cluster~/chevron" {
+      label="chevron";
+      "/chevron/list_chevron_cupertino.dart";
+      "/chevron/list_chevron_material.dart";
+    }
+    subgraph "cluster~/section" {
+      label="section";
+      "/section/list_section_cupertino.dart";
+      "/section/list_section_material.dart";
+    }
+    subgraph "cluster~/tile" {
+      label="tile";
+      "/tile/list_tile_cupertino.dart";
+      "/tile/list_tile_material.dart";
+    }
+  }
+}

@@ -1,0 +1,88 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/add_home/widgets/add_home_id.dart" [label="add_home_id"];
+  "/connection/view_models/connection_view_model.dart" [label="connection_view_model"];
+  "/discovery/view_models/discovery_home_list_view_model.dart" [label="discovery_home_list_view_model"];
+  "/discovery/view_models/discovery_home_view_model.dart" [label="discovery_home_view_model"];
+  "/discovery/view_models/discovery_status_view_model.dart" [label="discovery_status_view_model"];
+  "/discovery/widgets/discovery_home_add.dart" [label="discovery_home_add"];
+  "/discovery/widgets/discovery_home_add_alert.dart" [label="discovery_home_add_alert"];
+  "/discovery/widgets/discovery_home_add_confirm.dart" [label="discovery_home_add_confirm"];
+  "/discovery/widgets/discovery_home_list.dart" [label="discovery_home_list"];
+  "/discovery/widgets/discovery_home_tile.dart" [label="discovery_home_tile"];
+  "/discovery/widgets/discovery_status.dart" [label="discovery_status"];
+  "/home/view_models/home_list_view_model.dart" [label="home_list_view_model"];
+  "/home/view_models/home_view_model.dart" [label="home_view_model"];
+  "/home/widgets/home_add.dart" [label="home_add"];
+  "/home/widgets/home_delete_confirm.dart" [label="home_delete_confirm"];
+  "/home/widgets/home_list.dart" [label="home_list"];
+  "/home/widgets/home_props.dart" [label="home_props"];
+  "/home/widgets/home_tile.dart" [label="home_tile"];
+  subgraph "cluster~" {
+    label="fragments";
+    subgraph "cluster~/add_home" {
+      label="add_home";
+      subgraph "cluster~/add_home/widgets" {
+        label="widgets";
+        "/add_home/widgets/add_home_id.dart";
+      }
+    }
+    subgraph "cluster~/connection" {
+      label="connection";
+      subgraph "cluster~/connection/view_models" {
+        label="view_models";
+        "/connection/view_models/connection_view_model.dart";
+      }
+    }
+    subgraph "cluster~/discovery" {
+      label="discovery";
+      subgraph "cluster~/discovery/view_models" {
+        label="view_models";
+        "/discovery/view_models/discovery_home_list_view_model.dart";
+        "/discovery/view_models/discovery_home_view_model.dart";
+        "/discovery/view_models/discovery_status_view_model.dart";
+      }
+      subgraph "cluster~/discovery/widgets" {
+        label="widgets";
+        "/discovery/widgets/discovery_home_add.dart";
+        "/discovery/widgets/discovery_home_add_alert.dart";
+        "/discovery/widgets/discovery_home_add_confirm.dart";
+        "/discovery/widgets/discovery_home_list.dart";
+        "/discovery/widgets/discovery_home_tile.dart";
+        "/discovery/widgets/discovery_status.dart";
+      }
+    }
+    subgraph "cluster~/home" {
+      label="home";
+      subgraph "cluster~/home/view_models" {
+        label="view_models";
+        "/home/view_models/home_list_view_model.dart";
+        "/home/view_models/home_view_model.dart";
+      }
+      subgraph "cluster~/home/widgets" {
+        label="widgets";
+        "/home/widgets/home_add.dart";
+        "/home/widgets/home_delete_confirm.dart";
+        "/home/widgets/home_list.dart";
+        "/home/widgets/home_props.dart";
+        "/home/widgets/home_tile.dart";
+      }
+    }
+  }
+  "/discovery/widgets/discovery_home_add.dart" -> "/discovery/view_models/discovery_home_view_model.dart";
+  "/discovery/widgets/discovery_home_add_confirm.dart" -> "/discovery/view_models/discovery_home_view_model.dart";
+  "/discovery/widgets/discovery_home_list.dart" -> "/discovery/view_models/discovery_home_list_view_model.dart";
+  "/discovery/widgets/discovery_home_list.dart" -> "/discovery/widgets/discovery_home_tile.dart";
+  "/discovery/widgets/discovery_home_tile.dart" -> "/discovery/view_models/discovery_home_view_model.dart";
+  "/discovery/widgets/discovery_home_tile.dart" -> "/discovery/widgets/discovery_home_add_alert.dart";
+  "/discovery/widgets/discovery_home_tile.dart" -> "/discovery/widgets/discovery_home_add_confirm.dart";
+  "/discovery/widgets/discovery_status.dart" -> "/discovery/view_models/discovery_status_view_model.dart";
+  "/home/widgets/home_add.dart" -> "/home/view_models/home_view_model.dart";
+  "/home/widgets/home_delete_confirm.dart" -> "/home/view_models/home_view_model.dart";
+  "/home/widgets/home_list.dart" -> "/home/view_models/home_list_view_model.dart";
+  "/home/widgets/home_list.dart" -> "/home/widgets/home_tile.dart";
+  "/home/widgets/home_tile.dart" -> "/home/view_models/home_view_model.dart";
+  "/home/widgets/home_tile.dart" -> "/home/widgets/home_delete_confirm.dart";
+}

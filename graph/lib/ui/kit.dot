@@ -1,0 +1,270 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/kit.dart" [label="kit"];
+  "/kit_container.dart" [label="kit_container"];
+  "/kit_cupertino.dart" [label="kit_cupertino"];
+  "/kit_material.dart" [label="kit_material"];
+  "/layout/layout.dart" [label="layout"];
+  "/layout/layout_cupertino.dart" [label="layout_cupertino"];
+  "/layout/layout_material.dart" [label="layout_material"];
+  "/theme/theme.dart" [label="theme"];
+  "/theme/theme_cupertino.dart" [label="theme_cupertino"];
+  "/theme/theme_material.dart" [label="theme_material"];
+  "/theme.dart" [label="theme"];
+  "/widgets/app/app.dart" [label="app"];
+  "/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart" [label="app_bar_fixed_cupertino"];
+  "/widgets/app/bar/fixed/app_bar_fixed_material.dart" [label="app_bar_fixed_material"];
+  "/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart" [label="app_bar_sliver_cupertino"];
+  "/widgets/app/bar/sliver/app_bar_sliver_material.dart" [label="app_bar_sliver_material"];
+  "/widgets/app/root/app_root_cupertino.dart" [label="app_root_cupertino"];
+  "/widgets/app/root/app_root_material.dart" [label="app_root_material"];
+  "/widgets/button/button.dart" [label="button"];
+  "/widgets/button/filled/button_filled_cupertino.dart" [label="button_filled_cupertino"];
+  "/widgets/button/filled/button_filled_material.dart" [label="button_filled_material"];
+  "/widgets/button/icon/filled/button_icon_filled_cupertino.dart" [label="button_icon_filled_cupertino"];
+  "/widgets/button/icon/filled/button_icon_filled_material.dart" [label="button_icon_filled_material"];
+  "/widgets/dialog/action/dialog_action_cupertino.dart" [label="dialog_action_cupertino"];
+  "/widgets/dialog/action/dialog_action_material.dart" [label="dialog_action_material"];
+  "/widgets/dialog/alert/dialog_alert_cupertino.dart" [label="dialog_alert_cupertino"];
+  "/widgets/dialog/alert/dialog_alert_material.dart" [label="dialog_alert_material"];
+  "/widgets/dialog/dialog.dart" [label="dialog"];
+  "/widgets/dialog/show/show_dialog_cupertino.dart" [label="show_dialog_cupertino"];
+  "/widgets/dialog/show/show_dialog_material.dart" [label="show_dialog_material"];
+  "/widgets/divider/divider.dart" [label="divider"];
+  "/widgets/divider/divider_cupertino.dart" [label="divider_cupertino"];
+  "/widgets/divider/divider_material.dart" [label="divider_material"];
+  "/widgets/icon.dart" [label="icon"];
+  "/widgets/indicator/activity/indicator_activity_cupertino.dart" [label="indicator_activity_cupertino"];
+  "/widgets/indicator/activity/indicator_activity_material.dart" [label="indicator_activity_material"];
+  "/widgets/indicator/indicator.dart" [label="indicator"];
+  "/widgets/list/chevron/list_chevron_cupertino.dart" [label="list_chevron_cupertino"];
+  "/widgets/list/chevron/list_chevron_material.dart" [label="list_chevron_material"];
+  "/widgets/list/list.dart" [label="list"];
+  "/widgets/list/section/list_section_cupertino.dart" [label="list_section_cupertino"];
+  "/widgets/list/section/list_section_material.dart" [label="list_section_material"];
+  "/widgets/list/tile/list_tile_cupertino.dart" [label="list_tile_cupertino"];
+  "/widgets/list/tile/list_tile_material.dart" [label="list_tile_material"];
+  "/widgets/scaffold/scaffold.dart" [label="scaffold"];
+  "/widgets/scaffold/scaffold_cupertino.dart" [label="scaffold_cupertino"];
+  "/widgets/scaffold/scaffold_material.dart" [label="scaffold_material"];
+  "/widgets/switcher/switcher.dart" [label="switcher"];
+  "/widgets/switcher/switcher_cupertino.dart" [label="switcher_cupertino"];
+  "/widgets/switcher/switcher_material.dart" [label="switcher_material"];
+  "/widgets/text/field/text_field_cupertino.dart" [label="text_field_cupertino"];
+  "/widgets/text/field/text_field_material.dart" [label="text_field_material"];
+  "/widgets/text/text.dart" [label="text"];
+  subgraph "cluster~" {
+    label="kit";
+    "/kit.dart";
+    "/kit_container.dart";
+    "/kit_cupertino.dart";
+    "/kit_material.dart";
+    "/theme.dart";
+    subgraph "cluster~/layout" {
+      label="layout";
+      "/layout/layout.dart";
+      "/layout/layout_cupertino.dart";
+      "/layout/layout_material.dart";
+    }
+    subgraph "cluster~/theme" {
+      label="theme";
+      "/theme/theme.dart";
+      "/theme/theme_cupertino.dart";
+      "/theme/theme_material.dart";
+    }
+    subgraph "cluster~/widgets" {
+      label="widgets";
+      "/widgets/icon.dart";
+      subgraph "cluster~/widgets/app" {
+        label="app";
+        "/widgets/app/app.dart";
+        subgraph "cluster~/widgets/app/bar" {
+          label="bar";
+          subgraph "cluster~/widgets/app/bar/fixed" {
+            label="fixed";
+            "/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+            "/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+          }
+          subgraph "cluster~/widgets/app/bar/sliver" {
+            label="sliver";
+            "/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+            "/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+          }
+        }
+        subgraph "cluster~/widgets/app/root" {
+          label="root";
+          "/widgets/app/root/app_root_cupertino.dart";
+          "/widgets/app/root/app_root_material.dart";
+        }
+      }
+      subgraph "cluster~/widgets/button" {
+        label="button";
+        "/widgets/button/button.dart";
+        subgraph "cluster~/widgets/button/filled" {
+          label="filled";
+          "/widgets/button/filled/button_filled_cupertino.dart";
+          "/widgets/button/filled/button_filled_material.dart";
+        }
+        subgraph "cluster~/widgets/button/icon" {
+          label="icon";
+          subgraph "cluster~/widgets/button/icon/filled" {
+            label="filled";
+            "/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+            "/widgets/button/icon/filled/button_icon_filled_material.dart";
+          }
+        }
+      }
+      subgraph "cluster~/widgets/dialog" {
+        label="dialog";
+        "/widgets/dialog/dialog.dart";
+        subgraph "cluster~/widgets/dialog/action" {
+          label="action";
+          "/widgets/dialog/action/dialog_action_cupertino.dart";
+          "/widgets/dialog/action/dialog_action_material.dart";
+        }
+        subgraph "cluster~/widgets/dialog/alert" {
+          label="alert";
+          "/widgets/dialog/alert/dialog_alert_cupertino.dart";
+          "/widgets/dialog/alert/dialog_alert_material.dart";
+        }
+        subgraph "cluster~/widgets/dialog/show" {
+          label="show";
+          "/widgets/dialog/show/show_dialog_cupertino.dart";
+          "/widgets/dialog/show/show_dialog_material.dart";
+        }
+      }
+      subgraph "cluster~/widgets/divider" {
+        label="divider";
+        "/widgets/divider/divider.dart";
+        "/widgets/divider/divider_cupertino.dart";
+        "/widgets/divider/divider_material.dart";
+      }
+      subgraph "cluster~/widgets/indicator" {
+        label="indicator";
+        "/widgets/indicator/indicator.dart";
+        subgraph "cluster~/widgets/indicator/activity" {
+          label="activity";
+          "/widgets/indicator/activity/indicator_activity_cupertino.dart";
+          "/widgets/indicator/activity/indicator_activity_material.dart";
+        }
+      }
+      subgraph "cluster~/widgets/list" {
+        label="list";
+        "/widgets/list/list.dart";
+        subgraph "cluster~/widgets/list/chevron" {
+          label="chevron";
+          "/widgets/list/chevron/list_chevron_cupertino.dart";
+          "/widgets/list/chevron/list_chevron_material.dart";
+        }
+        subgraph "cluster~/widgets/list/section" {
+          label="section";
+          "/widgets/list/section/list_section_cupertino.dart";
+          "/widgets/list/section/list_section_material.dart";
+        }
+        subgraph "cluster~/widgets/list/tile" {
+          label="tile";
+          "/widgets/list/tile/list_tile_cupertino.dart";
+          "/widgets/list/tile/list_tile_material.dart";
+        }
+      }
+      subgraph "cluster~/widgets/scaffold" {
+        label="scaffold";
+        "/widgets/scaffold/scaffold.dart";
+        "/widgets/scaffold/scaffold_cupertino.dart";
+        "/widgets/scaffold/scaffold_material.dart";
+      }
+      subgraph "cluster~/widgets/switcher" {
+        label="switcher";
+        "/widgets/switcher/switcher.dart";
+        "/widgets/switcher/switcher_cupertino.dart";
+        "/widgets/switcher/switcher_material.dart";
+      }
+      subgraph "cluster~/widgets/text" {
+        label="text";
+        "/widgets/text/text.dart";
+        subgraph "cluster~/widgets/text/field" {
+          label="field";
+          "/widgets/text/field/text_field_cupertino.dart";
+          "/widgets/text/field/text_field_material.dart";
+        }
+      }
+    }
+  }
+  "/kit.dart" -> "/kit_cupertino.dart";
+  "/kit.dart" -> "/kit_material.dart";
+  "/kit_container.dart" -> "/layout/layout.dart";
+  "/kit_container.dart" -> "/widgets/app/app.dart";
+  "/kit_container.dart" -> "/widgets/button/button.dart";
+  "/kit_container.dart" -> "/widgets/dialog/dialog.dart";
+  "/kit_container.dart" -> "/widgets/divider/divider.dart";
+  "/kit_container.dart" -> "/widgets/icon.dart";
+  "/kit_container.dart" -> "/widgets/indicator/indicator.dart";
+  "/kit_container.dart" -> "/widgets/list/list.dart";
+  "/kit_container.dart" -> "/widgets/scaffold/scaffold.dart";
+  "/kit_container.dart" -> "/widgets/switcher/switcher.dart";
+  "/kit_container.dart" -> "/widgets/text/text.dart";
+  "/kit_cupertino.dart" -> "/kit_container.dart";
+  "/kit_cupertino.dart" -> "/layout/layout_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/app/app.dart";
+  "/kit_cupertino.dart" -> "/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/app/root/app_root_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/button/button.dart";
+  "/kit_cupertino.dart" -> "/widgets/button/filled/button_filled_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/dialog/action/dialog_action_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/dialog/alert/dialog_alert_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/dialog/dialog.dart";
+  "/kit_cupertino.dart" -> "/widgets/dialog/show/show_dialog_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/divider/divider_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/icon.dart";
+  "/kit_cupertino.dart" -> "/widgets/indicator/activity/indicator_activity_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/indicator/indicator.dart";
+  "/kit_cupertino.dart" -> "/widgets/list/chevron/list_chevron_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/list/list.dart";
+  "/kit_cupertino.dart" -> "/widgets/list/section/list_section_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/list/tile/list_tile_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/scaffold/scaffold_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/switcher/switcher_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/text/field/text_field_cupertino.dart";
+  "/kit_cupertino.dart" -> "/widgets/text/text.dart";
+  "/kit_material.dart" -> "/kit_container.dart";
+  "/kit_material.dart" -> "/layout/layout_material.dart";
+  "/kit_material.dart" -> "/widgets/app/app.dart";
+  "/kit_material.dart" -> "/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+  "/kit_material.dart" -> "/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+  "/kit_material.dart" -> "/widgets/app/root/app_root_material.dart";
+  "/kit_material.dart" -> "/widgets/button/button.dart";
+  "/kit_material.dart" -> "/widgets/button/filled/button_filled_material.dart";
+  "/kit_material.dart" -> "/widgets/button/icon/filled/button_icon_filled_material.dart";
+  "/kit_material.dart" -> "/widgets/dialog/action/dialog_action_material.dart";
+  "/kit_material.dart" -> "/widgets/dialog/alert/dialog_alert_material.dart";
+  "/kit_material.dart" -> "/widgets/dialog/dialog.dart";
+  "/kit_material.dart" -> "/widgets/dialog/show/show_dialog_material.dart";
+  "/kit_material.dart" -> "/widgets/divider/divider_material.dart";
+  "/kit_material.dart" -> "/widgets/icon.dart";
+  "/kit_material.dart" -> "/widgets/indicator/activity/indicator_activity_material.dart";
+  "/kit_material.dart" -> "/widgets/indicator/indicator.dart";
+  "/kit_material.dart" -> "/widgets/list/chevron/list_chevron_material.dart";
+  "/kit_material.dart" -> "/widgets/list/list.dart";
+  "/kit_material.dart" -> "/widgets/list/section/list_section_material.dart";
+  "/kit_material.dart" -> "/widgets/list/tile/list_tile_material.dart";
+  "/kit_material.dart" -> "/widgets/scaffold/scaffold_material.dart";
+  "/kit_material.dart" -> "/widgets/switcher/switcher_material.dart";
+  "/kit_material.dart" -> "/widgets/text/field/text_field_material.dart";
+  "/kit_material.dart" -> "/widgets/text/text.dart";
+  "/layout/layout_cupertino.dart" -> "/layout/layout.dart";
+  "/layout/layout_material.dart" -> "/layout/layout.dart";
+  "/theme/theme_cupertino.dart" -> "/theme/theme.dart";
+  "/theme/theme_cupertino.dart" -> "/theme/theme_material.dart";
+  "/theme/theme_material.dart" -> "/theme/theme.dart";
+  "/theme.dart" -> "/theme/theme.dart";
+  "/theme.dart" -> "/theme/theme_cupertino.dart";
+  "/theme.dart" -> "/theme/theme_material.dart";
+  "/widgets/app/bar/sliver/app_bar_sliver_material.dart" -> "/layout/layout_material.dart";
+  "/widgets/app/root/app_root_cupertino.dart" -> "/theme/theme_cupertino.dart";
+  "/widgets/app/root/app_root_material.dart" -> "/theme/theme_material.dart";
+  "/widgets/list/section/list_section_material.dart" -> "/layout/layout_material.dart";
+}
