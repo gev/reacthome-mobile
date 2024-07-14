@@ -36,7 +36,7 @@ class PersistentRepository<E extends Entity<String>>
 
   static final _instances = <String, dynamic>{};
 
-  static Future<PersistentRepository<T>> makeEmpty<T extends Entity<String>>({
+  static Future<PersistentRepository<T>> make<T extends Entity<String>>({
     required String name,
     required String scope,
     required T Function(dynamic json) fromJson,
@@ -52,26 +52,8 @@ class PersistentRepository<E extends Entity<String>>
     }
     final repository =
         PersistentRepository._(File(path), fromJson, toJson, timeout);
+    await repository._load();
     _instances[path] = repository;
-    return repository;
-  }
-
-  static Future<PersistentRepository<T>>
-      makePreloaded<T extends Entity<String>>({
-    required String name,
-    required String scope,
-    required T Function(dynamic json) fromJson,
-    required dynamic Function(T entity) toJson,
-    Duration timeout = defaultTimeout,
-  }) async {
-    final repository = await PersistentRepository.makeEmpty(
-      name: name,
-      scope: scope,
-      fromJson: fromJson,
-      toJson: toJson,
-      timeout: timeout,
-    );
-    await repository.load();
     return repository;
   }
 
@@ -88,7 +70,7 @@ class PersistentRepository<E extends Entity<String>>
     }
   }
 
-  Future<void> load() async {
+  Future<void> _load() async {
     try {
       final tmp = <String, E>{};
       if (await _file.exists()) {

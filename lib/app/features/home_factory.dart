@@ -13,7 +13,7 @@ class HomeFactory {
   // final _repository = MapRepository<String, HomeEntity>();
 
   Future<PersistentRepository<HomeEntity>> makeHomeRepository() async =>
-      PersistentRepository.makePreloaded(
+      PersistentRepository.make(
         name: 'home',
         scope: 'reacthome',
         fromJson: (json) => HomeEntity.fromJson(json),
