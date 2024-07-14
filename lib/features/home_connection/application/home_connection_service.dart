@@ -13,7 +13,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
     implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
-  final InMemoryRepository<String, HomeConnectionEntity<S>> repository;
+  final Repository<String, HomeConnectionEntity<S>> repository;
 
   const HomeConnectionService({
     required super.eventSink,
@@ -99,7 +99,7 @@ class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
     var connection = repository.get(id);
     if (connection == null) {
       connection = HomeConnectionEntity<S>(id);
-      repository.add(connection);
+      repository.set(connection);
     }
     return connection;
   }

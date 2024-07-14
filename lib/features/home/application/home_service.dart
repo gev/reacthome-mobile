@@ -9,7 +9,7 @@ import 'package:reacthome/util/bus/bus_emitter.dart';
 import 'package:reacthome/util/repository/repository.dart';
 
 class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
-  final InMemoryRepository<String, HomeEntity> repository;
+  final Repository<String, HomeEntity> repository;
 
   const HomeService({
     required super.eventSink,
@@ -35,7 +35,7 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
     final home = repository.get(id);
     if (home == null) {
       final home = HomeEntity(id, meta, address, project);
-      repository.add(home);
+      repository.set(home);
       emit(HomeAddedEvent(id));
     } else {
       home.update(meta, address, project).forEach(emit);

@@ -18,7 +18,7 @@ class DiscoveryAction {
     DiscoveryAction? action;
     try {
       final message = utf8.decode(data);
-      final json = jsonDecode(message);
+      final json = jsonDecode(message) as Map<String, dynamic>;
       final type = json['type'];
       if (type == DiscoveryAction.type) {
         action = DiscoveryAction.fromJSON(json);
