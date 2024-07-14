@@ -34,4 +34,6 @@ class Config {
       ],
     ),
   );
+
+  static get getApplicationDocumentsDirectory => null;
 }

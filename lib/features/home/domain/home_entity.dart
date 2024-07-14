@@ -18,6 +18,26 @@ class HomeEntity implements Home {
     this._project,
   );
 
+  factory HomeEntity.fromJson(Map<String, dynamic> json) {
+    return HomeEntity(
+      json['id'] as String,
+      Meta.fromJson(json['meta'] as Map<String, dynamic>),
+      json['address'] != null
+          ? InternetAddress(json['address'] as String)
+          : null,
+      json['project'] as String?,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'meta': _meta.toJson(),
+      'address': _address?.host,
+      'project': _project,
+    };
+  }
+
   @override
   String get id => _id;
 

@@ -8,12 +8,15 @@ class AddHomeScreenFactory {
 
   AddHomeScreenFactory._();
 
-  HomeViewModel makeHomeViewModel() => HomeViewModel(
+  Future<HomeViewModel> makeHomeViewModel() async => HomeViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => AddHomeScreen(
-        viewModel: makeHomeViewModel(),
-      );
+  Future<WidgetBuilder> make() async {
+    final homeViewModel = await makeHomeViewModel();
+    return (_) => AddHomeScreen(
+          viewModel: homeViewModel,
+        );
+  }
 }

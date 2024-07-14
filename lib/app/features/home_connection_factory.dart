@@ -41,26 +41,31 @@ class HomeConnectionFactory {
         connection: makeHomeConnectionService(),
       );
 
-  HomeConnectionRegistryService makeHomeConnectionAutoService() =>
+  Future<HomeConnectionRegistryService> makeHomeConnectionAutoService() async =>
       HomeConnectionRegistryService(
         eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
         connection: makeHomeConnectionService(),
       );
 
-  HomeConnectionLifecycleService makeHomeConnectionLifecycleService() =>
-      HomeConnectionLifecycleService(
-        eventSource: AppLifecycleFactory.instance.appLifecycleEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
-        connection: makeHomeConnectionService(),
-        connectivity: ConnectivityFactory.instance.makeConnectivityService(),
-        reconnectTimeout: Config.connection.reconnectTimeout,
-      );
+  Future<HomeConnectionLifecycleService>
+      makeHomeConnectionLifecycleService() async =>
+          HomeConnectionLifecycleService(
+            eventSource:
+                AppLifecycleFactory.instance.appLifecycleEventBus.stream,
+            home: await HomeFactory.instance.makeHomeService(),
+            connection: makeHomeConnectionService(),
+            connectivity:
+                ConnectivityFactory.instance.makeConnectivityService(),
+            reconnectTimeout: Config.connection.reconnectTimeout,
+          );
 
-  HomeConnectionConnectivityService makeHomeConnectionConnectivityService() =>
-      HomeConnectionConnectivityService(
-        eventSource: ConnectivityFactory.instance.connectivityEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
-        connection: makeHomeConnectionService(),
-      );
+  Future<HomeConnectionConnectivityService>
+      makeHomeConnectionConnectivityService() async =>
+          HomeConnectionConnectivityService(
+            eventSource:
+                ConnectivityFactory.instance.connectivityEventBus.stream,
+            home: await HomeFactory.instance.makeHomeService(),
+            connection: makeHomeConnectionService(),
+          );
 }

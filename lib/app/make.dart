@@ -16,7 +16,7 @@ import 'package:reacthome/app/screens/welcome_screen_factory.dart';
 import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
-Widget make() {
+Future<Widget> make() async {
   DiscoveryFactory.instance.makeDiscoveryMulticastService();
   DiscoveryFactory.instance.makeDiscoveryTimeoutService();
   DiscoveryFactory.instance.makeDiscoveryLifecycleService();
@@ -45,11 +45,11 @@ Widget make() {
       ],
       appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
       navigation: Navigation(
-        home: HomeScreenFactory.instance.make,
+        home: await HomeScreenFactory.instance.make(),
         splash: SplashScreenFactory.instance.make,
         welcome: WelcomeScreenFactory.instance.make,
-        discovery: DiscoveryScreenFactory.instance.make,
-        addHome: AddHomeScreenFactory.instance.make,
-        homeList: AddHomeListFactory.instance.make,
+        discovery: await DiscoveryScreenFactory.instance.make(),
+        addHome: await AddHomeScreenFactory.instance.make(),
+        homeList: await AddHomeListFactory.instance.make(),
       ));
 }

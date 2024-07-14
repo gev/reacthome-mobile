@@ -9,18 +9,22 @@ class AddHomeListFactory {
 
   AddHomeListFactory._();
 
-  HomeViewModel makeHomeViewModel() => HomeViewModel(
+  Future<HomeViewModel> makeHomeViewModel() async => HomeViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
       );
 
-  HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
+  Future<HomeListViewModel> makeHomeListViewModel() async => HomeListViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => HomeListScreen(
-        homeViewModel: makeHomeViewModel(),
-        homeListViewModel: makeHomeListViewModel(),
-      );
+  Future<WidgetBuilder> make() async {
+    final homeViewModel = await makeHomeViewModel();
+    final homeListViewModel = await makeHomeListViewModel();
+    return (_) => HomeListScreen(
+          homeViewModel: homeViewModel,
+          homeListViewModel: homeListViewModel,
+        );
+  }
 }

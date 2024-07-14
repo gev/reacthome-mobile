@@ -56,12 +56,13 @@ class ConnectionFactory {
         ),
       );
 
-  ConnectionViewModel makeConnectionViewModel() => ConnectionViewModel(
+  Future<ConnectionViewModel> makeConnectionViewModel() async =>
+      ConnectionViewModel(
         eventSource: connectionEventBus.stream,
         homeConnection:
             HomeConnectionFactory.instance.makeHomeConnectionService(),
         local: makeLocalConnectionService(),
         cloud: makeCloudConnectionService(),
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
       );
 }

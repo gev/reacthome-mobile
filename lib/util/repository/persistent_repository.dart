@@ -2,52 +2,104 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:reacthome/util/entity.dart';
 import 'package:reacthome/util/repository/repository.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 
-class PersistentRepository implements Repository<String, Entity<String>> {
-  final File file;
-  final Entity<String> Function(dynamic json) fromJson;
-  final dynamic Function(Entity<String> entity) toJson;
+class PersistentRepository<E extends Entity<String>>
+    implements Repository<String, E> {
+  final File _file;
+  final E Function(dynamic json) _fromJson;
+  final dynamic Function(E entity) _toJson;
+
   bool _shouldSave = false;
   bool _done = true;
-  late Timer _timer;
-  var _store = <String, Entity<String>>{};
 
-  PersistentRepository({
-    required this.file,
-    required this.fromJson,
-    required this.toJson,
-    Duration timeout = defaultTimeout,
-  }) {
-    _timer = Timer.periodic(timeout, (_) => _save());
+  var _store = <String, E>{};
+
+  late Timer _timer;
+
+  PersistentRepository._(
+    this._file,
+    this._fromJson,
+    this._toJson,
+    Duration timeout,
+  ) {
+    _timer = Timer.periodic(
+      timeout,
+      (_) => _save(),
+    );
   }
 
-  void _save() async {
+  static final _instances = <String, dynamic>{};
+
+  static Future<PersistentRepository<T>> makeEmpty<T extends Entity<String>>({
+    required String name,
+    required String scope,
+    required T Function(dynamic json) fromJson,
+    required dynamic Function(T entity) toJson,
+    Duration timeout = defaultTimeout,
+  }) async {
+    final location = await getApplicationDocumentsDirectory();
+    final directory = join(location.path, scope);
+    await Directory(directory).create(recursive: true);
+    final path = join(directory, name);
+    if (_instances.containsKey(path)) {
+      return _instances[path]!;
+    }
+    final repository =
+        PersistentRepository._(File(path), fromJson, toJson, timeout);
+    _instances[path] = repository;
+    return repository;
+  }
+
+  static Future<PersistentRepository<T>>
+      makePreloaded<T extends Entity<String>>({
+    required String name,
+    required String scope,
+    required T Function(dynamic json) fromJson,
+    required dynamic Function(T entity) toJson,
+    Duration timeout = defaultTimeout,
+  }) async {
+    final repository = await PersistentRepository.makeEmpty(
+      name: name,
+      scope: scope,
+      fromJson: fromJson,
+      toJson: toJson,
+      timeout: timeout,
+    );
+    await repository.load();
+    return repository;
+  }
+
+  Future<void> _save() async {
     if (_shouldSave && _done) {
       _done = false;
       final json = <String, dynamic>{};
       _store.forEach((id, entity) {
-        json[id] = toJson(entity);
+        json[id] = _toJson(entity);
       });
-      await file.writeAsString(jsonEncode(json));
+      await _file.writeAsString(jsonEncode(json));
       _shouldSave = false;
       _done = true;
     }
   }
 
-  void load() async {
+  Future<void> load() async {
     try {
-      final tmp = <String, Entity<String>>{};
-      final data = await file.readAsString();
-      if (data.isNotEmpty) {
-        final entries = jsonDecode(data) as Map<String, dynamic>;
-        entries.forEach((key, value) {
-          tmp[key] = fromJson(value);
-        });
-        _store = tmp;
+      final tmp = <String, E>{};
+      if (await _file.exists()) {
+        final data = await _file.readAsString();
+        if (data.isNotEmpty) {
+          final entries = jsonDecode(data) as Map<String, dynamic>;
+          entries.forEach((key, value) {
+            tmp[key] = _fromJson(value);
+          });
+          _store = tmp;
+        }
       }
     } catch (_) {}
   }
@@ -56,16 +108,16 @@ class PersistentRepository implements Repository<String, Entity<String>> {
   Iterable<String> getAllId() => _store.keys;
 
   @override
-  Iterable<Entity<String>> getAll() => _store.values;
+  Iterable<E> getAll() => _store.values;
 
   @override
   bool has(String id) => _store.containsKey(id);
 
   @override
-  Entity<String>? get(String id) => _store[id];
+  E? get(String id) => _store[id];
 
   @override
-  void set(Entity<String> entity) {
+  void set(E entity) {
     _store[entity.id] = entity;
     _shouldSave = true;
   }

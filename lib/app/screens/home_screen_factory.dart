@@ -9,14 +9,18 @@ class HomeScreenFactory {
 
   HomeScreenFactory._();
 
-  HomeViewModel makeHomeViewModel() => HomeViewModel(
+  Future<HomeViewModel> makeHomeViewModel() async => HomeViewModel(
         eventSource: HomeFactory.instance.homeEventBus.stream,
-        home: HomeFactory.instance.makeHomeService(),
+        home: await HomeFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => HomeScreen(
-        homeViewModel: makeHomeViewModel(),
-        connectionViewModel:
-            ConnectionFactory.instance.makeConnectionViewModel(),
-      );
+  Future<WidgetBuilder> make() async {
+    final homeViewModel = await makeHomeViewModel();
+    final connectionViewModel =
+        await ConnectionFactory.instance.makeConnectionViewModel();
+    return (_) => HomeScreen(
+          homeViewModel: homeViewModel,
+          connectionViewModel: connectionViewModel,
+        );
+  }
 }

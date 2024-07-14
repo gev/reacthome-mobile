@@ -11,11 +11,12 @@ class DiscoveryScreenFactory {
 
   DiscoveryScreenFactory._();
 
-  DiscoveryViewModel makeDiscoveryStatusViewModel() => DiscoveryViewModel(
+  Future<DiscoveryViewModel> makeDiscoveryViewModel() async =>
+      DiscoveryViewModel(
         eventSource: DiscoveryFactory.instance.discoveryEventBus.stream,
         discovery: DiscoveryFactory.instance.makeDiscoveryService(),
         discoveredHome: DiscoveryFactory.instance.makeHomeService(),
-        knownHome: HomeFactory.instance.makeHomeService(),
+        knownHome: await HomeFactory.instance.makeHomeService(),
       );
 
   HomeViewModel makeHomeViewModel() => HomeViewModel(
@@ -28,9 +29,12 @@ class DiscoveryScreenFactory {
         home: DiscoveryFactory.instance.makeHomeService(),
       );
 
-  Widget make(_) => DiscoveryScreen(
-        discoveryViewModel: makeDiscoveryStatusViewModel(),
-        homeViewModel: makeHomeViewModel(),
-        homeListViewModel: makeHomeListViewModel(),
-      );
+  Future<WidgetBuilder> make() async {
+    final discoveryViewModel = await makeDiscoveryViewModel();
+    return (_) => DiscoveryScreen(
+          discoveryViewModel: discoveryViewModel,
+          homeViewModel: makeHomeViewModel(),
+          homeListViewModel: makeHomeListViewModel(),
+        );
+  }
 }

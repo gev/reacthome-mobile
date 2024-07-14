@@ -44,7 +44,7 @@ class DiscoveryFactory {
         process: _process,
       );
 
-  DiscoveryMulticastService makeDiscoveryMulticastService() =>
+  Future<DiscoveryMulticastService> makeDiscoveryMulticastService() async =>
       DiscoveryMulticastService(
         eventSource: discoveryEventBus.stream,
         discovery: makeDiscoveryService(),
@@ -53,7 +53,7 @@ class DiscoveryFactory {
           config: Config.discovery.listen,
           controller: DiscoveryController(
             discovered: makeHomeService(),
-            known: HomeFactory.instance.makeHomeService(),
+            known: await HomeFactory.instance.makeHomeService(),
             connection:
                 HomeConnectionFactory.instance.makeHomeConnectionService(),
           ),

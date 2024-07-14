@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/app/make.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(make());
+  runApp(await make());
 }
