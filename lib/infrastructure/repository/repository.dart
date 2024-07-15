@@ -1,4 +1,4 @@
-import 'package:reacthome/util/entity.dart';
+import 'package:reacthome/core/entity.dart';
 
 abstract interface class Repository<K, V extends Entity<K>> {
   int get length;

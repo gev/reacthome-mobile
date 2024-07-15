@@ -1,5 +1,5 @@
 import 'package:reacthome/core/connection/connection.dart';
-import 'package:reacthome/util/entity.dart';
+import 'package:reacthome/core/entity.dart';
 
 abstract interface class HomeConnection<S> implements Entity<String> {
   @override
