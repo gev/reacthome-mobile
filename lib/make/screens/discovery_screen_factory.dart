@@ -7,29 +7,27 @@ import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
 
 class DiscoveryScreenFactory {
-  static final instance = DiscoveryScreenFactory._();
-
   DiscoveryScreenFactory._();
 
-  Future<DiscoveryViewModel> makeDiscoveryViewModel() async =>
+  static Future<DiscoveryViewModel> makeDiscoveryViewModel() async =>
       DiscoveryViewModel(
-        eventSource: DiscoveryFactory.instance.discoveryEventBus.stream,
-        discovery: DiscoveryFactory.instance.makeDiscoveryService(),
-        discoveredHome: DiscoveryFactory.instance.makeHomeApi(),
-        knownHome: await HomeFactory.instance.makeHomeService(),
+        eventSource: DiscoveryFactory.discoveryEventBus.stream,
+        discovery: DiscoveryFactory.makeDiscoveryApi(),
+        discoveredHome: DiscoveryFactory.makeHomeApi(),
+        knownHome: await HomeFactory.makeHomeApi(),
       );
 
-  HomeViewModel makeHomeViewModel() => HomeViewModel(
-        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
-        home: DiscoveryFactory.instance.makeHomeApi(),
+  static HomeViewModel makeHomeViewModel() => HomeViewModel(
+        eventSource: DiscoveryFactory.homeEventBus.stream,
+        home: DiscoveryFactory.makeHomeApi(),
       );
 
-  HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
-        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
-        home: DiscoveryFactory.instance.makeHomeApi(),
+  static HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
+        eventSource: DiscoveryFactory.homeEventBus.stream,
+        home: DiscoveryFactory.makeHomeApi(),
       );
 
-  Future<WidgetBuilder> make() async {
+  static Future<WidgetBuilder> make() async {
     final discoveryViewModel = await makeDiscoveryViewModel();
     return (_) => DiscoveryScreen(
           discoveryViewModel: discoveryViewModel,

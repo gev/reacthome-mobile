@@ -5,8 +5,8 @@ class Timeout<K> {
 
   Timeout();
 
-  void set({
-    required K id,
+  void set(
+    K id, {
     required Duration duration,
     required void Function() execute,
   }) {
@@ -14,7 +14,7 @@ class Timeout<K> {
     _timers[id] = Timer(duration, execute);
   }
 
-  void cancel({required K id}) {
+  void cancel(id) {
     _timers[id]?.cancel();
     _timers.remove(id);
   }

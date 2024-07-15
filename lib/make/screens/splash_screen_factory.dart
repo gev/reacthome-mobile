@@ -3,12 +3,10 @@ import 'package:reacthome/make/features/home_factory.dart';
 import 'package:reacthome/ui/screens/splash_screen.dart';
 
 class SplashScreenFactory {
-  static final instance = SplashScreenFactory._();
-
   SplashScreenFactory._();
 
-  Future<WidgetBuilder> make() async {
-    final homeService = await HomeFactory.instance.makeHomeService();
+  static Future<WidgetBuilder> make() async {
+    final homeService = await HomeFactory.makeHomeApi();
     return (_) => SplashScreen(home: homeService);
   }
 }
