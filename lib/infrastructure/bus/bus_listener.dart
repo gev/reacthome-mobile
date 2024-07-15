@@ -4,12 +4,10 @@ import 'dart:async';
 
 import 'package:reacthome/infrastructure/handler.dart';
 
-abstract interface class BusListener<E> implements Handler<E> {}
-
-abstract class GenericBusListener<E> extends Object implements BusListener<E> {
+abstract class BusListener<E> extends Object implements Handler<E> {
   late StreamSubscription<E> _subscription;
 
-  GenericBusListener({required Stream<E> eventSource}) {
+  BusListener({required Stream<E> eventSource}) {
     _subscription = eventSource.listen(handle);
   }
 

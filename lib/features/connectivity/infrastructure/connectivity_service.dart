@@ -4,7 +4,7 @@ import 'package:reacthome/core/connectivity/connectivity_event.dart';
 import 'package:reacthome/core/connectivity/connectivity_state.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 
-class ConnectivityService extends GenericBusEmitter<ConnectivityEvent>
+class ConnectivityService extends BusEmitter<ConnectivityEvent>
     implements ConnectivityApi {
   final Connectivity connectivity;
 

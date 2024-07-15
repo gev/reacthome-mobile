@@ -5,7 +5,7 @@ import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class ActiveConnectionService extends GenericBusListener<ConnectionEvent> {
+class ActiveConnectionService extends BusListener<ConnectionEvent> {
   final HomeConnectionApi connection;
 
   ActiveConnectionService({

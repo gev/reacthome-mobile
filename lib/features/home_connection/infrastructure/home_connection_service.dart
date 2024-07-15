@@ -11,7 +11,7 @@ import 'package:reacthome/util/extensions.dart';
 
 // TODO: move to a usecase
 
-class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
+class HomeConnectionService<S> extends BusEmitter<ConnectionEvent>
     implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;

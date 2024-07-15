@@ -5,7 +5,7 @@ import 'package:reacthome/core/connectivity/connectivity_api.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class DiscoveryLifecycleService extends GenericBusListener<AppLifecycleEvent> {
+class DiscoveryLifecycleService extends BusListener<AppLifecycleEvent> {
   final DiscoveryApi discovery;
   final ConnectivityApi connectivity;
   final Duration restartTimeout;

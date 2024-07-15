@@ -8,7 +8,7 @@ import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 import 'package:reacthome/infrastructure/repository/repository.dart';
 
-class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
+class HomeService extends BusEmitter<HomeEvent> implements HomeApi {
   final Repository<String, HomeEntity> repository;
 
   const HomeService({

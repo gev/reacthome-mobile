@@ -6,7 +6,7 @@ import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class DiscoveryService<S> extends GenericBusEmitter<DiscoveryEvent>
+class DiscoveryService<S> extends BusEmitter<DiscoveryEvent>
     implements DiscoveryApi<S> {
   final DiscoveryEntity<S> _process;
 

@@ -9,7 +9,7 @@ import 'package:reacthome/infrastructure/repository/repository.dart';
 import 'package:reacthome/util/extensions.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
-    extends GenericBusEmitter<ConnectionEvent> implements ConnectionApi<S> {
+    extends BusEmitter<ConnectionEvent> implements ConnectionApi<S> {
   final Repository<String, C> repository;
 
   const ConnectionService({

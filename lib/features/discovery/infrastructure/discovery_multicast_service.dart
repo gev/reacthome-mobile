@@ -5,7 +5,7 @@ import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 
-class DiscoveryMulticastService extends GenericBusListener<DiscoveryEvent> {
+class DiscoveryMulticastService extends BusListener<DiscoveryEvent> {
   final DiscoveryApi<MulticastSource> discovery;
   final ConnectivityApi connectivity;
   final MulticastSourceFactory factory;
