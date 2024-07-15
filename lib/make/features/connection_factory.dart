@@ -1,17 +1,17 @@
-import 'package:reacthome/make/config.dart';
-import 'package:reacthome/make/features/home_connection_factory.dart';
-import 'package:reacthome/make/features/home_factory.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/features/connection/application/connection_service.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
 import 'package:reacthome/features/connection/interface/connection_controller.dart';
+import 'package:reacthome/infrastructure/bus/bus.dart';
+import 'package:reacthome/infrastructure/repository/map_repository.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
+import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/features/home_connection_factory.dart';
+import 'package:reacthome/make/features/home_factory.dart';
 import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
-import 'package:reacthome/util/bus/bus.dart';
-import 'package:reacthome/util/repository/map_repository.dart';
 
 class ConnectionFactory {
   static final instance = ConnectionFactory._();

@@ -3,7 +3,7 @@ import 'package:reacthome/core/connectivity/connectivity_event.dart';
 import 'package:reacthome/features/connectivity/application/connectivity_service.dart';
 import 'package:reacthome/features/connectivity/domain/connectivity_entity.dart';
 import 'package:reacthome/features/connectivity/infrastructure/connectivity_change_service.dart';
-import 'package:reacthome/util/bus/bus.dart';
+import 'package:reacthome/infrastructure/bus/bus.dart';
 
 class ConnectivityFactory {
   static final instance = ConnectivityFactory._();

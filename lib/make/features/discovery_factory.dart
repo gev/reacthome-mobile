@@ -1,6 +1,3 @@
-import 'package:reacthome/make/config.dart';
-import 'package:reacthome/make/features/app_life_cycle_factory.dart';
-import 'package:reacthome/make/features/connectivity_factory.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/home/home_api.dart';
@@ -14,10 +11,13 @@ import 'package:reacthome/features/discovery/infrastructure/discovery_timeout_se
 import 'package:reacthome/features/discovery/interface/discovery_controller.dart';
 import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
+import 'package:reacthome/infrastructure/bus/bus.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
-import 'package:reacthome/util/bus/bus.dart';
-import 'package:reacthome/util/repository/map_repository.dart';
+import 'package:reacthome/infrastructure/repository/map_repository.dart';
+import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/features/app_life_cycle_factory.dart';
+import 'package:reacthome/make/features/connectivity_factory.dart';
 
 class DiscoveryFactory {
   static final instance = DiscoveryFactory._();
