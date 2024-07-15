@@ -4,7 +4,7 @@ import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
 import 'package:reacthome/features/discovery/domain/discovery_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
-import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/core/extensions.dart';
 
 class DiscoveryService<S> extends GenericBusEmitter<DiscoveryEvent>
     implements DiscoveryApi<S> {

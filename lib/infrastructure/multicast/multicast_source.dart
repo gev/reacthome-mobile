@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
-import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/core/extensions.dart';
 import 'package:reacthome/util/handler.dart';
 
 class MulticastSource {

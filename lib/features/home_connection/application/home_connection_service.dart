@@ -7,7 +7,7 @@ import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/features/home_connection/domain/home_connection_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 import 'package:reacthome/infrastructure/repository/repository.dart';
-import 'package:reacthome/util/extensions.dart';
+import 'package:reacthome/core/extensions.dart';
 
 // TODO: move to a usecase
 
