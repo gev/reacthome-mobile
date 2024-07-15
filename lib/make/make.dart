@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:reacthome/make/config.dart';
-import 'package:reacthome/make/features/app_lifecycle_factory.dart';
+import 'package:reacthome/make/core/app_lifecycle_factory.dart';
 import 'package:reacthome/make/screens/add_home_screen_factory.dart';
 import 'package:reacthome/make/screens/discovery_screen_factory.dart';
 import 'package:reacthome/make/screens/home_list_screen_factory.dart';

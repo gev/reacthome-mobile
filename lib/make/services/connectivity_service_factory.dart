@@ -1,7 +1,7 @@
-import 'package:reacthome/make/features/connectivity_factory.dart';
-import 'package:reacthome/make/features/discovery_factory.dart';
-import 'package:reacthome/make/features/home_connection_factory.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/connectivity_factory.dart';
+import 'package:reacthome/make/core/discovery_factory.dart';
+import 'package:reacthome/make/core/home_connection_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/services/connectivity/connectivity_change_service.dart';
 import 'package:reacthome/services/connectivity/connectivity_discovery_service.dart';
 import 'package:reacthome/services/connectivity/connectivity_home_connection_service.dart';

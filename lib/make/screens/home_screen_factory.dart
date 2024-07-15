@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/make/features/connection_factory.dart';
-import 'package:reacthome/make/features/home_connection_factory.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/connection_factory.dart';
+import 'package:reacthome/make/core/home_connection_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/ui/fragments/connection/view_models/connection_view_model.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/home_screen.dart';

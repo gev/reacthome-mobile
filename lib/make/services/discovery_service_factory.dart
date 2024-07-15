@@ -1,10 +1,10 @@
 import 'package:reacthome/core/discovery/discovery_controller.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/make/config.dart';
-import 'package:reacthome/make/features/connectivity_factory.dart';
-import 'package:reacthome/make/features/discovery_factory.dart';
-import 'package:reacthome/make/features/home_connection_factory.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/connectivity_factory.dart';
+import 'package:reacthome/make/core/discovery_factory.dart';
+import 'package:reacthome/make/core/home_connection_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/services/discovery/discovery_home_update_service.dart';
 import 'package:reacthome/services/discovery/discovery_multicast_service.dart';
 import 'package:reacthome/services/discovery/discovery_timeout_service.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/ui/screens/splash_screen.dart';
 
 class SplashScreenFactory {

@@ -1,9 +1,9 @@
 import 'package:reacthome/core/connection/connection_controller.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/make/config.dart';
-import 'package:reacthome/make/features/connection_factory.dart';
-import 'package:reacthome/make/features/home_connection_factory.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/connection_factory.dart';
+import 'package:reacthome/make/core/home_connection_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/services/connection/active_connection_service.dart';
 import 'package:reacthome/services/connection/connection_home_registry_service.dart';
 import 'package:reacthome/services/connection/websocket_service.dart';

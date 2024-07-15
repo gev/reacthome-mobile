@@ -3,7 +3,7 @@ import 'package:reacthome/core/home_connection/home_connection_entity.dart';
 import 'package:reacthome/core/home_connection/home_connection_service.dart';
 import 'package:reacthome/infrastructure/repository/map_repository.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
-import 'package:reacthome/make/features/connection_factory.dart';
+import 'package:reacthome/make/core/connection_factory.dart';
 
 class HomeConnectionFactory {
   HomeConnectionFactory._();

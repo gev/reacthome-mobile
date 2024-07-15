@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/make/features/home_factory.dart';
+import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/home_list_screen.dart';
