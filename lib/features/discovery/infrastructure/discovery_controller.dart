@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:reacthome/features/discovery/interface/discovery_action.dart';
+import 'package:reacthome/features/discovery/infrastructure/discovery_action.dart';
 import 'package:reacthome/features/handler.dart';
 import 'package:reacthome/features/home/home_api.dart';
 import 'package:reacthome/features/meta.dart';

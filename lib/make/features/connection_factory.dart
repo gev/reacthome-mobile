@@ -1,8 +1,8 @@
 import 'package:reacthome/features/connection/connection_entity.dart';
 import 'package:reacthome/features/connection/connection_event.dart';
 import 'package:reacthome/features/connection/connection_service.dart';
+import 'package:reacthome/features/connection/infrastructure/connection_controller.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
-import 'package:reacthome/features/connection/interface/connection_controller.dart';
 import 'package:reacthome/infrastructure/bus/bus.dart';
 import 'package:reacthome/infrastructure/repository/map_repository.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
