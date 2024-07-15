@@ -1,17 +1,16 @@
+import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/util/bus/bus_listener.dart';
 
 class HomeDiscoveryService extends GenericBusListener<HomeEvent> {
-  final HomeApi discovered;
-  final HomeApi known;
+  final HomeApi home;
   final HomeConnectionApi connection;
 
   HomeDiscoveryService({
     required super.eventSource,
-    required this.discovered,
-    required this.known,
+    required this.home,
     required this.connection,
   });
 
@@ -28,19 +27,19 @@ class HomeDiscoveryService extends GenericBusListener<HomeEvent> {
     }
   }
 
-  void _update(String id) {
-    final discoveredHome = discovered.getHomeById(id)!;
-    final knownHome = known.getHomeById(id);
+  // TODO: move to a usecase
+  void _update(Home discoveredHome) {
+    final knownHome = home.getHomeById(discoveredHome.id);
     final shouldReconnect =
         knownHome != null && knownHome.address != discoveredHome.address;
-    known.updateHome(
-      id: id,
+    home.updateHome(
+      id: discoveredHome.id,
       meta: discoveredHome.meta,
       project: discoveredHome.project,
       address: discoveredHome.address,
     );
     if (shouldReconnect) {
-      connection.disconnectLocal(id);
+      connection.disconnectLocal(discoveredHome.id);
       connection.connectLocal(knownHome);
     }
   }

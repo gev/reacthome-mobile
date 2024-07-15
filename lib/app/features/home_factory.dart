@@ -31,8 +31,7 @@ class HomeFactory {
   Future<HomeDiscoveryService> makeHomeDiscoveryService() async =>
       HomeDiscoveryService(
         eventSource: DiscoveryFactory.instance.homeEventBus.stream,
-        discovered: DiscoveryFactory.instance.makeHomeService(),
-        known: await makeHomeService(),
+        home: await makeHomeService(),
         connection: HomeConnectionFactory.instance.makeHomeConnectionService(),
       );
 }

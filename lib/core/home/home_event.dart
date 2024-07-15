@@ -1,5 +1,7 @@
+import 'package:reacthome/core/home/home.dart';
+
 sealed class HomeEvent {
-  final String home;
+  final Home home;
   const HomeEvent(this.home);
 }
 

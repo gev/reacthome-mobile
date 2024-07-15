@@ -28,6 +28,7 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
   @override
   Home? getHomeById(String id) => repository.get(id);
 
+  // TODO: move to a usecase
   @override
   void addHome({
     required String id,
@@ -39,7 +40,7 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
     if (home == null) {
       final home = HomeEntity(id, meta, address, project);
       repository.set(home);
-      emit(HomeAddedEvent(id));
+      emit(HomeAddedEvent(home));
     } else {
       home.update(meta, address, project).forEach(emit);
     }
@@ -58,16 +59,21 @@ class HomeService extends GenericBusEmitter<HomeEvent> implements HomeApi {
     }
   }
 
+  // TODO: move to a usecase
   @override
   void removeHome({required String id}) {
-    if (repository.has(id)) {
-      repository.remove(id);
-      emit(HomeRemovedEvent(id));
+    final home = repository.remove(id);
+    if (home != null) {
+      emit(HomeRemovedEvent(home));
     }
   }
 
+  // TODO: move to a usecase
   @override
   void confirmHome({required String id}) {
-    emit(HomeRenewEvent(id));
+    final home = repository.get(id);
+    if (home != null) {
+      emit(HomeRenewEvent(home));
+    }
   }
 }

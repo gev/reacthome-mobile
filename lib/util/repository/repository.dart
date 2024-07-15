@@ -7,6 +7,6 @@ abstract interface class Repository<K, V extends Entity<K>> {
   bool has(K id);
   V? get(K id);
   void set(V home);
-  void remove(K id);
+  V? remove(K id);
   void clear();
 }

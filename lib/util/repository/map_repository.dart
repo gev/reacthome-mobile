@@ -25,7 +25,7 @@ class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
   void set(V entity) => _store[entity.id] = entity;
 
   @override
-  void remove(K id) => _store.remove(id);
+  V? remove(K id) => _store.remove(id);
 
   @override
   void clear() => _store.clear();

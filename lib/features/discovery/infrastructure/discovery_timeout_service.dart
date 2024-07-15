@@ -1,3 +1,4 @@
+import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/infrastructure/timeout.dart';
@@ -26,11 +27,11 @@ class DiscoveryTimeoutService extends GenericBusListener<HomeEvent> {
     }
   }
 
-  _setTimeout(String home) => timeouts.set(
-        id: home,
+  _setTimeout(Home home) => timeouts.set(
+        id: home.id,
         duration: timeout,
-        execute: () => actor.removeHome(id: home),
+        execute: () => actor.removeHome(id: home.id),
       );
 
-  _cancelTimeout(String home) => timeouts.cancel(id: home);
+  _cancelTimeout(Home home) => timeouts.cancel(id: home.id);
 }

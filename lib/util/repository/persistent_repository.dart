@@ -108,9 +108,12 @@ class PersistentRepository<E extends Entity<String>>
   }
 
   @override
-  void remove(String id) {
-    _store.remove(id);
-    _shouldSave = true;
+  E? remove(String id) {
+    final e = _store.remove(id);
+    if (e != null) {
+      _shouldSave = true;
+    }
+    return e;
   }
 
   @override
