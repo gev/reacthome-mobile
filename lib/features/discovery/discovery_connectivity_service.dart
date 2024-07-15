@@ -12,7 +12,7 @@ class DiscoveryConnectivityService extends BusListener<ConnectivityEvent> {
 
   @override
   void handle(ConnectivityEvent event) {
-    if (event.state.hasLocalNetworks) {
+    if (event.connectivity.hasLocalNetworks) {
       discovery.start();
     } else {
       discovery.stop();

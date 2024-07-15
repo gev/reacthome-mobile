@@ -15,10 +15,10 @@ class HomeConnectionConnectivityService extends BusListener<ConnectivityEvent> {
 
   @override
   void handle(ConnectivityEvent event) {
-    if (!event.state.hasLocalNetworks) {
+    if (!event.connectivity.hasLocalNetworks) {
       connection.disconnectLocalAll();
     }
-    if (!event.state.hasMobile) {
+    if (!event.connectivity.hasMobile) {
       connection.disconnectCloudAll();
     }
   }
