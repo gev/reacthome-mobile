@@ -1,8 +1,8 @@
-import 'package:reacthome/features/connectivity/connectivity_api.dart';
-import 'package:reacthome/features/connectivity/connectivity_change_service.dart';
-import 'package:reacthome/features/connectivity/connectivity_entity.dart';
-import 'package:reacthome/features/connectivity/connectivity_event.dart';
-import 'package:reacthome/features/connectivity/connectivity_service.dart';
+import 'package:reacthome/features/application/connectivity/connectivity_api.dart';
+import 'package:reacthome/features/application/connectivity/connectivity_change_service.dart';
+import 'package:reacthome/features/application/connectivity/connectivity_entity.dart';
+import 'package:reacthome/features/application/connectivity/connectivity_event.dart';
+import 'package:reacthome/features/application/connectivity/connectivity_service.dart';
 import 'package:reacthome/infrastructure/bus/bus.dart';
 
 class ConnectivityFactory {

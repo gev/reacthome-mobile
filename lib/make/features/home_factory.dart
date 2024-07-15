@@ -1,8 +1,8 @@
-import 'package:reacthome/features/home/home_api.dart';
-import 'package:reacthome/features/home/home_entity.dart';
-import 'package:reacthome/features/home/home_event.dart';
-import 'package:reacthome/features/home/home_service.dart';
-import 'package:reacthome/features/home/infrastructure/home_discovery_service.dart';
+import 'package:reacthome/features/domain/home/home_api.dart';
+import 'package:reacthome/features/domain/home/home_entity.dart';
+import 'package:reacthome/features/domain/home/home_event.dart';
+import 'package:reacthome/features/domain/home/home_service.dart';
+import 'package:reacthome/features/infrastructure/home/home_discovery_service.dart';
 import 'package:reacthome/infrastructure/bus/bus.dart';
 import 'package:reacthome/infrastructure/repository/persistent_repository.dart';
 import 'package:reacthome/make/features/discovery_factory.dart';

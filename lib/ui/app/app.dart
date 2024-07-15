@@ -2,9 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:reacthome/features/app_lifecycle/app_lifecycle_api.dart';
+import 'package:reacthome/features/application/app_lifecycle/app_lifecycle_api.dart';
 import 'package:reacthome/infrastructure/ui/kit/kit.dart';
-import 'package:reacthome/infrastructure/ui/theme_config.dart';
+import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 class App extends StatelessWidget with WidgetsBindingObserver {

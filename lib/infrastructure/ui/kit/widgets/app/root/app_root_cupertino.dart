@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:reacthome/infrastructure/ui/kit/theme/theme_cupertino.dart';
-import 'package:reacthome/infrastructure/ui/theme_config.dart';
+import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 class AppRootCupertino {
