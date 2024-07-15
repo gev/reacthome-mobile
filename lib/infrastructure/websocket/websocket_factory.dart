@@ -1,8 +1,8 @@
 import 'dart:io' as io;
 
+import 'package:reacthome/infrastructure/handler.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_config.dart';
-import 'package:reacthome/util/handler.dart';
 
 abstract class WebSocketFactory {
   final Handler<String> controller;

@@ -1,4 +1,4 @@
-import 'package:reacthome/util/handler.dart';
+import 'package:reacthome/infrastructure/handler.dart';
 
 class ConnectionController implements Handler<String> {
   const ConnectionController();

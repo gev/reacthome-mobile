@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:reacthome/util/handler.dart';
+import 'package:reacthome/infrastructure/handler.dart';
 
 abstract interface class BusListener<E> implements Handler<E> {}
 
