@@ -1,8 +1,8 @@
-import 'package:reacthome/app/config.dart';
-import 'package:reacthome/app/features/app_life_cycle_factory.dart';
-import 'package:reacthome/app/features/connection_factory.dart';
-import 'package:reacthome/app/features/connectivity_factory.dart';
-import 'package:reacthome/app/features/home_factory.dart';
+import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/features/app_life_cycle_factory.dart';
+import 'package:reacthome/make/features/connection_factory.dart';
+import 'package:reacthome/make/features/connectivity_factory.dart';
+import 'package:reacthome/make/features/home_factory.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/features/home_connection/application/active_connection_service.dart';
 import 'package:reacthome/features/home_connection/application/home_connection_registry_service.dart';

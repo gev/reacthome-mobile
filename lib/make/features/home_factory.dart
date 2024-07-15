@@ -1,5 +1,5 @@
-import 'package:reacthome/app/features/discovery_factory.dart';
-import 'package:reacthome/app/features/home_connection_factory.dart';
+import 'package:reacthome/make/features/discovery_factory.dart';
+import 'package:reacthome/make/features/home_connection_factory.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/features/home/application/home_discovery_service.dart';

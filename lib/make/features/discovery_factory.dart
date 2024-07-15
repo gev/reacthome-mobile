@@ -1,6 +1,6 @@
-import 'package:reacthome/app/config.dart';
-import 'package:reacthome/app/features/app_life_cycle_factory.dart';
-import 'package:reacthome/app/features/connectivity_factory.dart';
+import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/features/app_life_cycle_factory.dart';
+import 'package:reacthome/make/features/connectivity_factory.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/home/home_api.dart';
