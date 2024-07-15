@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reacthome/infrastructure/ui/kit/theme/theme_material.dart';
-import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 class AppRootMaterial {
@@ -9,7 +8,7 @@ class AppRootMaterial {
     required String title,
     required Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
     required Iterable<Locale> supportedLocales,
-    required ThemeConfig theme,
+    required Color seedColor,
     required Navigation navigation,
   }) =>
       MaterialApp(
@@ -17,8 +16,8 @@ class AppRootMaterial {
         localizationsDelegates: localizationsDelegates,
         supportedLocales: supportedLocales,
         themeMode: ThemeMode.system,
-        theme: makeMaterialTheme(theme.seedColor, Brightness.light),
-        darkTheme: makeMaterialTheme(theme.seedColor, Brightness.dark),
+        theme: makeMaterialTheme(seedColor, Brightness.light),
+        darkTheme: makeMaterialTheme(seedColor, Brightness.dark),
         initialRoute: navigation.initialRoute,
         routes: navigation.routes,
       );

@@ -48,7 +48,8 @@ class DiscoveryFactory {
         discovery: makeDiscoveryService(),
         connectivity: ConnectivityFactory.instance.makeConnectivityService(),
         factory: MulticastSourceFactory(
-          config: Config.discovery.listen,
+          group: Config.discovery.listen.group,
+          port: Config.discovery.listen.port,
           controller: DiscoveryController(
             discovered: makeHomeService(),
           ),

@@ -1,5 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/features/application/discovery/discovery_config.dart';
+import 'package:reacthome/make/config/discovery_config.dart';
 import 'package:reacthome/make/config/multicast_config.dart';
 import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/make/config/websocket_config.dart';
@@ -14,13 +16,13 @@ class Config {
     reconnectTimeout: Duration(seconds: 5),
   );
 
-  static const discovery = DiscoveryConfig(
+  static final discovery = DiscoveryConfig(
     listen: MulticastConfig(
-      group: '224.0.0.2',
+      group: InternetAddress('224.0.0.2', type: InternetAddressType.IPv4),
       port: 2021,
     ),
-    renewTimeout: Duration(seconds: 15),
-    restartTimeout: Duration(seconds: 5),
+    renewTimeout: const Duration(seconds: 15),
+    restartTimeout: const Duration(seconds: 5),
   );
 
   static const theme = ThemeConfig(

@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:reacthome/features/handler.dart';
-import 'package:reacthome/make/config/multicast_config.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class MulticastSource {
@@ -12,13 +11,11 @@ class MulticastSource {
 
   const MulticastSource._(this._socket, this._timer, this._subscription);
 
-  static Future<MulticastSource> create({
-    required MulticastConfig config,
-    required Handler<Datagram> controller,
-  }) async {
+  static Future<MulticastSource> create(
+      InternetAddress group, int port, Handler<Datagram> controller) async {
     final socket = await RawDatagramSocket.bind(
       InternetAddress.anyIPv4,
-      config.port,
+      port,
       reuseAddress: true,
       reusePort: true,
     );
@@ -35,7 +32,7 @@ class MulticastSource {
     final timer = Timer.periodic(const Duration(seconds: 1), (_) async {
       for (final interface in await _interfaces()) {
         try {
-          socket.joinMulticast(InternetAddress(config.group), interface);
+          socket.joinMulticast(group, interface);
         } catch (_) {}
       }
     });

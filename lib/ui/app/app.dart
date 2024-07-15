@@ -4,23 +4,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:reacthome/features/application/app_lifecycle/app_lifecycle_api.dart';
 import 'package:reacthome/infrastructure/ui/kit/kit.dart';
-import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 class App extends StatelessWidget with WidgetsBindingObserver {
   final AppLifecycleApi appLifeCycle;
-  final ThemeConfig theme;
   final Navigation navigation;
   final Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates;
   final Iterable<Locale> supportedLocales;
+  final Color seedColor;
   final String title;
 
   App({
     required this.appLifeCycle,
-    required this.theme,
     required this.navigation,
     required this.localizationsDelegates,
     required this.supportedLocales,
+    required this.seedColor,
     this.title = 'Reacthome X',
     super.key,
   }) {
@@ -33,11 +32,11 @@ class App extends StatelessWidget with WidgetsBindingObserver {
     SystemChrome.restoreSystemUIOverlays();
     return app.root(
       context,
-      theme: theme,
       navigation: navigation,
       localizationsDelegates: localizationsDelegates,
       supportedLocales: supportedLocales,
       title: title,
+      seedColor: seedColor,
     );
   }
 

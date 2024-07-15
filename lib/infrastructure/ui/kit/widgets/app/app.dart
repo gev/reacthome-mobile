@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/make/config/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 typedef AppRootFactory = Widget Function(
@@ -7,8 +6,8 @@ typedef AppRootFactory = Widget Function(
   required String title,
   required Iterable<LocalizationsDelegate<dynamic>> localizationsDelegates,
   required Iterable<Locale> supportedLocales,
-  required ThemeConfig theme,
   required Navigation navigation,
+  required Color seedColor,
 });
 
 typedef AppBarFactory = PreferredSizeWidget Function({

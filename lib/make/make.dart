@@ -36,23 +36,24 @@ Future<Widget> make() async {
   ConnectivityFactory.instance.makeConnectivityChangeService();
 
   return App(
-      theme: Config.theme,
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ru'),
-      ],
-      appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
-      navigation: Navigation(
-        home: await HomeScreenFactory.instance.make(),
-        splash: await SplashScreenFactory.instance.make(),
-        welcome: WelcomeScreenFactory.instance.make,
-        discovery: await DiscoveryScreenFactory.instance.make(),
-        addHome: await AddHomeScreenFactory.instance.make(),
-        homeList: await AddHomeListFactory.instance.make(),
-      ));
+    localizationsDelegates: const [
+      AppLocalizations.delegate,
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+    ],
+    supportedLocales: const [
+      Locale('en'),
+      Locale('ru'),
+    ],
+    appLifeCycle: AppLifecycleFactory.instance.makeAppLifecycleService(),
+    navigation: Navigation(
+      home: await HomeScreenFactory.instance.make(),
+      splash: await SplashScreenFactory.instance.make(),
+      welcome: WelcomeScreenFactory.instance.make,
+      discovery: await DiscoveryScreenFactory.instance.make(),
+      addHome: await AddHomeScreenFactory.instance.make(),
+      homeList: await AddHomeListFactory.instance.make(),
+    ),
+    seedColor: Config.theme.seedColor,
+  );
 }
