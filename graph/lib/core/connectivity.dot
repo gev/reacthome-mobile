@@ -7,7 +7,6 @@ digraph "" {
   "/connectivity_service.dart" [label="connectivity_service"];
   "/connectivity_api.dart" [label="connectivity_api"];
   "/connectivity_event.dart" [label="connectivity_event"];
-  "/connectivity_change_service.dart" [label="connectivity_change_service"];
   "/connectivity_entity.dart" [label="connectivity_entity"];
   subgraph "cluster~" {
     label="connectivity";
@@ -16,7 +15,6 @@ digraph "" {
     "/connectivity_service.dart";
     "/connectivity_api.dart";
     "/connectivity_event.dart";
-    "/connectivity_change_service.dart";
     "/connectivity_entity.dart";
   }
   "/connectivity.dart" -> "/connectivity_event.dart";
@@ -27,8 +25,6 @@ digraph "" {
   "/connectivity_service.dart" -> "/connectivity_state.dart";
   "/connectivity_api.dart" -> "/connectivity_state.dart";
   "/connectivity_event.dart" -> "/connectivity_state.dart";
-  "/connectivity_change_service.dart" -> "/connectivity_api.dart";
-  "/connectivity_change_service.dart" -> "/connectivity_state.dart";
   "/connectivity_entity.dart" -> "/connectivity.dart";
   "/connectivity_entity.dart" -> "/connectivity_event.dart";
   "/connectivity_entity.dart" -> "/connectivity_state.dart";

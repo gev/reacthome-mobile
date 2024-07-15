@@ -2,7 +2,6 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/websocket_service.dart" [label="websocket_service"];
   "/connection_entity.dart" [label="connection_entity"];
   "/connection_service.dart" [label="connection_service"];
   "/connection_type.dart" [label="connection_type"];
@@ -13,7 +12,6 @@ digraph "" {
   "/connection_api.dart" [label="connection_api"];
   subgraph "cluster~" {
     label="connection";
-    "/websocket_service.dart";
     "/connection_entity.dart";
     "/connection_service.dart";
     "/connection_type.dart";
@@ -23,8 +21,6 @@ digraph "" {
     "/connection_event.dart";
     "/connection_api.dart";
   }
-  "/websocket_service.dart" -> "/connection_api.dart";
-  "/websocket_service.dart" -> "/connection_event.dart";
   "/connection_entity.dart" -> "/connection.dart";
   "/connection_entity.dart" -> "/connection_event.dart";
   "/connection_entity.dart" -> "/connection_state.dart";

@@ -7,7 +7,6 @@ digraph "" {
   "/home_event.dart" [label="home_event"];
   "/home_api.dart" [label="home_api"];
   "/home_entity.dart" [label="home_entity"];
-  "/home_discovery_service.dart" [label="home_discovery_service"];
   subgraph "cluster~" {
     label="home";
     "/home.dart";
@@ -15,7 +14,6 @@ digraph "" {
     "/home_event.dart";
     "/home_api.dart";
     "/home_entity.dart";
-    "/home_discovery_service.dart";
   }
   "/home_service.dart" -> "/home.dart";
   "/home_service.dart" -> "/home_api.dart";
@@ -25,7 +23,4 @@ digraph "" {
   "/home_api.dart" -> "/home.dart";
   "/home_entity.dart" -> "/home.dart";
   "/home_entity.dart" -> "/home_event.dart";
-  "/home_discovery_service.dart" -> "/home.dart";
-  "/home_discovery_service.dart" -> "/home_api.dart";
-  "/home_discovery_service.dart" -> "/home_event.dart";
 }
