@@ -4,7 +4,7 @@ import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/ui/dto.dart';
-import 'package:reacthome/core/extensions.dart';
+import 'package:reacthome/util/extensions.dart';
 
 class ConnectionViewModel<S> {
   final Stream<ConnectionEvent> eventSource;

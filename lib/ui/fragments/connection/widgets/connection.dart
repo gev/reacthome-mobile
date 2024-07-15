@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/core/extensions.dart';
+import 'package:reacthome/util/extensions.dart';
 
 class Connection extends StatelessWidget {
   final bool isConnected;
