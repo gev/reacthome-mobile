@@ -1,0 +1,14 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/connectivity_home_connection_service.dart" [label="connectivity_home_connection_service"];
+  "/connectivity_change_service.dart" [label="connectivity_change_service"];
+  "/connectivity_discovery_service.dart" [label="connectivity_discovery_service"];
+  subgraph "cluster~" {
+    label="connectivity";
+    "/connectivity_home_connection_service.dart";
+    "/connectivity_change_service.dart";
+    "/connectivity_discovery_service.dart";
+  }
+}

@@ -1,0 +1,17 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/text.dart" [label="text"];
+  "/field/text_field_material.dart" [label="text_field_material"];
+  "/field/text_field_cupertino.dart" [label="text_field_cupertino"];
+  subgraph "cluster~" {
+    label="text";
+    "/text.dart";
+    subgraph "cluster~/field" {
+      label="field";
+      "/field/text_field_material.dart";
+      "/field/text_field_cupertino.dart";
+    }
+  }
+}

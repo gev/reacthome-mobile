@@ -1,0 +1,12 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/app_life_cycle_discovery_service.dart" [label="app_life_cycle_discovery_service"];
+  "/app_lifecycle_home_connection_service.dart" [label="app_lifecycle_home_connection_service"];
+  subgraph "cluster~" {
+    label="app_life_cycle";
+    "/app_life_cycle_discovery_service.dart";
+    "/app_lifecycle_home_connection_service.dart";
+  }
+}
