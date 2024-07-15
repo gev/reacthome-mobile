@@ -17,7 +17,7 @@ import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 Future<Widget> make() async {
-  DiscoveryFactory.instance.makeDiscoveryMulticastService();
+  await DiscoveryFactory.instance.makeDiscoveryMulticastService();
   DiscoveryFactory.instance.makeDiscoveryTimeoutService();
   DiscoveryFactory.instance.makeDiscoveryLifecycleService();
   DiscoveryFactory.instance.makeDiscoveryConnectivityService();
@@ -26,9 +26,9 @@ Future<Widget> make() async {
   ConnectionFactory.instance.makeCloudWebsocketService();
 
   HomeConnectionFactory.instance.makeActiveConnectionService();
-  HomeConnectionFactory.instance.makeHomeConnectionAutoService();
-  HomeConnectionFactory.instance.makeHomeConnectionLifecycleService();
-  HomeConnectionFactory.instance.makeHomeConnectionConnectivityService();
+  await HomeConnectionFactory.instance.makeHomeConnectionAutoService();
+  await HomeConnectionFactory.instance.makeHomeConnectionLifecycleService();
+  await HomeConnectionFactory.instance.makeHomeConnectionConnectivityService();
 
   ConnectivityFactory.instance.makeConnectivityChangeService();
 
