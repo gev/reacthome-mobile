@@ -7,6 +7,7 @@ import 'package:reacthome/app/features/connection_factory.dart';
 import 'package:reacthome/app/features/connectivity_factory.dart';
 import 'package:reacthome/app/features/discovery_factory.dart';
 import 'package:reacthome/app/features/home_connection_factory.dart';
+import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/app/screens/add_home_screen_factory.dart';
 import 'package:reacthome/app/screens/discovery_screen_factory.dart';
 import 'package:reacthome/app/screens/home_list_screen_factory.dart';
@@ -17,7 +18,7 @@ import 'package:reacthome/ui/app/app.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
 Future<Widget> make() async {
-  await DiscoveryFactory.instance.makeDiscoveryMulticastService();
+  DiscoveryFactory.instance.makeDiscoveryMulticastService();
   DiscoveryFactory.instance.makeDiscoveryTimeoutService();
   DiscoveryFactory.instance.makeDiscoveryLifecycleService();
   DiscoveryFactory.instance.makeDiscoveryConnectivityService();
@@ -25,10 +26,12 @@ Future<Widget> make() async {
   ConnectionFactory.instance.makeLocalWebsocketService();
   ConnectionFactory.instance.makeCloudWebsocketService();
 
-  HomeConnectionFactory.instance.makeActiveConnectionService();
   await HomeConnectionFactory.instance.makeHomeConnectionAutoService();
   await HomeConnectionFactory.instance.makeHomeConnectionLifecycleService();
   await HomeConnectionFactory.instance.makeHomeConnectionConnectivityService();
+  HomeConnectionFactory.instance.makeActiveConnectionService();
+
+  await HomeFactory.instance.makeHomeDiscoveryService();
 
   ConnectivityFactory.instance.makeConnectivityChangeService();
 

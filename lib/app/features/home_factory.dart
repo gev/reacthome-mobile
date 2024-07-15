@@ -1,5 +1,8 @@
+import 'package:reacthome/app/features/discovery_factory.dart';
+import 'package:reacthome/app/features/home_connection_factory.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
+import 'package:reacthome/features/home/application/home_discovery_service.dart';
 import 'package:reacthome/features/home/application/home_service.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/util/bus/bus.dart';
@@ -23,5 +26,13 @@ class HomeFactory {
   Future<HomeApi> makeHomeService() async => HomeService(
         eventSink: homeEventBus.sink,
         repository: await makeHomeRepository(),
+      );
+
+  Future<HomeDiscoveryService> makeHomeDiscoveryService() async =>
+      HomeDiscoveryService(
+        eventSource: DiscoveryFactory.instance.homeEventBus.stream,
+        discovered: DiscoveryFactory.instance.makeHomeService(),
+        known: await makeHomeService(),
+        connection: HomeConnectionFactory.instance.makeHomeConnectionService(),
       );
 }

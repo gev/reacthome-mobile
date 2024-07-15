@@ -1,8 +1,6 @@
 import 'package:reacthome/app/config.dart';
 import 'package:reacthome/app/features/app_life_cycle_factory.dart';
 import 'package:reacthome/app/features/connectivity_factory.dart';
-import 'package:reacthome/app/features/home_connection_factory.dart';
-import 'package:reacthome/app/features/home_factory.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/home/home_api.dart';
@@ -44,7 +42,7 @@ class DiscoveryFactory {
         process: _process,
       );
 
-  Future<DiscoveryMulticastService> makeDiscoveryMulticastService() async =>
+  DiscoveryMulticastService makeDiscoveryMulticastService() =>
       DiscoveryMulticastService(
         eventSource: discoveryEventBus.stream,
         discovery: makeDiscoveryService(),
@@ -53,9 +51,6 @@ class DiscoveryFactory {
           config: Config.discovery.listen,
           controller: DiscoveryController(
             discovered: makeHomeService(),
-            known: await HomeFactory.instance.makeHomeService(),
-            connection:
-                HomeConnectionFactory.instance.makeHomeConnectionService(),
           ),
         ),
       );
