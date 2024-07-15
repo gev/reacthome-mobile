@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
+import 'package:reacthome/core/repository.dart';
 import 'package:reacthome/features/connection/domain/connection_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
-import 'package:reacthome/infrastructure/repository/repository.dart';
 import 'package:reacthome/util/extensions.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>

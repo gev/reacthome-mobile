@@ -4,9 +4,9 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/core/repository.dart';
 import 'package:reacthome/features/home/domain/home_entity.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
-import 'package:reacthome/infrastructure/repository/repository.dart';
 
 class HomeService extends BusEmitter<HomeEvent> implements HomeApi {
   final Repository<String, HomeEntity> repository;
