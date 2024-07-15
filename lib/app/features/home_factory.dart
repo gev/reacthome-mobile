@@ -10,8 +10,6 @@ class HomeFactory {
 
   HomeFactory._();
 
-  // final _repository = MapRepository<String, HomeEntity>();
-
   Future<PersistentRepository<HomeEntity>> makeHomeRepository() async =>
       PersistentRepository.make(
         name: 'home',
