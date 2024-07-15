@@ -1,7 +1,7 @@
-import 'package:reacthome/core/discovery/discovery_api.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
-import 'package:reacthome/core/discovery/discovery_state.dart';
-import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/features/discovery/discovery_api.dart';
+import 'package:reacthome/features/discovery/discovery_event.dart';
+import 'package:reacthome/features/discovery/discovery_state.dart';
+import 'package:reacthome/features/home/home_api.dart';
 
 class DiscoveryViewModel {
   final Stream<DiscoveryEvent> eventSource;

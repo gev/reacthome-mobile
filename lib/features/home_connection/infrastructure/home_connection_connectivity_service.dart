@@ -1,6 +1,6 @@
-import 'package:reacthome/core/connectivity/connectivity_event.dart';
-import 'package:reacthome/core/home/home_api.dart';
-import 'package:reacthome/core/home_connection/home_connection_api.dart';
+import 'package:reacthome/features/connectivity/connectivity_event.dart';
+import 'package:reacthome/features/home/home_api.dart';
+import 'package:reacthome/features/home_connection/home_connection_api.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
 class HomeConnectionConnectivityService extends BusListener<ConnectivityEvent> {

@@ -1,6 +1,6 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/core/home/home.dart';
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/features/home/home.dart';
+import 'package:reacthome/features/meta.dart';
 
 class MetaUI {
   final String? _code;

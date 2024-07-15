@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
-import 'package:reacthome/core/connectivity/connectivity_api.dart';
-import 'package:reacthome/core/home/home_api.dart';
-import 'package:reacthome/core/home_connection/home_connection_api.dart';
+import 'package:reacthome/features/app_lifecycle/app_lifecycle_event.dart';
+import 'package:reacthome/features/connectivity/connectivity_api.dart';
+import 'package:reacthome/features/home/home_api.dart';
+import 'package:reacthome/features/home_connection/home_connection_api.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
 class HomeConnectionLifecycleService extends BusListener<AppLifecycleEvent> {

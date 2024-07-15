@@ -1,6 +1,6 @@
-import 'package:reacthome/core/connectivity/connectivity_api.dart';
-import 'package:reacthome/core/discovery/discovery_api.dart';
-import 'package:reacthome/core/discovery/discovery_event.dart';
+import 'package:reacthome/features/connectivity/connectivity_api.dart';
+import 'package:reacthome/features/discovery/discovery_api.dart';
+import 'package:reacthome/features/discovery/discovery_event.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';

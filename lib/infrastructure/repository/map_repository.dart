@@ -1,5 +1,5 @@
-import 'package:reacthome/core/entity.dart';
-import 'package:reacthome/core/repository.dart';
+import 'package:reacthome/features/entity.dart';
+import 'package:reacthome/features/repository.dart';
 
 class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
   final _store = <K, V>{};

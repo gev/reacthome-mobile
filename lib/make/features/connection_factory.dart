@@ -1,7 +1,7 @@
-import 'package:reacthome/core/connection/connection_api.dart';
-import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/features/connection/domain/connection_entity.dart';
-import 'package:reacthome/features/connection/infrastructure/connection_service.dart';
+import 'package:reacthome/features/connection/connection_api.dart';
+import 'package:reacthome/features/connection/connection_entity.dart';
+import 'package:reacthome/features/connection/connection_event.dart';
+import 'package:reacthome/features/connection/connection_service.dart';
 import 'package:reacthome/features/connection/infrastructure/websocket_service.dart';
 import 'package:reacthome/features/connection/interface/connection_controller.dart';
 import 'package:reacthome/infrastructure/bus/bus.dart';
@@ -26,13 +26,13 @@ class ConnectionFactory {
 
   final connectionEventBus = Bus<ConnectionEvent>();
 
-  LocalConnectionApi<WebSocket> makeLocalConnectionService() =>
+  LocalConnectionService<WebSocket> makeLocalConnectionService() =>
       LocalConnectionService(
         eventSink: connectionEventBus.sink,
         repository: _localConnectionRepository,
       );
 
-  CloudConnectionApi<WebSocket> makeCloudConnectionService() =>
+  CloudConnectionService<WebSocket> makeCloudConnectionService() =>
       CloudConnectionService(
         eventSink: connectionEventBus.sink,
         repository: _cloudConnectionRepository,

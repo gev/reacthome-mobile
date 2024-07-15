@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/features/home/home_api.dart';
 import 'package:reacthome/infrastructure/ui/layouts/center_layout.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/widgets/logo.dart';

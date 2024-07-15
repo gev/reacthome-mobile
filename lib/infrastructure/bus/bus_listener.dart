@@ -2,7 +2,7 @@
 
 import 'dart:async';
 
-import 'package:reacthome/core/handler.dart';
+import 'package:reacthome/features/handler.dart';
 
 abstract class BusListener<E> extends Object implements Handler<E> {
   late StreamSubscription<E> _subscription;

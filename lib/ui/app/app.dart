@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:reacthome/core/app_lifecycle/app_lifecycle_api.dart';
+import 'package:reacthome/features/app_lifecycle/app_lifecycle_api.dart';
 import 'package:reacthome/infrastructure/ui/kit/kit.dart';
 import 'package:reacthome/infrastructure/ui/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';

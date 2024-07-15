@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:reacthome/core/app_lifecycle/app_lifecycle_event.dart';
-import 'package:reacthome/core/connectivity/connectivity_api.dart';
-import 'package:reacthome/core/discovery/discovery_api.dart';
+import 'package:reacthome/features/app_lifecycle/app_lifecycle_event.dart';
+import 'package:reacthome/features/connectivity/connectivity_api.dart';
+import 'package:reacthome/features/discovery/discovery_api.dart';
 import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
 class DiscoveryLifecycleService extends BusListener<AppLifecycleEvent> {

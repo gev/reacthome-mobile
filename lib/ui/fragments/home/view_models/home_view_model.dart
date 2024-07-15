@@ -1,7 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/core/home/home_api.dart';
-import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/features/home/home_api.dart';
+import 'package:reacthome/features/home/home_event.dart';
+import 'package:reacthome/features/meta.dart';
 import 'package:reacthome/ui/dto.dart';
 
 class HomeViewModel {
@@ -21,7 +21,7 @@ class HomeViewModel {
   Stream<HomeUI> stream(String id, AppLocalizations locale) => eventSource
       .where((event) =>
           (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent) &&
-          event.home == id)
+          event.home.id == id)
       .map((event) => getHome(id, locale));
 
   void addHome(String id) => home.addHome(
