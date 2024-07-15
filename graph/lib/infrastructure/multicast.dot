@@ -1,0 +1,13 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/multicast_source_factory.dart" [label="multicast_source_factory"];
+  "/multicast_source.dart" [label="multicast_source"];
+  subgraph "cluster~" {
+    label="multicast";
+    "/multicast_source_factory.dart";
+    "/multicast_source.dart";
+  }
+  "/multicast_source_factory.dart" -> "/multicast_source.dart";
+}
