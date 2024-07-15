@@ -9,6 +9,8 @@ import 'package:reacthome/util/bus/bus_emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 import 'package:reacthome/util/repository/repository.dart';
 
+// TODO: move to a usecase
+
 class HomeConnectionService<S> extends GenericBusEmitter<ConnectionEvent>
     implements HomeConnectionApi {
   final LocalConnectionApi<S> local;
