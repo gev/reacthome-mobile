@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/features/discovery/discovery_config.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_config.dart';
+import 'package:reacthome/infrastructure/ui/theme_config.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_config.dart';
-import 'package:reacthome/ui/theme_config.dart';
 
 class Config {
   static const connection = WebSocketConfig(

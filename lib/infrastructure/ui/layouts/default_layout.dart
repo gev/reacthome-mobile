@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/kit/kit.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit.dart';
 
 class DefaultLayout extends StatelessWidget {
   final Widget body;

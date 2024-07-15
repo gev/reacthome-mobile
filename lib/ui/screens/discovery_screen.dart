@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit.dart';
+import 'package:reacthome/infrastructure/ui/layouts/fixed_width_layout.dart';
 import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_list.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_status.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
-import 'package:reacthome/ui/kit/kit.dart';
-import 'package:reacthome/ui/layouts/fixed_width_layout.dart';
 
 class DiscoveryScreen extends StatelessWidget {
   final DiscoveryViewModel discoveryViewModel;

@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_tile.dart';
-import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeList extends StatelessWidget {
   final HomeViewModel homeViewModel;

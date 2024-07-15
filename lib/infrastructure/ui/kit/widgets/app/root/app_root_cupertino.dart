@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:reacthome/infrastructure/ui/kit/theme/theme_cupertino.dart';
+import 'package:reacthome/infrastructure/ui/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/kit/theme/theme_cupertino.dart';
-import 'package:reacthome/ui/theme_config.dart';
 
 class AppRootCupertino {
   static Widget make(

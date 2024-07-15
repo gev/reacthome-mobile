@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/kit/kit.dart';
 
 class HomeGoToList extends StatelessWidget {
   const HomeGoToList({super.key});

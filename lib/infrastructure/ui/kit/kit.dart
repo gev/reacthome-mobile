@@ -1,6 +1,6 @@
 import 'package:reacthome/infrastructure/platform.dart';
-import 'package:reacthome/ui/kit/kit_cupertino.dart';
-import 'package:reacthome/ui/kit/kit_material.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit_cupertino.dart';
+import 'package:reacthome/infrastructure/ui/kit/kit_material.dart';
 
 final _kit = selectPlatform(
   cupertino: cupertino,

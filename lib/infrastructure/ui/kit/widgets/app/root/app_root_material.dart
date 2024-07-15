@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:reacthome/infrastructure/ui/kit/theme/theme_material.dart';
+import 'package:reacthome/infrastructure/ui/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/kit/theme/theme_material.dart';
-import 'package:reacthome/ui/theme_config.dart';
 
 class AppRootMaterial {
   static Widget make(

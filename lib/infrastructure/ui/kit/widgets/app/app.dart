@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:reacthome/infrastructure/ui/theme_config.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/theme_config.dart';
 
 typedef AppRootFactory = Widget Function(
   BuildContext context, {
