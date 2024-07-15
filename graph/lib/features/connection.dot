@@ -2,28 +2,39 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/interface/connection_controller.dart" [label="connection_controller"];
-  "/application/connection_service.dart" [label="connection_service"];
-  "/infrastructure/websocket_service.dart" [label="websocket_service"];
-  "/domain/connection_entity.dart" [label="connection_entity"];
+  "/websocket_service.dart" [label="websocket_service"];
+  "/connection_entity.dart" [label="connection_entity"];
+  "/connection_service.dart" [label="connection_service"];
+  "/connection_type.dart" [label="connection_type"];
+  "/connection.dart" [label="connection"];
+  "/connection_state.dart" [label="connection_state"];
+  "/connection_controller.dart" [label="connection_controller"];
+  "/connection_event.dart" [label="connection_event"];
+  "/connection_api.dart" [label="connection_api"];
   subgraph "cluster~" {
     label="connection";
-    subgraph "cluster~/interface" {
-      label="interface";
-      "/interface/connection_controller.dart";
-    }
-    subgraph "cluster~/application" {
-      label="application";
-      "/application/connection_service.dart";
-    }
-    subgraph "cluster~/infrastructure" {
-      label="infrastructure";
-      "/infrastructure/websocket_service.dart";
-    }
-    subgraph "cluster~/domain" {
-      label="domain";
-      "/domain/connection_entity.dart";
-    }
+    "/websocket_service.dart";
+    "/connection_entity.dart";
+    "/connection_service.dart";
+    "/connection_type.dart";
+    "/connection.dart";
+    "/connection_state.dart";
+    "/connection_controller.dart";
+    "/connection_event.dart";
+    "/connection_api.dart";
   }
-  "/application/connection_service.dart" -> "/domain/connection_entity.dart";
+  "/websocket_service.dart" -> "/connection_api.dart";
+  "/websocket_service.dart" -> "/connection_event.dart";
+  "/connection_entity.dart" -> "/connection.dart";
+  "/connection_entity.dart" -> "/connection_event.dart";
+  "/connection_entity.dart" -> "/connection_state.dart";
+  "/connection_entity.dart" -> "/connection_type.dart";
+  "/connection_service.dart" -> "/connection.dart";
+  "/connection_service.dart" -> "/connection_api.dart";
+  "/connection_service.dart" -> "/connection_entity.dart";
+  "/connection_service.dart" -> "/connection_event.dart";
+  "/connection.dart" -> "/connection_state.dart";
+  "/connection.dart" -> "/connection_type.dart";
+  "/connection_event.dart" -> "/connection_type.dart";
+  "/connection_api.dart" -> "/connection.dart";
 }

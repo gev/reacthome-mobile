@@ -1,0 +1,35 @@
+digraph "" {
+  graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
+  node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
+  edge [penwidth=1.3];
+  "/connectivity_state.dart" [label="connectivity_state"];
+  "/connectivity.dart" [label="connectivity"];
+  "/connectivity_service.dart" [label="connectivity_service"];
+  "/connectivity_api.dart" [label="connectivity_api"];
+  "/connectivity_event.dart" [label="connectivity_event"];
+  "/connectivity_change_service.dart" [label="connectivity_change_service"];
+  "/connectivity_entity.dart" [label="connectivity_entity"];
+  subgraph "cluster~" {
+    label="connectivity";
+    "/connectivity_state.dart";
+    "/connectivity.dart";
+    "/connectivity_service.dart";
+    "/connectivity_api.dart";
+    "/connectivity_event.dart";
+    "/connectivity_change_service.dart";
+    "/connectivity_entity.dart";
+  }
+  "/connectivity.dart" -> "/connectivity_event.dart";
+  "/connectivity.dart" -> "/connectivity_state.dart";
+  "/connectivity_service.dart" -> "/connectivity.dart";
+  "/connectivity_service.dart" -> "/connectivity_api.dart";
+  "/connectivity_service.dart" -> "/connectivity_event.dart";
+  "/connectivity_service.dart" -> "/connectivity_state.dart";
+  "/connectivity_api.dart" -> "/connectivity_state.dart";
+  "/connectivity_event.dart" -> "/connectivity_state.dart";
+  "/connectivity_change_service.dart" -> "/connectivity_api.dart";
+  "/connectivity_change_service.dart" -> "/connectivity_state.dart";
+  "/connectivity_entity.dart" -> "/connectivity.dart";
+  "/connectivity_entity.dart" -> "/connectivity_event.dart";
+  "/connectivity_entity.dart" -> "/connectivity_state.dart";
+}

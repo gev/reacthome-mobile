@@ -2,361 +2,526 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
+  "/ui/assets.dart" [label="assets"];
+  "/ui/fragments/home/view_models/home_view_model.dart" [label="home_view_model"];
+  "/ui/fragments/home/view_models/home_list_view_model.dart" [label="home_list_view_model"];
+  "/ui/fragments/home/widgets/home_go_to_list.dart" [label="home_go_to_list"];
+  "/ui/fragments/home/widgets/home_remove.dart" [label="home_remove"];
+  "/ui/fragments/home/widgets/home_tile.dart" [label="home_tile"];
+  "/ui/fragments/home/widgets/home_remove_confirm.dart" [label="home_remove_confirm"];
+  "/ui/fragments/home/widgets/home_add_form.dart" [label="home_add_form"];
+  "/ui/fragments/home/widgets/home_go_to_add.dart" [label="home_go_to_add"];
+  "/ui/fragments/home/widgets/home_list.dart" [label="home_list"];
   "/ui/fragments/connection/view_models/connection_view_model.dart" [label="connection_view_model"];
-  "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart" [label="daemon_add_view_model"];
-  "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" [label="daemon_title_view_model"];
-  "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart" [label="daemon_list_view_model"];
-  "/ui/fragments/daemon_panel/views/daemon_panel_view.dart" [label="daemon_panel_view"];
-  "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" [label="daemon_tile"];
-  "/ui/fragments/daemon_panel/widgets/daemon_list.dart" [label="daemon_list"];
-  "/ui/fragments/daemon_panel/widgets/daemon_count.dart" [label="daemon_count"];
-  "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" [label="add_daemon_button"];
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" [label="discovery_status_view_model"];
+  "/ui/fragments/connection/widgets/connection.dart" [label="connection"];
+  "/ui/fragments/connection/widgets/connections.dart" [label="connections"];
+  "/ui/fragments/discovery/view_models/discovery_view_model.dart" [label="discovery_view_model"];
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" [label="discovery_home_add_confirm"];
   "/ui/fragments/discovery/widgets/discovery_status.dart" [label="discovery_status"];
-  "/ui/app/app.android.dart" [label="app.android"];
-  "/ui/app/app_binding_observer.dart" [label="app_binding_observer"];
-  "/ui/app/app.ios.dart" [label="app.ios"];
+  "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart" [label="discovery_home_add_alert"];
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" [label="discovery_home_add"];
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" [label="discovery_home_tile"];
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" [label="discovery_home_list"];
+  "/ui/fragments/meta/widgets/meta_props.dart" [label="meta_props"];
   "/ui/app/navigation.dart" [label="navigation"];
   "/ui/app/app.dart" [label="app"];
+  "/ui/dto.dart" [label="dto"];
+  "/ui/screens/home_list_screen.dart" [label="home_list_screen"];
+  "/ui/screens/add_home_screen.dart" [label="add_home_screen"];
+  "/ui/screens/discovery_screen.dart" [label="discovery_screen"];
+  "/ui/screens/welcome_screen.dart" [label="welcome_screen"];
   "/ui/screens/home_screen.dart" [label="home_screen"];
   "/ui/screens/splash_screen.dart" [label="splash_screen"];
-  "/ui/theme_config.dart" [label="theme_config"];
-  "/ui/widgets/list_tile/list_tile_view.ios.dart" [label="list_tile_view.ios"];
-  "/ui/widgets/list_tile/list_tile_view.android.dart" [label="list_tile_view.android"];
-  "/ui/widgets/list_tile/list_tile_view.dart" [label="list_tile_view"];
-  "/ui/widgets/scafold/scaffold.dart" [label="scaffold"];
-  "/ui/widgets/scafold/scaffold.amdroid.dart" [label="scaffold.amdroid"];
-  "/ui/widgets/scafold/scaffold.ios.dart" [label="scaffold.ios"];
-  "/ui/widgets/screen/screen.ios.dart" [label="screen.ios"];
-  "/ui/widgets/screen/screen.android.dart" [label="screen.android"];
-  "/ui/widgets/screen/screen.dart" [label="screen"];
-  "/ui/widgets/switch/switch.android.dart" [label="switch.android"];
-  "/ui/widgets/switch/switch.dart" [label="switch"];
-  "/ui/widgets/switch/switch.ios.dart" [label="switch.ios"];
-  "/ui/widgets/add_button/add_button.dart" [label="add_button"];
-  "/ui/widgets/add_button/add_button.ios.dart" [label="add_button.ios"];
-  "/ui/widgets/add_button/add_button.android.dart" [label="add_button.android"];
-  "/core/meta.dart" [label="meta"];
-  "/core/connection/connection_command.dart" [label="connection_command"];
-  "/core/connection/connection_type.dart" [label="connection_type"];
-  "/core/connection/connection.dart" [label="connection"];
-  "/core/connection/connection_state.dart" [label="connection_state"];
-  "/core/connection/connection_query.dart" [label="connection_query"];
-  "/core/connection/connection_event.dart" [label="connection_event"];
-  "/core/discovery/discovery_state.dart" [label="discovery_state"];
-  "/core/discovery/discovery_query.dart" [label="discovery_query"];
-  "/core/discovery/discovery_event.dart" [label="discovery_event"];
-  "/core/discovery/discovery_command.dart" [label="discovery_command"];
-  "/core/discovery/discovery.dart" [label="discovery"];
-  "/core/daemon/daemon.dart" [label="daemon"];
-  "/core/daemon/daemon_query.dart" [label="daemon_query"];
-  "/core/daemon/daemon_event.dart" [label="daemon_event"];
-  "/core/daemon/daemon_command.dart" [label="daemon_command"];
-  "/core/app_lifecycle/app_lifecycle_command.dart" [label="app_lifecycle_command"];
-  "/core/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
-  "/core/daemon_connection/daemon_connection_command.dart" [label="daemon_connection_command"];
-  "/core/daemon_connection/daemon_connection.dart" [label="daemon_connection"];
-  "/app/ui/fragments/daemon_panel_factory.dart" [label="daemon_panel_factory"];
-  "/app/ui/fragments/discovery_view_model_factory.dart" [label="discovery_view_model_factory"];
-  "/app/ui/fragments/connection_factory.dart" [label="connection_factory"];
-  "/app/ui/screens/splash_screen_factory.dart" [label="splash_screen_factory"];
-  "/app/ui/screens/home_screen_factory.dart" [label="home_screen_factory"];
-  "/app/features/daemon_connection_factory.dart" [label="daemon_connection_factory"];
-  "/app/features/connection_factory.dart" [label="connection_factory"];
-  "/app/features/discovery_factory.dart" [label="discovery_factory"];
-  "/app/features/daemon_factory.dart" [label="daemon_factory"];
-  "/app/features/app_life_cycle_factory.dart" [label="app_life_cycle_factory"];
-  "/app/config.dart" [label="config"];
-  "/app/make.dart" [label="make"];
-  "/util/handler.dart" [label="handler"];
-  "/util/event_bus.dart" [label="event_bus"];
+  "/ui/widgets/confirm.dart" [label="confirm"];
+  "/ui/widgets/logo.dart" [label="logo"];
+  "/ui/widgets/alert.dart" [label="alert"];
+  "/ui_kit/kit_cupertino.dart" [label="kit_cupertino"];
+  "/ui_kit/kit_container.dart" [label="kit_container"];
+  "/ui_kit/kit.dart" [label="kit"];
+  "/ui_kit/layout/layout_cupertino.dart" [label="layout_cupertino"];
+  "/ui_kit/layout/layout_material.dart" [label="layout_material"];
+  "/ui_kit/layout/layout.dart" [label="layout"];
+  "/ui_kit/kit_material.dart" [label="kit_material"];
+  "/ui_kit/layouts/default_layout.dart" [label="default_layout"];
+  "/ui_kit/layouts/center_layout.dart" [label="center_layout"];
+  "/ui_kit/layouts/fixed_width_layout.dart" [label="fixed_width_layout"];
+  "/ui_kit/layouts/full_width_layout.dart" [label="full_width_layout"];
+  "/ui_kit/theme/theme_cupertino.dart" [label="theme_cupertino"];
+  "/ui_kit/theme/theme_material.dart" [label="theme_material"];
+  "/ui_kit/theme/theme.dart" [label="theme"];
+  "/ui_kit/widgets/app/root/app_root_cupertino.dart" [label="app_root_cupertino"];
+  "/ui_kit/widgets/app/root/app_root_material.dart" [label="app_root_material"];
+  "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart" [label="app_bar_sliver_cupertino"];
+  "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" [label="app_bar_sliver_material"];
+  "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart" [label="app_bar_fixed_cupertino"];
+  "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_material.dart" [label="app_bar_fixed_material"];
+  "/ui_kit/widgets/app/app.dart" [label="app"];
+  "/ui_kit/widgets/indicator/activity/indicator_activity_cupertino.dart" [label="indicator_activity_cupertino"];
+  "/ui_kit/widgets/indicator/activity/indicator_activity_material.dart" [label="indicator_activity_material"];
+  "/ui_kit/widgets/indicator/indicator.dart" [label="indicator"];
+  "/ui_kit/widgets/switcher/switcher_cupertino.dart" [label="switcher_cupertino"];
+  "/ui_kit/widgets/switcher/switcher.dart" [label="switcher"];
+  "/ui_kit/widgets/switcher/switcher_material.dart" [label="switcher_material"];
+  "/ui_kit/widgets/icon.dart" [label="icon"];
+  "/ui_kit/widgets/dialog/alert/dialog_alert_material.dart" [label="dialog_alert_material"];
+  "/ui_kit/widgets/dialog/alert/dialog_alert_cupertino.dart" [label="dialog_alert_cupertino"];
+  "/ui_kit/widgets/dialog/dialog.dart" [label="dialog"];
+  "/ui_kit/widgets/dialog/show/show_dialog_material.dart" [label="show_dialog_material"];
+  "/ui_kit/widgets/dialog/show/show_dialog_cupertino.dart" [label="show_dialog_cupertino"];
+  "/ui_kit/widgets/dialog/action/dialog_action_material.dart" [label="dialog_action_material"];
+  "/ui_kit/widgets/dialog/action/dialog_action_cupertino.dart" [label="dialog_action_cupertino"];
+  "/ui_kit/widgets/button/button.dart" [label="button"];
+  "/ui_kit/widgets/button/filled/button_filled_material.dart" [label="button_filled_material"];
+  "/ui_kit/widgets/button/filled/button_filled_cupertino.dart" [label="button_filled_cupertino"];
+  "/ui_kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart" [label="button_icon_filled_cupertino"];
+  "/ui_kit/widgets/button/icon/filled/button_icon_filled_material.dart" [label="button_icon_filled_material"];
+  "/ui_kit/widgets/list/chevron/list_chevron_cupertino.dart" [label="list_chevron_cupertino"];
+  "/ui_kit/widgets/list/chevron/list_chevron_material.dart" [label="list_chevron_material"];
+  "/ui_kit/widgets/list/section/list_section_material.dart" [label="list_section_material"];
+  "/ui_kit/widgets/list/section/list_section_cupertino.dart" [label="list_section_cupertino"];
+  "/ui_kit/widgets/list/list.dart" [label="list"];
+  "/ui_kit/widgets/list/tile/list_tile_material.dart" [label="list_tile_material"];
+  "/ui_kit/widgets/list/tile/list_tile_cupertino.dart" [label="list_tile_cupertino"];
+  "/ui_kit/widgets/divider/divider_cupertino.dart" [label="divider_cupertino"];
+  "/ui_kit/widgets/divider/divider_material.dart" [label="divider_material"];
+  "/ui_kit/widgets/divider/divider.dart" [label="divider"];
+  "/ui_kit/widgets/text/text.dart" [label="text"];
+  "/ui_kit/widgets/text/field/text_field_material.dart" [label="text_field_material"];
+  "/ui_kit/widgets/text/field/text_field_cupertino.dart" [label="text_field_cupertino"];
+  "/ui_kit/widgets/scaffold/scaffold_material.dart" [label="scaffold_material"];
+  "/ui_kit/widgets/scaffold/scaffold.dart" [label="scaffold"];
+  "/ui_kit/widgets/scaffold/scaffold_cupertino.dart" [label="scaffold_cupertino"];
+  "/ui_kit/theme.dart" [label="theme"];
+  "/entity_framework/handler.dart" [label="handler"];
+  "/entity_framework/repository.dart" [label="repository"];
+  "/entity_framework/emitter.dart" [label="emitter"];
+  "/entity_framework/entity.dart" [label="entity"];
+  "/util/timeout.dart" [label="timeout"];
   "/util/extensions.dart" [label="extensions"];
-  "/util/repository.dart" [label="repository"];
-  "/util/event_emitter.dart" [label="event_emitter"];
   "/util/platform.dart" [label="platform"];
-  "/util/event_listener.dart" [label="event_listener"];
-  "/util/entity.dart" [label="entity"];
-  "/features/connection/interface/connection_controller.dart" [label="connection_controller"];
-  "/features/connection/application/connection_service.dart" [label="connection_service"];
-  "/features/connection/infrastructure/websocket_service.dart" [label="websocket_service"];
-  "/features/connection/domain/connection_entity.dart" [label="connection_entity"];
-  "/features/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
-  "/features/discovery/interface/discovery_action.dart" [label="discovery_action"];
-  "/features/discovery/discovery_config.dart" [label="discovery_config"];
-  "/features/discovery/application/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
-  "/features/discovery/application/discovery_service.dart" [label="discovery_service"];
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" [label="discovery_multicast_service"];
-  "/features/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
-  "/features/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
-  "/features/daemon/application/daemon_service.dart" [label="daemon_service"];
-  "/features/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
-  "/features/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" [label="daemon_connection_auto_service"];
-  "/features/daemon_connection/application/active_connection_service.dart" [label="active_connection_service"];
-  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" [label="daemon_connection_lifecycle_service"];
-  "/features/daemon_connection/application/daemon_connection_service.dart" [label="daemon_connection_service"];
-  "/features/daemon_connection/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
+  "/util/navigator_extension.dart" [label="navigator_extension"];
+  "/features/home/home.dart" [label="home"];
+  "/features/home/home_service.dart" [label="home_service"];
+  "/features/home/home_event.dart" [label="home_event"];
+  "/features/home/home_api.dart" [label="home_api"];
+  "/features/home/home_entity.dart" [label="home_entity"];
+  "/features/home/home_discovery_service.dart" [label="home_discovery_service"];
+  "/features/meta.dart" [label="meta"];
+  "/features/connection/websocket_service.dart" [label="websocket_service"];
+  "/features/connection/connection_entity.dart" [label="connection_entity"];
+  "/features/connection/connection_service.dart" [label="connection_service"];
+  "/features/connection/connection_type.dart" [label="connection_type"];
+  "/features/connection/connection.dart" [label="connection"];
+  "/features/connection/connection_state.dart" [label="connection_state"];
+  "/features/connection/connection_controller.dart" [label="connection_controller"];
+  "/features/connection/connection_event.dart" [label="connection_event"];
+  "/features/connection/connection_api.dart" [label="connection_api"];
+  "/features/connectivity/connectivity_state.dart" [label="connectivity_state"];
+  "/features/connectivity/connectivity.dart" [label="connectivity"];
+  "/features/connectivity/connectivity_service.dart" [label="connectivity_service"];
+  "/features/connectivity/connectivity_api.dart" [label="connectivity_api"];
+  "/features/connectivity/connectivity_event.dart" [label="connectivity_event"];
+  "/features/connectivity/connectivity_change_service.dart" [label="connectivity_change_service"];
+  "/features/connectivity/connectivity_entity.dart" [label="connectivity_entity"];
+  "/features/discovery/discovery_controller.dart" [label="discovery_controller"];
+  "/features/discovery/discovery_state.dart" [label="discovery_state"];
+  "/features/discovery/discovery_api.dart" [label="discovery_api"];
+  "/features/discovery/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
+  "/features/discovery/discovery_event.dart" [label="discovery_event"];
+  "/features/discovery/discovery_multicast_service.dart" [label="discovery_multicast_service"];
+  "/features/discovery/discovery_service.dart" [label="discovery_service"];
+  "/features/discovery/discovery.dart" [label="discovery"];
+  "/features/discovery/discovery_entity.dart" [label="discovery_entity"];
+  "/features/discovery/discovery_action.dart" [label="discovery_action"];
+  "/features/discovery/discovery_connectivity_service.dart" [label="discovery_connectivity_service"];
+  "/features/discovery/discovery_timeout_service.dart" [label="discovery_timeout_service"];
+  "/features/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/features/app_lifecycle/app_lifecycle_api.dart" [label="app_lifecycle_api"];
+  "/features/app_lifecycle/app_lifecycle_service.dart" [label="app_lifecycle_service"];
+  "/features/home_connection/home_connection_entity.dart" [label="home_connection_entity"];
+  "/features/home_connection/home_connection_registry_service.dart" [label="home_connection_registry_service"];
+  "/features/home_connection/home_connection_connectivity_service.dart" [label="home_connection_connectivity_service"];
+  "/features/home_connection/home_connection.dart" [label="home_connection"];
+  "/features/home_connection/home_connection_lifecycle_service.dart" [label="home_connection_lifecycle_service"];
+  "/features/home_connection/home_connection_service.dart" [label="home_connection_service"];
+  "/features/home_connection/active_connection_service.dart" [label="active_connection_service"];
+  "/features/home_connection/home_connection_api.dart" [label="home_connection_api"];
   "/main.dart" [label="main"];
-  "/infrastructure/websocket/websocket_config.dart" [label="websocket_config"];
+  "/make/config/websocket_config.dart" [label="websocket_config"];
+  "/make/config/multicast_config.dart" [label="multicast_config"];
+  "/make/config/discovery_config.dart" [label="discovery_config"];
+  "/make/config/theme_config.dart" [label="theme_config"];
+  "/make/features/connectivity_factory.dart" [label="connectivity_factory"];
+  "/make/features/connection_factory.dart" [label="connection_factory"];
+  "/make/features/home_connection_factory.dart" [label="home_connection_factory"];
+  "/make/features/discovery_factory.dart" [label="discovery_factory"];
+  "/make/features/app_life_cycle_factory.dart" [label="app_life_cycle_factory"];
+  "/make/features/home_factory.dart" [label="home_factory"];
+  "/make/screens/discovery_screen_factory.dart" [label="discovery_screen_factory"];
+  "/make/screens/welcome_screen_factory.dart" [label="welcome_screen_factory"];
+  "/make/screens/splash_screen_factory.dart" [label="splash_screen_factory"];
+  "/make/screens/home_screen_factory.dart" [label="home_screen_factory"];
+  "/make/screens/add_home_screen_factory.dart" [label="add_home_screen_factory"];
+  "/make/screens/home_list_screen_factory.dart" [label="home_list_screen_factory"];
+  "/make/config.dart" [label="config"];
+  "/make/make.dart" [label="make"];
+  "/infrastructure/repository/map_repository.dart" [label="map_repository"];
+  "/infrastructure/repository/persistent_repository.dart" [label="persistent_repository"];
   "/infrastructure/websocket/websocket.dart" [label="websocket"];
   "/infrastructure/websocket/websocket_factory.dart" [label="websocket_factory"];
   "/infrastructure/multicast/multicast_source_factory.dart" [label="multicast_source_factory"];
   "/infrastructure/multicast/multicast_source.dart" [label="multicast_source"];
-  "/infrastructure/multicast/multicast_config.dart" [label="multicast_config"];
-  "/infrastructure/timeout.dart" [label="timeout"];
+  "/infrastructure/bus/bus_emitter.dart" [label="bus_emitter"];
+  "/infrastructure/bus/bus.dart" [label="bus"];
+  "/infrastructure/bus/bus_listener.dart" [label="bus_listener"];
   subgraph "cluster~" {
     label="lib";
     "/main.dart";
     subgraph "cluster~/ui" {
       label="ui";
-      "/ui/theme_config.dart";
+      "/ui/assets.dart";
+      "/ui/dto.dart";
       subgraph "cluster~/ui/fragments" {
         label="fragments";
+        subgraph "cluster~/ui/fragments/home" {
+          label="home";
+          subgraph "cluster~/ui/fragments/home/view_models" {
+            label="view_models";
+            "/ui/fragments/home/view_models/home_view_model.dart";
+            "/ui/fragments/home/view_models/home_list_view_model.dart";
+          }
+          subgraph "cluster~/ui/fragments/home/widgets" {
+            label="widgets";
+            "/ui/fragments/home/widgets/home_go_to_list.dart";
+            "/ui/fragments/home/widgets/home_remove.dart";
+            "/ui/fragments/home/widgets/home_tile.dart";
+            "/ui/fragments/home/widgets/home_remove_confirm.dart";
+            "/ui/fragments/home/widgets/home_add_form.dart";
+            "/ui/fragments/home/widgets/home_go_to_add.dart";
+            "/ui/fragments/home/widgets/home_list.dart";
+          }
+        }
         subgraph "cluster~/ui/fragments/connection" {
           label="connection";
           subgraph "cluster~/ui/fragments/connection/view_models" {
             label="view_models";
             "/ui/fragments/connection/view_models/connection_view_model.dart";
           }
-        }
-        subgraph "cluster~/ui/fragments/daemon_panel" {
-          label="daemon_panel";
-          subgraph "cluster~/ui/fragments/daemon_panel/view_models" {
-            label="view_models";
-            "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
-            "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
-            "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-          }
-          subgraph "cluster~/ui/fragments/daemon_panel/views" {
-            label="views";
-            "/ui/fragments/daemon_panel/views/daemon_panel_view.dart";
-          }
-          subgraph "cluster~/ui/fragments/daemon_panel/widgets" {
+          subgraph "cluster~/ui/fragments/connection/widgets" {
             label="widgets";
-            "/ui/fragments/daemon_panel/widgets/daemon_tile.dart";
-            "/ui/fragments/daemon_panel/widgets/daemon_list.dart";
-            "/ui/fragments/daemon_panel/widgets/daemon_count.dart";
-            "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart";
+            "/ui/fragments/connection/widgets/connection.dart";
+            "/ui/fragments/connection/widgets/connections.dart";
           }
         }
         subgraph "cluster~/ui/fragments/discovery" {
           label="discovery";
           subgraph "cluster~/ui/fragments/discovery/view_models" {
             label="view_models";
-            "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
+            "/ui/fragments/discovery/view_models/discovery_view_model.dart";
           }
           subgraph "cluster~/ui/fragments/discovery/widgets" {
             label="widgets";
+            "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart";
             "/ui/fragments/discovery/widgets/discovery_status.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_add.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_tile.dart";
+            "/ui/fragments/discovery/widgets/discovery_home_list.dart";
+          }
+        }
+        subgraph "cluster~/ui/fragments/meta" {
+          label="meta";
+          subgraph "cluster~/ui/fragments/meta/widgets" {
+            label="widgets";
+            "/ui/fragments/meta/widgets/meta_props.dart";
           }
         }
       }
       subgraph "cluster~/ui/app" {
         label="app";
-        "/ui/app/app.android.dart";
-        "/ui/app/app_binding_observer.dart";
-        "/ui/app/app.ios.dart";
         "/ui/app/navigation.dart";
         "/ui/app/app.dart";
       }
       subgraph "cluster~/ui/screens" {
         label="screens";
+        "/ui/screens/home_list_screen.dart";
+        "/ui/screens/add_home_screen.dart";
+        "/ui/screens/discovery_screen.dart";
+        "/ui/screens/welcome_screen.dart";
         "/ui/screens/home_screen.dart";
         "/ui/screens/splash_screen.dart";
       }
       subgraph "cluster~/ui/widgets" {
         label="widgets";
-        subgraph "cluster~/ui/widgets/list_tile" {
-          label="list_tile";
-          "/ui/widgets/list_tile/list_tile_view.ios.dart";
-          "/ui/widgets/list_tile/list_tile_view.android.dart";
-          "/ui/widgets/list_tile/list_tile_view.dart";
+        "/ui/widgets/confirm.dart";
+        "/ui/widgets/logo.dart";
+        "/ui/widgets/alert.dart";
+      }
+    }
+    subgraph "cluster~/ui_kit" {
+      label="ui_kit";
+      "/ui_kit/kit_cupertino.dart";
+      "/ui_kit/kit_container.dart";
+      "/ui_kit/kit.dart";
+      "/ui_kit/kit_material.dart";
+      "/ui_kit/theme.dart";
+      subgraph "cluster~/ui_kit/layout" {
+        label="layout";
+        "/ui_kit/layout/layout_cupertino.dart";
+        "/ui_kit/layout/layout_material.dart";
+        "/ui_kit/layout/layout.dart";
+      }
+      subgraph "cluster~/ui_kit/layouts" {
+        label="layouts";
+        "/ui_kit/layouts/default_layout.dart";
+        "/ui_kit/layouts/center_layout.dart";
+        "/ui_kit/layouts/fixed_width_layout.dart";
+        "/ui_kit/layouts/full_width_layout.dart";
+      }
+      subgraph "cluster~/ui_kit/theme" {
+        label="theme";
+        "/ui_kit/theme/theme_cupertino.dart";
+        "/ui_kit/theme/theme_material.dart";
+        "/ui_kit/theme/theme.dart";
+      }
+      subgraph "cluster~/ui_kit/widgets" {
+        label="widgets";
+        "/ui_kit/widgets/icon.dart";
+        subgraph "cluster~/ui_kit/widgets/app" {
+          label="app";
+          "/ui_kit/widgets/app/app.dart";
+          subgraph "cluster~/ui_kit/widgets/app/root" {
+            label="root";
+            "/ui_kit/widgets/app/root/app_root_cupertino.dart";
+            "/ui_kit/widgets/app/root/app_root_material.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/app/bar" {
+            label="bar";
+            subgraph "cluster~/ui_kit/widgets/app/bar/sliver" {
+              label="sliver";
+              "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+              "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+            }
+            subgraph "cluster~/ui_kit/widgets/app/bar/fixed" {
+              label="fixed";
+              "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+              "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+            }
+          }
         }
-        subgraph "cluster~/ui/widgets/scafold" {
-          label="scafold";
-          "/ui/widgets/scafold/scaffold.dart";
-          "/ui/widgets/scafold/scaffold.amdroid.dart";
-          "/ui/widgets/scafold/scaffold.ios.dart";
+        subgraph "cluster~/ui_kit/widgets/indicator" {
+          label="indicator";
+          "/ui_kit/widgets/indicator/indicator.dart";
+          subgraph "cluster~/ui_kit/widgets/indicator/activity" {
+            label="activity";
+            "/ui_kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+            "/ui_kit/widgets/indicator/activity/indicator_activity_material.dart";
+          }
         }
-        subgraph "cluster~/ui/widgets/screen" {
-          label="screen";
-          "/ui/widgets/screen/screen.ios.dart";
-          "/ui/widgets/screen/screen.android.dart";
-          "/ui/widgets/screen/screen.dart";
+        subgraph "cluster~/ui_kit/widgets/switcher" {
+          label="switcher";
+          "/ui_kit/widgets/switcher/switcher_cupertino.dart";
+          "/ui_kit/widgets/switcher/switcher.dart";
+          "/ui_kit/widgets/switcher/switcher_material.dart";
         }
-        subgraph "cluster~/ui/widgets/switch" {
-          label="switch";
-          "/ui/widgets/switch/switch.android.dart";
-          "/ui/widgets/switch/switch.dart";
-          "/ui/widgets/switch/switch.ios.dart";
+        subgraph "cluster~/ui_kit/widgets/dialog" {
+          label="dialog";
+          "/ui_kit/widgets/dialog/dialog.dart";
+          subgraph "cluster~/ui_kit/widgets/dialog/alert" {
+            label="alert";
+            "/ui_kit/widgets/dialog/alert/dialog_alert_material.dart";
+            "/ui_kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/dialog/show" {
+            label="show";
+            "/ui_kit/widgets/dialog/show/show_dialog_material.dart";
+            "/ui_kit/widgets/dialog/show/show_dialog_cupertino.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/dialog/action" {
+            label="action";
+            "/ui_kit/widgets/dialog/action/dialog_action_material.dart";
+            "/ui_kit/widgets/dialog/action/dialog_action_cupertino.dart";
+          }
         }
-        subgraph "cluster~/ui/widgets/add_button" {
-          label="add_button";
-          "/ui/widgets/add_button/add_button.dart";
-          "/ui/widgets/add_button/add_button.ios.dart";
-          "/ui/widgets/add_button/add_button.android.dart";
+        subgraph "cluster~/ui_kit/widgets/button" {
+          label="button";
+          "/ui_kit/widgets/button/button.dart";
+          subgraph "cluster~/ui_kit/widgets/button/filled" {
+            label="filled";
+            "/ui_kit/widgets/button/filled/button_filled_material.dart";
+            "/ui_kit/widgets/button/filled/button_filled_cupertino.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/button/icon" {
+            label="icon";
+            subgraph "cluster~/ui_kit/widgets/button/icon/filled" {
+              label="filled";
+              "/ui_kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+              "/ui_kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+            }
+          }
+        }
+        subgraph "cluster~/ui_kit/widgets/list" {
+          label="list";
+          "/ui_kit/widgets/list/list.dart";
+          subgraph "cluster~/ui_kit/widgets/list/chevron" {
+            label="chevron";
+            "/ui_kit/widgets/list/chevron/list_chevron_cupertino.dart";
+            "/ui_kit/widgets/list/chevron/list_chevron_material.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/list/section" {
+            label="section";
+            "/ui_kit/widgets/list/section/list_section_material.dart";
+            "/ui_kit/widgets/list/section/list_section_cupertino.dart";
+          }
+          subgraph "cluster~/ui_kit/widgets/list/tile" {
+            label="tile";
+            "/ui_kit/widgets/list/tile/list_tile_material.dart";
+            "/ui_kit/widgets/list/tile/list_tile_cupertino.dart";
+          }
+        }
+        subgraph "cluster~/ui_kit/widgets/divider" {
+          label="divider";
+          "/ui_kit/widgets/divider/divider_cupertino.dart";
+          "/ui_kit/widgets/divider/divider_material.dart";
+          "/ui_kit/widgets/divider/divider.dart";
+        }
+        subgraph "cluster~/ui_kit/widgets/text" {
+          label="text";
+          "/ui_kit/widgets/text/text.dart";
+          subgraph "cluster~/ui_kit/widgets/text/field" {
+            label="field";
+            "/ui_kit/widgets/text/field/text_field_material.dart";
+            "/ui_kit/widgets/text/field/text_field_cupertino.dart";
+          }
+        }
+        subgraph "cluster~/ui_kit/widgets/scaffold" {
+          label="scaffold";
+          "/ui_kit/widgets/scaffold/scaffold_material.dart";
+          "/ui_kit/widgets/scaffold/scaffold.dart";
+          "/ui_kit/widgets/scaffold/scaffold_cupertino.dart";
         }
       }
     }
-    subgraph "cluster~/core" {
-      label="core";
-      "/core/meta.dart";
-      subgraph "cluster~/core/connection" {
-        label="connection";
-        "/core/connection/connection_command.dart";
-        "/core/connection/connection_type.dart";
-        "/core/connection/connection.dart";
-        "/core/connection/connection_state.dart";
-        "/core/connection/connection_query.dart";
-        "/core/connection/connection_event.dart";
-      }
-      subgraph "cluster~/core/discovery" {
-        label="discovery";
-        "/core/discovery/discovery_state.dart";
-        "/core/discovery/discovery_query.dart";
-        "/core/discovery/discovery_event.dart";
-        "/core/discovery/discovery_command.dart";
-        "/core/discovery/discovery.dart";
-      }
-      subgraph "cluster~/core/daemon" {
-        label="daemon";
-        "/core/daemon/daemon.dart";
-        "/core/daemon/daemon_query.dart";
-        "/core/daemon/daemon_event.dart";
-        "/core/daemon/daemon_command.dart";
-      }
-      subgraph "cluster~/core/app_lifecycle" {
-        label="app_lifecycle";
-        "/core/app_lifecycle/app_lifecycle_command.dart";
-        "/core/app_lifecycle/app_lifecycle_event.dart";
-      }
-      subgraph "cluster~/core/daemon_connection" {
-        label="daemon_connection";
-        "/core/daemon_connection/daemon_connection_command.dart";
-        "/core/daemon_connection/daemon_connection.dart";
-      }
-    }
-    subgraph "cluster~/app" {
-      label="app";
-      "/app/config.dart";
-      "/app/make.dart";
-      subgraph "cluster~/app/ui" {
-        label="ui";
-        subgraph "cluster~/app/ui/fragments" {
-          label="fragments";
-          "/app/ui/fragments/daemon_panel_factory.dart";
-          "/app/ui/fragments/discovery_view_model_factory.dart";
-          "/app/ui/fragments/connection_factory.dart";
-        }
-        subgraph "cluster~/app/ui/screens" {
-          label="screens";
-          "/app/ui/screens/splash_screen_factory.dart";
-          "/app/ui/screens/home_screen_factory.dart";
-        }
-      }
-      subgraph "cluster~/app/features" {
-        label="features";
-        "/app/features/daemon_connection_factory.dart";
-        "/app/features/connection_factory.dart";
-        "/app/features/discovery_factory.dart";
-        "/app/features/daemon_factory.dart";
-        "/app/features/app_life_cycle_factory.dart";
-      }
+    subgraph "cluster~/entity_framework" {
+      label="entity_framework";
+      "/entity_framework/handler.dart";
+      "/entity_framework/repository.dart";
+      "/entity_framework/emitter.dart";
+      "/entity_framework/entity.dart";
     }
     subgraph "cluster~/util" {
       label="util";
-      "/util/handler.dart";
-      "/util/event_bus.dart";
+      "/util/timeout.dart";
       "/util/extensions.dart";
-      "/util/repository.dart";
-      "/util/event_emitter.dart";
       "/util/platform.dart";
-      "/util/event_listener.dart";
-      "/util/entity.dart";
+      "/util/navigator_extension.dart";
     }
     subgraph "cluster~/features" {
       label="features";
+      "/features/meta.dart";
+      subgraph "cluster~/features/home" {
+        label="home";
+        "/features/home/home.dart";
+        "/features/home/home_service.dart";
+        "/features/home/home_event.dart";
+        "/features/home/home_api.dart";
+        "/features/home/home_entity.dart";
+        "/features/home/home_discovery_service.dart";
+      }
       subgraph "cluster~/features/connection" {
         label="connection";
-        subgraph "cluster~/features/connection/interface" {
-          label="interface";
-          "/features/connection/interface/connection_controller.dart";
-        }
-        subgraph "cluster~/features/connection/application" {
-          label="application";
-          "/features/connection/application/connection_service.dart";
-        }
-        subgraph "cluster~/features/connection/infrastructure" {
-          label="infrastructure";
-          "/features/connection/infrastructure/websocket_service.dart";
-        }
-        subgraph "cluster~/features/connection/domain" {
-          label="domain";
-          "/features/connection/domain/connection_entity.dart";
-        }
+        "/features/connection/websocket_service.dart";
+        "/features/connection/connection_entity.dart";
+        "/features/connection/connection_service.dart";
+        "/features/connection/connection_type.dart";
+        "/features/connection/connection.dart";
+        "/features/connection/connection_state.dart";
+        "/features/connection/connection_controller.dart";
+        "/features/connection/connection_event.dart";
+        "/features/connection/connection_api.dart";
+      }
+      subgraph "cluster~/features/connectivity" {
+        label="connectivity";
+        "/features/connectivity/connectivity_state.dart";
+        "/features/connectivity/connectivity.dart";
+        "/features/connectivity/connectivity_service.dart";
+        "/features/connectivity/connectivity_api.dart";
+        "/features/connectivity/connectivity_event.dart";
+        "/features/connectivity/connectivity_change_service.dart";
+        "/features/connectivity/connectivity_entity.dart";
       }
       subgraph "cluster~/features/discovery" {
         label="discovery";
-        "/features/discovery/discovery_config.dart";
-        subgraph "cluster~/features/discovery/interface" {
-          label="interface";
-          "/features/discovery/interface/discovery_controller.dart";
-          "/features/discovery/interface/discovery_action.dart";
-        }
-        subgraph "cluster~/features/discovery/application" {
-          label="application";
-          "/features/discovery/application/discovery_lifecycle_service.dart";
-          "/features/discovery/application/discovery_service.dart";
-        }
-        subgraph "cluster~/features/discovery/infrastructure" {
-          label="infrastructure";
-          "/features/discovery/infrastructure/discovery_multicast_service.dart";
-          "/features/discovery/infrastructure/discovery_timeout_service.dart";
-        }
-        subgraph "cluster~/features/discovery/domain" {
-          label="domain";
-          "/features/discovery/domain/discovery_entity.dart";
-        }
-      }
-      subgraph "cluster~/features/daemon" {
-        label="daemon";
-        subgraph "cluster~/features/daemon/application" {
-          label="application";
-          "/features/daemon/application/daemon_service.dart";
-        }
-        subgraph "cluster~/features/daemon/domain" {
-          label="domain";
-          "/features/daemon/domain/daemon_entity.dart";
-        }
+        "/features/discovery/discovery_controller.dart";
+        "/features/discovery/discovery_state.dart";
+        "/features/discovery/discovery_api.dart";
+        "/features/discovery/discovery_lifecycle_service.dart";
+        "/features/discovery/discovery_event.dart";
+        "/features/discovery/discovery_multicast_service.dart";
+        "/features/discovery/discovery_service.dart";
+        "/features/discovery/discovery.dart";
+        "/features/discovery/discovery_entity.dart";
+        "/features/discovery/discovery_action.dart";
+        "/features/discovery/discovery_connectivity_service.dart";
+        "/features/discovery/discovery_timeout_service.dart";
       }
       subgraph "cluster~/features/app_lifecycle" {
         label="app_lifecycle";
-        subgraph "cluster~/features/app_lifecycle/application" {
-          label="application";
-          "/features/app_lifecycle/application/app_lifecycle_service.dart";
-        }
+        "/features/app_lifecycle/app_lifecycle_event.dart";
+        "/features/app_lifecycle/app_lifecycle_api.dart";
+        "/features/app_lifecycle/app_lifecycle_service.dart";
       }
-      subgraph "cluster~/features/daemon_connection" {
-        label="daemon_connection";
-        subgraph "cluster~/features/daemon_connection/application" {
-          label="application";
-          "/features/daemon_connection/application/daemon_connection_auto_service.dart";
-          "/features/daemon_connection/application/active_connection_service.dart";
-          "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart";
-          "/features/daemon_connection/application/daemon_connection_service.dart";
-        }
-        subgraph "cluster~/features/daemon_connection/domain" {
-          label="domain";
-          "/features/daemon_connection/domain/daemon_connection_entity.dart";
-        }
+      subgraph "cluster~/features/home_connection" {
+        label="home_connection";
+        "/features/home_connection/home_connection_entity.dart";
+        "/features/home_connection/home_connection_registry_service.dart";
+        "/features/home_connection/home_connection_connectivity_service.dart";
+        "/features/home_connection/home_connection.dart";
+        "/features/home_connection/home_connection_lifecycle_service.dart";
+        "/features/home_connection/home_connection_service.dart";
+        "/features/home_connection/active_connection_service.dart";
+        "/features/home_connection/home_connection_api.dart";
+      }
+    }
+    subgraph "cluster~/make" {
+      label="make";
+      "/make/config.dart";
+      "/make/make.dart";
+      subgraph "cluster~/make/config" {
+        label="config";
+        "/make/config/websocket_config.dart";
+        "/make/config/multicast_config.dart";
+        "/make/config/discovery_config.dart";
+        "/make/config/theme_config.dart";
+      }
+      subgraph "cluster~/make/features" {
+        label="features";
+        "/make/features/connectivity_factory.dart";
+        "/make/features/connection_factory.dart";
+        "/make/features/home_connection_factory.dart";
+        "/make/features/discovery_factory.dart";
+        "/make/features/app_life_cycle_factory.dart";
+        "/make/features/home_factory.dart";
+      }
+      subgraph "cluster~/make/screens" {
+        label="screens";
+        "/make/screens/discovery_screen_factory.dart";
+        "/make/screens/welcome_screen_factory.dart";
+        "/make/screens/splash_screen_factory.dart";
+        "/make/screens/home_screen_factory.dart";
+        "/make/screens/add_home_screen_factory.dart";
+        "/make/screens/home_list_screen_factory.dart";
       }
     }
     subgraph "cluster~/infrastructure" {
       label="infrastructure";
-      "/infrastructure/timeout.dart";
+      subgraph "cluster~/infrastructure/repository" {
+        label="repository";
+        "/infrastructure/repository/map_repository.dart";
+        "/infrastructure/repository/persistent_repository.dart";
+      }
       subgraph "cluster~/infrastructure/websocket" {
         label="websocket";
-        "/infrastructure/websocket/websocket_config.dart";
         "/infrastructure/websocket/websocket.dart";
         "/infrastructure/websocket/websocket_factory.dart";
       }
@@ -364,267 +529,459 @@ digraph "" {
         label="multicast";
         "/infrastructure/multicast/multicast_source_factory.dart";
         "/infrastructure/multicast/multicast_source.dart";
-        "/infrastructure/multicast/multicast_config.dart";
+      }
+      subgraph "cluster~/infrastructure/bus" {
+        label="bus";
+        "/infrastructure/bus/bus_emitter.dart";
+        "/infrastructure/bus/bus.dart";
+        "/infrastructure/bus/bus_listener.dart";
       }
     }
   }
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_event.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_query.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/connection/connection_state.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/daemon/daemon_query.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/daemon_connection/daemon_connection.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/util/event_listener.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/features/home/home_api.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/features/home/home_event.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/features/meta.dart";
+  "/ui/fragments/home/view_models/home_view_model.dart" -> "/ui/dto.dart";
+  "/ui/fragments/home/view_models/home_list_view_model.dart" -> "/features/home/home_api.dart";
+  "/ui/fragments/home/view_models/home_list_view_model.dart" -> "/features/home/home_event.dart";
+  "/ui/fragments/home/widgets/home_go_to_list.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/widgets/home_go_to_list.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/home/widgets/home_remove.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/widgets/home_remove.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_remove.dart" -> "/ui/fragments/home/widgets/home_remove_confirm.dart";
+  "/ui/fragments/home/widgets/home_remove.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/home/widgets/home_remove.dart" -> "/util/navigator_extension.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/home/widgets/home_tile.dart" -> "/util/navigator_extension.dart";
+  "/ui/fragments/home/widgets/home_remove_confirm.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_remove_confirm.dart" -> "/ui/widgets/confirm.dart";
+  "/ui/fragments/home/widgets/home_add_form.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/widgets/home_add_form.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_add_form.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/home/widgets/home_add_form.dart" -> "/util/navigator_extension.dart";
+  "/ui/fragments/home/widgets/home_go_to_add.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/home/widgets/home_go_to_add.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui/fragments/home/widgets/home_tile.dart";
+  "/ui/fragments/home/widgets/home_list.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/features/connection/connection_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/features/connection/connection_event.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/features/connection/connection_state.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/features/home/home_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/ui/dto.dart";
   "/ui/fragments/connection/view_models/connection_view_model.dart" -> "/util/extensions.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart" -> "/core/daemon/daemon_command.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart" -> "/core/meta.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" -> "/core/daemon/daemon_event.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" -> "/core/daemon/daemon_query.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart" -> "/util/event_listener.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart" -> "/core/daemon/daemon_event.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart" -> "/core/daemon/daemon_query.dart";
-  "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart" -> "/util/event_listener.dart";
-  "/ui/fragments/daemon_panel/views/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart";
-  "/ui/fragments/daemon_panel/views/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_count.dart";
-  "/ui/fragments/daemon_panel/views/daemon_panel_view.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_list.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/widgets/list_tile/list_tile_view.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_tile.dart" -> "/ui/widgets/switch/switch.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_list.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_list.dart" -> "/ui/fragments/daemon_panel/widgets/daemon_tile.dart";
-  "/ui/fragments/daemon_panel/widgets/daemon_count.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-  "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
-  "/ui/fragments/daemon_panel/widgets/add_daemon_button.dart" -> "/ui/widgets/add_button/add_button.dart";
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_command.dart";
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_event.dart";
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_query.dart";
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/core/discovery/discovery_state.dart";
-  "/ui/fragments/discovery/view_models/discovery_status_view_model.dart" -> "/util/event_listener.dart";
-  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
-  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/widgets/switch/switch.dart";
-  "/ui/app/app.android.dart" -> "/ui/app/app_binding_observer.dart";
-  "/ui/app/app.android.dart" -> "/ui/app/navigation.dart";
-  "/ui/app/app.android.dart" -> "/ui/theme_config.dart";
-  "/ui/app/app_binding_observer.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
-  "/ui/app/app.ios.dart" -> "/ui/app/app_binding_observer.dart";
-  "/ui/app/app.ios.dart" -> "/ui/app/navigation.dart";
-  "/ui/app/app.ios.dart" -> "/ui/theme_config.dart";
-  "/ui/app/app.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
-  "/ui/app/app.dart" -> "/ui/app/app.android.dart";
-  "/ui/app/app.dart" -> "/ui/app/app.ios.dart";
+  "/ui/fragments/connection/widgets/connection.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/connection/widgets/connection.dart" -> "/util/extensions.dart";
+  "/ui/fragments/connection/widgets/connections.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
+  "/ui/fragments/connection/widgets/connections.dart" -> "/ui/fragments/connection/widgets/connection.dart";
+  "/ui/fragments/connection/widgets/connections.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/discovery/view_models/discovery_view_model.dart" -> "/features/discovery/discovery_api.dart";
+  "/ui/fragments/discovery/view_models/discovery_view_model.dart" -> "/features/discovery/discovery_event.dart";
+  "/ui/fragments/discovery/view_models/discovery_view_model.dart" -> "/features/discovery/discovery_state.dart";
+  "/ui/fragments/discovery/view_models/discovery_view_model.dart" -> "/features/home/home_api.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart" -> "/ui/widgets/confirm.dart";
+  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui/fragments/discovery/view_models/discovery_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_status.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart" -> "/ui/widgets/alert.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_add.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/fragments/discovery/view_models/discovery_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_tile.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/app/navigation.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/view_models/discovery_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add_alert.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/discovery/widgets/discovery_home_tile.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/ui_kit/kit.dart";
+  "/ui/fragments/discovery/widgets/discovery_home_list.dart" -> "/util/navigator_extension.dart";
+  "/ui/fragments/meta/widgets/meta_props.dart" -> "/ui/dto.dart";
+  "/ui/fragments/meta/widgets/meta_props.dart" -> "/ui_kit/kit.dart";
+  "/ui/app/app.dart" -> "/features/app_lifecycle/app_lifecycle_api.dart";
   "/ui/app/app.dart" -> "/ui/app/navigation.dart";
-  "/ui/app/app.dart" -> "/ui/theme_config.dart";
-  "/ui/app/app.dart" -> "/util/platform.dart";
-  "/ui/screens/home_screen.dart" -> "/ui/widgets/screen/screen.dart";
-  "/ui/screens/splash_screen.dart" -> "/ui/widgets/screen/screen.dart";
-  "/ui/widgets/list_tile/list_tile_view.dart" -> "/ui/widgets/list_tile/list_tile_view.android.dart";
-  "/ui/widgets/list_tile/list_tile_view.dart" -> "/ui/widgets/list_tile/list_tile_view.ios.dart";
-  "/ui/widgets/list_tile/list_tile_view.dart" -> "/util/platform.dart";
-  "/ui/widgets/screen/screen.ios.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
-  "/ui/widgets/screen/screen.android.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
-  "/ui/widgets/screen/screen.dart" -> "/ui/widgets/screen/screen.android.dart";
-  "/ui/widgets/screen/screen.dart" -> "/ui/widgets/screen/screen.ios.dart";
-  "/ui/widgets/screen/screen.dart" -> "/util/platform.dart";
-  "/ui/widgets/switch/switch.dart" -> "/ui/widgets/switch/switch.android.dart";
-  "/ui/widgets/switch/switch.dart" -> "/ui/widgets/switch/switch.ios.dart";
-  "/ui/widgets/switch/switch.dart" -> "/util/platform.dart";
-  "/ui/widgets/add_button/add_button.dart" -> "/ui/widgets/add_button/add_button.android.dart";
-  "/ui/widgets/add_button/add_button.dart" -> "/ui/widgets/add_button/add_button.ios.dart";
-  "/ui/widgets/add_button/add_button.dart" -> "/util/platform.dart";
-  "/core/connection/connection.dart" -> "/core/connection/connection_state.dart";
-  "/core/connection/connection.dart" -> "/util/entity.dart";
-  "/core/connection/connection.dart" -> "/core/connection/connection_type.dart";
-  "/core/connection/connection_event.dart" -> "/core/connection/connection_type.dart";
-  "/core/discovery/discovery_query.dart" -> "/core/discovery/discovery.dart";
-  "/core/discovery/discovery.dart" -> "/core/discovery/discovery_state.dart";
-  "/core/daemon/daemon.dart" -> "/core/meta.dart";
-  "/core/daemon/daemon.dart" -> "/util/entity.dart";
-  "/core/daemon/daemon_query.dart" -> "/core/daemon/daemon.dart";
-  "/core/daemon/daemon_command.dart" -> "/core/meta.dart";
-  "/core/daemon_connection/daemon_connection_command.dart" -> "/core/daemon/daemon.dart";
-  "/core/daemon_connection/daemon_connection.dart" -> "/core/connection/connection.dart";
-  "/core/daemon_connection/daemon_connection.dart" -> "/util/entity.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/app/features/daemon_factory.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/app/features/discovery_factory.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_command.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_event.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/core/daemon/daemon_query.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_add_view_model.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_list_view_model.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/view_models/daemon_title_view_model.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/ui/fragments/daemon_panel/views/daemon_panel_view.dart";
-  "/app/ui/fragments/daemon_panel_factory.dart" -> "/util/event_bus.dart";
-  "/app/ui/fragments/discovery_view_model_factory.dart" -> "/app/features/discovery_factory.dart";
-  "/app/ui/fragments/discovery_view_model_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_status_view_model.dart";
-  "/app/ui/fragments/connection_factory.dart" -> "/app/features/connection_factory.dart";
-  "/app/ui/fragments/connection_factory.dart" -> "/app/features/daemon_connection_factory.dart";
-  "/app/ui/fragments/connection_factory.dart" -> "/app/features/discovery_factory.dart";
-  "/app/ui/fragments/connection_factory.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
-  "/app/ui/screens/splash_screen_factory.dart" -> "/ui/screens/splash_screen.dart";
-  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/connection_factory.dart";
-  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/daemon_panel_factory.dart";
-  "/app/ui/screens/home_screen_factory.dart" -> "/app/ui/fragments/discovery_view_model_factory.dart";
-  "/app/ui/screens/home_screen_factory.dart" -> "/ui/screens/home_screen.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/app/features/connection_factory.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/app/features/discovery_factory.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/active_connection_service.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_auto_service.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/application/daemon_connection_service.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/features/daemon_connection/domain/daemon_connection_entity.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/app/features/daemon_connection_factory.dart" -> "/util/repository.dart";
-  "/app/features/connection_factory.dart" -> "/app/config.dart";
-  "/app/features/connection_factory.dart" -> "/core/connection/connection_event.dart";
-  "/app/features/connection_factory.dart" -> "/features/connection/application/connection_service.dart";
-  "/app/features/connection_factory.dart" -> "/features/connection/domain/connection_entity.dart";
-  "/app/features/connection_factory.dart" -> "/features/connection/infrastructure/websocket_service.dart";
-  "/app/features/connection_factory.dart" -> "/features/connection/interface/connection_controller.dart";
-  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/app/features/connection_factory.dart" -> "/infrastructure/websocket/websocket_factory.dart";
-  "/app/features/connection_factory.dart" -> "/util/event_bus.dart";
-  "/app/features/connection_factory.dart" -> "/util/repository.dart";
-  "/app/features/discovery_factory.dart" -> "/app/config.dart";
-  "/app/features/discovery_factory.dart" -> "/app/features/app_life_cycle_factory.dart";
-  "/app/features/discovery_factory.dart" -> "/core/daemon/daemon_event.dart";
-  "/app/features/discovery_factory.dart" -> "/core/discovery/discovery_event.dart";
-  "/app/features/discovery_factory.dart" -> "/features/daemon/application/daemon_service.dart";
-  "/app/features/discovery_factory.dart" -> "/features/daemon/domain/daemon_entity.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_lifecycle_service.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/application/discovery_service.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/domain/discovery_entity.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_multicast_service.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/infrastructure/discovery_timeout_service.dart";
-  "/app/features/discovery_factory.dart" -> "/features/discovery/interface/discovery_controller.dart";
-  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
-  "/app/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
-  "/app/features/discovery_factory.dart" -> "/util/event_bus.dart";
-  "/app/features/discovery_factory.dart" -> "/util/repository.dart";
-  "/app/features/daemon_factory.dart" -> "/core/daemon/daemon_event.dart";
-  "/app/features/daemon_factory.dart" -> "/features/daemon/application/daemon_service.dart";
-  "/app/features/daemon_factory.dart" -> "/features/daemon/domain/daemon_entity.dart";
-  "/app/features/daemon_factory.dart" -> "/util/event_bus.dart";
-  "/app/features/daemon_factory.dart" -> "/util/repository.dart";
-  "/app/features/app_life_cycle_factory.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
-  "/app/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/application/app_lifecycle_service.dart";
-  "/app/features/app_life_cycle_factory.dart" -> "/util/event_bus.dart";
-  "/app/config.dart" -> "/features/discovery/discovery_config.dart";
-  "/app/config.dart" -> "/infrastructure/multicast/multicast_config.dart";
-  "/app/config.dart" -> "/infrastructure/websocket/websocket_config.dart";
-  "/app/config.dart" -> "/ui/theme_config.dart";
-  "/app/make.dart" -> "/app/config.dart";
-  "/app/make.dart" -> "/app/features/app_life_cycle_factory.dart";
-  "/app/make.dart" -> "/app/features/connection_factory.dart";
-  "/app/make.dart" -> "/app/features/daemon_connection_factory.dart";
-  "/app/make.dart" -> "/app/features/discovery_factory.dart";
-  "/app/make.dart" -> "/app/ui/screens/home_screen_factory.dart";
-  "/app/make.dart" -> "/app/ui/screens/splash_screen_factory.dart";
-  "/app/make.dart" -> "/ui/app/app.dart";
-  "/app/make.dart" -> "/ui/app/navigation.dart";
-  "/util/repository.dart" -> "/util/entity.dart";
-  "/util/event_emitter.dart" -> "/util/event_bus.dart";
-  "/util/event_listener.dart" -> "/util/event_bus.dart";
-  "/util/event_listener.dart" -> "/util/handler.dart";
-  "/features/connection/interface/connection_controller.dart" -> "/util/handler.dart";
-  "/features/connection/application/connection_service.dart" -> "/core/connection/connection.dart";
-  "/features/connection/application/connection_service.dart" -> "/core/connection/connection_command.dart";
-  "/features/connection/application/connection_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/connection/application/connection_service.dart" -> "/core/connection/connection_query.dart";
-  "/features/connection/application/connection_service.dart" -> "/features/connection/domain/connection_entity.dart";
-  "/features/connection/application/connection_service.dart" -> "/util/event_emitter.dart";
-  "/features/connection/application/connection_service.dart" -> "/util/extensions.dart";
-  "/features/connection/application/connection_service.dart" -> "/util/repository.dart";
-  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_command.dart";
-  "/features/connection/infrastructure/websocket_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/features/connection/infrastructure/websocket_service.dart" -> "/infrastructure/websocket/websocket_factory.dart";
-  "/features/connection/infrastructure/websocket_service.dart" -> "/util/event_listener.dart";
-  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection.dart";
-  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_event.dart";
-  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_state.dart";
-  "/features/connection/domain/connection_entity.dart" -> "/core/connection/connection_type.dart";
-  "/features/discovery/interface/discovery_controller.dart" -> "/core/daemon/daemon_command.dart";
-  "/features/discovery/interface/discovery_controller.dart" -> "/core/meta.dart";
-  "/features/discovery/interface/discovery_controller.dart" -> "/features/discovery/interface/discovery_action.dart";
-  "/features/discovery/interface/discovery_controller.dart" -> "/util/handler.dart";
-  "/features/discovery/discovery_config.dart" -> "/infrastructure/multicast/multicast_config.dart";
-  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
-  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/core/discovery/discovery_command.dart";
-  "/features/discovery/application/discovery_lifecycle_service.dart" -> "/util/event_listener.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_command.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_event.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/core/discovery/discovery_query.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/features/discovery/domain/discovery_entity.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/util/event_emitter.dart";
-  "/features/discovery/application/discovery_service.dart" -> "/util/extensions.dart";
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/core/discovery/discovery_command.dart";
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/core/discovery/discovery_event.dart";
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source.dart";
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
-  "/features/discovery/infrastructure/discovery_multicast_service.dart" -> "/util/event_listener.dart";
-  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/core/daemon/daemon_command.dart";
-  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/core/daemon/daemon_event.dart";
-  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/infrastructure/timeout.dart";
-  "/features/discovery/infrastructure/discovery_timeout_service.dart" -> "/util/event_listener.dart";
-  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery.dart";
-  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery_event.dart";
-  "/features/discovery/domain/discovery_entity.dart" -> "/core/discovery/discovery_state.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/core/daemon/daemon.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/core/daemon/daemon_command.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/core/daemon/daemon_event.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/core/daemon/daemon_query.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/core/meta.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/features/daemon/domain/daemon_entity.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/util/event_emitter.dart";
-  "/features/daemon/application/daemon_service.dart" -> "/util/repository.dart";
-  "/features/daemon/domain/daemon_entity.dart" -> "/core/daemon/daemon.dart";
-  "/features/daemon/domain/daemon_entity.dart" -> "/core/daemon/daemon_event.dart";
-  "/features/daemon/domain/daemon_entity.dart" -> "/core/meta.dart";
-  "/features/daemon/domain/daemon_entity.dart" -> "/util/extensions.dart";
-  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_command.dart";
-  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
-  "/features/app_lifecycle/application/app_lifecycle_service.dart" -> "/util/event_emitter.dart";
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon/daemon_event.dart";
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon/daemon_query.dart";
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/util/event_listener.dart";
-  "/features/daemon_connection/application/daemon_connection_auto_service.dart" -> "/util/extensions.dart";
-  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/connection/connection_type.dart";
-  "/features/daemon_connection/application/active_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection/application/active_connection_service.dart" -> "/util/event_listener.dart";
-  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/app_lifecycle/app_lifecycle_event.dart";
-  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/daemon/daemon_query.dart";
-  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection/application/daemon_connection_lifecycle_service.dart" -> "/util/event_listener.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_command.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/connection/connection_query.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon/daemon.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/core/daemon_connection/daemon_connection_command.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/features/daemon_connection/domain/daemon_connection_entity.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/event_emitter.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/extensions.dart";
-  "/features/daemon_connection/application/daemon_connection_service.dart" -> "/util/repository.dart";
-  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection.dart";
-  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection_event.dart";
-  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/connection/connection_state.dart";
-  "/features/daemon_connection/domain/daemon_connection_entity.dart" -> "/core/daemon_connection/daemon_connection.dart";
-  "/main.dart" -> "/app/make.dart";
-  "/infrastructure/websocket/websocket.dart" -> "/util/handler.dart";
+  "/ui/app/app.dart" -> "/ui_kit/kit.dart";
+  "/ui/dto.dart" -> "/features/home/home.dart";
+  "/ui/dto.dart" -> "/features/meta.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/widgets/home_go_to_add.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui/fragments/home/widgets/home_list.dart";
+  "/ui/screens/home_list_screen.dart" -> "/ui_kit/layouts/fixed_width_layout.dart";
+  "/ui/screens/add_home_screen.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/screens/add_home_screen.dart" -> "/ui/fragments/home/widgets/home_add_form.dart";
+  "/ui/screens/add_home_screen.dart" -> "/ui_kit/layouts/fixed_width_layout.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/view_models/discovery_view_model.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_home_add.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_home_list.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/discovery/widgets/discovery_status.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui_kit/kit.dart";
+  "/ui/screens/discovery_screen.dart" -> "/ui_kit/layouts/fixed_width_layout.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui/app/navigation.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui_kit/kit.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui_kit/layouts/center_layout.dart";
+  "/ui/screens/welcome_screen.dart" -> "/ui_kit/theme.dart";
+  "/ui/screens/welcome_screen.dart" -> "/util/navigator_extension.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/connection/widgets/connections.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/home/widgets/home_go_to_list.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/home/widgets/home_remove.dart";
+  "/ui/screens/home_screen.dart" -> "/ui/fragments/meta/widgets/meta_props.dart";
+  "/ui/screens/home_screen.dart" -> "/ui_kit/layouts/fixed_width_layout.dart";
+  "/ui/screens/splash_screen.dart" -> "/features/home/home_api.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/app/navigation.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui/widgets/logo.dart";
+  "/ui/screens/splash_screen.dart" -> "/ui_kit/layouts/center_layout.dart";
+  "/ui/screens/splash_screen.dart" -> "/util/navigator_extension.dart";
+  "/ui/widgets/confirm.dart" -> "/ui_kit/kit.dart";
+  "/ui/widgets/logo.dart" -> "/ui/assets.dart";
+  "/ui/widgets/alert.dart" -> "/ui_kit/kit.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/kit_container.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/layout/layout_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/app/app.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/app/root/app_root_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/button/button.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/button/filled/button_filled_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/button/icon/filled/button_icon_filled_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/dialog/action/dialog_action_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/dialog/alert/dialog_alert_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/dialog/dialog.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/dialog/show/show_dialog_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/divider/divider_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/icon.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/indicator/activity/indicator_activity_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/indicator/indicator.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/list/chevron/list_chevron_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/list/list.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/list/section/list_section_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/list/tile/list_tile_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/scaffold/scaffold_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/switcher/switcher_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/text/field/text_field_cupertino.dart";
+  "/ui_kit/kit_cupertino.dart" -> "/ui_kit/widgets/text/text.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/layout/layout.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/app/app.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/button/button.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/dialog/dialog.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/divider/divider.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/icon.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/indicator/indicator.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/list/list.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/scaffold/scaffold.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/switcher/switcher.dart";
+  "/ui_kit/kit_container.dart" -> "/ui_kit/widgets/text/text.dart";
+  "/ui_kit/kit.dart" -> "/ui_kit/kit_cupertino.dart";
+  "/ui_kit/kit.dart" -> "/ui_kit/kit_material.dart";
+  "/ui_kit/kit.dart" -> "/util/platform.dart";
+  "/ui_kit/layout/layout_cupertino.dart" -> "/ui_kit/layout/layout.dart";
+  "/ui_kit/layout/layout_material.dart" -> "/ui_kit/layout/layout.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/kit_container.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/layout/layout_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/app/app.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/app/bar/fixed/app_bar_fixed_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/app/root/app_root_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/button/button.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/button/filled/button_filled_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/button/icon/filled/button_icon_filled_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/dialog/action/dialog_action_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/dialog/alert/dialog_alert_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/dialog/dialog.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/dialog/show/show_dialog_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/divider/divider_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/icon.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/indicator/activity/indicator_activity_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/indicator/indicator.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/list/chevron/list_chevron_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/list/list.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/list/section/list_section_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/list/tile/list_tile_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/scaffold/scaffold_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/switcher/switcher_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/text/field/text_field_material.dart";
+  "/ui_kit/kit_material.dart" -> "/ui_kit/widgets/text/text.dart";
+  "/ui_kit/layouts/default_layout.dart" -> "/ui_kit/kit.dart";
+  "/ui_kit/layouts/center_layout.dart" -> "/ui_kit/kit.dart";
+  "/ui_kit/layouts/fixed_width_layout.dart" -> "/ui_kit/kit.dart";
+  "/ui_kit/layouts/full_width_layout.dart" -> "/ui_kit/kit.dart";
+  "/ui_kit/theme/theme_cupertino.dart" -> "/ui_kit/theme/theme.dart";
+  "/ui_kit/theme/theme_cupertino.dart" -> "/ui_kit/theme/theme_material.dart";
+  "/ui_kit/theme/theme_material.dart" -> "/ui_kit/theme/theme.dart";
+  "/ui_kit/widgets/app/root/app_root_cupertino.dart" -> "/ui/app/navigation.dart";
+  "/ui_kit/widgets/app/root/app_root_cupertino.dart" -> "/ui_kit/theme/theme_cupertino.dart";
+  "/ui_kit/widgets/app/root/app_root_material.dart" -> "/ui/app/navigation.dart";
+  "/ui_kit/widgets/app/root/app_root_material.dart" -> "/ui_kit/theme/theme_material.dart";
+  "/ui_kit/widgets/app/bar/sliver/app_bar_sliver_material.dart" -> "/ui_kit/layout/layout_material.dart";
+  "/ui_kit/widgets/app/app.dart" -> "/ui/app/navigation.dart";
+  "/ui_kit/widgets/list/section/list_section_material.dart" -> "/ui_kit/layout/layout_material.dart";
+  "/ui_kit/theme.dart" -> "/ui_kit/theme/theme.dart";
+  "/ui_kit/theme.dart" -> "/ui_kit/theme/theme_cupertino.dart";
+  "/ui_kit/theme.dart" -> "/ui_kit/theme/theme_material.dart";
+  "/ui_kit/theme.dart" -> "/util/platform.dart";
+  "/entity_framework/repository.dart" -> "/entity_framework/entity.dart";
+  "/features/home/home.dart" -> "/entity_framework/entity.dart";
+  "/features/home/home.dart" -> "/features/meta.dart";
+  "/features/home/home_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/home/home_service.dart" -> "/entity_framework/repository.dart";
+  "/features/home/home_service.dart" -> "/features/home/home.dart";
+  "/features/home/home_service.dart" -> "/features/home/home_api.dart";
+  "/features/home/home_service.dart" -> "/features/home/home_entity.dart";
+  "/features/home/home_service.dart" -> "/features/home/home_event.dart";
+  "/features/home/home_service.dart" -> "/features/meta.dart";
+  "/features/home/home_event.dart" -> "/features/home/home.dart";
+  "/features/home/home_api.dart" -> "/features/home/home.dart";
+  "/features/home/home_api.dart" -> "/features/meta.dart";
+  "/features/home/home_entity.dart" -> "/features/home/home.dart";
+  "/features/home/home_entity.dart" -> "/features/home/home_event.dart";
+  "/features/home/home_entity.dart" -> "/features/meta.dart";
+  "/features/home/home_entity.dart" -> "/util/extensions.dart";
+  "/features/home/home_discovery_service.dart" -> "/features/home/home.dart";
+  "/features/home/home_discovery_service.dart" -> "/features/home/home_api.dart";
+  "/features/home/home_discovery_service.dart" -> "/features/home/home_event.dart";
+  "/features/home/home_discovery_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home/home_discovery_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/connection/websocket_service.dart" -> "/features/connection/connection_api.dart";
+  "/features/connection/websocket_service.dart" -> "/features/connection/connection_event.dart";
+  "/features/connection/websocket_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/connection/websocket_service.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/features/connection/websocket_service.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/features/connection/connection_entity.dart" -> "/features/connection/connection.dart";
+  "/features/connection/connection_entity.dart" -> "/features/connection/connection_event.dart";
+  "/features/connection/connection_entity.dart" -> "/features/connection/connection_state.dart";
+  "/features/connection/connection_entity.dart" -> "/features/connection/connection_type.dart";
+  "/features/connection/connection_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/connection/connection_service.dart" -> "/entity_framework/repository.dart";
+  "/features/connection/connection_service.dart" -> "/features/connection/connection.dart";
+  "/features/connection/connection_service.dart" -> "/features/connection/connection_api.dart";
+  "/features/connection/connection_service.dart" -> "/features/connection/connection_entity.dart";
+  "/features/connection/connection_service.dart" -> "/features/connection/connection_event.dart";
+  "/features/connection/connection_service.dart" -> "/util/extensions.dart";
+  "/features/connection/connection.dart" -> "/entity_framework/entity.dart";
+  "/features/connection/connection.dart" -> "/features/connection/connection_state.dart";
+  "/features/connection/connection.dart" -> "/features/connection/connection_type.dart";
+  "/features/connection/connection_controller.dart" -> "/entity_framework/handler.dart";
+  "/features/connection/connection_event.dart" -> "/features/connection/connection_type.dart";
+  "/features/connection/connection_api.dart" -> "/features/connection/connection.dart";
+  "/features/connectivity/connectivity.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/features/connectivity/connectivity.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/connectivity/connectivity_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/connectivity/connectivity_service.dart" -> "/features/connectivity/connectivity.dart";
+  "/features/connectivity/connectivity_service.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/features/connectivity/connectivity_service.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/features/connectivity/connectivity_service.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/connectivity/connectivity_api.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/connectivity/connectivity_event.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/connectivity/connectivity_change_service.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/features/connectivity/connectivity_change_service.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/connectivity/connectivity_entity.dart" -> "/features/connectivity/connectivity.dart";
+  "/features/connectivity/connectivity_entity.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/features/connectivity/connectivity_entity.dart" -> "/features/connectivity/connectivity_state.dart";
+  "/features/discovery/discovery_controller.dart" -> "/entity_framework/handler.dart";
+  "/features/discovery/discovery_controller.dart" -> "/features/discovery/discovery_action.dart";
+  "/features/discovery/discovery_controller.dart" -> "/features/home/home_api.dart";
+  "/features/discovery/discovery_controller.dart" -> "/features/meta.dart";
+  "/features/discovery/discovery_api.dart" -> "/features/discovery/discovery.dart";
+  "/features/discovery/discovery_api.dart" -> "/features/discovery/discovery_state.dart";
+  "/features/discovery/discovery_lifecycle_service.dart" -> "/features/app_lifecycle/app_lifecycle_event.dart";
+  "/features/discovery/discovery_lifecycle_service.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/features/discovery/discovery_lifecycle_service.dart" -> "/features/discovery/discovery_api.dart";
+  "/features/discovery/discovery_lifecycle_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/features/discovery/discovery_api.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/features/discovery/discovery_event.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/features/discovery/discovery_multicast_service.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
+  "/features/discovery/discovery_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/discovery/discovery_service.dart" -> "/features/discovery/discovery.dart";
+  "/features/discovery/discovery_service.dart" -> "/features/discovery/discovery_api.dart";
+  "/features/discovery/discovery_service.dart" -> "/features/discovery/discovery_entity.dart";
+  "/features/discovery/discovery_service.dart" -> "/features/discovery/discovery_event.dart";
+  "/features/discovery/discovery_service.dart" -> "/features/discovery/discovery_state.dart";
+  "/features/discovery/discovery_service.dart" -> "/util/extensions.dart";
+  "/features/discovery/discovery.dart" -> "/features/discovery/discovery_state.dart";
+  "/features/discovery/discovery_entity.dart" -> "/features/discovery/discovery.dart";
+  "/features/discovery/discovery_entity.dart" -> "/features/discovery/discovery_event.dart";
+  "/features/discovery/discovery_entity.dart" -> "/features/discovery/discovery_state.dart";
+  "/features/discovery/discovery_connectivity_service.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/features/discovery/discovery_connectivity_service.dart" -> "/features/discovery/discovery_api.dart";
+  "/features/discovery/discovery_connectivity_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/discovery/discovery_timeout_service.dart" -> "/features/home/home.dart";
+  "/features/discovery/discovery_timeout_service.dart" -> "/features/home/home_api.dart";
+  "/features/discovery/discovery_timeout_service.dart" -> "/features/home/home_event.dart";
+  "/features/discovery/discovery_timeout_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/discovery/discovery_timeout_service.dart" -> "/util/timeout.dart";
+  "/features/app_lifecycle/app_lifecycle_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/app_lifecycle/app_lifecycle_service.dart" -> "/features/app_lifecycle/app_lifecycle_api.dart";
+  "/features/app_lifecycle/app_lifecycle_service.dart" -> "/features/app_lifecycle/app_lifecycle_event.dart";
+  "/features/home_connection/home_connection_entity.dart" -> "/features/connection/connection.dart";
+  "/features/home_connection/home_connection_entity.dart" -> "/features/connection/connection_event.dart";
+  "/features/home_connection/home_connection_entity.dart" -> "/features/connection/connection_state.dart";
+  "/features/home_connection/home_connection_entity.dart" -> "/features/home_connection/home_connection.dart";
+  "/features/home_connection/home_connection_registry_service.dart" -> "/features/home/home_api.dart";
+  "/features/home_connection/home_connection_registry_service.dart" -> "/features/home/home_event.dart";
+  "/features/home_connection/home_connection_registry_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home_connection/home_connection_registry_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/home_connection/home_connection_connectivity_service.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/features/home_connection/home_connection_connectivity_service.dart" -> "/features/home/home_api.dart";
+  "/features/home_connection/home_connection_connectivity_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home_connection/home_connection_connectivity_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/home_connection/home_connection.dart" -> "/entity_framework/entity.dart";
+  "/features/home_connection/home_connection.dart" -> "/features/connection/connection.dart";
+  "/features/home_connection/home_connection_lifecycle_service.dart" -> "/features/app_lifecycle/app_lifecycle_event.dart";
+  "/features/home_connection/home_connection_lifecycle_service.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/features/home_connection/home_connection_lifecycle_service.dart" -> "/features/home/home_api.dart";
+  "/features/home_connection/home_connection_lifecycle_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home_connection/home_connection_lifecycle_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/entity_framework/emitter.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/entity_framework/repository.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/connection/connection_api.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/connection/connection_event.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/connection/connection_state.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/home/home.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/home_connection/home_connection.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/features/home_connection/home_connection_entity.dart";
+  "/features/home_connection/home_connection_service.dart" -> "/util/extensions.dart";
+  "/features/home_connection/active_connection_service.dart" -> "/features/connection/connection_event.dart";
+  "/features/home_connection/active_connection_service.dart" -> "/features/connection/connection_type.dart";
+  "/features/home_connection/active_connection_service.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/features/home_connection/active_connection_service.dart" -> "/infrastructure/bus/bus_listener.dart";
+  "/features/home_connection/home_connection_api.dart" -> "/features/home/home.dart";
+  "/features/home_connection/home_connection_api.dart" -> "/features/home_connection/home_connection.dart";
+  "/main.dart" -> "/make/make.dart";
+  "/make/config/discovery_config.dart" -> "/make/config/multicast_config.dart";
+  "/make/features/connectivity_factory.dart" -> "/features/connectivity/connectivity_api.dart";
+  "/make/features/connectivity_factory.dart" -> "/features/connectivity/connectivity_change_service.dart";
+  "/make/features/connectivity_factory.dart" -> "/features/connectivity/connectivity_entity.dart";
+  "/make/features/connectivity_factory.dart" -> "/features/connectivity/connectivity_event.dart";
+  "/make/features/connectivity_factory.dart" -> "/features/connectivity/connectivity_service.dart";
+  "/make/features/connectivity_factory.dart" -> "/infrastructure/bus/bus.dart";
+  "/make/features/connection_factory.dart" -> "/features/connection/connection_controller.dart";
+  "/make/features/connection_factory.dart" -> "/features/connection/connection_entity.dart";
+  "/make/features/connection_factory.dart" -> "/features/connection/connection_event.dart";
+  "/make/features/connection_factory.dart" -> "/features/connection/connection_service.dart";
+  "/make/features/connection_factory.dart" -> "/features/connection/websocket_service.dart";
+  "/make/features/connection_factory.dart" -> "/infrastructure/bus/bus.dart";
+  "/make/features/connection_factory.dart" -> "/infrastructure/repository/map_repository.dart";
+  "/make/features/connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/make/features/connection_factory.dart" -> "/infrastructure/websocket/websocket_factory.dart";
+  "/make/features/connection_factory.dart" -> "/make/config.dart";
+  "/make/features/connection_factory.dart" -> "/make/features/home_connection_factory.dart";
+  "/make/features/connection_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/features/connection_factory.dart" -> "/ui/fragments/connection/view_models/connection_view_model.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/active_connection_service.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_api.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_connectivity_service.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_entity.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_lifecycle_service.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_registry_service.dart";
+  "/make/features/home_connection_factory.dart" -> "/features/home_connection/home_connection_service.dart";
+  "/make/features/home_connection_factory.dart" -> "/infrastructure/repository/map_repository.dart";
+  "/make/features/home_connection_factory.dart" -> "/infrastructure/websocket/websocket.dart";
+  "/make/features/home_connection_factory.dart" -> "/make/config.dart";
+  "/make/features/home_connection_factory.dart" -> "/make/features/app_life_cycle_factory.dart";
+  "/make/features/home_connection_factory.dart" -> "/make/features/connection_factory.dart";
+  "/make/features/home_connection_factory.dart" -> "/make/features/connectivity_factory.dart";
+  "/make/features/home_connection_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_api.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_connectivity_service.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_controller.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_entity.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_event.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_lifecycle_service.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_multicast_service.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_service.dart";
+  "/make/features/discovery_factory.dart" -> "/features/discovery/discovery_timeout_service.dart";
+  "/make/features/discovery_factory.dart" -> "/features/home/home_api.dart";
+  "/make/features/discovery_factory.dart" -> "/features/home/home_entity.dart";
+  "/make/features/discovery_factory.dart" -> "/features/home/home_event.dart";
+  "/make/features/discovery_factory.dart" -> "/features/home/home_service.dart";
+  "/make/features/discovery_factory.dart" -> "/infrastructure/bus/bus.dart";
+  "/make/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
+  "/make/features/discovery_factory.dart" -> "/infrastructure/multicast/multicast_source_factory.dart";
+  "/make/features/discovery_factory.dart" -> "/infrastructure/repository/map_repository.dart";
+  "/make/features/discovery_factory.dart" -> "/make/config.dart";
+  "/make/features/discovery_factory.dart" -> "/make/features/app_life_cycle_factory.dart";
+  "/make/features/discovery_factory.dart" -> "/make/features/connectivity_factory.dart";
+  "/make/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/app_lifecycle_api.dart";
+  "/make/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/app_lifecycle_event.dart";
+  "/make/features/app_life_cycle_factory.dart" -> "/features/app_lifecycle/app_lifecycle_service.dart";
+  "/make/features/app_life_cycle_factory.dart" -> "/infrastructure/bus/bus.dart";
+  "/make/features/home_factory.dart" -> "/features/home/home_api.dart";
+  "/make/features/home_factory.dart" -> "/features/home/home_discovery_service.dart";
+  "/make/features/home_factory.dart" -> "/features/home/home_entity.dart";
+  "/make/features/home_factory.dart" -> "/features/home/home_event.dart";
+  "/make/features/home_factory.dart" -> "/features/home/home_service.dart";
+  "/make/features/home_factory.dart" -> "/infrastructure/bus/bus.dart";
+  "/make/features/home_factory.dart" -> "/infrastructure/repository/persistent_repository.dart";
+  "/make/features/home_factory.dart" -> "/make/features/discovery_factory.dart";
+  "/make/features/home_factory.dart" -> "/make/features/home_connection_factory.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/make/features/discovery_factory.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/ui/fragments/discovery/view_models/discovery_view_model.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/make/screens/discovery_screen_factory.dart" -> "/ui/screens/discovery_screen.dart";
+  "/make/screens/welcome_screen_factory.dart" -> "/ui/screens/welcome_screen.dart";
+  "/make/screens/splash_screen_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/screens/splash_screen_factory.dart" -> "/ui/screens/splash_screen.dart";
+  "/make/screens/home_screen_factory.dart" -> "/make/features/connection_factory.dart";
+  "/make/screens/home_screen_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/screens/home_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/make/screens/home_screen_factory.dart" -> "/ui/screens/home_screen.dart";
+  "/make/screens/add_home_screen_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/screens/add_home_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/make/screens/add_home_screen_factory.dart" -> "/ui/screens/add_home_screen.dart";
+  "/make/screens/home_list_screen_factory.dart" -> "/make/features/home_factory.dart";
+  "/make/screens/home_list_screen_factory.dart" -> "/ui/fragments/home/view_models/home_list_view_model.dart";
+  "/make/screens/home_list_screen_factory.dart" -> "/ui/fragments/home/view_models/home_view_model.dart";
+  "/make/screens/home_list_screen_factory.dart" -> "/ui/screens/home_list_screen.dart";
+  "/make/config.dart" -> "/make/config/discovery_config.dart";
+  "/make/config.dart" -> "/make/config/multicast_config.dart";
+  "/make/config.dart" -> "/make/config/theme_config.dart";
+  "/make/config.dart" -> "/make/config/websocket_config.dart";
+  "/make/make.dart" -> "/make/config.dart";
+  "/make/make.dart" -> "/make/features/app_life_cycle_factory.dart";
+  "/make/make.dart" -> "/make/features/connection_factory.dart";
+  "/make/make.dart" -> "/make/features/connectivity_factory.dart";
+  "/make/make.dart" -> "/make/features/discovery_factory.dart";
+  "/make/make.dart" -> "/make/features/home_connection_factory.dart";
+  "/make/make.dart" -> "/make/features/home_factory.dart";
+  "/make/make.dart" -> "/make/screens/add_home_screen_factory.dart";
+  "/make/make.dart" -> "/make/screens/discovery_screen_factory.dart";
+  "/make/make.dart" -> "/make/screens/home_list_screen_factory.dart";
+  "/make/make.dart" -> "/make/screens/home_screen_factory.dart";
+  "/make/make.dart" -> "/make/screens/splash_screen_factory.dart";
+  "/make/make.dart" -> "/make/screens/welcome_screen_factory.dart";
+  "/make/make.dart" -> "/ui/app/app.dart";
+  "/make/make.dart" -> "/ui/app/navigation.dart";
+  "/infrastructure/repository/map_repository.dart" -> "/entity_framework/entity.dart";
+  "/infrastructure/repository/map_repository.dart" -> "/entity_framework/repository.dart";
+  "/infrastructure/repository/persistent_repository.dart" -> "/entity_framework/entity.dart";
+  "/infrastructure/repository/persistent_repository.dart" -> "/entity_framework/repository.dart";
+  "/infrastructure/websocket/websocket.dart" -> "/entity_framework/handler.dart";
+  "/infrastructure/websocket/websocket_factory.dart" -> "/entity_framework/handler.dart";
   "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket.dart";
-  "/infrastructure/websocket/websocket_factory.dart" -> "/infrastructure/websocket/websocket_config.dart";
-  "/infrastructure/websocket/websocket_factory.dart" -> "/util/handler.dart";
-  "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/websocket/websocket_factory.dart" -> "/make/config/websocket_config.dart";
+  "/infrastructure/multicast/multicast_source_factory.dart" -> "/entity_framework/handler.dart";
   "/infrastructure/multicast/multicast_source_factory.dart" -> "/infrastructure/multicast/multicast_source.dart";
-  "/infrastructure/multicast/multicast_source_factory.dart" -> "/util/handler.dart";
-  "/infrastructure/multicast/multicast_source.dart" -> "/infrastructure/multicast/multicast_config.dart";
+  "/infrastructure/multicast/multicast_source.dart" -> "/entity_framework/handler.dart";
   "/infrastructure/multicast/multicast_source.dart" -> "/util/extensions.dart";
-  "/infrastructure/multicast/multicast_source.dart" -> "/util/handler.dart";
+  "/infrastructure/bus/bus_emitter.dart" -> "/entity_framework/emitter.dart";
+  "/infrastructure/bus/bus.dart" -> "/entity_framework/emitter.dart";
+  "/infrastructure/bus/bus.dart" -> "/infrastructure/bus/bus_emitter.dart";
+  "/infrastructure/bus/bus_listener.dart" -> "/entity_framework/handler.dart";
 }

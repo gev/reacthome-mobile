@@ -2,106 +2,214 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/connection/interface/connection_controller.dart" [label="connection_controller"];
-  "/connection/application/connection_service.dart" [label="connection_service"];
-  "/connection/infrastructure/websocket_service.dart" [label="websocket_service"];
-  "/connection/domain/connection_entity.dart" [label="connection_entity"];
-  "/discovery/interface/discovery_controller.dart" [label="discovery_controller"];
-  "/discovery/interface/discovery_action.dart" [label="discovery_action"];
-  "/discovery/discovery_config.dart" [label="discovery_config"];
-  "/discovery/application/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
-  "/discovery/application/discovery_service.dart" [label="discovery_service"];
-  "/discovery/infrastructure/discovery_multicast_service.dart" [label="discovery_multicast_service"];
-  "/discovery/infrastructure/discovery_timeout_service.dart" [label="discovery_timeout_service"];
-  "/discovery/domain/discovery_entity.dart" [label="discovery_entity"];
-  "/daemon/application/daemon_service.dart" [label="daemon_service"];
-  "/daemon/domain/daemon_entity.dart" [label="daemon_entity"];
-  "/app_lifecycle/application/app_lifecycle_service.dart" [label="app_lifecycle_service"];
-  "/daemon_connection/application/daemon_connection_auto_service.dart" [label="daemon_connection_auto_service"];
-  "/daemon_connection/application/active_connection_service.dart" [label="active_connection_service"];
-  "/daemon_connection/application/daemon_connection_lifecycle_service.dart" [label="daemon_connection_lifecycle_service"];
-  "/daemon_connection/application/daemon_connection_service.dart" [label="daemon_connection_service"];
-  "/daemon_connection/domain/daemon_connection_entity.dart" [label="daemon_connection_entity"];
+  "/home/home.dart" [label="home"];
+  "/home/home_service.dart" [label="home_service"];
+  "/home/home_event.dart" [label="home_event"];
+  "/home/home_api.dart" [label="home_api"];
+  "/home/home_entity.dart" [label="home_entity"];
+  "/home/home_discovery_service.dart" [label="home_discovery_service"];
+  "/meta.dart" [label="meta"];
+  "/connection/websocket_service.dart" [label="websocket_service"];
+  "/connection/connection_entity.dart" [label="connection_entity"];
+  "/connection/connection_service.dart" [label="connection_service"];
+  "/connection/connection_type.dart" [label="connection_type"];
+  "/connection/connection.dart" [label="connection"];
+  "/connection/connection_state.dart" [label="connection_state"];
+  "/connection/connection_controller.dart" [label="connection_controller"];
+  "/connection/connection_event.dart" [label="connection_event"];
+  "/connection/connection_api.dart" [label="connection_api"];
+  "/connectivity/connectivity_state.dart" [label="connectivity_state"];
+  "/connectivity/connectivity.dart" [label="connectivity"];
+  "/connectivity/connectivity_service.dart" [label="connectivity_service"];
+  "/connectivity/connectivity_api.dart" [label="connectivity_api"];
+  "/connectivity/connectivity_event.dart" [label="connectivity_event"];
+  "/connectivity/connectivity_change_service.dart" [label="connectivity_change_service"];
+  "/connectivity/connectivity_entity.dart" [label="connectivity_entity"];
+  "/discovery/discovery_controller.dart" [label="discovery_controller"];
+  "/discovery/discovery_state.dart" [label="discovery_state"];
+  "/discovery/discovery_api.dart" [label="discovery_api"];
+  "/discovery/discovery_lifecycle_service.dart" [label="discovery_lifecycle_service"];
+  "/discovery/discovery_event.dart" [label="discovery_event"];
+  "/discovery/discovery_multicast_service.dart" [label="discovery_multicast_service"];
+  "/discovery/discovery_service.dart" [label="discovery_service"];
+  "/discovery/discovery.dart" [label="discovery"];
+  "/discovery/discovery_entity.dart" [label="discovery_entity"];
+  "/discovery/discovery_action.dart" [label="discovery_action"];
+  "/discovery/discovery_connectivity_service.dart" [label="discovery_connectivity_service"];
+  "/discovery/discovery_timeout_service.dart" [label="discovery_timeout_service"];
+  "/app_lifecycle/app_lifecycle_event.dart" [label="app_lifecycle_event"];
+  "/app_lifecycle/app_lifecycle_api.dart" [label="app_lifecycle_api"];
+  "/app_lifecycle/app_lifecycle_service.dart" [label="app_lifecycle_service"];
+  "/home_connection/home_connection_entity.dart" [label="home_connection_entity"];
+  "/home_connection/home_connection_registry_service.dart" [label="home_connection_registry_service"];
+  "/home_connection/home_connection_connectivity_service.dart" [label="home_connection_connectivity_service"];
+  "/home_connection/home_connection.dart" [label="home_connection"];
+  "/home_connection/home_connection_lifecycle_service.dart" [label="home_connection_lifecycle_service"];
+  "/home_connection/home_connection_service.dart" [label="home_connection_service"];
+  "/home_connection/active_connection_service.dart" [label="active_connection_service"];
+  "/home_connection/home_connection_api.dart" [label="home_connection_api"];
   subgraph "cluster~" {
     label="features";
+    "/meta.dart";
+    subgraph "cluster~/home" {
+      label="home";
+      "/home/home.dart";
+      "/home/home_service.dart";
+      "/home/home_event.dart";
+      "/home/home_api.dart";
+      "/home/home_entity.dart";
+      "/home/home_discovery_service.dart";
+    }
     subgraph "cluster~/connection" {
       label="connection";
-      subgraph "cluster~/connection/interface" {
-        label="interface";
-        "/connection/interface/connection_controller.dart";
-      }
-      subgraph "cluster~/connection/application" {
-        label="application";
-        "/connection/application/connection_service.dart";
-      }
-      subgraph "cluster~/connection/infrastructure" {
-        label="infrastructure";
-        "/connection/infrastructure/websocket_service.dart";
-      }
-      subgraph "cluster~/connection/domain" {
-        label="domain";
-        "/connection/domain/connection_entity.dart";
-      }
+      "/connection/websocket_service.dart";
+      "/connection/connection_entity.dart";
+      "/connection/connection_service.dart";
+      "/connection/connection_type.dart";
+      "/connection/connection.dart";
+      "/connection/connection_state.dart";
+      "/connection/connection_controller.dart";
+      "/connection/connection_event.dart";
+      "/connection/connection_api.dart";
+    }
+    subgraph "cluster~/connectivity" {
+      label="connectivity";
+      "/connectivity/connectivity_state.dart";
+      "/connectivity/connectivity.dart";
+      "/connectivity/connectivity_service.dart";
+      "/connectivity/connectivity_api.dart";
+      "/connectivity/connectivity_event.dart";
+      "/connectivity/connectivity_change_service.dart";
+      "/connectivity/connectivity_entity.dart";
     }
     subgraph "cluster~/discovery" {
       label="discovery";
-      "/discovery/discovery_config.dart";
-      subgraph "cluster~/discovery/interface" {
-        label="interface";
-        "/discovery/interface/discovery_controller.dart";
-        "/discovery/interface/discovery_action.dart";
-      }
-      subgraph "cluster~/discovery/application" {
-        label="application";
-        "/discovery/application/discovery_lifecycle_service.dart";
-        "/discovery/application/discovery_service.dart";
-      }
-      subgraph "cluster~/discovery/infrastructure" {
-        label="infrastructure";
-        "/discovery/infrastructure/discovery_multicast_service.dart";
-        "/discovery/infrastructure/discovery_timeout_service.dart";
-      }
-      subgraph "cluster~/discovery/domain" {
-        label="domain";
-        "/discovery/domain/discovery_entity.dart";
-      }
-    }
-    subgraph "cluster~/daemon" {
-      label="daemon";
-      subgraph "cluster~/daemon/application" {
-        label="application";
-        "/daemon/application/daemon_service.dart";
-      }
-      subgraph "cluster~/daemon/domain" {
-        label="domain";
-        "/daemon/domain/daemon_entity.dart";
-      }
+      "/discovery/discovery_controller.dart";
+      "/discovery/discovery_state.dart";
+      "/discovery/discovery_api.dart";
+      "/discovery/discovery_lifecycle_service.dart";
+      "/discovery/discovery_event.dart";
+      "/discovery/discovery_multicast_service.dart";
+      "/discovery/discovery_service.dart";
+      "/discovery/discovery.dart";
+      "/discovery/discovery_entity.dart";
+      "/discovery/discovery_action.dart";
+      "/discovery/discovery_connectivity_service.dart";
+      "/discovery/discovery_timeout_service.dart";
     }
     subgraph "cluster~/app_lifecycle" {
       label="app_lifecycle";
-      subgraph "cluster~/app_lifecycle/application" {
-        label="application";
-        "/app_lifecycle/application/app_lifecycle_service.dart";
-      }
+      "/app_lifecycle/app_lifecycle_event.dart";
+      "/app_lifecycle/app_lifecycle_api.dart";
+      "/app_lifecycle/app_lifecycle_service.dart";
     }
-    subgraph "cluster~/daemon_connection" {
-      label="daemon_connection";
-      subgraph "cluster~/daemon_connection/application" {
-        label="application";
-        "/daemon_connection/application/daemon_connection_auto_service.dart";
-        "/daemon_connection/application/active_connection_service.dart";
-        "/daemon_connection/application/daemon_connection_lifecycle_service.dart";
-        "/daemon_connection/application/daemon_connection_service.dart";
-      }
-      subgraph "cluster~/daemon_connection/domain" {
-        label="domain";
-        "/daemon_connection/domain/daemon_connection_entity.dart";
-      }
+    subgraph "cluster~/home_connection" {
+      label="home_connection";
+      "/home_connection/home_connection_entity.dart";
+      "/home_connection/home_connection_registry_service.dart";
+      "/home_connection/home_connection_connectivity_service.dart";
+      "/home_connection/home_connection.dart";
+      "/home_connection/home_connection_lifecycle_service.dart";
+      "/home_connection/home_connection_service.dart";
+      "/home_connection/active_connection_service.dart";
+      "/home_connection/home_connection_api.dart";
     }
   }
-  "/connection/application/connection_service.dart" -> "/connection/domain/connection_entity.dart";
-  "/discovery/interface/discovery_controller.dart" -> "/discovery/interface/discovery_action.dart";
-  "/discovery/application/discovery_service.dart" -> "/discovery/domain/discovery_entity.dart";
-  "/daemon/application/daemon_service.dart" -> "/daemon/domain/daemon_entity.dart";
-  "/daemon_connection/application/daemon_connection_service.dart" -> "/daemon_connection/domain/daemon_connection_entity.dart";
+  "/home/home.dart" -> "/meta.dart";
+  "/home/home_service.dart" -> "/home/home.dart";
+  "/home/home_service.dart" -> "/home/home_api.dart";
+  "/home/home_service.dart" -> "/home/home_entity.dart";
+  "/home/home_service.dart" -> "/home/home_event.dart";
+  "/home/home_service.dart" -> "/meta.dart";
+  "/home/home_event.dart" -> "/home/home.dart";
+  "/home/home_api.dart" -> "/home/home.dart";
+  "/home/home_api.dart" -> "/meta.dart";
+  "/home/home_entity.dart" -> "/home/home.dart";
+  "/home/home_entity.dart" -> "/home/home_event.dart";
+  "/home/home_entity.dart" -> "/meta.dart";
+  "/home/home_discovery_service.dart" -> "/home/home.dart";
+  "/home/home_discovery_service.dart" -> "/home/home_api.dart";
+  "/home/home_discovery_service.dart" -> "/home/home_event.dart";
+  "/home/home_discovery_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/connection/websocket_service.dart" -> "/connection/connection_api.dart";
+  "/connection/websocket_service.dart" -> "/connection/connection_event.dart";
+  "/connection/connection_entity.dart" -> "/connection/connection.dart";
+  "/connection/connection_entity.dart" -> "/connection/connection_event.dart";
+  "/connection/connection_entity.dart" -> "/connection/connection_state.dart";
+  "/connection/connection_entity.dart" -> "/connection/connection_type.dart";
+  "/connection/connection_service.dart" -> "/connection/connection.dart";
+  "/connection/connection_service.dart" -> "/connection/connection_api.dart";
+  "/connection/connection_service.dart" -> "/connection/connection_entity.dart";
+  "/connection/connection_service.dart" -> "/connection/connection_event.dart";
+  "/connection/connection.dart" -> "/connection/connection_state.dart";
+  "/connection/connection.dart" -> "/connection/connection_type.dart";
+  "/connection/connection_event.dart" -> "/connection/connection_type.dart";
+  "/connection/connection_api.dart" -> "/connection/connection.dart";
+  "/connectivity/connectivity.dart" -> "/connectivity/connectivity_event.dart";
+  "/connectivity/connectivity.dart" -> "/connectivity/connectivity_state.dart";
+  "/connectivity/connectivity_service.dart" -> "/connectivity/connectivity.dart";
+  "/connectivity/connectivity_service.dart" -> "/connectivity/connectivity_api.dart";
+  "/connectivity/connectivity_service.dart" -> "/connectivity/connectivity_event.dart";
+  "/connectivity/connectivity_service.dart" -> "/connectivity/connectivity_state.dart";
+  "/connectivity/connectivity_api.dart" -> "/connectivity/connectivity_state.dart";
+  "/connectivity/connectivity_event.dart" -> "/connectivity/connectivity_state.dart";
+  "/connectivity/connectivity_change_service.dart" -> "/connectivity/connectivity_api.dart";
+  "/connectivity/connectivity_change_service.dart" -> "/connectivity/connectivity_state.dart";
+  "/connectivity/connectivity_entity.dart" -> "/connectivity/connectivity.dart";
+  "/connectivity/connectivity_entity.dart" -> "/connectivity/connectivity_event.dart";
+  "/connectivity/connectivity_entity.dart" -> "/connectivity/connectivity_state.dart";
+  "/discovery/discovery_controller.dart" -> "/discovery/discovery_action.dart";
+  "/discovery/discovery_controller.dart" -> "/home/home_api.dart";
+  "/discovery/discovery_controller.dart" -> "/meta.dart";
+  "/discovery/discovery_api.dart" -> "/discovery/discovery.dart";
+  "/discovery/discovery_api.dart" -> "/discovery/discovery_state.dart";
+  "/discovery/discovery_lifecycle_service.dart" -> "/app_lifecycle/app_lifecycle_event.dart";
+  "/discovery/discovery_lifecycle_service.dart" -> "/connectivity/connectivity_api.dart";
+  "/discovery/discovery_lifecycle_service.dart" -> "/discovery/discovery_api.dart";
+  "/discovery/discovery_multicast_service.dart" -> "/connectivity/connectivity_api.dart";
+  "/discovery/discovery_multicast_service.dart" -> "/discovery/discovery_api.dart";
+  "/discovery/discovery_multicast_service.dart" -> "/discovery/discovery_event.dart";
+  "/discovery/discovery_service.dart" -> "/discovery/discovery.dart";
+  "/discovery/discovery_service.dart" -> "/discovery/discovery_api.dart";
+  "/discovery/discovery_service.dart" -> "/discovery/discovery_entity.dart";
+  "/discovery/discovery_service.dart" -> "/discovery/discovery_event.dart";
+  "/discovery/discovery_service.dart" -> "/discovery/discovery_state.dart";
+  "/discovery/discovery.dart" -> "/discovery/discovery_state.dart";
+  "/discovery/discovery_entity.dart" -> "/discovery/discovery.dart";
+  "/discovery/discovery_entity.dart" -> "/discovery/discovery_event.dart";
+  "/discovery/discovery_entity.dart" -> "/discovery/discovery_state.dart";
+  "/discovery/discovery_connectivity_service.dart" -> "/connectivity/connectivity_event.dart";
+  "/discovery/discovery_connectivity_service.dart" -> "/discovery/discovery_api.dart";
+  "/discovery/discovery_timeout_service.dart" -> "/home/home.dart";
+  "/discovery/discovery_timeout_service.dart" -> "/home/home_api.dart";
+  "/discovery/discovery_timeout_service.dart" -> "/home/home_event.dart";
+  "/app_lifecycle/app_lifecycle_service.dart" -> "/app_lifecycle/app_lifecycle_api.dart";
+  "/app_lifecycle/app_lifecycle_service.dart" -> "/app_lifecycle/app_lifecycle_event.dart";
+  "/home_connection/home_connection_entity.dart" -> "/connection/connection.dart";
+  "/home_connection/home_connection_entity.dart" -> "/connection/connection_event.dart";
+  "/home_connection/home_connection_entity.dart" -> "/connection/connection_state.dart";
+  "/home_connection/home_connection_entity.dart" -> "/home_connection/home_connection.dart";
+  "/home_connection/home_connection_registry_service.dart" -> "/home/home_api.dart";
+  "/home_connection/home_connection_registry_service.dart" -> "/home/home_event.dart";
+  "/home_connection/home_connection_registry_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/home_connection/home_connection_connectivity_service.dart" -> "/connectivity/connectivity_event.dart";
+  "/home_connection/home_connection_connectivity_service.dart" -> "/home/home_api.dart";
+  "/home_connection/home_connection_connectivity_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/home_connection/home_connection.dart" -> "/connection/connection.dart";
+  "/home_connection/home_connection_lifecycle_service.dart" -> "/app_lifecycle/app_lifecycle_event.dart";
+  "/home_connection/home_connection_lifecycle_service.dart" -> "/connectivity/connectivity_api.dart";
+  "/home_connection/home_connection_lifecycle_service.dart" -> "/home/home_api.dart";
+  "/home_connection/home_connection_lifecycle_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/home_connection/home_connection_service.dart" -> "/connection/connection_api.dart";
+  "/home_connection/home_connection_service.dart" -> "/connection/connection_event.dart";
+  "/home_connection/home_connection_service.dart" -> "/connection/connection_state.dart";
+  "/home_connection/home_connection_service.dart" -> "/home/home.dart";
+  "/home_connection/home_connection_service.dart" -> "/home_connection/home_connection.dart";
+  "/home_connection/home_connection_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/home_connection/home_connection_service.dart" -> "/home_connection/home_connection_entity.dart";
+  "/home_connection/active_connection_service.dart" -> "/connection/connection_event.dart";
+  "/home_connection/active_connection_service.dart" -> "/connection/connection_type.dart";
+  "/home_connection/active_connection_service.dart" -> "/home_connection/home_connection_api.dart";
+  "/home_connection/home_connection_api.dart" -> "/home/home.dart";
+  "/home_connection/home_connection_api.dart" -> "/home_connection/home_connection.dart";
 }

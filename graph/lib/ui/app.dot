@@ -2,24 +2,12 @@ digraph "" {
   graph [style=rounded fontname="Arial Black" fontsize=13 penwidth=2.6];
   node [shape=rect style="filled,rounded" fontname=Arial fontsize=15 fillcolor=Lavender penwidth=1.3];
   edge [penwidth=1.3];
-  "/app.android.dart" [label="app.android"];
-  "/app_binding_observer.dart" [label="app_binding_observer"];
-  "/app.ios.dart" [label="app.ios"];
   "/navigation.dart" [label="navigation"];
   "/app.dart" [label="app"];
   subgraph "cluster~" {
     label="app";
-    "/app.android.dart";
-    "/app_binding_observer.dart";
-    "/app.ios.dart";
     "/navigation.dart";
     "/app.dart";
   }
-  "/app.android.dart" -> "/app_binding_observer.dart";
-  "/app.android.dart" -> "/navigation.dart";
-  "/app.ios.dart" -> "/app_binding_observer.dart";
-  "/app.ios.dart" -> "/navigation.dart";
-  "/app.dart" -> "/app.android.dart";
-  "/app.dart" -> "/app.ios.dart";
   "/app.dart" -> "/navigation.dart";
 }
