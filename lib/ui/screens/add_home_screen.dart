@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/infrastructure/ui/layouts/fixed_width_layout.dart';
+import 'package:reacthome/ui_kit/layouts/fixed_width_layout.dart';
 import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/fragments/home/widgets/home_add_form.dart';
 

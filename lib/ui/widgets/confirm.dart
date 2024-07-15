@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/infrastructure/ui/kit/kit.dart';
+import 'package:reacthome/ui_kit/kit.dart';
 
 Widget confirm(
   BuildContext context, {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reacthome/infrastructure/ui/kit/theme/theme.dart';
+import 'package:reacthome/ui_kit/theme/theme.dart';
 
 TextStyle? largeTitleMaterial(BuildContext context) =>
     Theme.of(context).textTheme.headlineLarge;

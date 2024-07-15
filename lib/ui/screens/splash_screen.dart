@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/features/domain/home/home_api.dart';
-import 'package:reacthome/infrastructure/ui/layouts/center_layout.dart';
+import 'package:reacthome/ui_kit/layouts/center_layout.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/ui/widgets/logo.dart';
 import 'package:reacthome/util/navigator_extension.dart';

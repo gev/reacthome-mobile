@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
-import 'package:reacthome/infrastructure/ui/kit/theme/theme_cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:reacthome/ui_kit/theme/theme_material.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 
-class AppRootCupertino {
+class AppRootMaterial {
   static Widget make(
     BuildContext context, {
     required String title,
@@ -11,14 +11,13 @@ class AppRootCupertino {
     required Color seedColor,
     required Navigation navigation,
   }) =>
-      CupertinoApp(
+      MaterialApp(
         title: title,
         localizationsDelegates: localizationsDelegates,
         supportedLocales: supportedLocales,
-        theme: makeCupertinoTheme(
-          seedColor,
-          MediaQuery.platformBrightnessOf(context),
-        ),
+        themeMode: ThemeMode.system,
+        theme: makeMaterialTheme(seedColor, Brightness.light),
+        darkTheme: makeMaterialTheme(seedColor, Brightness.dark),
         initialRoute: navigation.initialRoute,
         routes: navigation.routes,
       );

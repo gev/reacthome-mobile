@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/infrastructure/ui/kit/kit.dart';
-import 'package:reacthome/infrastructure/ui/kit/theme.dart';
-import 'package:reacthome/infrastructure/ui/layouts/center_layout.dart';
+import 'package:reacthome/ui_kit/kit.dart';
+import 'package:reacthome/ui_kit/theme.dart';
+import 'package:reacthome/ui_kit/layouts/center_layout.dart';
 import 'package:reacthome/ui/app/navigation.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 
