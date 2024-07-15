@@ -1,5 +1,5 @@
-import 'package:reacthome/features/domain/home/home_api.dart';
-import 'package:reacthome/features/domain/home/home_event.dart';
+import 'package:reacthome/domain/home/home_api.dart';
+import 'package:reacthome/domain/home/home_event.dart';
 
 class HomeListViewModel {
   final Stream<HomeEvent> eventSource;

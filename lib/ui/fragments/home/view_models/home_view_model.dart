@@ -1,7 +1,7 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/features/domain/home/home_api.dart';
-import 'package:reacthome/features/domain/home/home_event.dart';
-import 'package:reacthome/features/meta.dart';
+import 'package:reacthome/domain/home/home_api.dart';
+import 'package:reacthome/domain/home/home_event.dart';
+import 'package:reacthome/domain/meta.dart';
 import 'package:reacthome/ui/dto.dart';
 
 class HomeViewModel {

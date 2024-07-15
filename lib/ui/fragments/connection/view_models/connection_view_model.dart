@@ -1,8 +1,8 @@
-import 'package:reacthome/features/application/connection/connection_api.dart';
-import 'package:reacthome/features/application/connection/connection_event.dart';
-import 'package:reacthome/features/application/connection/connection_state.dart';
-import 'package:reacthome/features/application/home_connection/home_connection_api.dart';
-import 'package:reacthome/features/domain/home/home_api.dart';
+import 'package:reacthome/application/connection/connection_api.dart';
+import 'package:reacthome/application/connection/connection_event.dart';
+import 'package:reacthome/application/connection/connection_state.dart';
+import 'package:reacthome/application/home_connection/home_connection_api.dart';
+import 'package:reacthome/domain/home/home_api.dart';
 import 'package:reacthome/ui/dto.dart';
 import 'package:reacthome/util/extensions.dart';
 

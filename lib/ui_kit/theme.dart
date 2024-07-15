@@ -1,8 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/infrastructure/platform.dart';
 import 'package:reacthome/ui_kit/theme/theme.dart';
 import 'package:reacthome/ui_kit/theme/theme_cupertino.dart';
 import 'package:reacthome/ui_kit/theme/theme_material.dart';
+import 'package:reacthome/util/platform.dart';
 
 class Theme {
   Theme._();
