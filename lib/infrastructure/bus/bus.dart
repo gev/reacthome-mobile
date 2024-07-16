@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:reacthome/entity_framework/emitter.dart';
+import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 
 class Bus<T> {

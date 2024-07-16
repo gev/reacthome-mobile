@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:reacthome/common/handler.dart';
 import 'package:reacthome/core/discovery/discovery_action.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/meta.dart';
-import 'package:reacthome/entity_framework/handler.dart';
 
 class DiscoveryController implements Handler<Datagram> {
   final HomeApi discovered;

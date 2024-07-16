@@ -1,7 +1,7 @@
 import 'dart:io';
 
+import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/core/meta.dart';
-import 'package:reacthome/entity_framework/entity.dart';
 
 abstract interface class Home implements Entity<String> {
   Meta get meta;

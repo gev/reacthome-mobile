@@ -1,5 +1,5 @@
-import 'package:reacthome/entity_framework/entity.dart';
-import 'package:reacthome/entity_framework/repository.dart';
+import 'package:reacthome/common/entity.dart';
+import 'package:reacthome/common/repository.dart';
 
 class MemoryRepository<K, V extends Entity<K>> implements Repository<K, V> {
   final _store = <K, V>{};

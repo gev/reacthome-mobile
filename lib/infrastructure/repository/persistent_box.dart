@@ -4,7 +4,7 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:reacthome/entity_framework/box.dart';
+import 'package:reacthome/common/box.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 

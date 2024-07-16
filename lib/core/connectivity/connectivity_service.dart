@@ -1,8 +1,8 @@
+import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/core/connectivity/connectivity.dart';
 import 'package:reacthome/core/connectivity/connectivity_api.dart';
 import 'package:reacthome/core/connectivity/connectivity_event.dart';
 import 'package:reacthome/core/connectivity/connectivity_state.dart';
-import 'package:reacthome/entity_framework/emitter.dart';
 
 class ConnectivityService implements ConnectivityApi {
   final Emitter<ConnectivityEvent> eventSink;

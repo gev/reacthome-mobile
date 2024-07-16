@@ -1,5 +1,5 @@
+import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/entity_framework/entity.dart';
 
 import 'connection_type.dart';
 

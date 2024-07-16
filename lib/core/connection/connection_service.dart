@@ -1,11 +1,11 @@
 import 'dart:io';
 
+import 'package:reacthome/common/emitter.dart';
+import 'package:reacthome/common/repository.dart';
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_entity.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/entity_framework/emitter.dart';
-import 'package:reacthome/entity_framework/repository.dart';
 import 'package:reacthome/util/extensions.dart';
 
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>

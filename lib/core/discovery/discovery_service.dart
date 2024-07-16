@@ -1,9 +1,9 @@
+import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/core/discovery/discovery.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_entity.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
-import 'package:reacthome/entity_framework/emitter.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class DiscoveryService<S> implements DiscoveryApi<S> {

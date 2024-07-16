@@ -1,4 +1,4 @@
-import 'package:reacthome/entity_framework/emitter.dart';
+import 'package:reacthome/common/emitter.dart';
 
 class BusEmitter<T> implements Emitter<T> {
   final Sink<T> eventSink;

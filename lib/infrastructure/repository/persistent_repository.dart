@@ -4,8 +4,8 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:reacthome/entity_framework/entity.dart';
-import 'package:reacthome/entity_framework/repository.dart';
+import 'package:reacthome/common/entity.dart';
+import 'package:reacthome/common/repository.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 

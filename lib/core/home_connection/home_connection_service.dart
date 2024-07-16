@@ -1,3 +1,5 @@
+import 'package:reacthome/common/emitter.dart';
+import 'package:reacthome/common/repository.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
@@ -5,8 +7,6 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_entity.dart';
-import 'package:reacthome/entity_framework/emitter.dart';
-import 'package:reacthome/entity_framework/repository.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class HomeConnectionService<S> implements HomeConnectionApi {
