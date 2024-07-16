@@ -3,17 +3,17 @@ import 'package:reacthome/core/connection/connection_entity.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_service.dart';
 import 'package:reacthome/infrastructure/bus/bus.dart';
-import 'package:reacthome/infrastructure/repository/map_repository.dart';
+import 'package:reacthome/infrastructure/repository/memory_repository.dart';
 import 'package:reacthome/infrastructure/websocket/websocket.dart';
 
 class ConnectionFactory {
   ConnectionFactory._();
 
   static final _localConnectionRepository =
-      MapRepository<String, LocalConnectionEntity<WebSocket>>();
+      MemoryRepository<String, LocalConnectionEntity<WebSocket>>();
 
   static final _cloudConnectionRepository =
-      MapRepository<String, CloudConnectionEntity<WebSocket>>();
+      MemoryRepository<String, CloudConnectionEntity<WebSocket>>();
 
   static final connectionEventBus = Bus<ConnectionEvent>();
 

@@ -99,7 +99,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
     var connection = repository.get(id);
     if (connection == null) {
       connection = HomeConnectionEntity<S>(id);
-      repository.set(connection);
+      repository.put(connection);
     }
     return connection;
   }

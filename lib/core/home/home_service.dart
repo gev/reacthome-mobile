@@ -39,10 +39,10 @@ class HomeService implements HomeApi {
     final home = repository.get(id);
     if (home == null) {
       final home = HomeEntity(id, meta, address, project);
-      repository.set(home);
+      repository.put(home);
       eventSink.emit(HomeAddedEvent(home));
     } else {
-      home.update(meta, address, project).forEach(eventSink.emit);
+      _update(home, meta, address, project);
     }
   }
 
@@ -55,7 +55,20 @@ class HomeService implements HomeApi {
   }) {
     final home = repository.get(id);
     if (home != null) {
-      home.update(meta, address, project).forEach(eventSink.emit);
+      _update(home, meta, address, project);
+    }
+  }
+
+  void _update(
+    HomeEntity home,
+    Meta meta,
+    InternetAddress? address,
+    String? project,
+  ) {
+    final evens = home.update(meta, address, project);
+    if (evens.isNotEmpty) {
+      repository.put(home);
+      evens.forEach(eventSink.emit);
     }
   }
 

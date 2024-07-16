@@ -1,13 +1,13 @@
 import 'package:reacthome/entity_framework/entity.dart';
 import 'package:reacthome/entity_framework/repository.dart';
 
-class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
+class MemoryRepository<K, V extends Entity<K>> implements Repository<K, V> {
   final _store = <K, V>{};
 
   @override
   int get length => _store.length;
 
-  MapRepository();
+  MemoryRepository();
 
   @override
   Iterable<K> getAllId() => _store.keys;
@@ -22,7 +22,7 @@ class MapRepository<K, V extends Entity<K>> implements Repository<K, V> {
   V? get(K id) => _store[id];
 
   @override
-  void set(V entity) => _store[entity.id] = entity;
+  void put(V entity) => _store[entity.id] = entity;
 
   @override
   V? remove(K id) => _store.remove(id);

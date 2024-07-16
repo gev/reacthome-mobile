@@ -6,6 +6,7 @@ import 'package:reacthome/make/core/home_connection_factory.dart';
 import 'package:reacthome/make/core/home_factory.dart';
 import 'package:reacthome/services/connection/active_connection_service.dart';
 import 'package:reacthome/services/connection/connection_home_registry_service.dart';
+import 'package:reacthome/services/connection/reconnect_local_service.dart';
 import 'package:reacthome/services/connection/websocket_service.dart';
 
 class ConnectionServiceFactory {
@@ -38,16 +39,24 @@ class ConnectionServiceFactory {
       );
 
   static Future<ConnectionHomeRegistryService>
-      makeHomeConnectionAutoService() async => ConnectionHomeRegistryService(
+      makeConnectionHomeRegistryService() async =>
+          ConnectionHomeRegistryService(
             eventSource: HomeFactory.homeEventBus.stream,
             home: await HomeFactory.makeHomeApi(),
             connection: HomeConnectionFactory.makeHomeConnectionApi(),
           );
 
+  static ReconnectLocalService makeReconnectLocalService() =>
+      ReconnectLocalService(
+        eventSource: HomeFactory.homeEventBus.stream,
+        connection: HomeConnectionFactory.makeHomeConnectionApi(),
+      );
+
   static Future<void> make() async {
     makeLocalWebsocketService();
     makeCloudWebsocketService();
     makeActiveConnectionService();
-    await makeHomeConnectionAutoService();
+    makeReconnectLocalService();
+    await makeConnectionHomeRegistryService();
   }
 }

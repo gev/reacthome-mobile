@@ -48,7 +48,7 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
     var connection = repository.get(id);
     if (connection == null) {
       connection = _create(id);
-      repository.set(connection);
+      repository.put(connection);
     }
     return connection;
   }

@@ -4,20 +4,18 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:reacthome/entity_framework/entity.dart';
-import 'package:reacthome/entity_framework/repository.dart';
+import 'package:reacthome/entity_framework/box.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 
-class PersistentRepository<E extends Entity<String>>
-    implements Repository<String, E> {
+class PersistentBox<V> implements Box<V> {
   final File _file;
-  final E Function(dynamic json) _fromJson;
-  final dynamic Function(E entity) _toJson;
+  final V? Function(dynamic json) _fromJson;
+  final dynamic Function(V? value) _toJson;
 
   late Timer _timer;
 
-  PersistentRepository._(
+  PersistentBox._(
     this._file,
     this._fromJson,
     this._toJson,
@@ -31,11 +29,11 @@ class PersistentRepository<E extends Entity<String>>
 
   static final _instances = <String, dynamic>{};
 
-  static Future<PersistentRepository<T>> make<T extends Entity<String>>({
+  static Future<PersistentBox<T>> make<T>({
     required String name,
     required String scope,
     required T Function(dynamic json) fromJson,
-    required dynamic Function(T entity) toJson,
+    required dynamic Function(T? value) toJson,
     Duration timeout = defaultTimeout,
   }) async {
     final location = await getApplicationDocumentsDirectory();
@@ -45,8 +43,7 @@ class PersistentRepository<E extends Entity<String>>
     if (_instances.containsKey(path)) {
       return _instances[path]!;
     }
-    final repository =
-        PersistentRepository._(File(path), fromJson, toJson, timeout);
+    final repository = PersistentBox._(File(path), fromJson, toJson, timeout);
     await repository._load();
     _instances[path] = repository;
     return repository;
@@ -55,70 +52,41 @@ class PersistentRepository<E extends Entity<String>>
   int _storeTimestamp = 0;
   int _fileTimestamp = 0;
   bool _done = true;
-  var _store = <String, E>{};
+  V? _store;
 
   Future<void> _save() async {
     if (_storeTimestamp > _fileTimestamp && _done) {
       _fileTimestamp = _storeTimestamp;
       _done = false;
-      final json = <String, dynamic>{};
-      _store.forEach((id, entity) {
-        json[id] = _toJson(entity);
-      });
-      await _file.writeAsString(jsonEncode(json));
+      final json = jsonEncode(_toJson(_store));
+      await _file.writeAsString(json);
       _done = true;
     }
   }
 
   Future<void> _load() async {
     try {
-      final tmp = <String, E>{};
       if (await _file.exists()) {
         final data = await _file.readAsString();
         if (data.isNotEmpty) {
-          final entries = jsonDecode(data) as Map<String, dynamic>;
-          entries.forEach((key, value) {
-            tmp[key] = _fromJson(value);
-          });
-          _store = tmp;
+          _store = _fromJson(jsonDecode(data));
         }
       }
     } catch (_) {}
   }
 
   @override
-  int get length => _store.length;
+  V? get() => _store;
 
   @override
-  Iterable<String> getAllId() => _store.keys;
-
-  @override
-  Iterable<E> getAll() => _store.values;
-
-  @override
-  bool has(String id) => _store.containsKey(id);
-
-  @override
-  E? get(String id) => _store[id];
-
-  @override
-  void put(E entity) {
-    _store[entity.id] = entity;
+  void put(V value) {
+    _store = value;
     _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
   }
 
   @override
-  E? remove(String id) {
-    final e = _store.remove(id);
-    if (e != null) {
-      _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
-    }
-    return e;
-  }
-
-  @override
   void clear() {
-    _store.clear();
+    _store = null;
     _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
   }
 
