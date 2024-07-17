@@ -31,13 +31,13 @@ class ConnectionViewModel<S> {
   bool isCloudConnected(String id) =>
       cloud.getConnectionById(id).state == ConnectionState.connected;
 
-  ConnectionUI getConnectionState(String id) => (
+  ConnectionUiDto getConnectionState(String id) => (
         isConnected: isConnected(id),
         isLocalConnected: isLocalConnected(id),
         isCloudConnected: isCloudConnected(id),
       );
 
-  Stream<ConnectionUI> stream(String id) => eventSource
+  Stream<ConnectionUiDto> stream(String id) => eventSource
       .where((event) =>
           id == event.id &&
           (event is ConnectSelectedEvent ||

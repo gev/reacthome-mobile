@@ -5,7 +5,7 @@ import 'package:reacthome/ui_kit/kit.dart';
 
 class MetaProps extends StatelessWidget {
   final String id;
-  final MetaUI meta;
+  final MetaUiDto meta;
 
   const MetaProps(this.id, this.meta, {super.key});
 

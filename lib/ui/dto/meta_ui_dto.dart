@@ -1,14 +1,14 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/core/meta.dart';
 
-class MetaUI {
+class MetaUiDto {
   final String? _code;
   final String? _title;
   final AppLocalizations _locale;
 
   final String Function(AppLocalizations) defaultName;
 
-  MetaUI(
+  MetaUiDto(
     this._locale,
     Meta meta, {
     required this.defaultName,
@@ -35,15 +35,4 @@ class MetaUI {
     }
     return name;
   }
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is MetaUI &&
-          runtimeType == other.runtimeType &&
-          _code == other._code &&
-          _title == other._title;
-
-  @override
-  int get hashCode => Object.hash(_code, _title);
 }

@@ -13,12 +13,12 @@ class HomeViewModel {
     required this.home,
   });
 
-  HomeUI getHome(String id, AppLocalizations locale) => HomeUI(
+  HomeUiDto getHome(String id, AppLocalizations locale) => HomeUiDto(
         locale,
         home: home.getHomeById(id),
       );
 
-  Stream<HomeUI> stream(String id, AppLocalizations locale) => eventSource
+  Stream<HomeUiDto> stream(String id, AppLocalizations locale) => eventSource
       .where((event) =>
           (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent) &&
           event.home.id == id)
