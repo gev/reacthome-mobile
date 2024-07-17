@@ -1,4 +1,5 @@
 import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/core/home/home_dto.dart';
 import 'package:reacthome/core/home/home_entity.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/home/home_service.dart';
@@ -12,8 +13,8 @@ class HomeFactory {
       PersistentRepository.make(
         name: 'home',
         scope: 'reacthome',
-        fromJson: (json) => HomeEntity.fromJson(json),
-        toJson: (entity) => entity.toJson(),
+        fromJson: (json) => HomeDto.fromJson(json),
+        toJson: (entity) => HomeDto.toJson(entity),
       );
 
   static final homeEventBus = Bus<HomeEvent>();

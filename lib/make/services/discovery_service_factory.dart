@@ -1,4 +1,4 @@
-import 'package:reacthome/controllers/discovery_controller.dart';
+import 'package:reacthome/controllers/discovery/discovery_controller.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/make/config.dart';
 import 'package:reacthome/make/core/connectivity_factory.dart';

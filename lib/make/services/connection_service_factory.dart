@@ -1,4 +1,4 @@
-import 'package:reacthome/controllers/reacthome_controller.dart';
+import 'package:reacthome/controllers/reacthome/reacthome_controller.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/make/config.dart';
 import 'package:reacthome/make/core/connection_factory.dart';
