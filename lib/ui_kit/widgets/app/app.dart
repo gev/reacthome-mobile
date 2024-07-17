@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/navigation.dart';
 
 typedef AppRootFactory = Widget Function(
   BuildContext context, {

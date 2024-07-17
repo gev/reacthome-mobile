@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/navigation.dart';
 import 'package:reacthome/ui_kit/theme/theme_material.dart';
 
 class AppRootMaterial {

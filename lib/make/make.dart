@@ -13,8 +13,8 @@ import 'package:reacthome/make/services/app_lifecycle_service_factory.dart';
 import 'package:reacthome/make/services/connection_service_factory.dart';
 import 'package:reacthome/make/services/connectivity_service_factory.dart';
 import 'package:reacthome/make/services/discovery_service_factory.dart';
-import 'package:reacthome/ui/app/app.dart';
-import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/navigation.dart';
+import 'package:reacthome/ui/views/app.dart';
 
 Future<Widget> make() async {
   await ConnectionServiceFactory.make();

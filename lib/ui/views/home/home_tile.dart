@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/app/navigation.dart';
+import 'package:reacthome/ui/navigation.dart';
 import 'package:reacthome/ui/view_models/home_view_model.dart';
 import 'package:reacthome/ui_kit/kit.dart';
 import 'package:reacthome/util/navigator_extension.dart';

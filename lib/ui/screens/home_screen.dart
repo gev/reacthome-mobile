@@ -5,7 +5,7 @@ import 'package:reacthome/ui/view_models/home_view_model.dart';
 import 'package:reacthome/ui/views/connection/connections.dart';
 import 'package:reacthome/ui/views/home/home_go_to_list.dart';
 import 'package:reacthome/ui/views/home/home_remove.dart';
-import 'package:reacthome/ui/views/meta/meta_props.dart';
+import 'package:reacthome/ui/views/meta_props.dart';
 import 'package:reacthome/ui_kit/layouts/fixed_width_layout.dart';
 
 class HomeScreen extends StatelessWidget {
