@@ -1,5 +1,5 @@
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/core/meta/meta.dart';
 
 class MetaUiDto {
   final String? _code;

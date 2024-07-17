@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/core/meta/meta.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class HomeEntity implements Home {

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:reacthome/core/home/home.dart';
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/core/meta/meta.dart';
 
 abstract interface class HomeApi {
   int get count;

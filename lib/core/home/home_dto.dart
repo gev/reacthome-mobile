@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_entity.dart';
-import 'package:reacthome/core/meta_dto.dart';
+import 'package:reacthome/core/meta/meta_dto.dart';
 
 class HomeDto {
   HomeDto._();

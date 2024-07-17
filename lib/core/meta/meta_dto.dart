@@ -1,4 +1,4 @@
-import 'package:reacthome/core/meta.dart';
+import 'package:reacthome/core/meta/meta.dart';
 
 class MetaDto {
   static Meta fromJson(Map<String, dynamic> json) => Meta(
