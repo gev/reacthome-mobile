@@ -1,97 +1,58 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:reacthome/common/box.dart';
-
-const defaultTimeout = Duration(milliseconds: 100);
+import 'package:reacthome/infrastructure/repository/json_box.dart';
+import 'package:reacthome/infrastructure/repository/memory_box.dart';
+import 'package:reacthome/infrastructure/repository/persistent.dart';
+import 'package:reacthome/infrastructure/repository/types.dart';
 
 class PersistentBox<V> implements Box<V> {
-  final File _file;
-  final V? Function(dynamic json) _fromJson;
-  final dynamic Function(V? value) _toJson;
+  final Persistent _persistent;
+  final Box<V> _box;
 
-  late Timer _timer;
+  const PersistentBox._(this._persistent, this._box);
 
-  PersistentBox._(
-    this._file,
-    this._fromJson,
-    this._toJson,
-    Duration timeout,
-  ) {
-    _timer = Timer.periodic(
-      timeout,
-      (_) => _save(),
-    );
-  }
-
-  static final _instances = <String, dynamic>{};
+  static final _instances = <String, PersistentBox>{};
 
   static Future<PersistentBox<T>> make<T>({
     required String name,
     required String scope,
-    required T Function(dynamic json) fromJson,
-    required dynamic Function(T? value) toJson,
-    Duration timeout = defaultTimeout,
+    required From<T?> fromJson,
+    required To<T?> toJson,
+    Duration timeout = Persistent.defaultTimeout,
   }) async {
-    final location = await getApplicationDocumentsDirectory();
-    final directory = join(location.path, scope);
-    await Directory(directory).create(recursive: true);
-    final path = join(directory, name);
-    if (_instances.containsKey(path)) {
-      return _instances[path]!;
+    final key = '$scope/$name';
+    if (_instances.containsKey(key)) {
+      return _instances[key]! as PersistentBox<T>;
     }
-    final repository = PersistentBox._(File(path), fromJson, toJson, timeout);
-    await repository._load();
-    _instances[path] = repository;
-    return repository;
-  }
-
-  int _storeTimestamp = 0;
-  int _fileTimestamp = 0;
-  bool _done = true;
-  V? _store;
-
-  Future<void> _save() async {
-    if (_storeTimestamp > _fileTimestamp && _done) {
-      _fileTimestamp = _storeTimestamp;
-      _done = false;
-      final json = jsonEncode(_toJson(_store));
-      await _file.writeAsString(json);
-      _done = true;
-    }
-  }
-
-  Future<void> _load() async {
-    try {
-      if (await _file.exists()) {
-        final data = await _file.readAsString();
-        if (data.isNotEmpty) {
-          _store = _fromJson(jsonDecode(data));
-        }
-      }
-    } catch (_) {}
+    final box = MemoryBox<T>();
+    final file = JsonBox(box, fromJson, toJson);
+    final persistent = await Persistent.make(
+      name,
+      scope,
+      fromFile: file.load,
+      toFile: file.save,
+      timeout: timeout,
+    );
+    final persistentBox = PersistentBox._(persistent, box);
+    _instances[key] = persistentBox;
+    return persistentBox;
   }
 
   @override
-  V? get() => _store;
+  V? get() => _box.get();
 
   @override
   void put(V value) {
-    _store = value;
-    _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+    _box.put(value);
+    _persistent.setTimestamp();
   }
 
   @override
   void clear() {
-    _store = null;
-    _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+    _box.clear();
+    _persistent.setTimestamp();
   }
 
-  void dispose() {
-    _timer.cancel();
-    _save();
-  }
+  void dispose() => _persistent.dispose();
 }

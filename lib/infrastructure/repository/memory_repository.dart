@@ -2,12 +2,12 @@ import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/common/repository.dart';
 
 class MemoryRepository<K, V extends Entity<K>> implements Repository<K, V> {
-  final _store = <K, V>{};
+  var _store = <K, V>{};
 
   @override
   int get length => _store.length;
 
-  MemoryRepository();
+  void init(Map<K, V> entities) => _store = entities;
 
   @override
   Iterable<K> getAllId() => _store.keys;

@@ -1,129 +1,83 @@
 import 'dart:async';
-import 'dart:convert';
-import 'dart:io';
 
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/infrastructure/repository/json_repository.dart';
+import 'package:reacthome/infrastructure/repository/memory_repository.dart';
+import 'package:reacthome/infrastructure/repository/persistent.dart';
+import 'package:reacthome/infrastructure/repository/types.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 
 class PersistentRepository<E extends Entity<String>>
     implements Repository<String, E> {
-  final File _file;
-  final E Function(dynamic json) _fromJson;
-  final dynamic Function(E entity) _toJson;
+  final Persistent _persistent;
+  final Repository<String, E> _repository;
 
-  late Timer _timer;
+  const PersistentRepository._(this._persistent, this._repository);
 
-  PersistentRepository._(
-    this._file,
-    this._fromJson,
-    this._toJson,
-    Duration timeout,
-  ) {
-    _timer = Timer.periodic(
-      timeout,
-      (_) => _save(),
-    );
-  }
-
-  static final _instances = <String, dynamic>{};
+  static final _instances = <String, PersistentRepository>{};
 
   static Future<PersistentRepository<T>> make<T extends Entity<String>>({
     required String name,
     required String scope,
-    required T Function(dynamic json) fromJson,
-    required dynamic Function(T entity) toJson,
+    required From<T> fromJson,
+    required To<T> toJson,
     Duration timeout = defaultTimeout,
   }) async {
-    final location = await getApplicationDocumentsDirectory();
-    final directory = join(location.path, scope);
-    await Directory(directory).create(recursive: true);
-    final path = join(directory, name);
-    if (_instances.containsKey(path)) {
-      return _instances[path]!;
+    final key = '$scope/$name';
+    if (_instances.containsKey(key)) {
+      return _instances[key]! as PersistentRepository<T>;
     }
-    final repository =
-        PersistentRepository._(File(path), fromJson, toJson, timeout);
-    await repository._load();
-    _instances[path] = repository;
-    return repository;
-  }
-
-  int _storeTimestamp = 0;
-  int _fileTimestamp = 0;
-  bool _done = true;
-  var _store = <String, E>{};
-
-  Future<void> _save() async {
-    if (_storeTimestamp > _fileTimestamp && _done) {
-      _fileTimestamp = _storeTimestamp;
-      _done = false;
-      final json = <String, dynamic>{};
-      _store.forEach((id, entity) {
-        json[id] = _toJson(entity);
-      });
-      await _file.writeAsString(jsonEncode(json));
-      _done = true;
-    }
-  }
-
-  Future<void> _load() async {
-    try {
-      final tmp = <String, E>{};
-      if (await _file.exists()) {
-        final data = await _file.readAsString();
-        if (data.isNotEmpty) {
-          final entries = jsonDecode(data) as Map<String, dynamic>;
-          entries.forEach((key, value) {
-            tmp[key] = _fromJson(value);
-          });
-          _store = tmp;
-        }
-      }
-    } catch (_) {}
+    final repository = MemoryRepository<String, T>();
+    final jsonRepository = JsonRepository(repository, fromJson, toJson);
+    final persistent = await Persistent.make(
+      name,
+      scope,
+      fromFile: jsonRepository.load,
+      toFile: jsonRepository.save,
+      timeout: timeout,
+    );
+    final persistentRepository = PersistentRepository._(persistent, repository);
+    _instances[key] = persistentRepository;
+    return persistentRepository;
   }
 
   @override
-  int get length => _store.length;
+  int get length => _repository.length;
 
   @override
-  Iterable<String> getAllId() => _store.keys;
+  Iterable<String> getAllId() => _repository.getAllId();
 
   @override
-  Iterable<E> getAll() => _store.values;
+  Iterable<E> getAll() => _repository.getAll();
 
   @override
-  bool has(String id) => _store.containsKey(id);
+  bool has(String id) => _repository.has(id);
 
   @override
-  E? get(String id) => _store[id];
+  E? get(String id) => _repository.get(id);
 
   @override
   void put(E entity) {
-    _store[entity.id] = entity;
-    _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+    _repository.put(entity);
+    _persistent.setTimestamp();
   }
 
   @override
   E? remove(String id) {
-    final e = _store.remove(id);
+    final e = _repository.remove(id);
     if (e != null) {
-      _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+      _persistent.setTimestamp();
     }
     return e;
   }
 
   @override
   void clear() {
-    _store.clear();
-    _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+    _repository.clear();
+    _persistent.setTimestamp();
   }
 
-  void dispose() {
-    _timer.cancel();
-    _save();
-  }
+  void dispose() => _persistent.dispose();
 }
