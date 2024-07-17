@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/ui/dto.dart';
+import 'package:reacthome/ui/dto/meta_ui_dto.dart';
 import 'package:reacthome/ui_kit/kit.dart';
 
 class MetaProps extends StatelessWidget {
