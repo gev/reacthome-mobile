@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:reacthome/ui/app/navigation.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_alert.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_add_confirm.dart';
 import 'package:reacthome/ui/fragments/discovery/widgets/discovery_home_tile.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
+import 'package:reacthome/ui/view_models/discovery_view_model.dart';
+import 'package:reacthome/ui/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/view_models/home_view_model.dart';
 import 'package:reacthome/ui_kit/kit.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 

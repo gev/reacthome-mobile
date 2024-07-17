@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/make/core/discovery_factory.dart';
 import 'package:reacthome/make/core/home_factory.dart';
-import 'package:reacthome/ui/fragments/discovery/view_models/discovery_view_model.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_list_view_model.dart';
-import 'package:reacthome/ui/fragments/home/view_models/home_view_model.dart';
 import 'package:reacthome/ui/screens/discovery_screen.dart';
+import 'package:reacthome/ui/view_models/discovery_view_model.dart';
+import 'package:reacthome/ui/view_models/home_list_view_model.dart';
+import 'package:reacthome/ui/view_models/home_view_model.dart';
 
 class DiscoveryScreenFactory {
   DiscoveryScreenFactory._();
