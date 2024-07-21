@@ -1,20 +1,22 @@
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
-import 'package:reacthome/core/connection/connection_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
+import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 import 'package:reacthome/ui/dto/connection_ui_dto.dart';
+import 'package:reacthome/ui/dto/home_connection_ui_dto.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class ConnectionViewModel<S> {
-  final Stream<ConnectionEvent> eventSource;
+class ConnectionViewModel<S> extends BusListener<ConnectionEvent>
+    with ChangeNotifier {
   final HomeConnectionApi homeConnection;
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
   final HomeApi home;
 
-  const ConnectionViewModel({
-    required this.eventSource,
+  ConnectionViewModel({
+    required super.eventSource,
     required this.homeConnection,
     required this.local,
     required this.cloud,
@@ -22,29 +24,20 @@ class ConnectionViewModel<S> {
   });
 
   bool isConnected(String id) =>
-      homeConnection.getConnectionById(id).connection?.state ==
-      ConnectionState.connected;
+      ConnectionUiDto(homeConnection.getConnectionById(id).connection)
+          .isConnected;
 
   bool isLocalConnected(String id) =>
-      local.getConnectionById(id).state == ConnectionState.connected;
+      ConnectionUiDto(local.getConnectionById(id)).isConnected;
 
   bool isCloudConnected(String id) =>
-      cloud.getConnectionById(id).state == ConnectionState.connected;
+      ConnectionUiDto(cloud.getConnectionById(id)).isConnected;
 
-  ConnectionUiDto getConnectionState(String id) => (
+  HomeConnectionUiDto getConnectionState(String id) => HomeConnectionUiDto(
         isConnected: isConnected(id),
         isLocalConnected: isLocalConnected(id),
         isCloudConnected: isCloudConnected(id),
       );
-
-  Stream<ConnectionUiDto> stream(String id) => eventSource
-      .where((event) =>
-          id == event.id &&
-          (event is ConnectSelectedEvent ||
-              event is ConnectCompletedEvent ||
-              event is DisconnectCompletedEvent))
-      .map((event) => getConnectionState(id))
-      .distinct();
 
   void Function(bool) toggleConnection(String id) =>
       (bool value) => home.getHomeById(id)?.let((it) {
@@ -72,4 +65,15 @@ class ConnectionViewModel<S> {
               homeConnection.disconnectCloud(id);
             }
           });
+
+  @override
+  void handle(ConnectionEvent event) {
+    switch (event) {
+      case ConnectSelectedEvent _:
+      case ConnectCompletedEvent _:
+      case DisconnectCompletedEvent _:
+        notifyListeners();
+      default:
+    }
+  }
 }

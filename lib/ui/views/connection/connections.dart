@@ -17,28 +17,26 @@ class Connections extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => StreamBuilder(
-        stream: viewModel.stream(id),
-        initialData: viewModel.getConnectionState(id),
-        builder: (context, snapshot) {
+  Widget build(BuildContext context) => ListenableBuilder(
+        listenable: viewModel,
+        builder: (context, _) {
           final locale = AppLocalizations.of(context)!;
-          final state = snapshot.data!;
           return list.section(
             context,
             children: [
               Connection(
-                isConnected: state.isConnected,
+                isConnected: viewModel.isConnected(id),
                 title: locale.connection,
                 onToggle: viewModel.toggleConnection(id),
               ),
               Connection(
-                isConnected: state.isLocalConnected,
+                isConnected: viewModel.isLocalConnected(id),
                 title: locale.localConnection,
                 subtitle: localAddress,
                 onToggle: viewModel.toggleLocalConnection(id),
               ),
               Connection(
-                isConnected: state.isCloudConnected,
+                isConnected: viewModel.isCloudConnected(id),
                 title: locale.cloudConnection,
                 subtitle: 'gate.reacthome.net',
                 onToggle: viewModel.toggleCloudConnection(id),
