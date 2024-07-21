@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_entity.dart';
+import 'package:reacthome/core/internet_address_dto.dart';
 import 'package:reacthome/core/meta/meta_dto.dart';
 
 class HomeDto {
@@ -10,7 +9,7 @@ class HomeDto {
   static HomeEntity fromJson(Map<String, dynamic> json) => HomeEntity(
         json['id'],
         MetaDto.fromJson(json['meta']),
-        json['address']?.let(InternetAddress.new),
+        InternetAddressDto.fromJson(json['address']),
         json['project'],
       );
 
