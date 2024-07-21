@@ -55,7 +55,7 @@ class HomeEntity implements Home {
       Meta meta, InternetAddress? address, String? project) {
     final events = <HomeEvent>[];
     updateMeta(meta)?.let(events.add);
-    updateAddress(address)?.let(events.add);
+    address?.let(updateAddress)?.let(events.add);
     updateProject(project)?.let(events.add);
     return events;
   }

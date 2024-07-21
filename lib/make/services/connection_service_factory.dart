@@ -1,6 +1,6 @@
-import 'package:reacthome/controllers/reacthome/reacthome_controller.dart';
 import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/controllers/reacthome_controller_factory.dart';
 import 'package:reacthome/make/core/connection_factory.dart';
 import 'package:reacthome/make/core/home_connection_factory.dart';
 import 'package:reacthome/make/core/home_factory.dart';
@@ -18,7 +18,7 @@ class ConnectionServiceFactory {
         connection: ConnectionFactory.makeLocalConnectionApi(),
         factory: LocalWebSocketFactory(
           config: Config.connection.local,
-          controller: const ReacthomeController(),
+          controller: ReacthomeControllerFactory.make(),
         ),
       );
 
@@ -28,7 +28,7 @@ class ConnectionServiceFactory {
         connection: ConnectionFactory.makeCloudConnectionApi(),
         factory: CloudWebSocketFactory(
           config: Config.connection.cloud,
-          controller: const ReacthomeController(),
+          controller: ReacthomeControllerFactory.make(),
         ),
       );
 

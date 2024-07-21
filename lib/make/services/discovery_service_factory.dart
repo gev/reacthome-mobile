@@ -1,6 +1,6 @@
-import 'package:reacthome/controllers/discovery/discovery_controller.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 import 'package:reacthome/make/config.dart';
+import 'package:reacthome/make/controllers/discovery_controller_factory.dart';
 import 'package:reacthome/make/core/connectivity_factory.dart';
 import 'package:reacthome/make/core/discovery_factory.dart';
 import 'package:reacthome/make/core/home_factory.dart';
@@ -25,9 +25,7 @@ class DiscoveryServiceFactory {
         factory: MulticastSourceFactory(
           group: Config.discovery.listen.group,
           port: Config.discovery.listen.port,
-          controller: DiscoveryController(
-            discovered: DiscoveryFactory.makeHomeApi(),
-          ),
+          controller: DiscoveryControllerFactory.make(),
         ),
       );
 

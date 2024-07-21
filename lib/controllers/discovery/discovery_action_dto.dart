@@ -13,7 +13,7 @@ class DiscoveryActionDto {
 
   static DiscoveryAction? fromData(Uint8List data) {
     final message = utf8.decode(data);
-    final json = jsonDecode(message) as Map<String, dynamic>;
+    final json = jsonDecode(message);
     final type = json['type'];
     return type == DiscoveryAction.type ? fromJson(json) : null;
   }
