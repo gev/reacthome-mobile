@@ -12,11 +12,10 @@ class HomeRemoveConfirm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return StreamBuilder(
-      stream: viewModel.stream(id, locale),
-      initialData: viewModel.getHome(id, locale),
-      builder: (context, snapshot) {
-        final home = snapshot.data!;
+    return ListenableBuilder(
+      listenable: viewModel,
+      builder: (context, _) {
+        final home = viewModel.getHome(id, locale);
         return confirm(
           context,
           title: Text(home.meta.name),

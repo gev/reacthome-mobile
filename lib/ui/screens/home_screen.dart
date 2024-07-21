@@ -23,11 +23,10 @@ class HomeScreen extends StatelessWidget {
     final locale = AppLocalizations.of(context)!;
     final arguments =
         ModalRoute.of(context)!.settings.arguments as ({String id});
-    return StreamBuilder(
-      stream: homeViewModel.stream(arguments.id, locale),
-      initialData: homeViewModel.getHome(arguments.id, locale),
-      builder: (context, snapshot) {
-        final home = snapshot.data!;
+    return ListenableBuilder(
+      listenable: homeViewModel,
+      builder: (context, _) {
+        final home = homeViewModel.getHome(arguments.id, locale);
         return FixedWidthLayout(
           title: home.meta.name,
           body: Column(

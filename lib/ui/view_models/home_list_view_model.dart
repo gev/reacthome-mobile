@@ -1,18 +1,25 @@
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
+import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class HomeListViewModel {
-  final Stream<HomeEvent> eventSource;
+class HomeListViewModel extends BusListener<HomeEvent> with ChangeNotifier {
   final HomeApi home;
 
-  const HomeListViewModel({
-    required this.eventSource,
+  HomeListViewModel({
+    required super.eventSource,
     required this.home,
   });
 
   Iterable<String> get homes => home.getAllHomesId();
 
-  Stream<Iterable<String>> get stream => eventSource
-      .where((event) => event is HomeAddedEvent || event is HomeRemovedEvent)
-      .map((event) => homes);
+  @override
+  void handle(HomeEvent event) {
+    switch (event) {
+      case HomeAddedEvent _:
+      case HomeRemovedEvent _:
+        notifyListeners();
+      default:
+    }
+  }
 }

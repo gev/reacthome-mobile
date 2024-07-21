@@ -1,25 +1,24 @@
+import 'package:flutter/widgets.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
+import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class DiscoveryViewModel {
-  final Stream<DiscoveryEvent> eventSource;
+class DiscoveryViewModel extends BusListener<DiscoveryEvent>
+    with ChangeNotifier {
   final DiscoveryApi discovery;
   final HomeApi discoveredHome;
   final HomeApi knownHome;
 
-  const DiscoveryViewModel({
-    required this.eventSource,
+  DiscoveryViewModel({
+    required super.eventSource,
     required this.discovery,
     required this.discoveredHome,
     required this.knownHome,
   });
 
-  bool get initialState => discovery.state == DiscoveryState.running;
-
-  Stream<bool> get stream =>
-      eventSource.map((event) => event is DiscoveryStartCompletedEvent);
+  bool get state => discovery.state == DiscoveryState.running;
 
   void toggleDiscovery(bool value) {
     if (value) {
@@ -41,5 +40,10 @@ class DiscoveryViewModel {
       project: home.project,
     );
     return true;
+  }
+
+  @override
+  void handle(DiscoveryEvent event) {
+    notifyListeners();
   }
 }

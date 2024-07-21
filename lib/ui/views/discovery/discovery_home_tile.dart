@@ -21,11 +21,10 @@ class DiscoveryHomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return StreamBuilder(
-      stream: homeViewModel.stream(id, locale),
-      initialData: homeViewModel.getHome(id, locale),
-      builder: (context, snapshot) {
-        final home = snapshot.data!;
+    return ListenableBuilder(
+      listenable: homeViewModel,
+      builder: (context, _) {
+        final home = homeViewModel.getHome(id, locale);
         return list.tile(
           title: Text(home.meta.title),
           subtitle: Text(

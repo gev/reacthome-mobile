@@ -14,11 +14,10 @@ class DiscoveryStatus extends StatelessWidget {
     return list.tile(
       title: Text(locale.discovery),
       leading: Icon(icon.search),
-      trailing: StreamBuilder(
-        stream: viewModel.stream,
-        initialData: viewModel.initialState,
-        builder: (context, snapshot) => switcher(
-          value: snapshot.data!,
+      trailing: ListenableBuilder(
+        listenable: viewModel,
+        builder: (context, _) => switcher(
+          value: viewModel.state,
           onChanged: viewModel.toggleDiscovery,
         ),
       ),

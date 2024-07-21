@@ -50,11 +50,10 @@ class DiscoveryHomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return StreamBuilder(
-        stream: homeListViewModel.stream,
-        initialData: homeListViewModel.homes,
-        builder: (context, snapshot) {
-          final homes = snapshot.data!;
+    return ListenableBuilder(
+        listenable: homeListViewModel,
+        builder: (context, _) {
+          final homes = homeListViewModel.homes;
           return homes.isEmpty
               ? const SizedBox()
               : list.section(
