@@ -4,14 +4,14 @@ import 'package:reacthome/controllers/reacthome/reacthome_inbound_controller.dar
 import 'package:reacthome/make/core/home_factory.dart';
 
 class ReacthomeControllerFactory {
-  static final controllerRepository = <String, ReacthomeController>{};
+  static final controllers = <String, ReacthomeController>{};
 
   static ReacthomeInboundController make() => ReacthomeInboundController(
-        repository: controllerRepository,
+        controllers,
       );
 
   static Future<HomeController> makeHomeController() async => HomeController(
-        controllers: controllerRepository,
+        controllers: controllers,
         eventSource: HomeFactory.entityEventBus.stream,
         home: await HomeFactory.makeHomeApi(),
       );
