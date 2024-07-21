@@ -1,10 +1,10 @@
+import 'package:reacthome/common/bus/bus_listener.dart';
 import 'package:reacthome/controllers/reacthome/home/home_action_dto.dart';
 import 'package:reacthome/controllers/reacthome/reacthome.dart';
 import 'package:reacthome/controllers/reacthome/reacthome_action.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/meta/meta.dart';
-import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class HomeController extends BusListener<HomeEvent> implements Reacthome {

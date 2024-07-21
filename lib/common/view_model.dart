@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:reacthome/infrastructure/bus/bus_listener.dart';
+import 'package:reacthome/common/bus/bus_listener.dart';
 
 abstract class ViewModel<E> extends BusListener<E> with ChangeNotifier {
   ViewModel({required super.eventSource});

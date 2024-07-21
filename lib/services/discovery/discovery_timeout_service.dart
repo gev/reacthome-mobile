@@ -1,6 +1,6 @@
+import 'package:reacthome/common/bus/bus_listener.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 import 'package:reacthome/util/timeout.dart';
 
 class DiscoveryTimeoutService extends BusListener<HomeEvent> {

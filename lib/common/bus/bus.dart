@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:reacthome/common/bus/bus_emitter.dart';
 import 'package:reacthome/common/emitter.dart';
-import 'package:reacthome/infrastructure/bus/bus_emitter.dart';
 
 class Bus<T> {
   final _controller = StreamController<T>.broadcast();
