@@ -1,21 +1,14 @@
-import 'package:reacthome/common/bus/bus_listener.dart';
 import 'package:reacthome/controllers/reacthome/home/home_action_dto.dart';
-import 'package:reacthome/controllers/reacthome/reacthome.dart';
+import 'package:reacthome/controllers/reacthome/reacthome_controller.dart';
 import 'package:reacthome/controllers/reacthome/reacthome_action.dart';
 import 'package:reacthome/core/home/home_api.dart';
-import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/meta/meta.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class HomeController extends BusListener<HomeEvent> implements Reacthome {
+class HomeController implements ReacthomeController {
   final HomeApi home;
-  final Map<String, Reacthome> repository;
 
-  HomeController({
-    required super.eventSource,
-    required this.home,
-    required this.repository,
-  });
+  HomeController({required this.home});
 
   @override
   void executeAction(ReacthomeActionSet action) =>
@@ -26,15 +19,4 @@ class HomeController extends BusListener<HomeEvent> implements Reacthome {
           project: payload.project,
         );
       });
-
-  @override
-  void handle(HomeEvent event) {
-    switch (event) {
-      case HomeAddedEvent e:
-        repository[e.home.id] = this;
-      case HomeRemovedEvent e:
-        repository.remove(e.home.id);
-      default:
-    }
-  }
 }
