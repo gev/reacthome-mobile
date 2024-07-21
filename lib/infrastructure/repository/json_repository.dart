@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/common/entity.dart';
+import 'package:reacthome/common/entity_event.dart';
 import 'package:reacthome/infrastructure/repository/memory_repository.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
@@ -9,8 +11,10 @@ class JsonRepository<E extends Entity<String>> {
   final MemoryRepository<String, E> _repository;
   final From<E> _fromJson;
   final To<E> _toJson;
+  final Emitter<EntityEvent> sink;
 
-  const JsonRepository(this._repository, this._fromJson, this._toJson);
+  const JsonRepository(
+      this._repository, this._fromJson, this._toJson, this.sink);
 
   Future<void> load(File file) async {
     try {
@@ -22,6 +26,7 @@ class JsonRepository<E extends Entity<String>> {
           tmp[key] = _fromJson(value);
         });
         _repository.init(tmp);
+        sink.emit(EntityPoolRegisteredEvent(tmp.keys));
       }
     } catch (_) {}
   }

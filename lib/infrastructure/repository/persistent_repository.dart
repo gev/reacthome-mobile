@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/common/entity.dart';
+import 'package:reacthome/common/entity_event.dart';
 import 'package:reacthome/common/repository.dart';
 import 'package:reacthome/infrastructure/repository/json_repository.dart';
 import 'package:reacthome/infrastructure/repository/memory_repository.dart';
@@ -13,8 +15,13 @@ class PersistentRepository<E extends Entity<String>>
     implements Repository<String, E> {
   final Persistent _persistent;
   final Repository<String, E> _repository;
+  final Emitter<EntityEvent> _sink;
 
-  const PersistentRepository._(this._persistent, this._repository);
+  const PersistentRepository._(
+    this._persistent,
+    this._repository,
+    this._sink,
+  );
 
   static final _instances = <String, PersistentRepository>{};
 
@@ -23,6 +30,7 @@ class PersistentRepository<E extends Entity<String>>
     required String scope,
     required From<T> fromJson,
     required To<T> toJson,
+    required Emitter<EntityEvent> sink,
     Duration timeout = defaultTimeout,
   }) async {
     final key = '$scope/$name';
@@ -30,7 +38,7 @@ class PersistentRepository<E extends Entity<String>>
       return _instances[key]! as PersistentRepository<T>;
     }
     final repository = MemoryRepository<String, T>();
-    final jsonRepository = JsonRepository(repository, fromJson, toJson);
+    final jsonRepository = JsonRepository(repository, fromJson, toJson, sink);
     final persistent = await Persistent.make(
       name,
       scope,
@@ -38,7 +46,8 @@ class PersistentRepository<E extends Entity<String>>
       toFile: jsonRepository.save,
       timeout: timeout,
     );
-    final persistentRepository = PersistentRepository._(persistent, repository);
+    final persistentRepository =
+        PersistentRepository._(persistent, repository, sink);
     _instances[key] = persistentRepository;
     return persistentRepository;
   }
@@ -62,6 +71,7 @@ class PersistentRepository<E extends Entity<String>>
   void put(E entity) {
     _repository.put(entity);
     _persistent.setTimestamp();
+    _sink.emit(EntityRegisteredEvent(entity.id));
   }
 
   @override
@@ -69,12 +79,14 @@ class PersistentRepository<E extends Entity<String>>
     final e = _repository.remove(id);
     if (e != null) {
       _persistent.setTimestamp();
+      _sink.emit(EntityUnregisteredEvent(e.id));
     }
     return e;
   }
 
   @override
   void clear() {
+    _sink.emit(EntityPoolUnregisteredEvent(_repository.getAllId()));
     _repository.clear();
     _persistent.setTimestamp();
   }

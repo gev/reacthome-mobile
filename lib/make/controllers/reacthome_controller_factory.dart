@@ -10,6 +10,13 @@ class ReacthomeControllerFactory {
         repository: controllerRepository,
       );
 
-  static Future<HomeController> makeHomeController() async =>
-      HomeController(home: await HomeFactory.makeHomeApi());
+  static Future<HomeController> makeHomeController() async => HomeController(
+        controllers: controllerRepository,
+        eventSource: HomeFactory.entityEventBus.stream,
+        home: await HomeFactory.makeHomeApi(),
+      );
+
+  static Future<void> makeControllers() async {
+    await makeHomeController();
+  }
 }
