@@ -17,7 +17,7 @@ class DiscoveryScreenFactory {
         knownHome: await HomeFactory.makeHomeApi(),
       );
 
-  static HomeViewModel makeHomeViewModel() => HomeViewModel(
+  static HomesViewModel makeHomeViewModel() => HomesViewModel(
         eventSource: DiscoveryFactory.homeEventBus.stream,
         home: DiscoveryFactory.makeHomeApi(),
       );

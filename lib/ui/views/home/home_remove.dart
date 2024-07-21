@@ -18,7 +18,7 @@ class HomeRemove extends StatelessWidget {
       builder: (_) => HomeRemoveConfirm(id, viewModel),
     );
     if (confirmed == true) {
-      viewModel.removeHome(id);
+      viewModel.removeHome();
       if (context.mounted) {
         Navigator.of(context).clearNamed(
           NavigationRouteNames.homeList,

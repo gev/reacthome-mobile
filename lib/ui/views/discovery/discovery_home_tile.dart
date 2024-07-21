@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/common/view_model_builder.dart';
 import 'package:reacthome/ui/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/view_models/home_view_model.dart';
 import 'package:reacthome/ui_kit/kit.dart';
@@ -7,7 +8,7 @@ import 'package:reacthome/ui_kit/kit.dart';
 class DiscoveryHomeTile extends StatelessWidget {
   final String id;
   final DiscoveryViewModel discoveryViewModel;
-  final HomeViewModel homeViewModel;
+  final HomesViewModel homeViewModel;
   final void Function() onTap;
 
   const DiscoveryHomeTile(
@@ -21,10 +22,10 @@ class DiscoveryHomeTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return ListenableBuilder(
-      listenable: homeViewModel,
-      builder: (context, _) {
-        final home = homeViewModel.getHome(id, locale);
+    return ViewModelBuilder(
+      viewModel: homeViewModel.getViewModel(id, locale),
+      builder: (context, viewModel, _) {
+        final home = viewModel.home;
         return list.tile(
           title: Text(home.meta.title),
           subtitle: Text(

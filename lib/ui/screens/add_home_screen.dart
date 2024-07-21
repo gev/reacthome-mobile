@@ -5,7 +5,7 @@ import 'package:reacthome/ui/views/home/home_add_form.dart';
 import 'package:reacthome/ui_kit/layouts/fixed_width_layout.dart';
 
 class AddHomeScreen extends StatelessWidget {
-  final HomeViewModel viewModel;
+  final HomesViewModel viewModel;
 
   const AddHomeScreen({
     required this.viewModel,

@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:reacthome/common/view_model_builder.dart';
 import 'package:reacthome/ui/view_models/connection_view_model.dart';
 import 'package:reacthome/ui/views/connection/connection.dart';
 import 'package:reacthome/ui_kit/kit.dart';
@@ -7,7 +8,7 @@ import 'package:reacthome/ui_kit/kit.dart';
 class Connections extends StatelessWidget {
   final String id;
   final String? localAddress;
-  final ConnectionViewModel viewModel;
+  final ConnectionsViewModel viewModel;
 
   const Connections(
     this.id,
@@ -17,29 +18,29 @@ class Connections extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => ListenableBuilder(
-        listenable: viewModel,
-        builder: (context, _) {
+  Widget build(BuildContext context) => ViewModelBuilder(
+        viewModel: viewModel.getConnectionViewModel(id),
+        builder: (context, viewModel, _) {
           final locale = AppLocalizations.of(context)!;
           return list.section(
             context,
             children: [
               Connection(
-                isConnected: viewModel.isConnected(id),
+                isConnected: viewModel.isConnected,
                 title: locale.connection,
-                onToggle: viewModel.toggleConnection(id),
+                onToggle: viewModel.toggleConnection,
               ),
               Connection(
-                isConnected: viewModel.isLocalConnected(id),
+                isConnected: viewModel.isLocalConnected,
                 title: locale.localConnection,
                 subtitle: localAddress,
-                onToggle: viewModel.toggleLocalConnection(id),
+                onToggle: viewModel.toggleLocalConnection,
               ),
               Connection(
-                isConnected: viewModel.isCloudConnected(id),
+                isConnected: viewModel.isCloudConnected,
                 title: locale.cloudConnection,
                 subtitle: 'gate.reacthome.net',
-                onToggle: viewModel.toggleCloudConnection(id),
+                onToggle: viewModel.toggleCloudConnection,
               ),
             ],
           );

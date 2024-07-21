@@ -3,9 +3,9 @@ class HomeConnectionUiDto {
   final bool isLocalConnected;
   final bool isCloudConnected;
 
-  HomeConnectionUiDto({
-    required this.isConnected,
-    required this.isLocalConnected,
-    required this.isCloudConnected,
-  });
+  HomeConnectionUiDto(
+    this.isConnected,
+    this.isLocalConnected,
+    this.isCloudConnected,
+  );
 }

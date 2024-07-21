@@ -5,7 +5,7 @@ import 'package:reacthome/ui/view_models/home_view_model.dart';
 import 'package:reacthome/ui_kit/kit.dart';
 
 class DiscoveryHomeAdd extends StatelessWidget {
-  final HomeViewModel viewModel;
+  final HomesViewModel viewModel;
 
   const DiscoveryHomeAdd(this.viewModel, {super.key});
 

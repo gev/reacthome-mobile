@@ -1,12 +1,10 @@
-import 'package:flutter/widgets.dart';
+import 'package:reacthome/common/view_model.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_state.dart';
 import 'package:reacthome/core/home/home_api.dart';
-import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class DiscoveryViewModel extends BusListener<DiscoveryEvent>
-    with ChangeNotifier {
+class DiscoveryViewModel extends ViewModel<DiscoveryEvent> {
   final DiscoveryApi discovery;
   final HomeApi discoveredHome;
   final HomeApi knownHome;
@@ -43,7 +41,5 @@ class DiscoveryViewModel extends BusListener<DiscoveryEvent>
   }
 
   @override
-  void handle(DiscoveryEvent event) {
-    notifyListeners();
-  }
+  bool shouldNotify(DiscoveryEvent event) => true;
 }

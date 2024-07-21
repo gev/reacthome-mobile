@@ -7,7 +7,7 @@ import 'package:reacthome/ui/views/home/home_list.dart';
 import 'package:reacthome/ui_kit/layouts/fixed_width_layout.dart';
 
 class HomeListScreen extends StatelessWidget {
-  final HomeViewModel homeViewModel;
+  final HomesViewModel homeViewModel;
   final HomeListViewModel homeListViewModel;
 
   const HomeListScreen({

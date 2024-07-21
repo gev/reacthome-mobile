@@ -6,7 +6,7 @@ import 'package:reacthome/ui_kit/kit.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 
 class HomeAddForm extends StatefulWidget {
-  final HomeViewModel viewModel;
+  final HomesViewModel viewModel;
 
   const HomeAddForm(this.viewModel, {super.key});
 

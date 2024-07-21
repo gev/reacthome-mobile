@@ -1,9 +1,8 @@
-import 'package:flutter/widgets.dart';
+import 'package:reacthome/common/view_model.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
-import 'package:reacthome/infrastructure/bus/bus_listener.dart';
 
-class HomeListViewModel extends BusListener<HomeEvent> with ChangeNotifier {
+class HomeListViewModel extends ViewModel<HomeEvent> {
   final HomeApi home;
 
   HomeListViewModel({
@@ -14,12 +13,6 @@ class HomeListViewModel extends BusListener<HomeEvent> with ChangeNotifier {
   Iterable<String> get homes => home.getAllHomesId();
 
   @override
-  void handle(HomeEvent event) {
-    switch (event) {
-      case HomeAddedEvent _:
-      case HomeRemovedEvent _:
-        notifyListeners();
-      default:
-    }
-  }
+  bool shouldNotify(HomeEvent event) =>
+      event is HomeAddedEvent || event is HomeRemovedEvent;
 }

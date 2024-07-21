@@ -9,13 +9,13 @@ import 'package:reacthome/ui/view_models/home_view_model.dart';
 class HomeScreenFactory {
   HomeScreenFactory._();
 
-  static Future<HomeViewModel> makeHomeViewModel() async => HomeViewModel(
+  static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
         home: await HomeFactory.makeHomeApi(),
       );
 
-  static Future<ConnectionViewModel> makeConnectionViewModel() async =>
-      ConnectionViewModel(
+  static Future<ConnectionsViewModel> makeConnectionViewModel() async =>
+      ConnectionsViewModel(
         eventSource: ConnectionFactory.connectionEventBus.stream,
         homeConnection: HomeConnectionFactory.makeHomeConnectionApi(),
         local: ConnectionFactory.makeLocalConnectionApi(),

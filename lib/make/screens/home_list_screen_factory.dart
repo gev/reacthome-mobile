@@ -7,7 +7,7 @@ import 'package:reacthome/ui/view_models/home_view_model.dart';
 class AddHomeListFactory {
   AddHomeListFactory._();
 
-  static Future<HomeViewModel> makeHomeViewModel() async => HomeViewModel(
+  static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
         home: await HomeFactory.makeHomeApi(),
       );

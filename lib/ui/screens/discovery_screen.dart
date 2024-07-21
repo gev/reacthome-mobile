@@ -12,7 +12,7 @@ import 'package:reacthome/ui_kit/layouts/fixed_width_layout.dart';
 class DiscoveryScreen extends StatelessWidget {
   final DiscoveryViewModel discoveryViewModel;
   final HomeListViewModel homeListViewModel;
-  final HomeViewModel homeViewModel;
+  final HomesViewModel homeViewModel;
 
   const DiscoveryScreen({
     required this.discoveryViewModel,
