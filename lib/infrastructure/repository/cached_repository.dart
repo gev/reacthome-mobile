@@ -9,7 +9,7 @@ class CachedRepository<E extends Entity<String>>
   final Emitter<EntityEvent> eventSink;
 
   CachedRepository({required this.repository, required this.eventSink}) {
-    final ids = repository.getAllId();
+    final ids = repository.keys;
     if (ids.isNotEmpty) {
       eventSink.emit(EntityPoolRegisteredEvent(ids));
     }
@@ -19,10 +19,10 @@ class CachedRepository<E extends Entity<String>>
   int get length => repository.length;
 
   @override
-  Iterable<String> getAllId() => repository.getAllId();
+  Iterable<String> get keys => repository.keys;
 
   @override
-  Iterable<E> getAll() => repository.getAll();
+  Iterable<E> get values => repository.values;
 
   @override
   bool has(String id) => repository.has(id);
@@ -44,7 +44,7 @@ class CachedRepository<E extends Entity<String>>
 
   @override
   void clear() {
-    final ids = repository.getAllId();
+    final ids = repository.keys;
     if (ids.isNotEmpty) {
       eventSink.emit(EntityPoolUnregisteredEvent(ids));
     }
