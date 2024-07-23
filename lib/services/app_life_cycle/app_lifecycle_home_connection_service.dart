@@ -28,7 +28,7 @@ class AppLifecycleHomeConnectionService extends BusListener<AppLifecycleEvent> {
       case AppLifecycleEvent.active:
         _timer = Timer.periodic(reconnectTimeout, (_) {
           if (connectivity.state.hasLocalNetworks) {
-            connection.connectLocalAll(home.getAllHomes());
+            connection.connectAll(home.getAllHomes());
           }
           if (connectivity.state.hasMobile) {
             connection.connectCloudAll(home.getAllHomes());
