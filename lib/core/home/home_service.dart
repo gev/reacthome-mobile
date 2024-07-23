@@ -21,10 +21,10 @@ class HomeService implements HomeApi {
   int get count => repository.length;
 
   @override
-  Iterable<String> getAllHomesId() => repository.getAllId();
+  Iterable<String> getAllHomesId() => repository.keys;
 
   @override
-  Iterable<Home> getAllHomes() => repository.getAll();
+  Iterable<Home> getAllHomes() => repository.values;
 
   @override
   Home? getHomeById(String id) => repository.get(id);

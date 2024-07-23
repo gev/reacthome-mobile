@@ -45,13 +45,13 @@ class PersistentBox<V> implements Box<V> {
   @override
   void put(V value) {
     _box.put(value);
-    _persistent.setTimestamp();
+    _persistent.updateTimestamp();
   }
 
   @override
   void clear() {
     _box.clear();
-    _persistent.setTimestamp();
+    _persistent.updateTimestamp();
   }
 
   void dispose() => _persistent.dispose();

@@ -10,10 +10,10 @@ class MemoryRepository<K, V extends Entity<K>> implements Repository<K, V> {
   void init(Map<K, V> entities) => _store = entities;
 
   @override
-  Iterable<K> getAllId() => _store.keys;
+  Iterable<K> get keys => _store.keys;
 
   @override
-  Iterable<V> getAll() => _store.values;
+  Iterable<V> get values => _store.values;
 
   @override
   bool has(K id) => _store.containsKey(id);

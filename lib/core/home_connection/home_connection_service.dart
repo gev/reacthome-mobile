@@ -23,10 +23,10 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   });
 
   @override
-  Iterable<String> getAllConnectionsId() => repository.getAllId();
+  Iterable<String> getAllConnectionsId() => repository.keys;
 
   @override
-  Iterable<HomeConnection<S>> getAllConnections() => repository.getAll();
+  Iterable<HomeConnection<S>> getAllConnections() => repository.values;
 
   @override
   HomeConnection<S> getConnectionById(String id) => _getConnectionById(id);

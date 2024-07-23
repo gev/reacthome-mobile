@@ -19,10 +19,10 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
   });
 
   @override
-  Iterable<String> getAllConnectionsId() => repository.getAllId();
+  Iterable<String> getAllConnectionsId() => repository.keys;
 
   @override
-  Iterable<Connection<S>> getAllConnections() => repository.getAll();
+  Iterable<Connection<S>> getAllConnections() => repository.values;
 
   @override
   Connection<S> getConnectionById(String id) => _getById(id);

@@ -28,9 +28,9 @@ class JsonRepository<E extends Entity<String>> {
 
   Future<void> save(File file) async {
     final json = <String, dynamic>{};
-    _repository.getAll().forEach((entity) {
+    for (var entity in _repository.values) {
       json[entity.id] = _toJson(entity);
-    });
+    }
     file.writeAsString(jsonEncode(json));
   }
 }

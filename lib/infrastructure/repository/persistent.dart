@@ -65,7 +65,7 @@ class Persistent {
     } catch (_) {}
   }
 
-  void setTimestamp() =>
+  void updateTimestamp() =>
       _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
 
   void dispose() {

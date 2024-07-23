@@ -50,10 +50,10 @@ class PersistentRepository<E extends Entity<String>>
   int get length => _repository.length;
 
   @override
-  Iterable<String> getAllId() => _repository.getAllId();
+  Iterable<String> get keys => _repository.keys;
 
   @override
-  Iterable<E> getAll() => _repository.getAll();
+  Iterable<E> get values => _repository.values;
 
   @override
   bool has(String id) => _repository.has(id);
@@ -64,14 +64,14 @@ class PersistentRepository<E extends Entity<String>>
   @override
   void put(E entity) {
     _repository.put(entity);
-    _persistent.setTimestamp();
+    _persistent.updateTimestamp();
   }
 
   @override
   E? remove(String id) {
     final e = _repository.remove(id);
     if (e != null) {
-      _persistent.setTimestamp();
+      _persistent.updateTimestamp();
     }
     return e;
   }
@@ -79,7 +79,7 @@ class PersistentRepository<E extends Entity<String>>
   @override
   void clear() {
     _repository.clear();
-    _persistent.setTimestamp();
+    _persistent.updateTimestamp();
   }
 
   void dispose() => _persistent.dispose();
