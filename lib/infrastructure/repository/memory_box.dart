@@ -6,7 +6,7 @@ class MemoryBox<V> implements Box<V> {
   void init(V? value) => _store = value;
 
   @override
-  V? get() => _store;
+  V? get value => _store;
 
   @override
   void put(V entity) => _store = entity;

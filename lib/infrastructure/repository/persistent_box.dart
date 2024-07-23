@@ -40,7 +40,7 @@ class PersistentBox<V> implements Box<V> {
   }
 
   @override
-  V? get() => _box.get();
+  V? get value => _box.value;
 
   @override
   void put(V value) {

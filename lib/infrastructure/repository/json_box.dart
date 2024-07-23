@@ -5,7 +5,7 @@ import 'package:reacthome/infrastructure/repository/memory_box.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
 class JsonBox<T> {
-  final MemoryBox _box;
+  final MemoryBox<T> _box;
   final From<T?> _fromJson;
   final To<T?> _toJson;
 
@@ -21,7 +21,7 @@ class JsonBox<T> {
   }
 
   Future<void> save(File file) async {
-    final json = jsonEncode(_toJson(_box.get()));
+    final json = jsonEncode(_toJson(_box.value));
     file.writeAsString(json);
   }
 }

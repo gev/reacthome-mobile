@@ -9,11 +9,11 @@ class CachedBox<E extends Entity<String>> implements Box<E> {
   final Box<E> box;
 
   CachedBox({required this.eventSink, required this.box}) {
-    box.get()?.let((e) => eventSink.emit(EntityRegisteredEvent(e.id)));
+    box.value?.let((e) => eventSink.emit(EntityRegisteredEvent(e.id)));
   }
 
   @override
-  E? get() => box.get();
+  E? get value => box.value;
 
   @override
   void put(E entity) {
@@ -23,7 +23,7 @@ class CachedBox<E extends Entity<String>> implements Box<E> {
 
   @override
   void clear() {
-    box.get()?.let((e) => eventSink.emit(EntityUnregisteredEvent(e.id)));
+    box.value?.let((e) => eventSink.emit(EntityUnregisteredEvent(e.id)));
     box.clear();
   }
 }
