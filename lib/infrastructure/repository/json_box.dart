@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:reacthome/infrastructure/repository/memory_box.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
+import 'package:reacthome/util/extensions.dart';
 
 class JsonBox<T> {
   final MemoryBox<T> _box;
@@ -14,9 +15,7 @@ class JsonBox<T> {
   Future<void> load(File file) async {
     try {
       final data = await file.readAsString();
-      if (data.isNotEmpty) {
-        _box.init(_fromJson(jsonDecode(data)));
-      }
+      _fromJson(jsonDecode(data))?.let(_box.init);
     } catch (_) {}
   }
 

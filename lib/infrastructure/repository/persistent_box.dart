@@ -14,7 +14,8 @@ class PersistentBox<V> implements Box<V> {
 
   static final _instances = <String, PersistentBox>{};
 
-  static Future<PersistentBox<T>> make<T>({
+  static Future<PersistentBox<T>> make<T>(
+    T initialValue, {
     required String name,
     required String scope,
     required From<T?> fromJson,
@@ -25,7 +26,7 @@ class PersistentBox<V> implements Box<V> {
     if (_instances.containsKey(key)) {
       return _instances[key]! as PersistentBox<T>;
     }
-    final box = MemoryBox<T>();
+    final box = MemoryBox<T>(initialValue);
     final file = JsonBox(box, fromJson, toJson);
     final persistent = await Persistent.make(
       name,
@@ -40,17 +41,11 @@ class PersistentBox<V> implements Box<V> {
   }
 
   @override
-  V? get value => _box.value;
+  V get value => _box.value;
 
   @override
   void put(V value) {
     _box.put(value);
-    _persistent.updateTimestamp();
-  }
-
-  @override
-  void clear() {
-    _box.clear();
     _persistent.updateTimestamp();
   }
 
