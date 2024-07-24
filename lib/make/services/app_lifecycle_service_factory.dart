@@ -13,8 +13,8 @@ class AppLifecycleServiceFactory {
   static DiscoveryLifecycleService makeLifecycleDiscoveryService() =>
       DiscoveryLifecycleService(
         eventSource: AppLifecycleFactory.appLifecycleEventBus.stream,
-        discovery: DiscoveryFactory.makeDiscoveryApi(),
-        connectivity: ConnectivityFactory.makeConnectivityApi(),
+        discoveryApi: DiscoveryFactory.makeDiscoveryApi(),
+        connectivityApi: ConnectivityFactory.makeConnectivityApi(),
         restartTimeout: Config.discovery.restartTimeout,
       );
 
@@ -22,9 +22,9 @@ class AppLifecycleServiceFactory {
       makeLifecycleHomeConnectionService() async =>
           AppLifecycleHomeConnectionService(
             eventSource: AppLifecycleFactory.appLifecycleEventBus.stream,
-            home: await HomeFactory.makeHomeApi(),
-            connection: HomeConnectionFactory.makeHomeConnectionApi(),
-            connectivity: ConnectivityFactory.makeConnectivityApi(),
+            homeApi: await HomeFactory.makeHomeApi(),
+            connectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
+            connectivityApi: ConnectivityFactory.makeConnectivityApi(),
             reconnectTimeout: Config.connection.reconnectTimeout,
           );
 

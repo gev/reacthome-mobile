@@ -8,18 +8,18 @@ import 'package:reacthome/ui_kit/layouts/center_layout.dart';
 import 'package:reacthome/util/navigator_extension.dart';
 
 class SplashScreen extends StatelessWidget {
-  final HomeApi home;
+  final HomeApi homeApi;
 
-  const SplashScreen({required this.home, super.key});
+  const SplashScreen({required this.homeApi, super.key});
 
   @override
   Widget build(BuildContext context) {
     Timer(
       const Duration(seconds: 5),
       () => Navigator.of(context).clearNamed(
-        home.count > 0
-            ? NavigationRouteNames.homeList
-            : NavigationRouteNames.welcome,
+        homeApi.homes.isEmpty
+            ? NavigationRouteNames.welcome
+            : NavigationRouteNames.preferredHomes,
       ),
     );
     return CenterLayout(

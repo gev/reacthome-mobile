@@ -7,18 +7,18 @@ import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 
 class AppLifecycleHomeConnectionService extends BusListener<AppLifecycleEvent> {
-  final HomeApi home;
-  final HomeConnectionApi connection;
-  final ConnectivityApi connectivity;
+  final HomeApi homeApi;
+  final HomeConnectionApi connectionApi;
+  final ConnectivityApi connectivityApi;
   final Duration reconnectTimeout;
 
   Timer? _timer;
 
   AppLifecycleHomeConnectionService({
     required super.eventSource,
-    required this.home,
-    required this.connection,
-    required this.connectivity,
+    required this.homeApi,
+    required this.connectionApi,
+    required this.connectivityApi,
     required this.reconnectTimeout,
   });
 
@@ -27,16 +27,16 @@ class AppLifecycleHomeConnectionService extends BusListener<AppLifecycleEvent> {
     switch (event) {
       case AppLifecycleEvent.active:
         _timer = Timer.periodic(reconnectTimeout, (_) {
-          if (connectivity.state.hasLocalNetworks) {
-            connection.connectAll(home.getAllHomes());
+          if (connectivityApi.state.hasLocalNetworks) {
+            connectionApi.connectAll(homeApi.homes);
           }
-          if (connectivity.state.hasMobile) {
-            connection.connectCloudAll(home.getAllHomes());
+          if (connectivityApi.state.hasMobile) {
+            connectionApi.connectCloudAll(homeApi.homes);
           }
         });
       case AppLifecycleEvent.inactive:
         _timer?.cancel();
-        connection.disconnectAll();
+        connectionApi.disconnectAll();
     }
   }
 }

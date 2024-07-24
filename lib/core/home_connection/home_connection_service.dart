@@ -3,7 +3,7 @@ import 'package:reacthome/common/repository.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
-import 'package:reacthome/core/home/home.dart';
+import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_entity.dart';
@@ -11,14 +11,16 @@ import 'package:reacthome/util/extensions.dart';
 
 class HomeConnectionService<S> implements HomeConnectionApi {
   final Emitter<ConnectionEvent> eventSink;
-  final LocalConnectionApi<S> local;
-  final CloudConnectionApi<S> cloud;
+  final LocalConnectionApi<S> localConnectionApi;
+  final CloudConnectionApi<S> cloudConnectionApi;
+  final HomeApi homeApi;
   final Repository<String, HomeConnectionEntity<S>> repository;
 
   const HomeConnectionService({
     required this.eventSink,
-    required this.local,
-    required this.cloud,
+    required this.localConnectionApi,
+    required this.cloudConnectionApi,
+    required this.homeApi,
     required this.repository,
   });
 
@@ -28,33 +30,34 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   HomeConnection<S> getConnectionById(String id) => _getConnectionById(id);
 
   @override
-  void connectAll(Iterable<Home> homes) => homes.forEach(connect);
+  void connectAll(Iterable<String> ids) => ids.forEach(connect);
 
   @override
-  void connect(Home home) {
-    connectLocal(home);
-    connectCloud(home);
+  void connect(String id) {
+    connectLocal(id);
+    connectCloud(id);
   }
 
   @override
-  void connectLocalAll(Iterable<Home> homes) => homes.forEach(connectLocal);
+  void connectLocalAll(Iterable<String> ids) => ids.forEach(connectLocal);
 
   @override
-  void connectLocal(Home home) {
-    final address = home.address;
+  void connectLocal(String id) {
+    final home = homeApi.getHomeById(id);
+    final address = home?.address;
     if (address != null) {
-      local.connect(home.id, address);
+      localConnectionApi.connect(id, address);
     }
   }
 
   @override
-  void connectCloudAll(Iterable<Home> homes) => homes.forEach(connectCloud);
+  void connectCloudAll(Iterable<String> ids) => ids.forEach(connectCloud);
 
   @override
-  void connectCloud(Home home) {
-    final connection = local.getConnectionById(home.id);
+  void connectCloud(String id) {
+    final connection = localConnectionApi.getConnectionById(id);
     if (connection.state != ConnectionState.connected) {
-      cloud.connect(home.id);
+      cloudConnectionApi.connect(id);
     }
   }
 
@@ -72,7 +75,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
 
   @override
   void disconnectLocal(String id) {
-    local.disconnect(id);
+    localConnectionApi.disconnect(id);
   }
 
   @override
@@ -80,14 +83,14 @@ class HomeConnectionService<S> implements HomeConnectionApi {
 
   @override
   void disconnectCloud(String id) {
-    cloud.disconnect(id);
+    cloudConnectionApi.disconnect(id);
   }
 
   @override
   void select(String id) => _getConnectionById(id)
       .select(
-        local.getConnectionById(id),
-        cloud.getConnectionById(id),
+        localConnectionApi.getConnectionById(id),
+        cloudConnectionApi.getConnectionById(id),
       )
       ?.let(eventSink.emit);
 

@@ -4,11 +4,7 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/meta/meta.dart';
 
 abstract interface class HomeApi {
-  int get count;
-
-  Iterable<String> getAllHomesId();
-
-  Iterable<Home> getAllHomes();
+  Iterable<String> get homes;
 
   Home? getHomeById(String id);
 

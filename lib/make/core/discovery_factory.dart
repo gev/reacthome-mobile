@@ -15,7 +15,7 @@ class DiscoveryFactory {
 
   static final _repository = MemoryRepository<String, HomeEntity>();
 
-  static final _process = Discovery<MulticastSource>();
+  static final _discovery = Discovery<MulticastSource>();
 
   static final homeEventBus = Bus<HomeEvent>();
 
@@ -28,6 +28,6 @@ class DiscoveryFactory {
 
   static DiscoveryApi<MulticastSource> makeDiscoveryApi() => DiscoveryService(
         eventSink: discoveryEventBus.sink,
-        discovery: _process,
+        discovery: _discovery,
       );
 }

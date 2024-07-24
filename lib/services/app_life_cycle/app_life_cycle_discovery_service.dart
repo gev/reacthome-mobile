@@ -6,14 +6,14 @@ import 'package:reacthome/core/connectivity/connectivity_api.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
 
 class DiscoveryLifecycleService extends BusListener<AppLifecycleEvent> {
-  final DiscoveryApi discovery;
-  final ConnectivityApi connectivity;
+  final DiscoveryApi discoveryApi;
+  final ConnectivityApi connectivityApi;
   final Duration restartTimeout;
 
   DiscoveryLifecycleService({
     required super.eventSource,
-    required this.discovery,
-    required this.connectivity,
+    required this.discoveryApi,
+    required this.connectivityApi,
     required this.restartTimeout,
   });
 
@@ -24,13 +24,13 @@ class DiscoveryLifecycleService extends BusListener<AppLifecycleEvent> {
     switch (event) {
       case AppLifecycleEvent.active:
         _timer = Timer.periodic(restartTimeout, (_) {
-          if (connectivity.state.hasLocalNetworks) {
-            discovery.start();
+          if (connectivityApi.state.hasLocalNetworks) {
+            discoveryApi.start();
           }
         });
       case AppLifecycleEvent.inactive:
         _timer?.cancel();
-        discovery.stop();
+        discoveryApi.stop();
     }
   }
 }

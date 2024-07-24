@@ -14,14 +14,15 @@ class DiscoveryServiceFactory {
   static Future<DiscoveryHomeUpdateService>
       makeDiscoveryHomeUpdateService() async => DiscoveryHomeUpdateService(
             eventSource: DiscoveryFactory.homeEventBus.stream,
-            home: await HomeFactory.makeHomeApi(),
+            preferredHomeApi: await HomeFactory.makeHomeApi(),
+            discoveredHomeApi: DiscoveryFactory.makeHomeApi(),
           );
 
   static DiscoveryMulticastService makeDiscoveryMulticastService() =>
       DiscoveryMulticastService(
         eventSource: DiscoveryFactory.discoveryEventBus.stream,
-        discovery: DiscoveryFactory.makeDiscoveryApi(),
-        connectivity: ConnectivityFactory.makeConnectivityApi(),
+        discoveryApi: DiscoveryFactory.makeDiscoveryApi(),
+        connectivityApi: ConnectivityFactory.makeConnectivityApi(),
         factory: MulticastSourceFactory(
           group: Config.discovery.listen.group,
           port: Config.discovery.listen.port,
@@ -32,7 +33,7 @@ class DiscoveryServiceFactory {
   static DiscoveryTimeoutService makeDiscoveryTimeoutService() =>
       DiscoveryTimeoutService(
         eventSource: DiscoveryFactory.homeEventBus.stream,
-        discovered: DiscoveryFactory.makeHomeApi(),
+        homeApi: DiscoveryFactory.makeHomeApi(),
         timeout: Config.discovery.renewTimeout,
       );
 

@@ -6,11 +6,11 @@ import 'package:reacthome/core/connection/connection_type.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 
 class ActiveConnectionService extends BusListener<ConnectionEvent> {
-  final HomeConnectionApi connection;
+  final HomeConnectionApi connectionApi;
 
   ActiveConnectionService({
     required super.eventSource,
-    required this.connection,
+    required this.connectionApi,
   });
 
   @override
@@ -27,7 +27,7 @@ class ActiveConnectionService extends BusListener<ConnectionEvent> {
   }
 
   void _activateConnection(String id) {
-    connection.select(id);
+    connectionApi.select(id);
   }
 
   void _deactivateConnection(String id, ConnectionType type) {
@@ -36,9 +36,9 @@ class ActiveConnectionService extends BusListener<ConnectionEvent> {
       () {
         switch (type) {
           case ConnectionType.local:
-            connection.disconnectCloud(id);
+            connectionApi.disconnectCloud(id);
           case ConnectionType.cloud:
-            connection.disconnectLocal(id);
+            connectionApi.disconnectLocal(id);
         }
       },
     );

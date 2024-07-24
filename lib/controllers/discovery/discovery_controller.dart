@@ -6,17 +6,17 @@ import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/meta/meta.dart';
 
 class DiscoveryController implements Handler<Datagram> {
-  final HomeApi discovered;
+  final HomeApi homeApi;
 
   const DiscoveryController({
-    required this.discovered,
+    required this.homeApi,
   });
   @override
   void handle(Datagram datagram) {
     try {
       final action = DiscoveryActionDto.fromData(datagram.data);
       if (action != null) {
-        discovered.addHome(
+        homeApi.addHome(
           action.id,
           meta: Meta(
             title: action.payload.title,
@@ -25,7 +25,7 @@ class DiscoveryController implements Handler<Datagram> {
           project: action.payload.project,
           address: datagram.address,
         );
-        discovered.confirmHome(action.id);
+        homeApi.confirmHome(action.id);
       }
     } catch (_) {}
   }

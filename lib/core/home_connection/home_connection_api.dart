@@ -1,17 +1,16 @@
-import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 
 abstract interface class HomeConnectionApi {
   HomeConnection getConnectionById(String id);
 
-  void connectAll(Iterable<Home> homes);
-  void connect(Home home);
+  void connectAll(Iterable<String> ids);
+  void connect(String id);
 
-  void connectLocalAll(Iterable<Home> homes);
-  void connectLocal(Home home);
+  void connectLocalAll(Iterable<String> ids);
+  void connectLocal(String id);
 
-  void connectCloudAll(Iterable<Home> homes);
-  void connectCloud(Home home);
+  void connectCloudAll(Iterable<String> ids);
+  void connectCloud(String id);
 
   void disconnectAll();
   void disconnect(String id);

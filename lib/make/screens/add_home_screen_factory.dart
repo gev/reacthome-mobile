@@ -8,7 +8,7 @@ class AddHomeScreenFactory {
 
   static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
-        home: await HomeFactory.makeHomeApi(),
+        homeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<WidgetBuilder> make() async {

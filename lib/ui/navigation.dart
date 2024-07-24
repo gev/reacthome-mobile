@@ -6,7 +6,7 @@ class NavigationRouteNames {
   static const welcome = 'welcome';
   static const discovery = 'discovery';
   static const addHome = 'addHome';
-  static const homeList = 'homeList';
+  static const preferredHomes = 'homeList';
 }
 
 class Navigation {
@@ -34,6 +34,6 @@ class Navigation {
         NavigationRouteNames.welcome: welcome,
         NavigationRouteNames.discovery: discovery,
         NavigationRouteNames.addHome: addHome,
-        NavigationRouteNames.homeList: homeList,
+        NavigationRouteNames.preferredHomes: homeList,
       });
 }

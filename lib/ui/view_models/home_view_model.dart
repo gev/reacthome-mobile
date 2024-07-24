@@ -7,17 +7,17 @@ import 'package:reacthome/ui/dto/home_ui_dto.dart';
 
 class HomesViewModel {
   final Stream<HomeEvent> eventSource;
-  final HomeApi home;
+  final HomeApi homeApi;
 
   HomesViewModel({
     required this.eventSource,
-    required this.home,
+    required this.homeApi,
   });
 
   HomeViewModel makeViewModel(String id, AppLocalizations locale) =>
-      HomeViewModel(id, locale, home, eventSource: eventSource);
+      HomeViewModel(id, locale, homeApi, eventSource: eventSource);
 
-  void addHome(String id) => home.addHome(id, meta: const Meta());
+  void addHome(String id) => homeApi.addHome(id, meta: const Meta());
 }
 
 class HomeViewModel extends ViewModel<HomeEvent> {
@@ -41,6 +41,6 @@ class HomeViewModel extends ViewModel<HomeEvent> {
 
   @override
   bool shouldNotify(HomeEvent event) =>
-      event.home.id == id &&
+      event.id == id &&
       (event is HomeMetaChangedEvent || event is HomeProjectChangedEvent);
 }

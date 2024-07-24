@@ -5,41 +5,41 @@ import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 import 'package:reacthome/ui/dto/connection_ui_dto.dart';
 import 'package:reacthome/ui/dto/home_connection_ui_dto.dart';
-import 'package:reacthome/util/extensions.dart';
 
 class ConnectionsViewModel<S> {
   final Stream<ConnectionEvent> eventSource;
-  final HomeConnectionApi homeConnection;
-  final LocalConnectionApi<S> local;
-  final CloudConnectionApi<S> cloud;
-  final HomeApi home;
+  final HomeConnectionApi homeConnectionApi;
+  final LocalConnectionApi<S> localConnectionApi;
+  final CloudConnectionApi<S> cloudConnectionApi;
+  final HomeApi homeApi;
 
   ConnectionsViewModel({
     required this.eventSource,
-    required this.homeConnection,
-    required this.local,
-    required this.cloud,
-    required this.home,
+    required this.homeConnectionApi,
+    required this.localConnectionApi,
+    required this.cloudConnectionApi,
+    required this.homeApi,
   });
 
   ConnectionViewModel<S> makeConnectionViewModel(String id) =>
-      ConnectionViewModel(id, homeConnection, local, cloud, home,
+      ConnectionViewModel(id, homeConnectionApi, localConnectionApi,
+          cloudConnectionApi, homeApi,
           eventSource: eventSource);
 }
 
 class ConnectionViewModel<S> extends ViewModel<ConnectionEvent> {
-  final HomeConnectionApi homeConnection;
+  final HomeConnectionApi homeConnectionApi;
   final LocalConnectionApi<S> local;
   final CloudConnectionApi<S> cloud;
   final HomeApi home;
   final String id;
 
   ConnectionViewModel(
-      this.id, this.homeConnection, this.local, this.cloud, this.home,
+      this.id, this.homeConnectionApi, this.local, this.cloud, this.home,
       {required super.eventSource});
 
   bool get isConnected =>
-      ConnectionUiDto(homeConnection.getConnectionById(id).connection)
+      ConnectionUiDto(homeConnectionApi.getConnectionById(id).connection)
           .isConnected;
 
   bool get isLocalConnected =>
@@ -51,29 +51,29 @@ class ConnectionViewModel<S> extends ViewModel<ConnectionEvent> {
   HomeConnectionUiDto getConnectionState(String id) =>
       HomeConnectionUiDto(isConnected, isLocalConnected, isCloudConnected);
 
-  void toggleConnection(bool value) => home.getHomeById(id)?.let((it) {
-        if (value) {
-          homeConnection.connect(it);
-        } else {
-          homeConnection.disconnect(id);
-        }
-      });
+  void toggleConnection(bool value) {
+    if (value) {
+      homeConnectionApi.connect(id);
+    } else {
+      homeConnectionApi.disconnect(id);
+    }
+  }
 
-  void toggleLocalConnection(bool value) => home.getHomeById(id)?.let((it) {
-        if (value) {
-          homeConnection.connectLocal(it);
-        } else {
-          homeConnection.disconnectLocal(id);
-        }
-      });
+  void toggleLocalConnection(bool value) {
+    if (value) {
+      homeConnectionApi.connectLocal(id);
+    } else {
+      homeConnectionApi.disconnectLocal(id);
+    }
+  }
 
-  void toggleCloudConnection(bool value) => home.getHomeById(id)?.let((it) {
-        if (value) {
-          homeConnection.connectCloud(it);
-        } else {
-          homeConnection.disconnectCloud(id);
-        }
-      });
+  void toggleCloudConnection(bool value) {
+    if (value) {
+      homeConnectionApi.connectCloud(id);
+    } else {
+      homeConnectionApi.disconnectCloud(id);
+    }
+  }
 
   @override
   bool shouldNotify(ConnectionEvent event) =>

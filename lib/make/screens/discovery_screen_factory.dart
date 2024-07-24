@@ -14,17 +14,17 @@ class DiscoveryScreenFactory {
         eventSource: DiscoveryFactory.discoveryEventBus.stream,
         discovery: DiscoveryFactory.makeDiscoveryApi(),
         discoveredHome: DiscoveryFactory.makeHomeApi(),
-        knownHome: await HomeFactory.makeHomeApi(),
+        preferredHomeApi: await HomeFactory.makeHomeApi(),
       );
 
   static HomesViewModel makeHomeViewModel() => HomesViewModel(
         eventSource: DiscoveryFactory.homeEventBus.stream,
-        home: DiscoveryFactory.makeHomeApi(),
+        homeApi: DiscoveryFactory.makeHomeApi(),
       );
 
   static HomeListViewModel makeHomeListViewModel() => HomeListViewModel(
         eventSource: DiscoveryFactory.homeEventBus.stream,
-        home: DiscoveryFactory.makeHomeApi(),
+        homeApi: DiscoveryFactory.makeHomeApi(),
       );
 
   static Future<WidgetBuilder> make() async {

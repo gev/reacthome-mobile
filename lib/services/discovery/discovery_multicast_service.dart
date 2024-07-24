@@ -6,14 +6,14 @@ import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source_factory.dart';
 
 class DiscoveryMulticastService extends BusListener<DiscoveryEvent> {
-  final DiscoveryApi<MulticastSource> discovery;
-  final ConnectivityApi connectivity;
+  final DiscoveryApi<MulticastSource> discoveryApi;
+  final ConnectivityApi connectivityApi;
   final MulticastSourceFactory factory;
 
   DiscoveryMulticastService({
     required super.eventSource,
-    required this.discovery,
-    required this.connectivity,
+    required this.discoveryApi,
+    required this.connectivityApi,
     required this.factory,
   });
 
@@ -21,10 +21,11 @@ class DiscoveryMulticastService extends BusListener<DiscoveryEvent> {
   void handle(DiscoveryEvent event) async {
     switch (event) {
       case DiscoveryStartRequestedEvent _:
-        if (connectivity.state.hasWifi || connectivity.state.hasEthernet) {
+        if (connectivityApi.state.hasWifi ||
+            connectivityApi.state.hasEthernet) {
           _completeStartProcess();
         } else {
-          discovery.stop();
+          discoveryApi.stop();
         }
       case DiscoveryRejectedEvent<MulticastSource> e:
         _reject(e.source);
@@ -36,7 +37,7 @@ class DiscoveryMulticastService extends BusListener<DiscoveryEvent> {
 
   void _completeStartProcess() async {
     final source = await factory.create();
-    discovery.completeStart(source);
+    discoveryApi.completeStart(source);
   }
 
   void _reject(MulticastSource source) {
@@ -45,6 +46,6 @@ class DiscoveryMulticastService extends BusListener<DiscoveryEvent> {
 
   void _completeStopProcess(MulticastSource source) {
     source.close();
-    discovery.completeStop();
+    discoveryApi.completeStop();
   }
 }

@@ -11,16 +11,16 @@ class HomeScreenFactory {
 
   static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
-        home: await HomeFactory.makeHomeApi(),
+        homeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<ConnectionsViewModel> makeConnectionViewModel() async =>
       ConnectionsViewModel(
         eventSource: ConnectionFactory.connectionEventBus.stream,
-        homeConnection: HomeConnectionFactory.makeHomeConnectionApi(),
-        local: ConnectionFactory.makeLocalConnectionApi(),
-        cloud: ConnectionFactory.makeCloudConnectionApi(),
-        home: await HomeFactory.makeHomeApi(),
+        homeConnectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
+        localConnectionApi: ConnectionFactory.makeLocalConnectionApi(),
+        cloudConnectionApi: ConnectionFactory.makeCloudConnectionApi(),
+        homeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<WidgetBuilder> make() async {

@@ -18,14 +18,14 @@ class ConnectivityServiceFactory {
       makeConnectivityHomeConnectionService() async =>
           ConnectivityHomeConnectionService(
             eventSource: ConnectivityFactory.connectivityEventBus.stream,
-            home: await HomeFactory.makeHomeApi(),
-            connection: HomeConnectionFactory.makeHomeConnectionApi(),
+            homeApi: await HomeFactory.makeHomeApi(),
+            connectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
           );
 
   static ConnectivityDiscoveryService makeConnectivityDiscoveryService() =>
       ConnectivityDiscoveryService(
         eventSource: ConnectivityFactory.connectivityEventBus.stream,
-        discovery: DiscoveryFactory.makeDiscoveryApi(),
+        discoveryApi: DiscoveryFactory.makeDiscoveryApi(),
       );
 
   static Future<void> make() async {

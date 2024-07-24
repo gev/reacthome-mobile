@@ -4,22 +4,22 @@ import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 
 class ConnectionHomeRegistryService extends BusListener<HomeEvent> {
-  final HomeApi home;
-  final HomeConnectionApi connection;
+  final HomeApi homeApi;
+  final HomeConnectionApi connectionApi;
 
   ConnectionHomeRegistryService({
     required super.eventSource,
-    required this.home,
-    required this.connection,
+    required this.homeApi,
+    required this.connectionApi,
   });
 
   @override
   void handle(HomeEvent event) {
     switch (event) {
       case HomeAddedEvent e:
-        connection.connect(e.home);
+        connectionApi.connect(e.id);
       case HomeRemovedEvent e:
-        connection.disconnect(e.home.id);
+        connectionApi.disconnect(e.id);
       default:
     }
   }

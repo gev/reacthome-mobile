@@ -3,6 +3,6 @@ import 'package:reacthome/make/core/discovery_factory.dart';
 
 class DiscoveryControllerFactory {
   static DiscoveryController make() => DiscoveryController(
-        discovered: DiscoveryFactory.makeHomeApi(),
+        homeApi: DiscoveryFactory.makeHomeApi(),
       );
 }

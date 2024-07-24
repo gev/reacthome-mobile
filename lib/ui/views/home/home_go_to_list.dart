@@ -16,7 +16,7 @@ class HomeGoToList extends StatelessWidget {
           title: Text(locale.myHomes),
           trailing: list.chevron(),
           onTap: () => Navigator.of(context).pushNamed(
-            NavigationRouteNames.homeList,
+            NavigationRouteNames.preferredHomes,
           ),
         ),
       ],

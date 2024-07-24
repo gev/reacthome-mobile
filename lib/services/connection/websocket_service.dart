@@ -6,12 +6,12 @@ import 'package:reacthome/infrastructure/websocket/websocket_factory.dart';
 
 abstract class WebsocketService<F extends WebSocketFactory,
     E extends ConnectionEvent> extends BusListener<ConnectionEvent> {
-  final ConnectionApi<WebSocket> connection;
+  final ConnectionApi<WebSocket> connectionApi;
   final F factory;
 
   WebsocketService({
     required super.eventSource,
-    required this.connection,
+    required this.connectionApi,
     required this.factory,
   });
 
@@ -33,9 +33,9 @@ abstract class WebsocketService<F extends WebSocketFactory,
   void _completeConnect(E event) async {
     try {
       final socket = await _create(event);
-      connection.completeConnect(event.id, socket);
+      connectionApi.completeConnect(event.id, socket);
     } catch (e) {
-      connection.fail(event.id);
+      connectionApi.fail(event.id);
     }
   }
 
@@ -45,7 +45,7 @@ abstract class WebsocketService<F extends WebSocketFactory,
 
   void _completeDisconnect(DisconnectRequestedEvent<WebSocket> event) {
     event.socket.close();
-    connection.completeDisconnect(event.id);
+    connectionApi.completeDisconnect(event.id);
   }
 }
 
@@ -53,15 +53,15 @@ class LocalWebsocketService extends WebsocketService<LocalWebSocketFactory,
     LocalConnectRequestedEvent> {
   LocalWebsocketService({
     required super.eventSource,
-    required super.connection,
+    required super.connectionApi,
     required super.factory,
   });
 
   @override
   Future<WebSocket> _create(LocalConnectRequestedEvent event) => factory.create(
         address: event.address,
-        onClose: () => connection.disconnect(event.id),
-        onError: (_) => connection.disconnect(event.id),
+        onClose: () => connectionApi.disconnect(event.id),
+        onError: (_) => connectionApi.disconnect(event.id),
       );
 }
 
@@ -69,14 +69,14 @@ class CloudWebsocketService extends WebsocketService<CloudWebSocketFactory,
     CloudConnectRequestedEvent> {
   CloudWebsocketService({
     required super.eventSource,
-    required super.connection,
+    required super.connectionApi,
     required super.factory,
   });
 
   @override
   Future<WebSocket> _create(CloudConnectRequestedEvent event) => factory.create(
         id: event.id,
-        onClose: () => connection.disconnect(event.id),
-        onError: (_) => connection.disconnect(event.id),
+        onClose: () => connectionApi.disconnect(event.id),
+        onError: (_) => connectionApi.disconnect(event.id),
       );
 }

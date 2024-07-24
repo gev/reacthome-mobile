@@ -7,6 +7,6 @@ class SplashScreenFactory {
 
   static Future<WidgetBuilder> make() async {
     final homeService = await HomeFactory.makeHomeApi();
-    return (_) => SplashScreen(home: homeService);
+    return (_) => SplashScreen(homeApi: homeService);
   }
 }

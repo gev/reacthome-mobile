@@ -26,7 +26,7 @@ class HomeEntity implements Home {
   HomeEvent? updateMeta(Meta meta) {
     if (_meta != meta) {
       _meta = meta;
-      return HomeMetaChangedEvent(this);
+      return HomeMetaChangedEvent(id);
     }
     return null;
   }
@@ -36,7 +36,7 @@ class HomeEntity implements Home {
   HomeEvent? updateAddress(InternetAddress? address) {
     if (_address != address) {
       _address = address;
-      return HomeAddressChangedEvent(this);
+      return HomeAddressChangedEvent(id);
     }
     return null;
   }
@@ -46,7 +46,7 @@ class HomeEntity implements Home {
   HomeEvent? updateProject(String? project) {
     if (_project != project) {
       _project = project;
-      return HomeProjectChangedEvent(this);
+      return HomeProjectChangedEvent(id);
     }
     return null;
   }

@@ -18,13 +18,7 @@ class HomeService implements HomeApi {
   });
 
   @override
-  int get count => repository.length;
-
-  @override
-  Iterable<String> getAllHomesId() => repository.keys;
-
-  @override
-  Iterable<Home> getAllHomes() => repository.values;
+  Iterable<String> get homes => repository.keys;
 
   @override
   Home? getHomeById(String id) => repository.get(id);
@@ -40,7 +34,7 @@ class HomeService implements HomeApi {
     if (home == null) {
       final home = HomeEntity(id, meta, address, project);
       repository.put(home);
-      eventSink.emit(HomeAddedEvent(home));
+      eventSink.emit(HomeAddedEvent(id));
     } else {
       _update(home, meta, address, project);
     }
@@ -76,7 +70,7 @@ class HomeService implements HomeApi {
   void removeHome(String id) {
     final home = repository.remove(id);
     if (home != null) {
-      eventSink.emit(HomeRemovedEvent(home));
+      eventSink.emit(HomeRemovedEvent(id));
     }
   }
 
@@ -84,7 +78,7 @@ class HomeService implements HomeApi {
   void confirmHome(String id) {
     final home = repository.get(id);
     if (home != null) {
-      eventSink.emit(HomeRenewEvent(home));
+      eventSink.emit(HomeRenewEvent(id));
     }
   }
 }

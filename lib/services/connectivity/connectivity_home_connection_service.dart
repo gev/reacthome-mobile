@@ -4,22 +4,22 @@ import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home_connection/home_connection_api.dart';
 
 class ConnectivityHomeConnectionService extends BusListener<ConnectivityEvent> {
-  final HomeConnectionApi connection;
-  final HomeApi home;
+  final HomeConnectionApi connectionApi;
+  final HomeApi homeApi;
 
   ConnectivityHomeConnectionService({
     required super.eventSource,
-    required this.home,
-    required this.connection,
+    required this.homeApi,
+    required this.connectionApi,
   });
 
   @override
   void handle(ConnectivityEvent event) {
     if (!event.connectivity.hasLocalNetworks) {
-      connection.disconnectLocalAll();
+      connectionApi.disconnectLocalAll();
     }
     if (!event.connectivity.hasMobile) {
-      connection.disconnectCloudAll();
+      connectionApi.disconnectCloudAll();
     }
   }
 }

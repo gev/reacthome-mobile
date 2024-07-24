@@ -9,13 +9,13 @@ class AddHomeListFactory {
 
   static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
-        home: await HomeFactory.makeHomeApi(),
+        homeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<HomeListViewModel> makeHomeListViewModel() async =>
       HomeListViewModel(
         eventSource: HomeFactory.homeEventBus.stream,
-        home: await HomeFactory.makeHomeApi(),
+        homeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<WidgetBuilder> make() async {

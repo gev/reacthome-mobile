@@ -15,7 +15,7 @@ class ConnectionServiceFactory {
   static LocalWebsocketService makeLocalWebsocketService() =>
       LocalWebsocketService(
         eventSource: ConnectionFactory.connectionEventBus.stream,
-        connection: ConnectionFactory.makeLocalConnectionApi(),
+        connectionApi: ConnectionFactory.makeLocalConnectionApi(),
         factory: LocalWebSocketFactory(
           config: Config.connection.local,
           controller: ReacthomeControllerFactory.make(),
@@ -25,31 +25,31 @@ class ConnectionServiceFactory {
   static CloudWebsocketService makeCloudWebsocketService() =>
       CloudWebsocketService(
         eventSource: ConnectionFactory.connectionEventBus.stream,
-        connection: ConnectionFactory.makeCloudConnectionApi(),
+        connectionApi: ConnectionFactory.makeCloudConnectionApi(),
         factory: CloudWebSocketFactory(
           config: Config.connection.cloud,
           controller: ReacthomeControllerFactory.make(),
         ),
       );
 
-  static ActiveConnectionService makeActiveConnectionService() =>
+  static Future<ActiveConnectionService> makeActiveConnectionService() async =>
       ActiveConnectionService(
         eventSource: ConnectionFactory.connectionEventBus.stream,
-        connection: HomeConnectionFactory.makeHomeConnectionApi(),
+        connectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
       );
 
   static Future<ConnectionHomeRegistryService>
       makeConnectionHomeRegistryService() async =>
           ConnectionHomeRegistryService(
             eventSource: HomeFactory.homeEventBus.stream,
-            home: await HomeFactory.makeHomeApi(),
-            connection: HomeConnectionFactory.makeHomeConnectionApi(),
+            homeApi: await HomeFactory.makeHomeApi(),
+            connectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
           );
 
-  static ReconnectLocalService makeReconnectLocalService() =>
+  static Future<ReconnectLocalService> makeReconnectLocalService() async =>
       ReconnectLocalService(
         eventSource: HomeFactory.homeEventBus.stream,
-        connection: HomeConnectionFactory.makeHomeConnectionApi(),
+        connectionApi: await HomeConnectionFactory.makeHomeConnectionApi(),
       );
 
   static Future<void> make() async {

@@ -6,18 +6,18 @@ import 'package:reacthome/core/meta/meta.dart';
 import 'package:reacthome/util/extensions.dart';
 
 class HomeController extends EntityController {
-  final HomeApi home;
+  final HomeApi homeApi;
 
   HomeController({
     required super.eventSource,
     required super.controllers,
-    required this.home,
+    required this.homeApi,
   });
 
   @override
   void executeAction(ReacthomeActionSet action) =>
       HomeActionDto.fromJSON(action.payload)?.let((payload) {
-        home.updateHome(
+        homeApi.updateHome(
           action.id,
           meta: Meta(title: payload.title, code: payload.code),
           project: payload.project,
