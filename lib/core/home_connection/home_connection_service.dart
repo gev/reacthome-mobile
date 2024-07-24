@@ -22,11 +22,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
     required this.repository,
   });
 
-  @override
-  Iterable<String> getAllConnectionsId() => repository.keys;
-
-  @override
-  Iterable<HomeConnection<S>> getAllConnections() => repository.values;
+  Iterable<String> get connections => repository.keys;
 
   @override
   HomeConnection<S> getConnectionById(String id) => _getConnectionById(id);
@@ -63,7 +59,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   }
 
   @override
-  void disconnectAll() => getAllConnectionsId().forEach(disconnect);
+  void disconnectAll() => connections.forEach(disconnect);
 
   @override
   void disconnect(String id) {
@@ -72,7 +68,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   }
 
   @override
-  void disconnectLocalAll() => getAllConnectionsId().forEach(disconnectLocal);
+  void disconnectLocalAll() => connections.forEach(disconnectLocal);
 
   @override
   void disconnectLocal(String id) {
@@ -80,7 +76,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   }
 
   @override
-  void disconnectCloudAll() => getAllConnectionsId().forEach(disconnectCloud);
+  void disconnectCloudAll() => connections.forEach(disconnectCloud);
 
   @override
   void disconnectCloud(String id) {

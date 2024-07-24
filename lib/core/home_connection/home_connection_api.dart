@@ -2,9 +2,6 @@ import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home_connection/home_connection.dart';
 
 abstract interface class HomeConnectionApi {
-  Iterable<String> getAllConnectionsId();
-  Iterable<HomeConnection> getAllConnections();
-
   HomeConnection getConnectionById(String id);
 
   void connectAll(Iterable<Home> homes);
