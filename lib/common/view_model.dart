@@ -12,4 +12,10 @@ abstract class ViewModel<E> extends BusListener<E> with ChangeNotifier {
       notifyListeners();
     }
   }
+
+  @override
+  void dispose() {
+    cancelSubscription();
+    super.dispose();
+  }
 }

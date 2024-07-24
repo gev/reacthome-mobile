@@ -14,7 +14,7 @@ class DiscoveryHomeAddConfirm extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return ViewModelBuilder(
-        viewModel: viewModel.getViewModel(id, locale),
+        create: () => viewModel.getViewModel(id, locale),
         builder: (context, viewModel, _) {
           final home = viewModel.home;
           return confirm(

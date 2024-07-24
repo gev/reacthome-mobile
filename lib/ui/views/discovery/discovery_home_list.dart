@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:reacthome/common/view_model_builder.dart';
 import 'package:reacthome/ui/navigation.dart';
 import 'package:reacthome/ui/view_models/discovery_view_model.dart';
 import 'package:reacthome/ui/view_models/home_list_view_model.dart';
@@ -51,10 +50,10 @@ class DiscoveryHomeList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
-    return ViewModelBuilder(
-        viewModel: homeListViewModel,
-        builder: (context, viewModel, _) {
-          final homes = viewModel.homes;
+    return ListenableBuilder(
+        listenable: homeListViewModel,
+        builder: (context, _) {
+          final homes = homeListViewModel.homes;
           return homes.isEmpty
               ? const SizedBox()
               : list.section(
