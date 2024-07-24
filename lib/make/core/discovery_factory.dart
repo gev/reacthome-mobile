@@ -1,6 +1,6 @@
 import 'package:reacthome/common/bus/bus.dart';
+import 'package:reacthome/core/discovery/discovery.dart';
 import 'package:reacthome/core/discovery/discovery_api.dart';
-import 'package:reacthome/core/discovery/discovery_entity.dart';
 import 'package:reacthome/core/discovery/discovery_event.dart';
 import 'package:reacthome/core/discovery/discovery_service.dart';
 import 'package:reacthome/core/home/home_api.dart';
@@ -15,7 +15,7 @@ class DiscoveryFactory {
 
   static final _repository = MemoryRepository<String, HomeEntity>();
 
-  static final _process = DiscoveryEntity<MulticastSource>();
+  static final _process = Discovery<MulticastSource>();
 
   static final homeEventBus = Bus<HomeEvent>();
 
@@ -28,6 +28,6 @@ class DiscoveryFactory {
 
   static DiscoveryApi<MulticastSource> makeDiscoveryApi() => DiscoveryService(
         eventSink: discoveryEventBus.sink,
-        process: _process,
+        discovery: _process,
       );
 }
