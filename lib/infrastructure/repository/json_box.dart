@@ -8,7 +8,7 @@ import 'package:reacthome/util/extensions.dart';
 class JsonBox<T> {
   final MemoryBox<T> _box;
   final From<T?> _fromJson;
-  final To<T?> _toJson;
+  final To<T> _toJson;
 
   const JsonBox(this._box, this._fromJson, this._toJson);
 

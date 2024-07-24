@@ -19,7 +19,7 @@ class PersistentBox<V> implements Box<V> {
     required String name,
     required String scope,
     required From<T?> fromJson,
-    required To<T?> toJson,
+    required To<T> toJson,
     Duration timeout = Persistent.defaultTimeout,
   }) async {
     final key = '$scope/$name';
