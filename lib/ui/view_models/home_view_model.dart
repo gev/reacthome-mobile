@@ -14,7 +14,7 @@ class HomesViewModel {
     required this.home,
   });
 
-  HomeViewModel getViewModel(String id, AppLocalizations locale) =>
+  HomeViewModel makeViewModel(String id, AppLocalizations locale) =>
       HomeViewModel(id, locale, home, eventSource: eventSource);
 
   void addHome(String id) => home.addHome(id, meta: const Meta());

@@ -22,7 +22,7 @@ class ConnectionsViewModel<S> {
     required this.home,
   });
 
-  ConnectionViewModel<S> getConnectionViewModel(String id) =>
+  ConnectionViewModel<S> makeConnectionViewModel(String id) =>
       ConnectionViewModel(id, homeConnection, local, cloud, home,
           eventSource: eventSource);
 }

@@ -19,7 +19,7 @@ class Connections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ViewModelBuilder(
-        create: () => viewModel.getConnectionViewModel(id),
+        create: () => viewModel.makeConnectionViewModel(id),
         builder: (context, viewModel, _) {
           final locale = AppLocalizations.of(context)!;
           return list.section(

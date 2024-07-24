@@ -16,7 +16,7 @@ class HomeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return ViewModelBuilder(
-        create: () => viewModel.getViewModel(id, locale),
+        create: () => viewModel.makeViewModel(id, locale),
         builder: (context, viewModel, _) {
           final home = viewModel.home;
           return list.tile(

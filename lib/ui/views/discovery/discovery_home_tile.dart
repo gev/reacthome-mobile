@@ -23,7 +23,7 @@ class DiscoveryHomeTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return ViewModelBuilder(
-      create: () => homeViewModel.getViewModel(id, locale),
+      create: () => homeViewModel.makeViewModel(id, locale),
       builder: (context, viewModel, _) {
         final home = viewModel.home;
         return list.tile(

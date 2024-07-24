@@ -25,7 +25,7 @@ class HomeScreen<E> extends StatelessWidget {
     final arguments =
         ModalRoute.of(context)!.settings.arguments as ({String id});
     return ViewModelBuilder(
-      create: () => homeViewModel.getViewModel(arguments.id, locale),
+      create: () => homeViewModel.makeViewModel(arguments.id, locale),
       builder: (context, viewModel, _) {
         final home = viewModel.home;
         return FixedWidthLayout(
