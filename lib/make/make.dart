@@ -14,6 +14,7 @@ import 'package:reacthome/make/services/app_lifecycle_service_factory.dart';
 import 'package:reacthome/make/services/connection_service_factory.dart';
 import 'package:reacthome/make/services/connectivity_service_factory.dart';
 import 'package:reacthome/make/services/discovery_service_factory.dart';
+import 'package:reacthome/make/services/home_service_factory.dart';
 import 'package:reacthome/ui/navigation.dart';
 import 'package:reacthome/ui/views/app.dart';
 
@@ -24,6 +25,8 @@ Future<Widget> make() async {
   await ConnectivityServiceFactory.make();
 
   await ReacthomeControllerFactory.makeControllers();
+
+  await HomeServiceFactory.make();
 
   return App(
     localizationsDelegates: const [

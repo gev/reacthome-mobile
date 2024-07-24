@@ -8,15 +8,15 @@ import 'package:reacthome/util/navigator_extension.dart';
 
 class HomeTile extends StatelessWidget {
   final String id;
-  final HomesViewModel viewModel;
+  final HomesViewModel homeViewModel;
 
-  const HomeTile(this.id, this.viewModel, {super.key});
+  const HomeTile(this.id, this.homeViewModel, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final locale = AppLocalizations.of(context)!;
     return ViewModelBuilder(
-        create: () => viewModel.makeViewModel(id, locale),
+        create: () => homeViewModel.makeViewModel(id, locale),
         builder: (context, viewModel, _) {
           final home = viewModel.home;
           return list.tile(
@@ -29,10 +29,13 @@ class HomeTile extends StatelessWidget {
             leading:
                 Icon(home.hasProject ? icon.home.filled : icon.home.outlined),
             trailing: list.chevron(),
-            onTap: () => Navigator.of(context).clearNamed(
-              NavigationRouteNames.home,
-              arguments: (id: id),
-            ),
+            onTap: () {
+              viewModel.setCurrentHome();
+              Navigator.of(context).clearNamed(
+                NavigationRouteNames.home,
+                arguments: (id: id),
+              );
+            },
           );
         });
   }

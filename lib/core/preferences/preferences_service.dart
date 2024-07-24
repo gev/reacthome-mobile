@@ -17,10 +17,21 @@ class PreferencesService implements PreferencesApi {
   String? get home => box.value.home;
 
   @override
+  bool get isHomeSelected => home != null;
+
+  @override
   void setHome(String home) {
     final preferences = box.value;
     preferences.home = home;
     box.put(preferences);
     eventSink.emit(PreferencesHomeSelectedEvent(home));
+  }
+
+  @override
+  void removePreferredHome(String home) {
+    final preferences = box.value;
+    preferences.home = null;
+    box.put(preferences);
+    eventSink.emit(PreferencesHomeRemovedEvent(home));
   }
 }
