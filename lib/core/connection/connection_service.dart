@@ -19,28 +19,21 @@ abstract class ConnectionService<C extends ConnectionEntity<S>, S>
   });
 
   @override
-  Iterable<String> getAllConnectionsId() => repository.keys;
-
-  @override
-  Iterable<Connection<S>> getAllConnections() => repository.values;
-
-  @override
   Connection<S> getConnectionById(String id) => _getById(id);
 
   @override
   void completeConnect(String id, S socket) =>
-      repository.get(id)?.completeConnect(socket).let(eventSink.emit);
+      _getById(id).completeConnect(socket).let(eventSink.emit);
 
   @override
-  void disconnect(String id) =>
-      repository.get(id)?.disconnect()?.let(eventSink.emit);
+  void disconnect(String id) => _getById(id).disconnect()?.let(eventSink.emit);
 
   @override
   void completeDisconnect(String id) =>
-      repository.get(id)?.completeDisconnect()?.let(eventSink.emit);
+      _getById(id).completeDisconnect()?.let(eventSink.emit);
 
   @override
-  void fail(String id) => repository.get(id)?.fail()?.let(eventSink.emit);
+  void fail(String id) => _getById(id).fail()?.let(eventSink.emit);
 
   C _create(String id);
 
