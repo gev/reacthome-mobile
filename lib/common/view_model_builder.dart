@@ -15,11 +15,12 @@ class ViewModelBuilder<L extends ViewModel> extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => _ViewModelBuilderState();
+  State<StatefulWidget> createState() => _ViewModelBuilderState<L>();
 }
 
-class _ViewModelBuilderState extends State<ViewModelBuilder> {
-  late ViewModel viewModel;
+class _ViewModelBuilderState<L extends ViewModel>
+    extends State<ViewModelBuilder<L>> {
+  late L viewModel;
 
   @override
   void initState() {
