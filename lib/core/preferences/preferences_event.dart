@@ -1,13 +1,16 @@
 sealed class PreferencesEvent {
-  const PreferencesEvent();
+  final String id;
+  const PreferencesEvent(this.id);
 }
 
 class PreferencesHomeAddedEvent extends PreferencesEvent {
-  final String id;
-  const PreferencesHomeAddedEvent(this.id);
+  const PreferencesHomeAddedEvent(super.id);
 }
 
 class PreferencesHomeRemovedEvent extends PreferencesEvent {
-  final String id;
-  const PreferencesHomeRemovedEvent(this.id);
+  const PreferencesHomeRemovedEvent(super.id);
+}
+
+class PreferencesHomeSelectedEvent extends PreferencesEvent {
+  const PreferencesHomeSelectedEvent(super.id);
 }

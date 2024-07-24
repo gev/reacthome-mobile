@@ -20,9 +20,6 @@ class PreferencesService implements PreferencesApi {
   String? get home => box.value.home;
 
   @override
-  String? get project => box.value.project;
-
-  @override
   void addHome(String home) {
     final preferences = box.value;
     if (!preferences.homes.contains(home)) {
@@ -36,6 +33,9 @@ class PreferencesService implements PreferencesApi {
     final preferences = box.value;
     if (preferences.homes.contains(home)) {
       preferences.homes.remove(home);
+      if (preferences.home == home) {
+        preferences.home = null;
+      }
       box.put(preferences);
       eventSink.emit(PreferencesHomeRemovedEvent(home));
     }
@@ -47,13 +47,7 @@ class PreferencesService implements PreferencesApi {
     if (preferences.homes.contains(home)) {
       preferences.home = home;
       box.put(preferences);
+      eventSink.emit(PreferencesHomeSelectedEvent(home));
     }
-  }
-
-  @override
-  void setProject(String project) {
-    final preferences = box.value;
-    preferences.project = project;
-    box.put(preferences);
   }
 }
