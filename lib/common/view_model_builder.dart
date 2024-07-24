@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:reacthome/common/view_model.dart';
 
-class ViewModelBuilder<L extends ViewModel> extends StatefulWidget {
+class ViewModelBuilder<L extends ViewModel<E>, E> extends StatefulWidget {
   final L Function() create;
   final Widget Function(BuildContext context, L viewModel, Widget? child)
       builder;
@@ -15,11 +15,11 @@ class ViewModelBuilder<L extends ViewModel> extends StatefulWidget {
   });
 
   @override
-  State<StatefulWidget> createState() => _ViewModelBuilderState<L>();
+  State<StatefulWidget> createState() => _ViewModelBuilderState<L, E>();
 }
 
-class _ViewModelBuilderState<L extends ViewModel>
-    extends State<ViewModelBuilder<L>> {
+class _ViewModelBuilderState<L extends ViewModel<E>, E>
+    extends State<ViewModelBuilder<L, E>> {
   late L viewModel;
 
   @override
