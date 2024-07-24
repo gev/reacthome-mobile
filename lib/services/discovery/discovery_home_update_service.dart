@@ -3,12 +3,12 @@ import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_event.dart';
 
 class DiscoveryHomeUpdateService extends BusListener<HomeEvent> {
-  final HomeApi preferredHomeApi;
+  final HomeApi myHomeApi;
   final HomeApi discoveredHomeApi;
 
   DiscoveryHomeUpdateService({
     required super.eventSource,
-    required this.preferredHomeApi,
+    required this.myHomeApi,
     required this.discoveredHomeApi,
   });
 
@@ -30,7 +30,7 @@ class DiscoveryHomeUpdateService extends BusListener<HomeEvent> {
   void _update(String id) {
     final home = discoveredHomeApi.getHomeById(id);
     if (home != null) {
-      preferredHomeApi.updateHome(
+      myHomeApi.updateHome(
         id,
         meta: home.meta,
         project: home.project,

@@ -21,7 +21,7 @@ class HomeRemove extends StatelessWidget {
       viewModel.removeHome();
       if (context.mounted) {
         Navigator.of(context).clearNamed(
-          NavigationRouteNames.preferredHomes,
+          NavigationRouteNames.myHomes,
         );
       }
     }

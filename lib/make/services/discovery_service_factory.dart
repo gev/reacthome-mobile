@@ -14,7 +14,7 @@ class DiscoveryServiceFactory {
   static Future<DiscoveryHomeUpdateService>
       makeDiscoveryHomeUpdateService() async => DiscoveryHomeUpdateService(
             eventSource: DiscoveryFactory.homeEventBus.stream,
-            preferredHomeApi: await HomeFactory.makeHomeApi(),
+            myHomeApi: await HomeFactory.makeHomeApi(),
             discoveredHomeApi: DiscoveryFactory.makeHomeApi(),
           );
 

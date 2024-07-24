@@ -14,8 +14,8 @@ class DiscoveryScreenFactory {
       DiscoveryViewModel(
         eventSource: DiscoveryFactory.discoveryEventBus.stream,
         discovery: DiscoveryFactory.makeDiscoveryApi(),
-        discoveredHome: DiscoveryFactory.makeHomeApi(),
-        preferredHomeApi: await HomeFactory.makeHomeApi(),
+        discoveredHomeApi: DiscoveryFactory.makeHomeApi(),
+        myHomeApi: await HomeFactory.makeHomeApi(),
       );
 
   static Future<HomesViewModel> makeHomeViewModel() async => HomesViewModel(

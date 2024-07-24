@@ -6,14 +6,14 @@ import 'package:reacthome/core/home/home_api.dart';
 
 class DiscoveryViewModel extends ViewModel<DiscoveryEvent> {
   final DiscoveryApi discovery;
-  final HomeApi discoveredHome;
-  final HomeApi preferredHomeApi;
+  final HomeApi discoveredHomeApi;
+  final HomeApi myHomeApi;
 
   DiscoveryViewModel({
     required super.eventSource,
     required this.discovery,
-    required this.discoveredHome,
-    required this.preferredHomeApi,
+    required this.discoveredHomeApi,
+    required this.myHomeApi,
   });
 
   bool get state => discovery.state == DiscoveryState.running;
@@ -27,11 +27,11 @@ class DiscoveryViewModel extends ViewModel<DiscoveryEvent> {
   }
 
   bool tryAddHome(String id) {
-    final home = discoveredHome.getHomeById(id);
+    final home = discoveredHomeApi.getHomeById(id);
     if (home == null) {
       return false;
     }
-    preferredHomeApi.addHome(
+    myHomeApi.addHome(
       id,
       meta: home.meta,
       address: home.address,

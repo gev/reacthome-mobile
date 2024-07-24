@@ -28,7 +28,7 @@ class PreferencesService implements PreferencesApi {
   }
 
   @override
-  void removePreferredHome(String home) {
+  void removeHome(String home) {
     final preferences = box.value;
     preferences.home = null;
     box.put(preferences);

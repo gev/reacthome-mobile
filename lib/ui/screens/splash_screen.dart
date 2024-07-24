@@ -33,7 +33,7 @@ class SplashScreen extends StatelessWidget {
           navigator.clearNamed(
             homeApi.homes.isEmpty
                 ? NavigationRouteNames.welcome
-                : NavigationRouteNames.preferredHomes,
+                : NavigationRouteNames.myHomes,
           );
         }
       },
