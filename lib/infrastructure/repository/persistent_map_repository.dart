@@ -33,7 +33,7 @@ class PersistentMapRepository<E extends Entity<String>>
       return _instances[key]! as PersistentMapRepository<T>;
     }
     final repository = MemoryMapRepository<String, T>();
-    final jsonRepository = JsonMapRepository(repository, fromJson, toJson);
+    final jsonRepository = JsonMapRepositoryDto(repository, fromJson, toJson);
     final persistent = await Persistent.make(
       name,
       scope,

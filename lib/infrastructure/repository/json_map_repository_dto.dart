@@ -5,12 +5,12 @@ import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/infrastructure/repository/memory_map_repository.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
-class JsonMapRepository<E extends Entity<String>> {
+class JsonMapRepositoryDto<E extends Entity<String>> {
   final MemoryMapRepository<String, E> _repository;
   final From<E> _fromJson;
   final To<E> _toJson;
 
-  const JsonMapRepository(this._repository, this._fromJson, this._toJson);
+  const JsonMapRepositoryDto(this._repository, this._fromJson, this._toJson);
 
   Future<void> load(File file) async {
     try {
@@ -31,6 +31,6 @@ class JsonMapRepository<E extends Entity<String>> {
     for (var entity in _repository.values) {
       json[entity.id] = _toJson(entity);
     }
-    file.writeAsString(jsonEncode(json));
+    await file.writeAsString(jsonEncode(json));
   }
 }

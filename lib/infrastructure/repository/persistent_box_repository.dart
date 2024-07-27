@@ -27,7 +27,7 @@ class PersistentBoxRepository<V> implements BoxRepository<V> {
       return _instances[key]! as PersistentBoxRepository<T>;
     }
     final box = MemoryBoxRepository<T>(initialValue);
-    final file = JsonBoxRepository(box, fromJson, toJson);
+    final file = JsonBoxRepositoryDto(box, fromJson, toJson);
     final persistent = await Persistent.make(
       name,
       scope,
