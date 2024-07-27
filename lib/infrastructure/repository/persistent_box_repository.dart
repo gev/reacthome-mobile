@@ -1,20 +1,20 @@
 import 'dart:async';
 
-import 'package:reacthome/common/box.dart';
-import 'package:reacthome/infrastructure/repository/json_box.dart';
-import 'package:reacthome/infrastructure/repository/memory_box.dart';
+import 'package:reacthome/common/repository/box_repository.dart';
+import 'package:reacthome/infrastructure/repository/json_box_repository_dto.dart';
+import 'package:reacthome/infrastructure/repository/memory_box_repository.dart';
 import 'package:reacthome/infrastructure/repository/persistent.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
-class PersistentBox<V> implements Box<V> {
+class PersistentBoxRepository<V> implements BoxRepository<V> {
   final Persistent _persistent;
-  final Box<V> _box;
+  final BoxRepository<V> _box;
 
-  const PersistentBox._(this._persistent, this._box);
+  const PersistentBoxRepository._(this._persistent, this._box);
 
-  static final _instances = <String, PersistentBox>{};
+  static final _instances = <String, PersistentBoxRepository>{};
 
-  static Future<PersistentBox<T>> make<T>(
+  static Future<PersistentBoxRepository<T>> make<T>(
     T initialValue, {
     required String name,
     required String scope,
@@ -24,10 +24,10 @@ class PersistentBox<V> implements Box<V> {
   }) async {
     final key = '$scope/$name';
     if (_instances.containsKey(key)) {
-      return _instances[key]! as PersistentBox<T>;
+      return _instances[key]! as PersistentBoxRepository<T>;
     }
-    final box = MemoryBox<T>(initialValue);
-    final file = JsonBox(box, fromJson, toJson);
+    final box = MemoryBoxRepository<T>(initialValue);
+    final file = JsonBoxRepository(box, fromJson, toJson);
     final persistent = await Persistent.make(
       name,
       scope,
@@ -35,7 +35,7 @@ class PersistentBox<V> implements Box<V> {
       toFile: file.save,
       timeout: timeout,
     );
-    final persistentBox = PersistentBox._(persistent, box);
+    final persistentBox = PersistentBoxRepository._(persistent, box);
     _instances[key] = persistentBox;
     return persistentBox;
   }

@@ -2,15 +2,15 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:reacthome/common/entity.dart';
-import 'package:reacthome/infrastructure/repository/memory_repository.dart';
+import 'package:reacthome/infrastructure/repository/memory_map_repository.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
-class JsonRepository<E extends Entity<String>> {
-  final MemoryRepository<String, E> _repository;
+class JsonMapRepository<E extends Entity<String>> {
+  final MemoryMapRepository<String, E> _repository;
   final From<E> _fromJson;
   final To<E> _toJson;
 
-  const JsonRepository(this._repository, this._fromJson, this._toJson);
+  const JsonMapRepository(this._repository, this._fromJson, this._toJson);
 
   Future<void> load(File file) async {
     try {

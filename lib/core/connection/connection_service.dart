@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:reacthome/common/emitter.dart';
-import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
 import 'package:reacthome/core/connection/connection.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_entity.dart';
@@ -11,7 +11,7 @@ import 'package:reacthome/util/extensions.dart';
 abstract class ConnectionService<C extends ConnectionEntity<S>, S>
     implements ConnectionApi<S> {
   final Emitter<ConnectionEvent> eventSink;
-  final Repository<String, C> repository;
+  final MapRepository<String, C> repository;
 
   const ConnectionService({
     required this.eventSink,

@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:reacthome/infrastructure/repository/memory_box.dart';
+import 'package:reacthome/infrastructure/repository/memory_box_repository.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 import 'package:reacthome/util/extensions.dart';
 
-class JsonBox<T> {
-  final MemoryBox<T> _box;
+class JsonBoxRepository<T> {
+  final MemoryBoxRepository<T> _box;
   final From<T?> _fromJson;
   final To<T> _toJson;
 
-  const JsonBox(this._box, this._fromJson, this._toJson);
+  const JsonBoxRepository(this._box, this._fromJson, this._toJson);
 
   Future<void> load(File file) async {
     try {

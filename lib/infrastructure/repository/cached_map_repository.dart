@@ -1,14 +1,14 @@
 import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/common/entity_event.dart';
-import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
 
-class CachedRepository<E extends Entity<String>>
-    implements Repository<String, E> {
-  final Repository<String, E> repository;
+class CachedMapRepository<E extends Entity<String>>
+    implements MapRepository<String, E> {
+  final MapRepository<String, E> repository;
   final Emitter<EntityEvent> eventSink;
 
-  CachedRepository({required this.repository, required this.eventSink}) {
+  CachedMapRepository({required this.repository, required this.eventSink}) {
     final ids = repository.keys;
     if (ids.isNotEmpty) {
       eventSink.emit(EntityPoolRegisteredEvent(ids));

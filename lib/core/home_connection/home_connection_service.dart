@@ -1,5 +1,5 @@
 import 'package:reacthome/common/emitter.dart';
-import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
 import 'package:reacthome/core/connection/connection_api.dart';
 import 'package:reacthome/core/connection/connection_event.dart';
 import 'package:reacthome/core/connection/connection_state.dart';
@@ -14,7 +14,7 @@ class HomeConnectionService<S> implements HomeConnectionApi {
   final LocalConnectionApi<S> localConnectionApi;
   final CloudConnectionApi<S> cloudConnectionApi;
   final HomeApi homeApi;
-  final Repository<String, HomeConnectionEntity<S>> repository;
+  final MapRepository<String, HomeConnectionEntity<S>> repository;
 
   const HomeConnectionService({
     required this.eventSink,

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:reacthome/common/emitter.dart';
-import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
 import 'package:reacthome/core/home/home.dart';
 import 'package:reacthome/core/home/home_api.dart';
 import 'package:reacthome/core/home/home_entity.dart';
@@ -10,7 +10,7 @@ import 'package:reacthome/core/meta/meta.dart';
 
 class HomeService implements HomeApi {
   final Emitter<HomeEvent> eventSink;
-  final Repository<String, HomeEntity> repository;
+  final MapRepository<String, HomeEntity> repository;
 
   const HomeService({
     required this.eventSink,

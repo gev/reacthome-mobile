@@ -1,4 +1,4 @@
-import 'package:reacthome/common/box.dart';
+import 'package:reacthome/common/repository/box_repository.dart';
 import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/core/preferences/preferences.dart';
 import 'package:reacthome/core/preferences/preferences_api.dart';
@@ -6,7 +6,7 @@ import 'package:reacthome/core/preferences/preferences_event.dart';
 
 class PreferencesService implements PreferencesApi {
   final Emitter<PreferencesEvent> eventSink;
-  final Box<Preferences> box;
+  final BoxRepository<Preferences> box;
 
   PreferencesService({
     required this.eventSink,

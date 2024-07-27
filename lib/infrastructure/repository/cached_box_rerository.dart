@@ -1,13 +1,14 @@
-import 'package:reacthome/common/box.dart';
+import 'package:reacthome/common/repository/box_repository.dart';
 import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/common/entity_event.dart';
 
-class CachedBox<E extends Entity<String>> implements Box<E> {
+class CachedBoxRepository<E extends Entity<String>>
+    implements BoxRepository<E> {
   final Emitter<EntityEvent> eventSink;
-  final Box<E> box;
+  final BoxRepository<E> box;
 
-  CachedBox({required this.eventSink, required this.box}) {
+  CachedBoxRepository({required this.eventSink, required this.box}) {
     eventSink.emit(EntityRegisteredEvent(box.value.id));
   }
 

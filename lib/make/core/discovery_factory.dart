@@ -8,12 +8,12 @@ import 'package:reacthome/core/home/home_entity.dart';
 import 'package:reacthome/core/home/home_event.dart';
 import 'package:reacthome/core/home/home_service.dart';
 import 'package:reacthome/infrastructure/multicast/multicast_source.dart';
-import 'package:reacthome/infrastructure/repository/memory_repository.dart';
+import 'package:reacthome/infrastructure/repository/memory_map_repository.dart';
 
 class DiscoveryFactory {
   DiscoveryFactory._();
 
-  static final _repository = MemoryRepository<String, HomeEntity>();
+  static final _repository = MemoryMapRepository<String, HomeEntity>();
 
   static final _discovery = Discovery<MulticastSource>();
 

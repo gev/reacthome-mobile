@@ -1,6 +1,6 @@
 import 'package:reacthome/common/entity.dart';
 
-abstract interface class Repository<K, V extends Entity<K>> {
+abstract interface class MapRepository<K, V extends Entity<K>> {
   int get length;
   Iterable<K> get keys;
   Iterable<V> get values;

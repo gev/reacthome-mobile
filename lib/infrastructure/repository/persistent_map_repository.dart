@@ -1,27 +1,27 @@
 import 'dart:async';
 
 import 'package:reacthome/common/entity.dart';
-import 'package:reacthome/common/repository.dart';
-import 'package:reacthome/infrastructure/repository/json_repository.dart';
-import 'package:reacthome/infrastructure/repository/memory_repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
+import 'package:reacthome/infrastructure/repository/json_map_repository_dto.dart';
+import 'package:reacthome/infrastructure/repository/memory_map_repository.dart';
 import 'package:reacthome/infrastructure/repository/persistent.dart';
 import 'package:reacthome/infrastructure/repository/types.dart';
 
 const defaultTimeout = Duration(milliseconds: 100);
 
-class PersistentRepository<E extends Entity<String>>
-    implements Repository<String, E> {
+class PersistentMapRepository<E extends Entity<String>>
+    implements MapRepository<String, E> {
   final Persistent _persistent;
-  final Repository<String, E> _repository;
+  final MapRepository<String, E> _repository;
 
-  const PersistentRepository._(
+  const PersistentMapRepository._(
     this._persistent,
     this._repository,
   );
 
-  static final _instances = <String, PersistentRepository>{};
+  static final _instances = <String, PersistentMapRepository>{};
 
-  static Future<PersistentRepository<T>> make<T extends Entity<String>>({
+  static Future<PersistentMapRepository<T>> make<T extends Entity<String>>({
     required String name,
     required String scope,
     required From<T> fromJson,
@@ -30,10 +30,10 @@ class PersistentRepository<E extends Entity<String>>
   }) async {
     final key = '$scope/$name';
     if (_instances.containsKey(key)) {
-      return _instances[key]! as PersistentRepository<T>;
+      return _instances[key]! as PersistentMapRepository<T>;
     }
-    final repository = MemoryRepository<String, T>();
-    final jsonRepository = JsonRepository(repository, fromJson, toJson);
+    final repository = MemoryMapRepository<String, T>();
+    final jsonRepository = JsonMapRepository(repository, fromJson, toJson);
     final persistent = await Persistent.make(
       name,
       scope,
@@ -41,7 +41,8 @@ class PersistentRepository<E extends Entity<String>>
       toFile: jsonRepository.save,
       timeout: timeout,
     );
-    final persistentRepository = PersistentRepository._(persistent, repository);
+    final persistentRepository =
+        PersistentMapRepository._(persistent, repository);
     _instances[key] = persistentRepository;
     return persistentRepository;
   }

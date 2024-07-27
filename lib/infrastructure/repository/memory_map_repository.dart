@@ -1,7 +1,8 @@
 import 'package:reacthome/common/entity.dart';
-import 'package:reacthome/common/repository.dart';
+import 'package:reacthome/common/repository/map_repository.dart';
 
-class MemoryRepository<K, V extends Entity<K>> implements Repository<K, V> {
+class MemoryMapRepository<K, V extends Entity<K>>
+    implements MapRepository<K, V> {
   var _store = <K, V>{};
 
   @override
