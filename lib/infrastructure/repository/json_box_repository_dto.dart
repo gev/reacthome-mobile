@@ -21,6 +21,6 @@ class JsonBoxRepositoryDto<T> {
 
   Future<void> save(File file) async {
     final json = jsonEncode(_toJson(_box.value));
-    file.writeAsString(json);
+    await file.writeAsString(json);
   }
 }
