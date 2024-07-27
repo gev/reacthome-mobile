@@ -12,7 +12,7 @@ class Persistent {
   final FileHandler _fromFile;
   final FileHandler _toFile;
 
-  late Timer _timer;
+  late final Timer _timer;
 
   Persistent._(
     this._file,
@@ -26,7 +26,7 @@ class Persistent {
     );
   }
 
-  static Future<Persistent> make<T>(
+  static Future<Persistent> make(
     String name,
     String scope, {
     required FileHandler fromFile,
@@ -46,9 +46,9 @@ class Persistent {
   int _fileTimestamp = 0;
   bool _done = true;
 
-  bool get _shouldSave => _storeTimestamp > _fileTimestamp && _done;
+  bool get _shouldSave => _storeTimestamp != _fileTimestamp && _done;
 
-  Future<void> _save() async {
+  void _save() async {
     if (_shouldSave) {
       _fileTimestamp = _storeTimestamp;
       _done = false;
@@ -65,8 +65,7 @@ class Persistent {
     } catch (_) {}
   }
 
-  void updateTimestamp() =>
-      _storeTimestamp = DateTime.now().millisecondsSinceEpoch;
+  void updateTimestamp() => _storeTimestamp++;
 
   void dispose() {
     _timer.cancel();
