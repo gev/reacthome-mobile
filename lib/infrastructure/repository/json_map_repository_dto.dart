@@ -13,17 +13,13 @@ class JsonMapRepositoryDto<E extends Entity<String>> {
   const JsonMapRepositoryDto(this._repository, this._fromJson, this._toJson);
 
   Future<void> load(File file) async {
-    try {
-      final tmp = <String, E>{};
-      final data = await file.readAsString();
-      if (data.isNotEmpty) {
-        final entries = jsonDecode(data) as Map<String, dynamic>;
-        entries.forEach((key, value) {
-          tmp[key] = _fromJson(value);
-        });
-        _repository.init(tmp);
-      }
-    } catch (_) {}
+    final tmp = <String, E>{};
+    final data = await file.readAsString();
+    final entries = jsonDecode(data) as Map<String, dynamic>;
+    entries.forEach((key, value) {
+      tmp[key] = _fromJson(value);
+    });
+    _repository.init(tmp);
   }
 
   Future<void> save(File file) async {

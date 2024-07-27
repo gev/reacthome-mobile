@@ -13,10 +13,8 @@ class JsonBoxRepositoryDto<T> {
   const JsonBoxRepositoryDto(this._box, this._fromJson, this._toJson);
 
   Future<void> load(File file) async {
-    try {
-      final data = await file.readAsString();
-      _fromJson(jsonDecode(data))?.let(_box.init);
-    } catch (_) {}
+    final data = await file.readAsString();
+    _fromJson(jsonDecode(data))?.let(_box.init);
   }
 
   Future<void> save(File file) async {
