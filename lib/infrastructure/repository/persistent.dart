@@ -59,9 +59,7 @@ class Persistent {
 
   Future<void> _load() async {
     try {
-      if (await _file.exists()) {
-        await _fromFile(_file);
-      }
+      await _fromFile(_file);
     } catch (_) {}
   }
 
