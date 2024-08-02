@@ -1,5 +1,5 @@
-import 'package:reacthome/common/repository/box_repository.dart';
 import 'package:reacthome/common/bus/bus.dart';
+import 'package:reacthome/common/repository/box_repository.dart';
 import 'package:reacthome/core/preferences/preferences.dart';
 import 'package:reacthome/core/preferences/preferences_api.dart';
 import 'package:reacthome/core/preferences/preferences_dto.dart';
