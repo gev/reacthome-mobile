@@ -1,7 +1,7 @@
-import 'package:reacthome/common/repository/box_repository.dart';
 import 'package:reacthome/common/emitter.dart';
 import 'package:reacthome/common/entity.dart';
 import 'package:reacthome/common/entity_event.dart';
+import 'package:reacthome/common/repository/box_repository.dart';
 
 class CachedBoxRepository<E extends Entity<String>>
     implements BoxRepository<E> {
